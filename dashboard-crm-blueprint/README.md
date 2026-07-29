@@ -19,7 +19,17 @@ The core idea: **the command center is the product; each client site is a data s
 | File | What it is |
 | --- | --- |
 | [`BLUEPRINT.md`](./BLUEPRINT.md) | The full blueprint — architecture, data model, modules, security, billing, multi-tenancy, roadmap, GTM. |
-| [`prototype/index.html`](./prototype/index.html) | A self-contained, clickable demo of the control-center UI (mock data, no backend). Open it in a browser or view it live on GitHub Pages. |
+| [`landing/index.html`](./landing/index.html) | The **pitch-ready landing page** — hero, problem framing, features, client-portal pitch, case study, pricing tiers, FAQ and CTA. Point prospects here. |
+| [`prototype/index.html`](./prototype/index.html) | A self-contained, clickable demo of the control-center UI (mock data, no backend). Linked from the landing page as the live demo. |
+
+## Before you send the landing page to anyone
+
+Three things in `landing/index.html` are placeholders you should confirm:
+
+1. **Pricing** — `$49 / $199 / $499` come straight from the blueprint's illustrative table. Set your real numbers.
+2. **Contact address** — the CTA points at `hello@leadradar.cc`. Swap it for the inbox you actually watch.
+3. **Case study** — it names Red Circle Tactical as a live deployment. Worth a quick OK from Jimmi before it's public,
+   and it pairs naturally with the referral ask.
 
 ## The three things you can sell
 
