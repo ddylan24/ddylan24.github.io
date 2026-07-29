@@ -1,64 +1,66 @@
 # Management Dashboard & CRM Control Center — Blueprint
 
-A packaged, sellable blueprint for turning a single business's website + financial back-office into
-a **white-label, multi-tenant management dashboard and CRM control center** that can be resold to
-other companies and agencies.
+The repeatable system behind the agency: **build a client's website, run their bookings, customers
+and money, hand them an owner's dashboard — then do it again for the next company.**
 
-It generalizes a real, revenue-generating stack:
+You are the agency. You host websites, CRM and financial services *for* client companies. What you
+sell is the **service package**; the platform in here is your control center and the source of every
+client's portal.
 
-- **LeadRadar** — the live agency command center & CRM (`app.leadradar.cc`): MRR, per-client health,
-  contacts, tickets, deals, documents, prospecting pipeline.
-- **Red Circle Tactical** — the first paying client site ($500 setup + $150/mo): online booking,
-  capacities, scheduling, chat, email, calendar — and a collector that feeds its bookings/revenue
-  into LeadRadar.
+It's built from a real, revenue-generating stack:
 
-The core idea: **the command center is the product; each client site is a data source.**
+- **LeadRadar** — your command center (`app.leadradar.cc`): every client's revenue, site health,
+  contacts, tickets, deals, documents and prospect pipeline in one place.
+- **Red Circle Tactical** — client #1 ($500 build + $150/mo): online booking with class capacities,
+  scheduling, chat, email and calendar — feeding its bookings and revenue back into the dashboard.
+
+The structural idea: **each client site is a data source; the command center is where they all
+converge.** You see the whole book of business; each client sees only their own numbers.
 
 ## Contents
 
 | File | What it is |
 | --- | --- |
-| [`BLUEPRINT.md`](./BLUEPRINT.md) | The full blueprint — architecture, data model, modules, security, billing, multi-tenancy, roadmap, GTM. |
-| [`landing/index.html`](./landing/index.html) | The **pitch-ready landing page** — hero, problem framing, features, client-portal pitch, case study, pricing tiers, FAQ and CTA. Point prospects here. |
-| [`prototype/index.html`](./prototype/index.html) | A self-contained, clickable demo of the control-center UI (mock data, no backend). Linked from the landing page as the live demo. |
+| [`BLUEPRINT.md`](./BLUEPRINT.md) | The full blueprint — architecture, data model, the three service lines, security, rate card, scaling, roadmap and go-to-market. |
+| [`landing/index.html`](./landing/index.html) | The **pitch-ready landing page** aimed at business owners — what they get, the owner's dashboard, how it works, the Red Circle case study, pricing and FAQ. |
+| [`prototype/index.html`](./prototype/index.html) | A clickable demo of the **internal** control center (mock data, no backend) — the multi-client view you use, not what the client sees. |
+
+## What the client buys
+
+| Service line | What they get |
+| --- | --- |
+| **Website + booking** | Their site, hosted and maintained: booking with capacities, hours, blocked days, deposits |
+| **CRM** | A customer list that builds itself, visitor chat, mass email, notes and history |
+| **Financial services** | Deposits at booking, invoices sent on time, revenue and overdue tracked |
+| **Owner's dashboard** | One login: what's booked, what it earned, who visited, what's owed |
+
+Rate card: **$500 build + $150/month**, with optional add-ons (Stripe payments, ad management,
+priority support). Full breakdown in §8 of the blueprint.
+
+## Why it's low-risk to keep building
+
+The hard parts already exist and run in production:
+
+- A **correct money engine** — recurring revenue, overdue, auto-generated monthly invoices in ~80 lines.
+- A schema that **already scopes per client** — every row carries `company_id` and `users.role`
+  already has `client`, so the client portal is a permission change, not a rewrite.
+- A **read-only collector pattern** so any client site, on any stack, can feed the dashboard safely.
+- A **real security posture**: hashed sessions, rate-limited login, CSRF, loopback-bind behind a
+  Cloudflare tunnel, secrets kept off git.
+
+The remaining work is making client #5 cost a fraction of client #1 — see the roadmap in §12.
 
 ## Before you send the landing page to anyone
 
-Three things in `landing/index.html` are placeholders you should confirm:
+Three things in `landing/index.html` to confirm:
 
-1. **Pricing** — `$49 / $199 / $499` come straight from the blueprint's illustrative table. Set your real numbers.
-2. **Contact address** — the CTA points at `hello@leadradar.cc`. Swap it for the inbox you actually watch.
-3. **Case study** — it names Red Circle Tactical as a live deployment. Worth a quick OK from Jimmi before it's public,
-   and it pairs naturally with the referral ask.
+1. **Brand** — it's branded *LeadRadar* off your existing domain. Swap it if the client-facing
+   business goes by another name.
+2. **Contact** — the CTA points at `hello@leadradar.cc`. Make sure that inbox exists and you watch it.
+3. **Case study + live link** — the page names Red Circle Tactical and links to their live site as
+   proof. Worth a quick OK from Jimmi first; it pairs naturally with the referral ask you drafted.
 
-## The three things you can sell
+## Viewing the pages
 
-1. **Agency Control Center** — the full command center for agencies to run their book of clients.
-2. **Single-Business Ops Dashboard** — one SMB's site + a scoped dashboard (bookings, revenue, customers).
-3. **White-Label Platform License** — a branded instance resellers sell downstream.
-
-## Why it's low-risk to implement
-
-The hard parts already exist and are proven in production:
-
-- A **correct money engine** (MRR, overdue, auto-generated monthly invoices) in ~80 lines.
-- A schema that is **multi-tenant by design** — every client row carries `company_id`, and users
-  already split into `admin` / `client` roles, so a client portal is a permission change, not a rewrite.
-- A **read-only collector pattern** so any client site (any stack) can feed the dashboard safely.
-- A **real security posture**: hashed sessions, rate-limited login, CSRF, loopback-bind behind a
-  Cloudflare tunnel, secrets off git.
-
-The productization work is **hardening + white-labeling + billing + onboarding** — see the roadmap
-in the blueprint.
-
-## Quick start (viewing the prototype)
-
-- **Locally:** open `prototype/index.html` in any browser — it's fully self-contained.
-- **Live:** once this branch is on GitHub Pages, visit
-  `https://ddylan24.github.io/dashboard-crm-blueprint/prototype/`.
-
-## Prototype ≠ implementation
-
-The prototype is a **UI demonstration with mock data** to make the blueprint tangible for a buyer
-or investor. The real implementation lifts the `leadradar-platform` codebase (schema, money engine,
-auth) as its skeleton — see **§14, "What to build first"** in the blueprint.
+- **Locally:** open the `.html` files directly — both are fully self-contained.
+- **Live:** once this branch is on GitHub Pages, `https://ddylan24.github.io/dashboard-crm-blueprint/landing/`.

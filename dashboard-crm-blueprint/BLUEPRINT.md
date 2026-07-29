@@ -1,9 +1,15 @@
 # Management Dashboard & CRM Control Center — Productization Blueprint
 
-**A white-label, multi-tenant command center you can implement once and resell to any small business or agency.**
+**The repeatable system behind a web/hosting agency: build the client's site, run their bookings,
+customers and money, and hand them a dashboard — then do it again for the next company.**
 
 Reference build: **LeadRadar** (live at `app.leadradar.cc`) + the **Red Circle Tactical** client site.
-This blueprint generalizes that proven, revenue-generating stack into a repeatable product.
+This blueprint turns that proven, revenue-generating stack into something you can deliver on repeat.
+
+> **Who this is written for:** you are the agency. You host websites, CRM and financial services
+> *for* client companies. The thing you sell is the **service package** — site, booking, customer
+> list, invoicing, and an owner's dashboard. The platform in here is your internal control center
+> and the source of every client's portal. You are not selling the software to other agencies.
 
 ---
 
@@ -19,21 +25,26 @@ The reference system already works and already earns money. It is two halves:
    dollar: MRR, per-client health/traffic/outcomes, contacts, tickets, deals, documents, and a
    prospecting pipeline (reference: LeadRadar, GoHighLevel-style).
 
-The insight worth selling: **the command center is the product; each client site is a data
-source that feeds it.** Every client site drops metrics (bookings, revenue, pageviews, uptime)
-into the command center through a thin read-only "collector," so the operator sees the whole book
-of business on one screen and can prove ROI to each client from their own portal.
+The key structural insight: **each client site is a data source; the command center is where every
+client converges.** Every client site drops metrics (bookings, revenue, pageviews, uptime) into the
+command center through a thin read-only "collector." That gives you the whole book of business on
+one screen — and gives each client a portal showing only their own numbers, which is what proves
+the monthly fee is worth paying.
 
-This blueprint packages that into a **white-label SaaS** with three sellable shapes:
+**What the client buys** (one package, one bill):
 
-| Shape | Who buys it | What they get |
+| Service line | What the client gets | Built from |
 | --- | --- | --- |
-| **A. Agency Control Center** | Web/marketing agencies, freelancers | The full LeadRadar command center to run *their* book of clients — MRR, CRM, pipeline, health. |
-| **B. Single-Business Ops Dashboard** | One SMB (gym, range, salon, clinic) | Their own site + a scoped dashboard: bookings, revenue, customers, uptime — no multi-client layer. |
-| **C. White-Label Platform License** | Larger agencies / resellers | Their own branded instance they resell downstream. Per-seat or per-tenant licensing. |
+| **Website + booking** | Their site, hosted and maintained: online booking with capacities, hours, blocked days, deposits | `redcircle-site` pattern |
+| **CRM** | Customer list that builds itself, visitor chat, mass email, notes and history | `contacts` / `chat` / `email_log` |
+| **Financial services** | Deposits at booking, invoices sent on time, revenue and overdue tracked | `payments` + money engine |
+| **Owner's dashboard** | One login: what's booked, what it earned, who visited, what's owed | Client portal (P4) |
 
-Everything below is grounded in the actual reference implementation, then generalized so it can
-be rebuilt cleanly for resale.
+**What you keep for yourself:** the multi-client command center — every client's revenue, health,
+tickets and pipeline in one place, so you can run twenty clients without twenty spreadsheets.
+
+Everything below is grounded in the actual reference implementation, then generalized so the next
+client is a repeat of the last one instead of a fresh build.
 
 ---
 
@@ -41,8 +52,8 @@ be rebuilt cleanly for resale.
 
 The reference `leadradar-platform` schema was designed multi-tenant from day one. Every table that
 holds client data carries a `company_id`, and the `users` table already has an `admin` / `client`
-role split. That single decision is what makes reselling a **permission change, not a rewrite** —
-the same code serves the agency operator (sees all companies) and the client (sees only their own).
+role split. That single decision is what makes the client portal a **permission change, not a
+rewrite** — the same code serves you (all companies) and the client (only their own).
 
 Proven building blocks, ready to lift:
 
@@ -128,15 +139,16 @@ Lifted and generalized from the live schema. Rename `companies`→`accounts`/`cl
 | **team_posts** | Internal collaboration feed | `author_id, company_id?, body, pinned` |
 | **pageviews** | First-party analytics | `site_slug, path, referrer, ua_class, ts` |
 
-**Design rules that make it resellable**
+**Design rules that make the next client cheap**
 
 1. `company_id` on every client-owned row → the client portal is a `WHERE company_id = ?` filter,
    never a separate app.
 2. Money is stored in **whole units (integer)** to avoid float drift; format at the edge.
-3. `outcomes` is a generic `(day, metric, value)` triple, so any vertical's KPIs fit without schema
-   changes — a gym logs `checkins`, a store logs `orders`, a clinic logs `appointments`.
-4. `services_catalog` + `subscriptions` + `monthly_fee_override` lets you price per client without
-   forking the plan. MRR stays correct automatically.
+3. `outcomes` is a generic `(day, metric, value)` triple, so any trade's numbers fit without a
+   schema change — a gym logs `checkins`, a shop logs `orders`, a clinic logs `appointments`.
+   This is what lets you take on a salon next week without touching the platform.
+4. `services_catalog` + `subscriptions` + `monthly_fee_override` lets you cut one client a deal
+   without forking the plan. Your recurring revenue total stays correct automatically.
 
 ---
 
@@ -243,38 +255,56 @@ The reference already does the hard parts; productizing adds the paperwork.
   create a Stripe subscription on activation, and reconcile `payments.paid_at` from Stripe webhooks.
   The ledger stays the source of truth for *display*; Stripe is the source of truth for *collection*.
 
-**Pricing the product itself (what you sell it for):**
+**What you charge a client** (the live Red Circle contract, generalized into a rate card):
 
-| Plan | Target | Price (illustrative) | Includes |
-| --- | --- | --- | --- |
-| **Starter** | Solo operator, ≤5 clients | $49/mo | Command center, CRM, ledger billing, 1 site kit |
-| **Agency** | ≤50 clients, team seats | $199/mo | + client portal, analytics, collectors, team board |
-| **White-label** | Resellers | $499/mo + $X/tenant | + your brand/domain, remove platform marks, API |
-| **Setup / site kit** | Per client site | $300–$1,000 one-time | Built + deployed vertical site (your services revenue) |
+| Line item | Price | Notes |
+| --- | --- | --- |
+| **Build** | $500 one-time | Site, booking, catalog, chat, email — deployed on their domain |
+| **Hosting & service** | $150/month | Hosting, backups, uptime, CRM, invoicing, dashboard, support |
+| Card payments (Stripe) | +$50/month | Optional — deposits are included in the base |
+| Ad management | +$125/month | Optional |
+| Priority support | +$40/month | Optional |
+| Extra pages / custom features | Quoted | Bills as a one-time line on the ledger |
 
-The dual revenue model (SaaS subscription **and** per-site setup services) is exactly what the
-reference agency runs — it's proven, not theoretical.
+Every one of these is a row in `services_catalog`; per-client discounts go in
+`monthly_fee_override` so recurring revenue stays correct without forking the plan.
+
+**Unit economics that matter:** the build fee roughly covers the labour of onboarding, and the
+monthly is near-pure margin because all clients share one box. That means **profit scales with
+client count, not with hours worked** — which is exactly why the onboarding needs to be
+mechanical (see §10) and why the collectors must be per-vertical adapters rather than bespoke code.
+
+**Raising the monthly later** is a portal conversation, not a negotiation: when a client can see
+the bookings and revenue their site produced, a $150→$200 move is measured against what they earned.
 
 ---
 
-## 9. Multi-tenant hardening (SQLite → SaaS)
+## 9. Scaling the client count (one platform, many companies)
 
-The reference runs SQLite on one box and serves one agency's book. To sell to *many* independent
-buyers, pick an isolation model:
+You run **one** control center. Every client company is a `companies` row inside it, and their
+portal login is a `users` row scoped to that company. There is no second instance to sell or
+operate — so "multi-tenant" here means *many client companies on your one box*, not many buyers.
 
-| Model | How | Best for |
+That model holds a long way. The realistic pressure points, in the order you'll hit them:
+
+| Client count | What breaks first | The fix |
 | --- | --- | --- |
-| **Row-level (shared DB)** | Add `tenant_id` above `company_id`; every query scoped by both | Many small buyers, lowest ops cost. Requires Postgres + RLS. |
-| **Schema/DB-per-tenant** | One SQLite file (or PG schema) per buyer | Medium buyer count, strong isolation, easy per-tenant backup/restore. Maps cleanly onto today's file-per-instance model. |
-| **Instance-per-tenant** | A container per buyer (today's box, replicated) | White-label / high-touch / regulated buyers. |
+| **1–25** | Nothing. SQLite + WAL on one small box is comfortable here. | Keep going. |
+| **25–75** | Onboarding time per client; collector sprawl; backup blast radius. | Mechanical provisioning (§10), per-vertical collector kits (§6). |
+| **75+** | Write contention on a single SQLite file; one box = one failure domain. | Move the platform DB to **Postgres**; keep each client *site* on its own SQLite. |
 
-**Recommended path:** start **DB-per-tenant** (it's the smallest leap from the current
-`LR_DATA`-per-process design — each tenant just gets its own data dir), then graduate heavy buyers
-to their own instance and offer row-level shared-DB only if you chase high-volume self-serve.
+**Keep the client sites separate from the platform.** Each client's site owns its own database
+(bookings, customers, chat) — the platform only ever *reads* from it. That's what keeps one
+client's traffic spike or bad deploy from touching anyone else, and it means restoring a single
+client is a single file copy.
 
-Move from SQLite to **Postgres** when you cross ~a few hundred writes/sec or need concurrent
-multi-region — the schema translates directly (types are already portable; drop the SQLite-specific
-`PRAGMA`s).
+**The isolation guarantee you're actually selling:** a `client`-role login can only ever read rows
+carrying their own `company_id`. Enforce that in one query layer rather than per-route, and cover
+it with tests — a client seeing another client's revenue is the one bug that ends the business.
+
+Move the platform DB from SQLite to **Postgres** when writes start contending or you need a second
+box for redundancy. The schema translates directly (types are already portable; drop the
+SQLite-specific `PRAGMA`s).
 
 ---
 
@@ -301,69 +331,85 @@ Reference ops (keep the shape, scale the box):
 
 ---
 
-## 11. White-labeling checklist
+## 11. Per-client branding checklist
 
-To make one codebase sell under many brands:
+Your control center keeps *your* brand. What varies per client is their **site** and the **portal
+skin** they log into — so each client's experience feels like their business, not your software.
 
-- [ ] **Brand config per tenant** — name, logo, `--accent` color, support email, custom domain.
+- [ ] **Client brand config** — name, logo, `--accent` color, support email, domain.
       (The reference CSS already centralizes theme in `:root` custom properties — swap tokens, done.)
-- [ ] **Remove hard-coded product names** from templates → pull from tenant config.
-- [ ] **Custom domain per tenant** via the tunnel/edge (`app.buyersbrand.com`).
-- [ ] **Configurable module set** — toggle Pipeline/Team/Analytics per plan.
-- [ ] **Email sender identity** per tenant (their domain, their SMTP/app-password).
-- [ ] **"Powered by" toggle** — on for Starter/Agency, removable on White-label.
-- [ ] **Seed data & vertical presets** — ship each site kit's catalog as a selectable template.
+- [ ] **Client domain** — their site on their own domain; the portal on a subdomain of yours
+      (`clientname.leadradar.cc`) or theirs, whichever they prefer.
+- [ ] **Email sender identity** per client — their domain and their app-password, so booking alerts
+      and blasts come *from them*. (This is an open item on Red Circle today.)
+- [ ] **Vertical presets** — ship each site kit's catalog, slot times and copy as a selectable
+      template so a new salon isn't built from an empty page.
+- [ ] **Portal module toggles** — show a client only what they bought (hide invoicing if you bill
+      them off-platform, hide analytics on a base plan).
+- [ ] **Your marks stay yours** — the client's site carries their brand; a discreet credit in the
+      footer is a lead source worth keeping.
 
 ---
 
 ## 12. Implementation roadmap
 
 Phased to mirror how the reference was actually built (P1–P3 shipped in a day, proving the pace),
-then extended for resale.
+then extended so client number five costs a fraction of client number one.
 
 | Phase | Deliverable | Status in reference |
 | --- | --- | --- |
-| **P1** | Auth, companies, money engine (MRR/ledger) | ✅ built & live |
+| **P1** | Auth, companies, money engine (revenue/ledger) | ✅ built & live |
 | **P2** | CRM (contacts/tickets/deals/docs), traffic pixel, password change | ✅ built & live |
 | **P3** | Pipeline leads + convert-to-company | ✅ built & live |
-| **P4** | **Client portal** (client-role logins, scoped views) — *the sellable feature* | ⬜ planned |
-| **P5** | Collector SDK + 3 vertical site kits (salon, gym, home-services) | ⬜ new |
-| **P6** | Stripe billing + self-serve signup + tenant provisioner | ⬜ new |
-| **P7** | White-label config (brand/domain/modules) + Postgres option | ⬜ new |
-| **P8** | Audit log, 2FA, DPA/privacy, backup drills — "enterprise-ready" | ⬜ new |
+| **P4** | **Client portal** (client-role logins, scoped views) — *what justifies the monthly* | ⬜ planned |
+| **P5** | Vertical site kits (salon, gym, home-services) + a collector per kit | ⬜ new |
+| **P6** | One-command client onboarding + Stripe for collecting your own fees | ⬜ new |
+| **P7** | Per-client branding & sender identity; Postgres when client count demands it | ⬜ new |
+| **P8** | Audit log, 2FA, backup drills, privacy terms — the trust layer | ⬜ new |
 
-**Fast path to first external sale:** P4 (portal) + minimal P7 (brand/domain) is enough to sell
-Shape A (Agency Control Center) to a second agency. Everything else is expansion revenue.
+**Fast path to more revenue:** P4 (portal) is the single highest-leverage build — it's what turns
+the $150/mo from a hosting bill into a service the client can see working, and it's mostly a
+scoping change over code you already have. P5 is what makes the *next* client cheap to land.
 
 ---
 
 ## 13. Go-to-market (grounded in the reference playbook)
 
-The reference already has a working motion worth generalizing:
+The reference already has a working motion worth repeating:
 
-- **Land with services, expand with SaaS.** Sell a client a site ($300–$1k setup), then the
-  dashboard subscription rides along. The site is the demo.
-- **Referral engine.** The reference `referral-ask.md` offers *one free month per signed referral*.
-  Productize this into an in-app referral tracker (a `leads.source = "referral"` path already exists).
-- **Vertical beachheads.** Own one niche at a time (the reference targets firearms/CPR/self-defense
-  instructors — adjacent, warm-intro-friendly). Each vertical kit unlocks a network.
-- **Prove ROI from their own portal.** The client logs in and sees bookings/revenue you generated.
-  That screen is the renewal.
+- **The build fee opens the door; the monthly is the business.** A $500 site is an easy yes for an
+  owner who's been quoted $5k. The recurring $150 is what compounds — and it only survives if the
+  client can see what it does, which is the portal.
+- **Referrals from inside the vertical.** The reference `referral-ask.md` offers *one free month per
+  signed referral*. A warm intro from a peer closes far better than a cold pitch, and the demo is
+  their friend's own live site. Track it — `leads.source = "referral — <client>"` already exists.
+- **Own one trade at a time.** Firearms/CPR/self-defense instructors know each other; so do barbers,
+  so do landscapers. Each vertical kit you build makes the next business in that trade cheaper to
+  win and faster to launch.
+- **Sell the dashboard, not the website.** Anyone can point at a website. Almost no local web shop
+  hands the owner a login showing bookings and revenue. That's the differentiator — lead with it.
+- **Let the portal do the renewal.** When the client can see what their site earned last month,
+  the monthly invoice stops being a cost and starts being a receipt.
 
 ---
 
-## 14. What to build first (if you implement this)
+## 14. What to build first
 
-1. **Lift the reference `leadradar-platform`** as the skeleton (schema, money engine, auth are done).
-2. **Ship P4 client portal** — biggest value unlock, smallest code (it's a scoping change).
-3. **Extract the collector into an SDK** + document the two-line site contract (§6).
-4. **Add a brand/tenant config layer** (§11) so a second buyer is a config row, not a fork.
-5. **Wrap billing** — keep ledger mode default, add Stripe as the upgrade.
-6. **Provisioner script** — make onboarding a new buyer a single command.
+1. **Ship P4, the client portal.** Biggest revenue impact, smallest code — the schema already
+   carries `company_id` everywhere and `users.role` already has `client`. This is a scoping and
+   templating job, not a rewrite.
+2. **Turn Red Circle into a repeatable kit.** Extract the site into a template with the catalog,
+   slots and copy swappable, so the next training business is a configuration rather than a build.
+3. **Write the second collector.** One more vertical (salon or home services) proves the adapter
+   pattern generalizes and gives you a second market to sell into.
+4. **Make onboarding one command.** New client = create company, seed services, provision subdomain,
+   deploy site, wire pixel and collector. Every manual step here is margin you lose per client.
+5. **Close the loop on billing.** Invoices already generate; add Stripe when chasing payments costs
+   more than the integration.
 
-The hard, risky work (a correct money engine, a multi-tenant-shaped schema, a real security posture,
-a live paying client) is **already done and proven**. This blueprint is the map from "one agency's
-tool" to "a product other companies buy."
+The hard, risky work — a correct money engine, a schema that already scopes per client, a real
+security posture, and a live paying customer — is **already done and proven**. What's left is
+making the second, fifth and twentieth client cost a fraction of the first.
 
 ---
 
