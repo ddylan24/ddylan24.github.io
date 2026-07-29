@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Control Center — CRM & Dashboard Prototype</title>
+<style>
+/* Design tokens lifted from the live LeadRadar command center (light "Soft UI"). */
+:root{
+  --bg:#F6F8FB; --panel:#FFFFFF; --line:#E3E8F0; --ink:#0F172A; --muted:#55637A;
+  --accent:#2563EB; --accent-ink:#1D4ED8; --green:#15803D; --amber:#B45309; --red:#B91C1C;
+  --radius:12px; --shadow:0 1px 2px rgba(15,23,42,.05),0 6px 20px rgba(15,23,42,.06);
+  --font:ui-sans-serif,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);font-size:16px;line-height:1.5;min-height:100dvh}
+a{color:var(--accent-ink)}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:6px}
+
+.topbar{display:flex;align-items:center;gap:20px;background:var(--panel);border-bottom:1px solid var(--line);padding:0 24px;height:60px;position:sticky;top:0;z-index:20;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px;letter-spacing:.01em;color:var(--ink);text-decoration:none}
+.brand-dot{width:12px;height:12px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#60A5FA,var(--accent));box-shadow:0 0 0 4px rgba(37,99,235,.14)}
+.topbar nav{display:flex;gap:4px;flex-wrap:wrap}
+.topbar nav button{background:transparent;border:0;color:var(--muted);font-weight:600;font-size:14px;padding:10px 14px;border-radius:8px;min-height:44px}
+.topbar nav button:hover{background:var(--bg);color:var(--ink)}
+.topbar nav button.active{background:#EAF0FE;color:var(--accent-ink)}
+.topbar-right{margin-left:auto;display:flex;align-items:center;gap:12px}
+.who{color:var(--muted);font-size:13px}
+.pill{font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--accent-ink);background:#EAF0FE;padding:4px 8px;border-radius:999px}
+
+.view{max-width:1160px;margin:0 auto;padding:28px 24px 64px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px}
+.grid{display:grid;gap:16px}
+.cols-4{grid-template-columns:repeat(4,1fr)}
+.cols-3{grid-template-columns:repeat(3,1fr)}
+.cols-2{grid-template-columns:repeat(2,1fr)}
+@media(max-width:900px){.cols-4{grid-template-columns:repeat(2,1fr)}.cols-3,.cols-2{grid-template-columns:1fr}}
+h1{font-size:24px;margin:0 0 4px}
+h2{font-size:16px;margin:0 0 14px}
+.sub{color:var(--muted);font-size:14px;margin:0 0 22px}
+.section{display:none}
+.section.active{display:block}
+
+.kpi .label{color:var(--muted);font-size:13px;font-weight:600}
+.kpi .val{font-size:30px;font-weight:800;letter-spacing:-.02em;margin:6px 0 2px}
+.kpi .delta{font-size:12px;font-weight:700}
+.up{color:var(--green)} .down{color:var(--red)} .warn{color:var(--amber)}
+
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;color:var(--muted);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.03em;padding:8px 10px;border-bottom:1px solid var(--line)}
+td{padding:11px 10px;border-bottom:1px solid var(--line)}
+tr:last-child td{border-bottom:0}
+.tag{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px}
+.tag.active{background:#E7F6ED;color:var(--green)}
+.tag.lead{background:#EAF0FE;color:var(--accent-ink)}
+.tag.churned{background:#FDECEC;color:var(--red)}
+.tag.open{background:#FEF3E2;color:var(--amber)}
+.tag.done{background:#E7F6ED;color:var(--green)}
+.tag.prog{background:#EAF0FE;color:var(--accent-ink)}
+.dot{width:9px;height:9px;border-radius:50%;display:inline-block}
+.dot.g{background:var(--green)} .dot.a{background:var(--amber)} .dot.r{background:var(--red)}
+.right{text-align:right}
+.mono{font-variant-numeric:tabular-nums}
+.overdue{color:var(--red);font-weight:700}
+.muted{color:var(--muted)}
+.small{font-size:13px}
+
+.bars{display:flex;align-items:flex-end;gap:8px;height:120px;padding-top:8px}
+.bars .bar{flex:1;background:linear-gradient(180deg,#60A5FA,var(--accent));border-radius:6px 6px 0 0;min-height:4px;position:relative}
+.bars .bar span{position:absolute;top:-18px;left:0;right:0;text-align:center;font-size:11px;color:var(--muted);font-weight:700}
+.bars .lbl{margin-top:6px;text-align:center;font-size:11px;color:var(--muted)}
+.barwrap{display:flex;flex-direction:column}
+
+.pipeline{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+@media(max-width:900px){.pipeline{grid-template-columns:1fr 1fr}}
+.stage{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px}
+.stage h3{margin:0 0 4px;font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:var(--muted)}
+.stage .sum{font-size:13px;color:var(--muted);margin-bottom:10px}
+.card{background:#fff;border:1px solid var(--line);border-radius:9px;padding:10px 11px;margin-bottom:8px;box-shadow:0 1px 2px rgba(15,23,42,.04)}
+.card .t{font-weight:600;font-size:14px}
+.card .v{font-size:12px;color:var(--muted);margin-top:2px}
+
+.flex{display:flex;align-items:center;gap:10px}
+.between{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.spark{display:flex;align-items:flex-end;gap:3px;height:34px}
+.spark i{width:6px;background:#BBD0Fb;border-radius:2px 2px 0 0;display:block}
+.note{background:#F1F5FF;border:1px solid #D9E4FF;border-radius:10px;padding:12px 14px;font-size:13px;color:#334155}
+.portal-head{background:linear-gradient(120deg,#1D4ED8,#2563EB);color:#fff;border-radius:var(--radius);padding:22px 24px;margin-bottom:16px}
+.portal-head h2{color:#fff;margin:0 0 4px}
+.portal-head p{margin:0;opacity:.9;font-size:14px}
+.mt{margin-top:16px}
+.avatar{width:30px;height:30px;border-radius:50%;background:#EAF0FE;color:var(--accent-ink);display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:13px}
+footer{max-width:1160px;margin:0 auto;padding:0 24px 48px;color:var(--muted);font-size:13px}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#"><span class="brand-dot"></span> Control Center</a>
+  <nav id="nav">
+    <button data-tab="overview" class="active">Overview</button>
+    <button data-tab="clients">Clients</button>
+    <button data-tab="finance">Finance</button>
+    <button data-tab="crm">CRM</button>
+    <button data-tab="pipeline">Pipeline</button>
+    <button data-tab="portal">Client Portal</button>
+  </nav>
+  <div class="topbar-right">
+    <span class="pill">White-label demo</span>
+    <span class="who">operator@youragency.com</span>
+  </div>
+</header>
+
+<main class="view">
+  <!-- OVERVIEW -->
+  <section class="section active" id="overview">
+    <h1>Financial cockpit</h1>
+    <p class="sub">Every client, service, and dollar on one screen — the screen the buyer falls in love with.</p>
+    <div class="grid cols-4">
+      <div class="panel kpi"><div class="label">Monthly recurring revenue</div><div class="val mono">$4,850</div><div class="delta up">▲ 12.8% vs last month</div></div>
+      <div class="panel kpi"><div class="label">Active clients</div><div class="val mono">27</div><div class="delta up">▲ 3 new</div></div>
+      <div class="panel kpi"><div class="label">Overdue</div><div class="val mono overdue">$450</div><div class="delta warn">3 invoices past due</div></div>
+      <div class="panel kpi"><div class="label">Pipeline value</div><div class="val mono">$11,200</div><div class="delta">8 open deals</div></div>
+    </div>
+
+    <div class="grid cols-3 mt">
+      <div class="panel" style="grid-column:span 2">
+        <div class="between"><h2>MRR trend</h2><span class="small muted">last 8 months</span></div>
+        <div class="barwrap">
+          <div class="bars" id="mrrbars"></div>
+        </div>
+      </div>
+      <div class="panel">
+        <h2>Client health</h2>
+        <div class="between small" style="margin-bottom:10px"><span class="flex"><span class="dot g"></span> Healthy</span><b class="mono">24</b></div>
+        <div class="between small" style="margin-bottom:10px"><span class="flex"><span class="dot a"></span> Degraded</span><b class="mono">2</b></div>
+        <div class="between small" style="margin-bottom:10px"><span class="flex"><span class="dot r"></span> Down</span><b class="mono">1</b></div>
+        <div class="note mt">Uptime & latency sampled every 5&nbsp;min by the health collector. Red Circle Tactical: <b>99.98%</b> this month.</div>
+      </div>
+    </div>
+
+    <div class="panel mt">
+      <div class="between"><h2>Recent client outcomes <span class="small muted">— fed by read-only collectors</span></h2></div>
+      <table>
+        <thead><tr><th>Client</th><th>Vertical</th><th class="right">Bookings (14d)</th><th class="right">Revenue booked</th><th>Traffic</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>Red Circle Tactical</td><td class="muted">Firearms training</td><td class="right mono">38</td><td class="right mono">$4,120</td><td><span class="spark" data-spark="3,5,4,7,6,8,9,7,10,8"></span></td><td><span class="tag active">active</span></td></tr>
+          <tr><td>Ironside Range</td><td class="muted">Range / retail</td><td class="right mono">22</td><td class="right mono">$2,640</td><td><span class="spark" data-spark="2,3,3,4,5,4,6,5,6,7"></span></td><td><span class="tag active">active</span></td></tr>
+          <tr><td>Coastal CPR</td><td class="muted">First-aid training</td><td class="right mono">15</td><td class="right mono">$1,275</td><td><span class="spark" data-spark="1,2,2,3,2,4,3,5,4,4"></span></td><td><span class="tag active">active</span></td></tr>
+          <tr><td>Summit Barber Co.</td><td class="muted">Salon / appts</td><td class="right mono">54</td><td class="right mono">$1,890</td><td><span class="spark" data-spark="4,5,6,5,7,8,7,9,8,10"></span></td><td><span class="tag active">active</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- CLIENTS -->
+  <section class="section" id="clients">
+    <h1>Clients</h1>
+    <p class="sub">The hub every module hangs off. Lifecycle: lead → active → churned. One row per tenant.</p>
+    <div class="panel">
+      <table>
+        <thead><tr><th>Company</th><th>Plan</th><th class="right">MRR</th><th>Health</th><th>Since</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td><b>Red Circle Tactical</b><div class="small muted">redcircle.leadradar.cc</div></td><td>Site + Hosting</td><td class="right mono">$150</td><td><span class="flex"><span class="dot g"></span> 99.98%</span></td><td class="muted">Jul 2026</td><td><span class="tag active">active</span></td></tr>
+          <tr><td><b>Ironside Range</b><div class="small muted">ironsiderange.com</div></td><td>Site + Hosting + Ads</td><td class="right mono">$275</td><td><span class="flex"><span class="dot g"></span> 99.9%</span></td><td class="muted">Jun 2026</td><td><span class="tag active">active</span></td></tr>
+          <tr><td><b>Coastal CPR</b><div class="small muted">coastalcpr.co</div></td><td>Site + Hosting</td><td class="right mono">$150</td><td><span class="flex"><span class="dot a"></span> 98.1%</span></td><td class="muted">Jun 2026</td><td><span class="tag active">active</span></td></tr>
+          <tr><td><b>Summit Barber Co.</b><div class="small muted">summitbarber.com</div></td><td>Booking + Hosting</td><td class="right mono">$125</td><td><span class="flex"><span class="dot g"></span> 100%</span></td><td class="muted">May 2026</td><td><span class="tag active">active</span></td></tr>
+          <tr><td><b>Harborview Dental</b><div class="small muted">— proposal sent</div></td><td>—</td><td class="right mono">—</td><td class="muted">—</td><td class="muted">—</td><td><span class="tag lead">lead</span></td></tr>
+          <tr><td><b>Old Mill Landscaping</b><div class="small muted">churned Apr 2026</div></td><td>—</td><td class="right mono">—</td><td class="muted">—</td><td class="muted">Feb 2026</td><td><span class="tag churned">churned</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- FINANCE -->
+  <section class="section" id="finance">
+    <h1>Finance</h1>
+    <p class="sub">Services catalog → subscriptions → auto-generated invoices → paid/overdue ledger. Money stored in whole units; MRR reconciles automatically.</p>
+    <div class="grid cols-2">
+      <div class="panel">
+        <h2>Services catalog</h2>
+        <table>
+          <thead><tr><th>Service</th><th class="right">Setup</th><th class="right">Monthly</th></tr></thead>
+          <tbody>
+            <tr><td>Website + Hosting</td><td class="right mono">$500</td><td class="right mono">$150</td></tr>
+            <tr><td>Booking System add-on</td><td class="right mono">$150</td><td class="right mono">$50</td></tr>
+            <tr><td>Ad Management</td><td class="right mono">$0</td><td class="right mono">$125</td></tr>
+            <tr><td>Priority Support</td><td class="right mono">$0</td><td class="right mono">$40</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="panel">
+        <h2>Overdue queue</h2>
+        <table>
+          <thead><tr><th>Client</th><th>Due</th><th class="right">Amount</th><th></th></tr></thead>
+          <tbody>
+            <tr><td>Red Circle Tactical</td><td class="overdue">Jul 14</td><td class="right mono overdue">$150</td><td class="right"><button class="pill" style="border:0">Mark paid</button></td></tr>
+            <tr><td>Coastal CPR</td><td class="overdue">Jul 20</td><td class="right mono overdue">$150</td><td class="right"><button class="pill" style="border:0">Mark paid</button></td></tr>
+            <tr><td>Ironside Range</td><td class="overdue">Jul 22</td><td class="right mono overdue">$150</td><td class="right"><button class="pill" style="border:0">Mark paid</button></td></tr>
+          </tbody>
+        </table>
+        <div class="note mt"><code>ensure_monthly_payments()</code> generates one invoice per active client per month — idempotently. Ledger mode ships today; Stripe mode is a drop-in upgrade.</div>
+      </div>
+    </div>
+    <div class="panel mt">
+      <h2>Payment ledger</h2>
+      <table>
+        <thead><tr><th>Client</th><th>Kind</th><th>Due</th><th>Paid</th><th class="right">Amount</th></tr></thead>
+        <tbody>
+          <tr><td>Summit Barber Co.</td><td><span class="tag done">monthly</span></td><td class="muted">Jul 01</td><td>Jul 01</td><td class="right mono">$125</td></tr>
+          <tr><td>Ironside Range</td><td><span class="tag done">monthly</span></td><td class="muted">Jul 22</td><td class="overdue">— overdue</td><td class="right mono">$150</td></tr>
+          <tr><td>Red Circle Tactical</td><td><span class="tag lead">setup</span></td><td class="muted">Jul 10</td><td>Jul 10</td><td class="right mono">$500</td></tr>
+          <tr><td>Coastal CPR</td><td><span class="tag done">monthly</span></td><td class="muted">Jun 20</td><td>Jun 20</td><td class="right mono">$150</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- CRM -->
+  <section class="section" id="crm">
+    <h1>CRM</h1>
+    <p class="sub">Contacts, tickets, and deals per client — the GoHighLevel-style core.</p>
+    <div class="grid cols-2">
+      <div class="panel">
+        <h2>Contacts</h2>
+        <table>
+          <thead><tr><th>Name</th><th>Client</th><th>Role</th></tr></thead>
+          <tbody>
+            <tr><td class="flex"><span class="avatar">JM</span> <b>Jimmi M.</b> <span class="tag active" style="padding:2px 7px">primary</span></td><td>Red Circle Tactical</td><td class="muted">Owner</td></tr>
+            <tr><td class="flex"><span class="avatar">DP</span> David Paul</td><td>Coastal CPR</td><td class="muted">Instructor</td></tr>
+            <tr><td class="flex"><span class="avatar">SR</span> Sam Reyes</td><td>Ironside Range</td><td class="muted">Manager</td></tr>
+            <tr><td class="flex"><span class="avatar">TS</span> Tony S.</td><td>Summit Barber Co.</td><td class="muted">Owner</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="panel">
+        <h2>Tickets</h2>
+        <table>
+          <thead><tr><th>Title</th><th>Client</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Swap booking-alert email to owner's Gmail</td><td>Red Circle</td><td><span class="tag prog">in progress</span></td></tr>
+            <tr><td>Add "no-show" fee to deposit flow</td><td>Summit Barber</td><td><span class="tag open">open</span></td></tr>
+            <tr><td>Wire ad-conversion pixel</td><td>Ironside</td><td><span class="tag open">open</span></td></tr>
+            <tr><td>Q2 hours update</td><td>Coastal CPR</td><td><span class="tag done">done</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="panel mt">
+      <h2>Documents</h2>
+      <table>
+        <thead><tr><th>File</th><th>Client</th><th class="right">Size</th><th>Uploaded</th></tr></thead>
+        <tbody>
+          <tr><td>service-agreement-signed.pdf</td><td>Red Circle Tactical</td><td class="right mono">184 KB</td><td class="muted">Jul 10</td></tr>
+          <tr><td>brand-assets.zip</td><td>Ironside Range</td><td class="right mono">6.2 MB</td><td class="muted">Jun 28</td></tr>
+          <tr><td>invoice-2026-07.pdf</td><td>Summit Barber Co.</td><td class="right mono">42 KB</td><td class="muted">Jul 01</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- PIPELINE -->
+  <section class="section" id="pipeline">
+    <h1>Pipeline</h1>
+    <p class="sub">Scored prospects → deals → convert-to-client in one action. Land with services, expand with SaaS.</p>
+    <div class="pipeline">
+      <div class="stage">
+        <h3>Prospect</h3><div class="sum">3 · $3,600</div>
+        <div class="card"><div class="t">Harborview Dental</div><div class="v">Score 82 · outdated site, phone-only booking</div></div>
+        <div class="card"><div class="t">Bay State Martial Arts</div><div class="v">Score 76 · referral — Jimmi (Red Circle)</div></div>
+        <div class="card"><div class="t">Green Thumb Landscaping</div><div class="v">Score 61 · no online quotes</div></div>
+      </div>
+      <div class="stage">
+        <h3>Proposed</h3><div class="sum">2 · $4,600</div>
+        <div class="card"><div class="t">Ironside Range — Ads</div><div class="v">$125/mo upsell · sent Jul 24</div></div>
+        <div class="card"><div class="t">Lakeside Yoga</div><div class="v">$500 + $150/mo · sent Jul 26</div></div>
+      </div>
+      <div class="stage">
+        <h3>Won</h3><div class="sum">2 · $1,300</div>
+        <div class="card"><div class="t">Summit Barber Co.</div><div class="v">Converted → active client</div></div>
+        <div class="card"><div class="t">Coastal CPR</div><div class="v">Converted → active client</div></div>
+      </div>
+      <div class="stage">
+        <h3>Lost</h3><div class="sum">1 · $650</div>
+        <div class="card"><div class="t">Old Mill Landscaping</div><div class="v">Went with in-house · churned</div></div>
+      </div>
+    </div>
+    <div class="note mt">Prospects arrive pre-scored with a rationale from the scout tool. A won lead's <b>convert-to-company</b> action creates the client, subscription, and first invoice in one step.</div>
+  </section>
+
+  <!-- PORTAL -->
+  <section class="section" id="portal">
+    <div class="portal-head">
+      <div class="between">
+        <div><h2>Red Circle Tactical — Client Portal</h2><p>Signed in as jimmi@redcircletactical.com · role: client · scoped to one company</p></div>
+        <span class="pill" style="background:rgba(255,255,255,.2);color:#fff">The sellable feature (P4)</span>
+      </div>
+    </div>
+    <p class="sub">Same codebase, <code>role=client</code>, filtered to one <code>company_id</code>. This screen is what turns "my dashboard" into "a product I sell" — and it's the renewal.</p>
+    <div class="grid cols-4">
+      <div class="panel kpi"><div class="label">Bookings this month</div><div class="val mono">38</div><div class="delta up">▲ 19%</div></div>
+      <div class="panel kpi"><div class="label">Revenue booked</div><div class="val mono">$4,120</div><div class="delta up">▲ 24%</div></div>
+      <div class="panel kpi"><div class="label">Site uptime</div><div class="val mono">99.98%</div><div class="delta up">healthy</div></div>
+      <div class="panel kpi"><div class="label">Site visitors (30d)</div><div class="val mono">1,284</div><div class="delta up">▲ 8%</div></div>
+    </div>
+    <div class="grid cols-2 mt">
+      <div class="panel">
+        <h2>Your bookings — last 8 weeks</h2>
+        <div class="barwrap"><div class="bars" id="portalbars"></div></div>
+      </div>
+      <div class="panel">
+        <h2>Your invoices</h2>
+        <table>
+          <thead><tr><th>Period</th><th>Status</th><th class="right">Amount</th></tr></thead>
+          <tbody>
+            <tr><td>July 2026</td><td><span class="tag open">due Jul 14</span></td><td class="right mono">$150</td></tr>
+            <tr><td>June 2026</td><td><span class="tag done">paid</span></td><td class="right mono">$150</td></tr>
+            <tr><td>Setup fee</td><td><span class="tag done">paid</span></td><td class="right mono">$500</td></tr>
+          </tbody>
+        </table>
+        <div class="note mt">The client sees only their own uptime, traffic, outcomes, tickets, and invoices — proof of the ROI you generated.</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  Prototype UI with mock data — no backend. Design tokens and module set mirror the live
+  <b>LeadRadar</b> command center. See <a href="../BLUEPRINT.md">BLUEPRINT.md</a> for the full spec.
+</footer>
+
+<script>
+// ---- tab switching ----
+var nav = document.getElementById('nav');
+nav.addEventListener('click', function(e){
+  var b = e.target.closest('button[data-tab]'); if(!b) return;
+  [].forEach.call(nav.querySelectorAll('button'), function(x){x.classList.toggle('active', x===b);});
+  [].forEach.call(document.querySelectorAll('.section'), function(s){s.classList.toggle('active', s.id===b.dataset.tab);});
+  window.scrollTo(0,0);
+});
+
+// ---- MRR bar chart ----
+function drawBars(el, data, labels, prefix, suffix){
+  suffix = suffix || '';
+  var max = Math.max.apply(null, data);
+  el.innerHTML = data.map(function(v,i){
+    var h = Math.round(v/max*100);
+    return '<div class="barwrap" style="flex:1"><div class="bar" style="height:'+h+'%"><span>'+prefix+v+suffix+'</span></div><div class="lbl">'+labels[i]+'</div></div>';
+  }).join('');
+}
+drawBars(document.getElementById('mrrbars'),
+  [1.2,1.8,2.4,3.0,3.4,3.9,4.3,4.85],
+  ['Dec','Jan','Feb','Mar','Apr','May','Jun','Jul'], '$', 'k');
+drawBars(document.getElementById('portalbars'),
+  [18,22,25,21,28,31,34,38],
+  ['W1','W2','W3','W4','W5','W6','W7','W8'], '');
+
+// ---- sparklines ----
+[].forEach.call(document.querySelectorAll('.spark[data-spark]'), function(s){
+  var d = s.dataset.spark.split(',').map(Number);
+  var max = Math.max.apply(null, d);
+  s.innerHTML = d.map(function(v){ return '<i style="height:'+Math.max(3,Math.round(v/max*34))+'px"></i>'; }).join('');
+});
+</script>
+</body>
+</html>
