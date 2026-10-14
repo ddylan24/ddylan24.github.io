@@ -1,0 +1,20 @@
+
+Using mid prices: 199 complete city-day events; Σ prices median 1.045; Shin z median 0.009
+  method          Brier/event  log loss  Σ prob on <10¢ buckets (actual wins 14)
+  raw                  0.6264    1.1490                    19.7
+  multiplicative       0.6277    1.1929                    18.9
+  additive             0.6257    1.1789                    15.5
+  power                0.6261    1.1872                    17.7
+  shin                 0.6265    1.1859                    16.9
+  Shin − multiplicative log loss: -0.0070 ± 0.0020 (t -3.4)
+
+Using ask prices: 199 complete city-day events; Σ prices median 1.090; Shin z median 0.019
+  method          Brier/event  log loss  Σ prob on <10¢ buckets (actual wins 13)
+  raw                  0.6281    1.1174                    21.6
+  multiplicative       0.6297    1.2019                    19.9
+  additive             0.6264    1.1784                    13.5
+  power                0.6271    1.1918                    17.5
+  shin                 0.6274    1.1889                    16.4
+  Shin − multiplicative log loss: -0.0130 ± 0.0030 (t -4.3)
+
+Illustration, quotes [0.648, 0.27, 0.13, 0.054, 0.022] (Σ 1.12): multiplicative [0.5769, 0.2404, 0.1154, 0.0481, 0.0192]; Shin (z=0.035) [0.6045, 0.2418, 0.1076, 0.0367, 0.0094]; power [0.6154, 0.2311, 0.1016, 0.0382, 0.0137]

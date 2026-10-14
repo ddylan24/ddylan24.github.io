@@ -198,6 +198,11 @@ This file is a condensed briefing of everything researched in the original sessi
   - Sim: the bias scales with belief dispersion, is 0 at 0.5, and is +6.8¢ (γ=0.1) / −4.0¢ (γ=5) at mean 0.05 with sd 0.10. γ<1 gives the classic FLB (cf. Kalshi weather), γ>1 the reverse FLB (cf. Polymarket).
   - Wealth–belief correlation 0.43 moved the price from 0.28 to 0.48.
 
+- **De-vig / Shin model** (notes/R5.md; 199 complete Kalshi weather city-days, Σ mids 1.045, Σ asks 1.09):
+  - Log loss: multiplicative 1.193, power 1.187, Shin 1.186 (z≈0.9–1.9%), additive 1.179.
+  - <10¢ buckets: 14 wins vs predicted 18.9 (multiplicative) / 16.9 (Shin) / 15.5 (additive).
+  - Shin beats multiplicative with t −3.4. Never de-vig by simple division when longshots are involved.
+
 ## 4. Pitfalls checklist (learned the hard way)
 
 1. Compare against a random or unconditional baseline, not against 0.
