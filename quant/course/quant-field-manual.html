@@ -865,6 +865,21 @@ Ledoit-Wolf shrinkage   Σ̂ = δ·F + (1−δ)·S   pull the noisy sample covar
   </table></div>
   <p>The optimizer looks like a 0.90 Sharpe in hindsight, then delivers 0.23. That matches DeMiguel, Garlappi &amp; Uppal (2009): naive 1/N is very hard to beat. The culprit is <b>expected returns</b>. Means are estimated so poorly (Module 08: a Sharpe needs years to pin down) that the optimizer mostly bets on noise, then inverting Σ magnifies it into 10× leverage. What works is ignoring expected returns (minimum variance) and shrinking the covariance.</p>
   <p><b>How much of a correlation matrix is real?</b> Random matrix theory gives the answer. For N assets and T observations of pure noise, eigenvalues fall between (1 ± √(N/T))². On the 30 industries' last two years of daily data, that noise band tops out at 1.55. Only <b>3 of 30</b> eigenvalues exceed it. The biggest (12.3) is the market itself, explaining 41% of all variance. The other 27 dimensions are statistically indistinguishable from noise. A pure-noise control with the same N and T gave a maximum of 1.47, matching the theory. That's why practitioners clip small eigenvalues before inverting a covariance matrix.</p>
+  <h3>Risk parity vs 60/40, on real ETFs</h3>
+<div class="formula">inverse volatility:          wᵢ ∝ 1/σᵢ
+equal risk contribution:     wᵢ·(Σw)ᵢ equal for every asset    (solve: min ½wᵀΣw − (1/n)Σ ln wᵢ, then normalize)</div>
+  <p>Stocks (SPY), Treasuries (IEF), gold (GLD) and commodities (DBC), 2007–2026. Rebalanced monthly using the prior year of data, and levered to 10% volatility, financed at the T-bill rate, where noted:</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Portfolio</th><th class="r">CAGR</th><th class="r">Vol</th><th class="r">Sharpe</th><th class="r">Max DD</th><th class="r">2008</th><th class="r">2022</th></tr></thead>
+    <tbody>
+      <tr><td>SPY only</td><td class="r">11.2%</td><td class="r">19.6%</td><td class="r">0.56</td><td class="r">55%</td><td class="r">−36.8%</td><td class="r">−18.2%</td></tr>
+      <tr><td>60/40 SPY/IEF</td><td class="r">8.5%</td><td class="r">11.3%</td><td class="r">0.65</td><td class="r">31%</td><td class="r">−16.7%</td><td class="r">−16.4%</td></tr>
+      <tr><td>Inverse vol, levered to 10%</td><td class="r">8.4%</td><td class="r">10.5%</td><td class="r">0.67</td><td class="r">28%</td><td class="r">−3.0%</td><td class="r">−8.9%</td></tr>
+      <tr><td>Equal risk contribution, levered to 10%</td><td class="r gain">9.3%</td><td class="r">10.5%</td><td class="r gain">0.75</td><td class="r gain">23%</td><td class="r">−5.0%</td><td class="r">−9.9%</td></tr>
+    </tbody>
+  </table></div>
+  <p>Balancing <i>risk</i> rather than dollars beat 60/40 at the same volatility, with a smaller drawdown and a far better 2008. But its key ingredient weakened: the stock-bond correlation averaged <b>−0.42</b> over 2006–2020, then <b>−0.03 in 2022 and +0.10 since</b>. When stocks and bonds fall together, risk parity's diversification shrinks. It still lost only about half as much as 60/40 in 2022.</p>
+  <div class="callout warn"><p><b>A bug worth remembering.</b> My first equal-risk solver used a simple iterative update that returns NaN when an asset's risk contribution is negative, which happens with negative correlations. The NaN weights silently became zero returns, and the strategy showed a Sharpe of 0.12. Switching to Spinu's convex formulation fixed it (0.75). Check every optimizer's output at every rebalance: do the weights sum to 1, and are the risk shares actually equal?</p></div>
   <h3>Prop-firm challenges</h3>
   <p><span class="src dt">QP 01</span> Thomas treats funded-account challenges as "a financial carnival game": hit a profit target before a loss limit. Kelly doesn't apply directly because the payoff isn't long-run growth. It's a pass/fail bet with a fee. He says he used Monte Carlo simulation to tune a strategy with a 93% modeled chance of passing a Topstep challenge, then passed his first one on the first try. That's a good use of simulation. Keep in mind that one pass is a single sample, and 93% is only as good as the backtest it was resampled from.</p>
   <h3>The math of passing a challenge</h3>

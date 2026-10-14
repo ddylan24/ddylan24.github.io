@@ -78,4 +78,4 @@ Status: [ ] todo  [~] in progress  [x] done. Each item: derive, verify numerical
 - [x] M1 Polymarket calibration split by category (sports vs politics vs crypto vs other) — where are the biases?
 - [x] M2 Crypto perpetual-futures funding rates as carry (exchange APIs), basis math.
 - [ ] M3 Prediction-market price reaction to news: how fast do prices converge after a resolving event (event study on intraday history).
-- [ ] M4 Risk parity / all-weather across asset classes with real ETF data vs 60/40 (leverage, rates regime 2022).
+- [x] M4 Risk parity / all-weather across asset classes with real ETF data vs 60/40 (leverage, rates regime 2022).

@@ -1,0 +1,8 @@
+Multi-asset ETFs (Yahoo adj. closes; financing at Ken French RF) 2006-03-02→2026-10-13, monthly rebalance, weights from prior 252 days
+  SPY (stocks only)                    CAGR 11.2%  vol 19.6%  Sharpe 0.56  maxDD 55.2%  2008 -36.8%  2022 -18.2%
+  60/40 SPY/IEF                        CAGR  8.5%  vol 11.3%  Sharpe 0.65  maxDD 31.4%  2008 -16.7%  2022 -16.4%
+  risk parity (inverse vol), unlevered CAGR  6.1%  vol  7.4%  Sharpe 0.64  maxDD 18.2%  2008 -1.9%  2022 -7.8%
+  risk parity levered to 10% vol       CAGR  8.4%  vol 10.5%  Sharpe 0.67  maxDD 28.0%  2008 -3.0%  2022 -8.9%
+  equal-risk-contribution levered 10%  CAGR  9.3%  vol 10.5%  Sharpe 0.75  maxDD 23.4%  2008 -5.0%  2022 -9.9%
+Rolling 1y SPY–IEF correlation: 2006–2020 avg -0.42; 2022 -0.03; 2023–2026 +0.10  (the diversification that risk parity relies on flipped in 2022)
+Current ERC weights: SPY 19%, IEF 59%, GLD 6%, DBC 17%

@@ -80,6 +80,12 @@ This file is a condensed briefing of everything researched in the original sessi
 - **Markowitz on 30 industries (rolling 10 years, OOS 1973–2026):**
   - Tangency 0.23 (10× leverage); 1/N 0.51; min-variance with Ledoit-Wolf 0.55 (best); in-sample tangency 0.90 (fantasy).
   - Random matrix theory: only 3 of 30 eigenvalues exceed the Marchenko-Pastur edge 1.55.
+- **Risk parity vs 60/40** (SPY/IEF/GLD/DBC 2007–2026):
+  - 60/40: Sharpe 0.65, max drawdown 31%, 2022 −16.4%.
+  - Inverse vol levered to 10%: 0.67, 28%.
+  - **ERC levered to 10%: 0.75, 23%, 2022 −9.9%.**
+  - SPY–IEF correlation: −0.42 (2006–20) → +0.10 (2023–26).
+  - Bug lesson: a naive ERC iteration gives NaN with negative correlations, which silently turned into 0 returns. Use Spinu's convex formulation and sanity-check weights.
 - **Kelly:**
   - Drawdown law P(fall to x) = x^(2/c−1): full Kelly gives a 50% chance of halving.
   - CRSP 1926–2026: the Itô growth formula matches realized growth across leverage levels. Growth-optimal ~2.5× meant a 99.5% drawdown.
