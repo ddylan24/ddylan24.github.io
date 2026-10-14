@@ -586,6 +586,17 @@ zero-coupon bond (Vasicek):  P = A·e^(−B·r₀),   B = (1 − e^(−κT))/κ<
   <p>Fitted to the 3-month T-bill (FRED, weekly, 1981–2026), Vasicek gives a long-run rate of 2.76% with a 2.7-year half-life, and a 4.2% chance of negative rates. CIR passes the Feller condition (0.0047 ≥ 0.0038), so it stays positive. The bond formula is exact: 0.81488 by closed form and 0.81488 by Monte Carlo (200,000 paths). But fitted to 2009–2026 alone, Vasicek's mean-reversion speed turns <b>negative</b>. Years at zero followed by a hiking cycle don't look like a mean-reverting process at all. Rate models are useful tools whose parameters break across policy regimes.</p>
   <p>Two lessons. First, the speed of mean reversion itself changes: VIX snaps back twice as fast since 2020 as it did before 2008. Second, a mean-reverting <i>index</i> isn't automatically a trade. You can't buy VIX itself, and VIX futures already price in the expected reversion.</p>
   <p><b>Option greeks:</b> <b>Delta</b> is the hedge ratio (option move per $1 stock move). <b>Gamma</b> is how fast delta changes. <b>Theta</b> is time decay. Hedgers who are long gamma make money re-hedging and pay for it in theta. Selling options collects theta in exchange for gamma risk: it feels like steady income until a big move.</p>
+  <h3>Making Monte Carlo faster: variance reduction</h3>
+  <p>Monte Carlo error shrinks only as 1/√N, so cleverness beats brute force. Pricing the same Black-Scholes call with 20,000 paths, repeated 300 times:</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Method</th><th class="r">Std. error</th><th class="r">Equivalent extra paths</th></tr></thead>
+    <tbody>
+      <tr><td>Plain Monte Carlo</td><td class="r">0.101</td><td class="r">1×</td></tr>
+      <tr><td>Antithetic (pair every Z with −Z)</td><td class="r">0.068</td><td class="r">2.2×</td></tr>
+      <tr><td>Control variate (subtract β·(e^(−rT)S_T − S₀), mean known)</td><td class="r gain">0.039</td><td class="r gain">6.8×</td></tr>
+    </tbody>
+  </table></div>
+  <p>For rare events, <b>importance sampling</b> is essential: simulate from a distribution shifted toward the tail, then reweight each path by the likelihood ratio e^(−θZ + θ²/2). The chance of a 20% drop in 30 days at 20% volatility is 4.42 × 10⁻⁵. Plain Monte Carlo with 100,000 paths saw 3 hits and estimated 3.0 × 10⁻⁵. Importance sampling with the same 100,000 paths got 4.41 × 10⁻⁵, within 0.2%.</p>
   <h3>Black-Scholes, derived and checked</h3>
 <div class="formula">hold V (option), short Δ shares:   Π = V − Δ·S
 Itô:   dΠ = (∂V/∂t + ½σ²S²·∂²V/∂S²)dt + (∂V/∂S − Δ)·dS
@@ -784,6 +795,14 @@ smoothing: αₜ(j)·βₜ(j), where β runs BACKWARD from the end → uses the 
   <h3>Value's lost decade and a half</h3>
   <p>The value factor (Ken French HML, 1926–2026, Sharpe 0.35) peaked in December 2006, then fell <b>56%</b> to September 2020. As of August 2026 it still hasn't regained that peak. Before 2007 its worst drawdown had been 44%, in 1935.</p>
   <p>Was 56% "impossible"? Resampling value's own pre-2007 history in 2-year blocks over 100-year paths, a drawdown that deep showed up <b>13%</b> of the time. Extreme, but not inconsistent with its past. A normal-distribution calculation says a Sharpe-0.46 strategy loses over 14 years only 4% of the time, which understates it. Even a century-old risk premium can go nowhere for 14+ years. Size your expectations from block bootstraps of the strategy's own history, not textbook formulas, and decide in advance what would make you quit (the table below).</p>
+  <h3>Bayesian evaluation: how sure are you, and when should you quit?</h3>
+<div class="formula">win rate posterior:  Beta(1 + wins, 1 + losses)            (flat prior)
+SPRT: add ln[P(trade | no edge) / P(trade | edge)] after each trade; stop at ±ln((1−α)/α)</div>
+  <ul class="tight">
+    <li><b>55 wins in 100 even-payoff trades</b> gives only an 84% chance the true win rate beats 50% (95% interval 45–64%). 550 of 1,000 gives 99.9%.</li>
+    <li><b>The prior matters.</b> Most strategies have no edge. With a skeptical prior (win rate within about ±1 point of 50%), 55 of 100 moves you to just 57.8% confidence, and even 550 of 1,000 only to 95.5%.</li>
+    <li><b>Wald's sequential probability ratio test</b> answers "has my 55% edge decayed to nothing?" In simulation it took a median of <b>434 trades</b> to decide either way (96% correct, 4% false alarms). Telling a real 5-point edge from none takes hundreds of trades. Set the stopping rule <i>before</i> you start.</li>
+  </ul>
   <h3>When is a losing streak a broken edge?</h3>
   <div class="tablewrap"><table>
     <thead><tr><th>True Sharpe ratio</th><th class="r">Chance of losing over 1 year</th><th class="r">3 years</th><th class="r">5 years</th></tr></thead>
@@ -1123,10 +1142,13 @@ b &lt; 1: prices too extreme (longshots cheap, favorites dear)     b &gt; 1: pri
   <p>Note the contrast: Polymarket's broad sample leaned the other way (longshots cheap), while Kalshi weather has longshots dear. <b>Biases are specific to venue and category</b>, so measure each market type before assuming anything.</p>
   <h3>Same event, two venues: Kalshi vs Polymarket</h3>
   <p>I matched 24 candidates in the 2028 presidential-winner markets on both venues (live quotes, October 14, 2026). The mid prices correlate <b>0.977</b> and differ by 0.8¢ on average, at most 3.2¢. AOC was 10¢ on Kalshi and 13.1¢ on Polymarket; Newsom 11.5¢ vs 9.1¢. The best gross "lock" (YES on one venue, NO on the other) was 3.1¢ per $1. But it ties up capital on two venues until November 2028 (it would need 8.4% just to match T-bills), pays fees on both, and the two venues' resolution rules may differ. The venues track each other closely, and what's left over isn't free money.</p>
+  <h3>Scoring forecasts properly</h3>
+<div class="formula">Brier = −(r − y)²        log score = ln r_outcome        both "proper": truthful reporting maximizes expected score</div>
+  <p>A scoring rule is <i>proper</i> if your best strategy is to report what you actually believe. With a true probability of 70%, both Brier and log scores are maximized by reporting exactly 0.70. A naive "linear" score (r if YES, 1 − r if NO) is maximized by reporting 0.99, which rewards exaggeration. On the Polymarket data, the log-loss skill is 38% versus 45% for Brier, because log loss punishes confident misses hard: a contract at 0.6¢ that won, one at 97¢ that lost. If you trade prediction markets, track your log loss.</p>
   <h3>Market-maker math: Hanson's LMSR</h3>
 <div class="formula">cost function   C(q) = b · ln Σᵢ e^(qᵢ/b)          price of outcome i = e^(qᵢ/b) / Σⱼ e^(qⱼ/b)
 cost of a trade = C(q_after) − C(q_before)          worst-case market-maker loss = b · ln(n)</div>
-  <p>The logarithmic market scoring rule is the classic automated market maker for prediction markets. Prices are a softmax, so they always sum to exactly $1. The liquidity parameter b sets depth: with b = 1,000, moving a binary from 50% to 80% takes 1,386 YES shares costing $916. The market maker's maximum loss is b·ln(n): $693 for a binary, $4,852 for a 128-outcome market. A trader who knows the true probability p and pushes the price there costs the market maker exactly <b>b × KL(p ‖ 0.5)</b>. I verified this numerically (e.g., $192.74 at p = 0.8). So the market maker is <i>paying</i> for information, and b is the size of the subsidy. Polymarket itself now runs a limit-order book, where the inventory-skewed quoting of Module 11 applies.</p>
+  <p>The logarithmic market scoring rule is the log score turned into a market: a trader who moves the price from p₀ to p₁ earns exactly b·[ln p₁ − ln p₀] on the outcome that happens. I checked this: 0.5 → 0.9 pays 58.779 = 100·ln(0.9/0.5). It's the classic automated market maker for prediction markets. Prices are a softmax, so they always sum to exactly $1. The liquidity parameter b sets depth: with b = 1,000, moving a binary from 50% to 80% takes 1,386 YES shares costing $916. The market maker's maximum loss is b·ln(n): $693 for a binary, $4,852 for a 128-outcome market. A trader who knows the true probability p and pushes the price there costs the market maker exactly <b>b × KL(p ‖ 0.5)</b>. I verified this numerically (e.g., $192.74 at p = 0.8). So the market maker is <i>paying</i> for information, and b is the size of the subsidy. Polymarket itself now runs a limit-order book, where the inventory-skewed quoting of Module 11 applies.</p>
   <h3>Market making a binary: spread vs adverse selection</h3>
   <p>I simulated a market maker quoting a two-week binary contract. The true probability drifts, the market maker's estimate lags the news by 6 hours, and a share of incoming orders are informed: they trade only when the quote is wrong.</p>
   <div class="tablewrap"><table>

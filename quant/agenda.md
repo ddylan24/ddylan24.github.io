@@ -86,6 +86,6 @@ Status: [ ] todo  [~] in progress  [x] done. Each item: derive, verify numerical
 - [x] N3 Market-making economics on Polymarket: spread capture vs adverse selection, liquidity rewards.
 
 ## O. Fifth wave (math foundations)
-- [ ] O1 Proper scoring rules: Brier vs log score, why LMSR = log scoring rule; scoring traders/forecasters.
-- [ ] O2 Monte Carlo variance reduction: antithetic, control variates, importance sampling for tail probabilities.
-- [ ] O3 Bayesian inference for strategy evaluation: beta-binomial win rates, posterior of Sharpe, sequential testing (when to stop a strategy).
+- [x] O1 Proper scoring rules: Brier vs log score, why LMSR = log scoring rule; scoring traders/forecasters.
+- [x] O2 Monte Carlo variance reduction: antithetic, control variates, importance sampling for tail probabilities.
+- [x] O3 Bayesian inference for strategy evaluation: beta-binomial win rates, posterior of Sharpe, sequential testing (when to stop a strategy).

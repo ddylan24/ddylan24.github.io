@@ -167,6 +167,13 @@ This file is a condensed briefing of everything researched in the original sessi
   - Best gross cross-venue lock is 3.1¢, which isn't arbitrage after fees, two-year lockup (needs >8.4% to beat T-bills) and resolution-rule risk.
   - Kalshi API: `/trade-api/v2/events?status=open&with_nested_markets=true` (cursor paging; fields yes_bid_dollars/yes_ask_dollars, yes_sub_title).
 
+### Math foundations (later waves)
+- **Proper scoring:** with truth 0.7, Brier and log are maximized at 0.70; a linear score at 0.99 (improper). LMSR = market log score; a trader's payoff b·ln(p1/p0) is verified. Polymarket log-loss skill 38% vs Brier 45%.
+- **MC variance reduction** (BS call, N=20k): plain sd 0.101, antithetic 0.068, control variate 0.039 (variance ÷6.8). Importance sampling for P(30-day −20%) = 4.42e-5: plain 3.0e-5 (3 hits), IS 4.41e-5.
+- **Bayesian evaluation:**
+  - 55/100 wins gives P(edge) 84%. With a skeptical Beta(1250,1250) prior: 57.8%.
+  - SPRT 50% vs 55% (α=β=5%) needs a median ~434 trades.
+
 ## 4. Pitfalls checklist (learned the hard way)
 
 1. Compare against a random or unconditional baseline, not against 0.

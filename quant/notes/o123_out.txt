@@ -1,0 +1,15 @@
+O1 true prob 0.7: report maximizing expected Brier 0.70, log 0.70, LINEAR (improper) 0.99 ← linear score rewards exaggeration
+  LMSR = market log scoring rule: moving 0.5→0.6, trader's net payoff if YES = 18.232 = b·[ln 0.6 − ln 0.5] = 18.232
+  LMSR = market log scoring rule: moving 0.5→0.9, trader's net payoff if YES = 58.779 = b·[ln 0.9 − ln 0.5] = 58.779
+  Polymarket 7d-before prices: log loss 0.3801 vs base rate 0.6139 (skill 38%); Brier skill (earlier) 45% — log loss punishes confident misses harder
+  biggest log-loss misses (price, outcome): (0.006,1), (0.971,0), (0.030,1)
+O2 BS call MC N=20000: plain                                          mean 9.9234 (true 9.9251), sd 0.1007
+O2 BS call MC N=20000: antithetic                                     mean 9.9192 (true 9.9251), sd 0.0675
+O2 BS call MC N=20000: control variate (discounted S_T, known mean S0) mean 9.9249 (true 9.9251), sd 0.0385
+O2 importance sampling P(30-day drop >20%, σ=20%): true 4.42e-05; plain MC (100k) 3.00e-05; IS with mean shift (100k) 4.41e-05 (relative error 0.2%)
+O3 55/100 winning trades (even payoff), flat prior: P(true win rate > 50%) = 84.0%; 95% interval [0.452, 0.644]
+O3 110/200 winning trades (even payoff), flat prior: P(true win rate > 50%) = 92.1%; 95% interval [0.481, 0.617]
+O3 550/1000 winning trades (even payoff), flat prior: P(true win rate > 50%) = 99.9%; 95% interval [0.519, 0.581]
+   with skeptical prior Beta(1250,1250) (sd 1pt around 50%): 55/100 → posterior mean 0.502, P(>50%) 57.8%
+   with skeptical prior Beta(1250,1250) (sd 1pt around 50%): 550/1000 → posterior mean 0.514, P(>50%) 95.5%
+O3 SPRT 'edge gone (50%)' vs 'edge intact (55%)', α=β=5%: if edge really gone → flags after median 434 trades (correct 96%); if edge intact → false alarm 4.2%, median 435 trades
