@@ -195,6 +195,10 @@ This file is a condensed briefing of everything researched in the original sessi
   - E[Δ] = (100 − ZQX26) − EFFR = +7.5bp (Oct contract ×31/3: +7.7bp). Polymarket buckets: +7.2bp. They agree within ~1¢ of P(hike).
   - Yahoo tickers ZQV26.CBT/ZQX26.CBT/ZQZ26.CBT. FRED EFFR via curl.
 
+- **Kalshi hourly BTC by horizon** (notes/S2.md; 400 events, 17 days):
+  - Logit slopes 1.08–1.50 at 1–12h; pooled 1.15 ± 0.14 (n.s.). Selling 5–20¢ contracts −0.3¢ (t −0.1).
+  - The R1 under-confidence hint isn't confirmed. Needs continuous collection (home PC).
+
 ### Math foundations (later waves)
 - **Proper scoring:** with truth 0.7, Brier and log are maximized at 0.70; a linear score at 0.99 (improper). LMSR = market log score; a trader's payoff b·ln(p1/p0) is verified. Polymarket log-loss skill 38% vs Brier 45%.
 - **MC variance reduction** (BS call, N=20k): plain sd 0.101, antithetic 0.068, control variate 0.039 (variance ÷6.8). Importance sampling for P(30-day −20%) = 4.42e-5: plain 3.0e-5 (3 hits), IS 4.41e-5.
