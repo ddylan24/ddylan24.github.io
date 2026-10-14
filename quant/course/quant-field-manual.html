@@ -241,6 +241,23 @@ uncovered interest parity (UIP): high-rate currencies should depreciate by the r
     <li><b>UIP fails.</b> The rate gap paid +3.1% a year, and high-rate currencies fell only 0.6% a year, not the 3.1% UIP predicts. In Fama's regression the slope is −0.13 (t −0.35): closer to "exchange rates are a random walk" (0) than to UIP (−1). This is the forward-premium puzzle.</li>
     <li><b>Carry is short crash risk.</b> Its monthly return correlates −0.46 with the change in VIX. "Up the stairs, down the elevator": steady gains, sudden losses when fear spikes. It's a risk premium in the same family as selling volatility.</li>
   </ul>
+  <h3>Crypto carry: perpetual-futures funding</h3>
+  <p>A crypto perpetual future never expires. Instead, longs and shorts pay each other "funding" every hour, roughly the perp's premium over spot, which keeps it pinned to the spot price. Being long spot and short the perp is delta-neutral and collects funding whenever it's positive: the crypto version of carry. I used Hyperliquid's public data, hourly from May 2023 to October 2026:</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Annualized funding</th><th class="r">2023</th><th class="r">2024</th><th class="r">2025</th><th class="r">2026</th></tr></thead>
+    <tbody>
+      <tr><td>BTC</td><td class="r">13.5%</td><td class="r gain">24.1%</td><td class="r">10.6%</td><td class="r">5.2%</td></tr>
+      <tr><td>ETH</td><td class="r">20.1%</td><td class="r">22.0%</td><td class="r">8.5%</td><td class="r">5.9%</td></tr>
+      <tr><td>SOL</td><td class="r">11.7%</td><td class="r">28.1%</td><td class="r">5.3%</td><td class="r loss">0.3%</td></tr>
+      <tr><td>T-bill (FRED)</td><td class="r">5.3%</td><td class="r">5.2%</td><td class="r">4.2%</td><td class="r">3.8%</td></tr>
+    </tbody>
+  </table></div>
+  <ul class="tight">
+    <li><b>Funding was positive 87% of hours</b> for BTC and very persistent (day-to-day correlation 0.82). Longs pay to hold leverage.</li>
+    <li><b>The edge decayed fast.</b> BTC funding beat T-bills by about 19 points in 2024 and about 1 point in 2026, as basis-trade funds piled in. McLean &amp; Pontiff again, in fast motion.</li>
+    <li><b>It doesn't predict price.</b> High trailing funding didn't forecast next-week BTC returns (correlation +0.05, 177 weeks).</li>
+    <li><b>The 13.7 "Sharpe" of the funding stream is an illusion.</b> The real risks are exchange and custody failure, the short leg being liquidated in a spike, basis moves and fees, and none of them show up in the funding series.</li>
+  </ul>
   <h3>Low risk, high reward: the flat security market line</h3>
   <p>The CAPM says expected excess return = β × market premium. Ken French's beta-sorted and variance-sorted deciles (CRSP, 1963–2026) disagree:</p>
   <div class="tablewrap"><table>

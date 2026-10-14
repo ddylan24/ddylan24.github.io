@@ -17,3 +17,4 @@ data/btc.csv
 data/pm/
 __pycache__/
 data/fx/
+data/funding_*.csv

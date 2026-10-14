@@ -64,6 +64,11 @@ This file is a condensed briefing of everything researched in the original sessi
   - The rate gap earned +3.1%/yr; spot moved only −0.6%/yr.
   - Fama UIP slope −0.13 (t −0.35), vs UIP's −1: the forward-premium puzzle.
   - Correlation with ΔVIX −0.46 (it's short crash risk).
+- **Crypto perp funding** (Hyperliquid POST /info fundingHistory, hourly 2023-05→2026-10):
+  - BTC averaged 14.1%/yr, positive 87% of hours, lag-1 day autocorrelation 0.82.
+  - By year (BTC): 2023 13.5%, 2024 24.1%, 2025 10.6%, 2026 5.2%, vs T-bills 5.3/5.2/4.2/3.8%. The excess over T-bills collapsed from ~19 points to ~1 (crowding).
+  - It doesn't predict BTC returns (corr 0.05).
+  - Binance is geo-blocked (451) and Bybit returns 403.
 - **Pairs:** none of KO/PEP, XOM/CVX, EWA/EWC, GLD/GDX, HD/LOW, V/MA is cointegrated over 2008–26. They pass in only 0–18% of rolling 2-year windows. Spurious regression of independent random walks: "significant" 90% of the time.
 - **Full QuantProcess pipeline on SPY** (CUSUM k=2 → reversal bet → triple barrier → RF meta-model, walk-forward 2008–26):
   - OOS AUC 0.60. Hit rate 47% → 56%, per-trade SR 0.027 → 0.129.
