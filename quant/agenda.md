@@ -97,7 +97,7 @@ Status: [ ] todo  [~] in progress  [x] done. Each item: derive, verify numerical
 
 ## R. Seventh wave (added when Q ran out)
 - [x] R1 Calibration of Kalshi daily BTC threshold markets (KXBTCD, settled) vs a lognormal using Deribit DVOL at the time: is there a favorite-longshot bias, and does the options model beat the market?
-- [ ] R2 Skill vs luck among Polymarket traders: wallet-level P&L from data-api trades; persistence test (first half vs second half), multiple-testing correction.
+- [x] R2 Skill vs luck: 0/38k wallets pass BH-FDR with a common-outcome null; top earners p 0.06–0.84; weak ROI persistence (Spearman +0.07; top quintile late ROI +1.3%).
 - [x] R3 Prices as beliefs: Manski (2006) vs Wolfers–Zitzewitz (2006). When does a prediction-market price equal the mean belief? Simulation with heterogeneous beliefs and log/CRRA utility.
 - [x] R4 Order-flow imbalance on Polymarket tick data: does signed taker flow predict the next-minute price move (Cont–Kukanov–Stoikov)?
 - [x] R5 Shin's model of insider trading and vig removal: derive it, then apply it to multi-outcome prediction-market sums.
@@ -107,7 +107,7 @@ Status: [ ] todo  [~] in progress  [x] done. Each item: derive, verify numerical
 - [x] S1 Fade large daily moves on Polymarket: gross reversal real (t 6), net marginal (≥20¢ moves +3.2¢, t 2.5).
 - [x] S2 Kalshi hourly BTC calibration by horizon: pooled slope 1.15 ± 0.14 (n.s.); selling longshots −0.3¢. Needs longer collection.
 - [x] S3 Optimal early exit + "favorites as a bond" backtest (buy ≥95¢, hold) on resolved Polymarket markets.
-- [ ] S4 Polymarket maker vs taker P&L split (takerOnly=false rows): who earns the spread net of adverse selection?
+- [~] S4 Maker vs taker split: takers +$8.4M vs null $11.4M ± 16.2M (no detectable transfer); needs maker attribution (see R2).
 - [x] S5 Kelly for mutually exclusive outcomes (horse-race solution), hedging bets, noisy beliefs.
 - [x] S6 Murphy Brier decomposition (REL/RES/UNC) for all forecast datasets.
 - [x] S7 Polymarket October FOMC odds vs CBOT fed funds futures (ZQ) and FRED EFFR.

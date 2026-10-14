@@ -1,0 +1,16 @@
+319 resolved 2026 markets, 1,066,424 taker trades (excluding final hour), 235,867 wallets, $781.0M
+
+Null: outcomes ~ Bernoulli(volume-weighted price), drawn once per market for all wallets (500 sims). Wallets with ≥3 markets: 38,193
+  takers' total P&L real $8,432,812 vs null mean $11,381,544 ± 16,242,857
+  wallets with p<0.05: 0.10% (null 5%); p<0.01: 0.01% (null 1%)
+  BH-FDR 5% 'skilled' wallets: 0 of 38,193
+  top-10 by P&L: $5,119,617 (p 0.293, 7 mkts); $1,381,636 (p 0.515, 3 mkts); $487,606 (p 0.405, 4 mkts); $390,555 (p 0.058, 3 mkts); $263,072 (p 0.224, 38 mkts); $255,070 (p 0.465, 19 mkts); $214,726 (p 0.104, 9 mkts); $209,968 (p 0.106, 78 mkts); $182,042 (p 0.840, 3 mkts); $169,047 (p 0.315, 5 mkts)
+  ROI on traded notional, wallets ≥3 mkts: median -0.16%, share positive 45.9%
+  placebo (fake outcomes): wallets with p<0.05 2.15%; BH 'skilled' 0
+
+Persistence (close ≤ vs > 2026-05-14), 2111 wallets with ≥3 markets and >$100 in each half: Spearman(ROI early, ROI late) +0.071 (p 0.001)
+  early-ROI quintile 1: early ROI -26.5%, late median ROI -0.54%, late total P&L $647,505, share late>0 46%
+  early-ROI quintile 2: early ROI -2.8%, late median ROI -0.50%, late total P&L $-179,147, share late>0 43%
+  early-ROI quintile 3: early ROI -0.0%, late median ROI -0.03%, late total P&L $-320,534, share late>0 48%
+  early-ROI quintile 4: early ROI +3.1%, late median ROI +0.84%, late total P&L $-207,438, share late>0 58%
+  early-ROI quintile 5: early ROI +25.1%, late median ROI +1.29%, late total P&L $242,660, share late>0 54%

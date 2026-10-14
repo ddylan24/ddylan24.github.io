@@ -256,6 +256,11 @@ This file is a condensed briefing of everything researched in the original sessi
   - One-day drops ≥10/20/40¢ are 6×/39×/2,800× the normal-diffusion rate. Kurtosis ~1,000.
   - 90–95¢ contracts lost 9.1% vs 7.2% implied. Use jump models and exceedance counts, not normal VaR.
 
+- **Skill vs luck among Polymarket wallets** (notes/R2.md; 319 markets, 1.07M taker trades, 236k wallets, $781M):
+  - Common-outcome null (each market's outcome drawn once for all wallets from the volume-weighted price): **0 of 38,193 wallets pass BH-FDR**. Top-10 earners ($0.17–5.1M) p 0.06–0.84.
+  - ROI persistence: Spearman +0.071 (p 0.001). Late median ROI −0.5% (bottom early quintile) → +1.3% (top).
+  - The per-wallet z = P&L/√(n²p(1−p)) null is broken by round-trippers. Don't use it.
+
 ## 4. Pitfalls checklist (learned the hard way)
 
 1. Compare against a random or unconditional baseline, not against 0.
@@ -267,7 +272,8 @@ This file is a condensed briefing of everything researched in the original sessi
 7. Benchmark ML against the simplest rule it might be rediscovering.
 8. Include the right factors (MOM!) before claiming alpha.
 9. Model assumptions must hold (Roll estimator; Vasicek across policy regimes).
-10. Costs kill short horizons. Short-term reversal doesn't survive costs at scale.
+10. Skill tests across traders need a null with a SHARED outcome draw per market; independent per-trader nulls overstate significance.
+11. Costs kill short horizons. Short-term reversal doesn't survive costs at scale.
 
 ## 5. Data sources and environment notes
 
