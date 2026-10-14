@@ -1270,6 +1270,11 @@ agree with the market (q = p):  sell if τ &gt; −ln(1 − s/p)/r   → 95¢ co
   <p>It lost in 2024, 2025 and 2026. A "sure thing" priced at 98¢ that fails 4% of the time is a bad trade, because each failure costs 100%. Here it's the mirror image of underpriced longshots and of prices that move too much: a contract that has just reached 95¢ has often overshot.</p>
   <h3>Trading the overreaction</h3>
   <p>If prices move too much, betting against big moves should pay. Across 1,625 resolved markets, after a daily jump of 20¢ or more, prices gave back about 5¢ over the next five days (t = 4). The bigger the jump, the bigger the reversal. After paying a 1¢ half-spread in and out, though, only the largest moves still earned anything (+3¢, t = 2.5). That isn't significant once you account for testing nine variations, and right after a big jump is exactly when order books are thinnest. A strong statistical signal can still be a weak trade.</p>
+  <h3>Kelly when exactly one outcome wins</h3>
+  <p>For temperature buckets or election candidates, sizing each bucket as its own binary bet is wrong. Kelly's 1956 horse-race solution handles all the buckets at once:</p>
+<div class="formula">rank outcomes by qᵢ/pᵢ;  include i while qᵢ/pᵢ &gt; R,   R = (1 − Σ_S q)/(1 − Σ_S p)
+stake fraction  fᵢ = qᵢ − R·pᵢ    (keep R in cash)</div>
+  <p>Take six buckets priced (3, 12, 35, 33, 15, 6)¢ against your beliefs (2, 10, 30, 40, 15, 3)%. The solution stakes 11.4% on the 33¢ bucket <em>and</em> 2.0% on the 15¢ bucket, even though that one is priced exactly at your belief. It pays off when your main bet loses, so it's a hedge. Long-run growth is 10% higher than sizing each bucket separately. The closed form matched a numerical optimizer exactly. As before, belief errors are deadly: with 25% noise in your probabilities, full Kelly loses money on average, while half Kelly still grows.</p>
   <h3>What the research says</h3>
   <ul class="tight">
     <li><b>Markets beat polls.</b> Iowa Electronic Markets prices were closer to the final result than polls in 74% of 964 comparisons, 1988–2004, and significantly better more than 100 days out (Berg, Nelson &amp; Rietz 2008).</li>
@@ -1326,6 +1331,7 @@ agree with the market (q = p):  sell if τ &gt; −ln(1 − s/p)/r   → 95¢ co
       <tr><td><code>Σ asks &lt; e^(−rT)  ·  Σ bids &gt; 1</code></td><td>Dutch book on a complete outcome set</td><td>live gaps ≈ 1¢</td></tr>
       <tr><td><code>fee = ⌈0.07·C·P·(1−P)⌉</code></td><td>Kalshi taker fee</td><td>100 @ 30¢ = $1.47</td></tr>
       <tr><td><code>D = −∂C/∂K = e^(−rT)[N(d2) − Fφ(d1)√T·∂σ/∂K]</code></td><td>Threshold contract = digital option, with skew</td><td>BTC venues within 1.6¢</td></tr>
+      <tr><td><code>fᵢ = qᵢ − R·pᵢ,  R = (1−Σ_S q)/(1−Σ_S p)</code></td><td>Kelly across mutually exclusive outcomes</td><td>matches numeric optimum</td></tr>
       <tr><td><code>g/K &gt; e^(rT) − 1</code></td><td>When a locked-up arbitrage gap beats T-bills</td><td>2028 gap: 0.09%</td></tr>
     </tbody>
   </table></div>

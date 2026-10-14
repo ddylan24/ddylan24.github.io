@@ -1,0 +1,12 @@
+Example: prices [0.03, 0.12, 0.35, 0.33, 0.15, 0.06] (Σ 1.04), beliefs [0.02, 0.1, 0.3, 0.4, 0.15, 0.03]
+  closed form stakes [0.0, 0.0, 0.0, 0.1144, 0.0202, 0.0], cash kept 0.8654, growth 0.01189
+  numeric optimum   [0.0, 0.0, 0.0, 0.1144, 0.0202, 0.0], growth 0.01189
+  independent-binary Kelly on YES legs [0.0, 0.0, 0.0, 0.1045, 0.0, 0.0] (Σ 0.104) growth 0.01074
+  sim exclusive Kelly       : mean log-growth/round +0.01210 (theory +0.01189), P(lose money over 2000) 0%
+  sim ½ exclusive Kelly     : mean log-growth/round +0.00895 (theory +0.00897), P(lose money over 2000) 0%
+  sim independent binaries  : mean log-growth/round +0.01064 (theory +0.01074), P(lose money over 2000) 0%
+
+With noisy beliefs (true q, you estimate q̂ = normalize(q·e^{ε}), ε~N(0,σ)), stakes from q̂, growth under true q:
+  σ=0.1: full Kelly E[growth] +0.00889 (neg 1%), half Kelly +0.00814 (neg 0%)
+  σ=0.25: full Kelly E[growth] -0.00790 (neg 59%), half Kelly +0.00377 (neg 23%)
+  σ=0.5: full Kelly E[growth] -0.06935 (neg 94%), half Kelly -0.01210 (neg 67%)

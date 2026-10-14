@@ -108,4 +108,5 @@ Status: [ ] todo  [~] in progress  [x] done. Each item: derive, verify numerical
 - [ ] S2 Kalshi hourly BTC markets (KXBTCD non-5pm events): calibration slope vs horizon (1h–24h). Does under-confidence grow as expiry nears? Use batch candles.
 - [x] S3 Optimal early exit + "favorites as a bond" backtest (buy ≥95¢, hold) on resolved Polymarket markets.
 - [ ] S4 Polymarket maker vs taker P&L split (takerOnly=false rows): who earns the spread net of adverse selection?
+- [x] S5 Kelly for mutually exclusive outcomes (horse-race solution), hedging bets, noisy beliefs.
 - [ ] HOME-PC: tasks needing the user's home PC/Pi (local backtest data, live access) are listed in CONTEXT §5b.

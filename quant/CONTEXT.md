@@ -227,6 +227,10 @@ This file is a condensed briefing of everything researched in the original sessi
   - Gross reversal +0.9/+3.1/+5.2¢ at 5 days for ≥5/10/20¢ moves (t up to 6), about 25% of the move.
   - Net of 2¢ round trip: ≥20¢ 5-day +3.2¢ (t 2.5), below the Bonferroni bar (9 variants). Suggestive; re-test on tick and book data.
 
+- **Multi-outcome Kelly** (notes/S5.md): bet set S where q/p > R = (1−Σ_S q)/(1−Σ_S p), stake f_i = q_i − R·p_i, keep R in cash.
+  - It backs zero-edge outcomes as hedges. Growth is +10% vs per-bucket binary Kelly.
+  - With 25% belief noise, full Kelly has negative expected growth; half Kelly stays positive.
+
 ## 4. Pitfalls checklist (learned the hard way)
 
 1. Compare against a random or unconditional baseline, not against 0.
