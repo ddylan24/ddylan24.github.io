@@ -74,7 +74,9 @@ def polymarket_markets(closed=False, max_markets=1000, min_volume=0):
 
 
 def polymarket_history(token_id, fidelity_minutes=1440):
-    """Price history of one outcome token -> Series indexed by UTC time. 1440 = daily (works for old markets)."""
+    """Price history of one outcome token -> Series indexed by UTC time. 1440 = daily (works for old markets).
+    WARNING: at fidelity=1 the points lag the true state by ~1 minute (notes/R4.md); align with trades for lead-lag work.
+    Hourly (60) requests must span <= ~7 days or the API returns 400."""
     d = _get(f"{CLOB}/prices-history?market={token_id}&interval=max&fidelity={fidelity_minutes}") or {}
     h = d.get("history", [])
     return pd.Series({pd.to_datetime(x["t"], unit="s", utc=True): float(x["p"]) for x in h}).sort_index()
@@ -134,6 +136,22 @@ def polymarket_negrisk_events(max_events=3000):
         if len(d) < 100:
             break
     return pd.DataFrame(rows)
+
+
+def polymarket_trades(condition_id, max_trades=3000):
+    """Taker trades (data-api default takerOnly=true, so `side` is the taker's side), newest first, paged by offset."""
+    rows = []
+    for off in range(0, max_trades, 500):
+        d = _get(f"https://data-api.polymarket.com/trades?market={condition_id}&limit=500&offset={off}")
+        if not d:
+            break
+        rows += d
+        if len(d) < 500:
+            break
+    t = pd.DataFrame(rows)
+    if len(t):
+        t["ts"] = pd.to_datetime(t.timestamp, unit="s", utc=True)
+    return t
 
 
 # ---------------------------------------------------------------- Kalshi

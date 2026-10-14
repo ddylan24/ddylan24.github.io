@@ -12,7 +12,7 @@ Research notes, code and course material on quantitative trading, built in Claud
 | `agenda.md` | All research topics with done/todo status |
 | `notes/` | One file per topic: the math, the method, exact numbers, lessons |
 | `code/` | The Python script behind each topic |
-| `code/pm_toolkit.py` | Reusable Polymarket/Kalshi data functions (markets, histories, merged books, fill costs, Kalshi candles/fees, Kelly, LMSR) |
+| `code/pm_toolkit.py` | Reusable Polymarket/Kalshi data functions (markets, histories, taker trades, merged books, fill costs, Kalshi candles/fees, Kelly, LMSR) |
 | `course/quant-field-manual.html` | The full course (open in a browser) |
 | `data/` | Small derived datasets; `fetch_data.sh` re-downloads the raw data |
 | `sims/` | Standalone simulation demos |
