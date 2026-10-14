@@ -117,7 +117,14 @@ Status: [ ] todo  [~] in progress  [x] done. Each item: derive, verify numerical
 - [ ] HOME-PC: tasks needing the user's home PC/Pi (local backtest data, live access) are listed in CONTEXT §5b.
 
 ## T. Ninth wave
-- [ ] T1 Jump-diffusion for probabilities: fit a Merton-style jump intensity to ≥90¢ contract paths; price the "insurance" a favorite buyer sells.
+- [x] T1 Jump risk for ≥90¢ contracts: covered by S10 (jump rates) + T2 (pricing jumps into quotes).
 - [x] T2 Binary market-making sim (S9 vol law + S10 jumps): inventory skew cuts P&L sd 3.6×, Sharpe/market 0.06→0.19; jumps cost ~$4/market.
 - [x] T3 BTC term structure across Polymarket+Kalshi: no calendar arb (w monotone over 8 expiries); vols within 0–3 pts of options; centers flat at spot vs forward rising with carry.
 - [x] T4 Election contract vs markets: SPY beta ≈0 (risk premium ≈0¢); Trump-trade signs (solar −, USD/MXN +, BTC +) marginal; off-by-one daily alignment flips signs.
+- [x] T5 Home-PC playbook + live/capture.py (continuous Polymarket/Kalshi/Deribit logger, smoke-tested).
+
+## U. Tenth wave
+- [ ] U1 Recession / macro contracts (Kalshi/Polymarket): do outcomes tied to aggregate wealth carry a risk premium (unlike elections, T4)?
+- [ ] U2 Information aggregation across venues over time: does Kalshi or Polymarket lead on identical BTC strikes (minute data from capture.py)?
+- [ ] U3 Bayesian hierarchical calibration: partial pooling of calibration slopes across categories/venues (shrinkage of the noisy per-category estimates in P5/N2).
+- [ ] U4 Proper-scoring tournament: score every model built this session (market, DVOL, MOS, Shin, recalibrated) on common test sets with Diebold–Mariano tests.

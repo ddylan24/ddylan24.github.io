@@ -16,6 +16,8 @@ Research notes, code and course material on quantitative trading, built in Claud
 | `course/quant-field-manual.html` | The full course (open in a browser) |
 | `data/` | Small derived datasets; `fetch_data.sh` re-downloads the raw data |
 | `sims/` | Standalone simulation demos |
+| `PLAYBOOK.md` | Operational guide for the home PC/Pi: data capture, research queue, what not to do, money rules |
+| `live/capture.py` | Continuous Polymarket/Kalshi/Deribit snapshot logger (no keys) |
 
 ## Re-running anything
 

@@ -304,6 +304,7 @@ The user has a **home PC or Pi with backtesting data and live access to predicti
 - **Continuous data capture** that the cloud can't keep: Yahoo 1-minute bars (they expire after 30 days, see Q2), Polymarket CLOB books/trades and Kalshi quotes around scheduled events (FOMC, CPI, NFP), and Deribit option snapshots aligned with Polymarket/Kalshi BTC threshold quotes (Q3).
 - **Longer backtests** on the local historical data: re-run the topic scripts in `code/` against the longer local history (e.g., R1 calibration and R6 excess movement over more markets).
 - **Live / paper trading** with real account access. Start with paper or small size only. Every edge found so far is about a spread wide (see Q3 carry gap, R4 flow, N2 weather longshots). Respect fees (Kalshi 0.07·P·(1−P)), lockup and the pitfalls list. Never trade real money without the user's explicit go-ahead per strategy.
+- **Start with `PLAYBOOK.md`** (operational guide) and run `live/capture.py` (tested 2026-10-14: one cycle writes Polymarket markets/books, Kalshi BTC/weather and Deribit options).
 
 ## 6. Folder map
 
