@@ -1254,6 +1254,20 @@ vs  multiplicative pᵢ = πᵢ/Σπ    ·  additive pᵢ = πᵢ − (Σπ−1)
 <div class="formula">E[ Σ (π_{t+1} − π_t)² ] = π_0 (1 − π_0)        (any sampling frequency; no model needed)
 proof per step: E[(Δπ)²] = E[π²_{t+1}] − E[π²_t] = E[u_t − u_{t+1}],   u = π(1−π)</div>
   <p>Across 1,625 resolved Polymarket markets, the ratio was <b>1.31 ± 0.06</b>, and 1.38 after skipping the arbitrary opening days. A simulated rational learner with the same quote noise gave 1.02. <b>Polymarket prices swing 30–40% more than the information justifies.</b> The excess is largest for longshots (1.48), the same fact as the cheap YES contracts winning more often than priced. Daily changes reverse slightly (autocorrelation −0.08), but that's small next to a 1¢ spread. Apply the same test to your own forecasts: a ratio far above 1 means you're jumpy, far below 1 means you're sluggish.</p>
+  <h3>"Free money" at 95¢? When to hold, when to sell</h3>
+  <p>Holding a YES contract to resolution is worth your probability times a discount for the time your money is tied up. Selling it now is worth the bid:</p>
+<div class="formula">sell now  iff   p − s  &gt;  q·e^(−rτ)        (s = half-spread, τ = time left, r = T-bill rate)
+agree with the market (q = p):  sell if τ &gt; −ln(1 − s/p)/r   → 95¢ contract, 1¢ spread: 91 days</div>
+  <p>A popular retail strategy is to buy contracts once they reach 95¢ and "collect 5% safely." I tested it on 1,625 resolved Polymarket markets: buy the first day either side reaches the threshold, pay half a cent over, and hold to resolution:</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Buy at</th><th>Trades</th><th>Won</th><th>Avg paid</th><th>Return vs T-bills</th><th>t</th></tr></thead>
+    <tbody>
+      <tr><td>≥90¢</td><td>1,476</td><td>92.5%</td><td>95.8¢</td><td>−4.9%</td><td>−4.9</td></tr>
+      <tr><td>≥95¢</td><td>1,340</td><td>96.0%</td><td>97.8¢</td><td>−3.2%</td><td>−3.7</td></tr>
+      <tr><td>≥97¢</td><td>1,273</td><td>97.3%</td><td>98.7¢</td><td>−2.8%</td><td>−3.8</td></tr>
+    </tbody>
+  </table></div>
+  <p>It lost in 2024, 2025 and 2026. A "sure thing" priced at 98¢ that fails 4% of the time is a bad trade, because each failure costs 100%. Here it's the mirror image of underpriced longshots and of prices that move too much: a contract that has just reached 95¢ has often overshot.</p>
   <h3>What the research says</h3>
   <ul class="tight">
     <li><b>Markets beat polls.</b> Iowa Electronic Markets prices were closer to the final result than polls in 74% of 964 comparisons, 1988–2004, and significantly better more than 100 days out (Berg, Nelson &amp; Rietz 2008).</li>

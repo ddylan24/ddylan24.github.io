@@ -219,6 +219,10 @@ This file is a condensed briefing of everything researched in the original sessi
   - 1,625 resolved Polymarket markets (daily, to 1 day before close, then the outcome): Σm/Σr = **1.31 ± 0.06** (1.38 skipping the first 3–7 days). Simulated rational learner + 0.5¢ noise: 1.02.
   - Largest for longshots (1.48) and 2w–2m horizons (1.68). No volume gradient. Daily-change AC −0.08.
 
+- **Early exit and "favorites as a bond"** (notes/S3.md):
+  - Sell iff p − s > q·e^{−rτ}. Agreeing with the market at 95¢ with a 1¢ half-spread, sell if more than 91 days remain.
+  - Buying first touch ≥0.95 and holding (1,340 trades) won 96.0% vs 97.8¢ paid: **−3.2% vs T-bills (t −3.7)**, negative every year 2024–26. ≥0.90: −4.9%; ≥0.97: −2.8%.
+
 ## 4. Pitfalls checklist (learned the hard way)
 
 1. Compare against a random or unconditional baseline, not against 0.

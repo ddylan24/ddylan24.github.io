@@ -1,0 +1,26 @@
+Exit vs hold when you agree with the market (q = p), half-spread 1¢:
+  p=0.80: τ=0.1: hold PV 0.7966 vs sell 0.7900 → hold, τ=0.25: hold PV 0.7915 vs sell 0.7900 → hold, τ=1: hold PV 0.7667 vs sell 0.7900 → SELL, τ=2: hold PV 0.7348 vs sell 0.7900 → SELL
+  p=0.95: τ=0.1: hold PV 0.9460 vs sell 0.9400 → hold, τ=0.25: hold PV 0.9400 vs sell 0.9400 → SELL, τ=1: hold PV 0.9105 vs sell 0.9400 → SELL, τ=2: hold PV 0.8726 vs sell 0.9400 → SELL
+  p=0.99: τ=0.1: hold PV 0.9858 vs sell 0.9800 → hold, τ=0.25: hold PV 0.9795 vs sell 0.9800 → SELL, τ=1: hold PV 0.9488 vs sell 0.9800 → SELL, τ=2: hold PV 0.9093 vs sell 0.9800 → SELL
+  break-even horizon τ* = −ln(1 − s/p)/r: p=0.95 → 91 days; p=0.5 → 174 days
+
+Buy first touch ≥0.90 (+0.5¢), hold: n=1476, win rate 0.925 vs avg price 0.958, median hold 105d
+  mean return -3.46% vs T-bill over same holds 1.42% → excess -4.88% (event-level t -4.9, 490 events)
+  capital-weighted annualized: -10.5%/yr vs T-bill 4.25%; losses: 110 (7.5%), each ≈ −100%
+    2024: n 493, win 0.945 vs px 0.966, excess -3.91%
+    2025: n 631, win 0.922 vs px 0.956, excess -5.37%
+    2026: n 351, win 0.903 vs px 0.949, excess -5.36%
+
+Buy first touch ≥0.95 (+0.5¢), hold: n=1340, win rate 0.960 vs avg price 0.978, median hold 101d
+  mean return -1.79% vs T-bill over same holds 1.36% → excess -3.15% (event-level t -3.7, 446 events)
+  capital-weighted annualized: -5.6%/yr vs T-bill 4.25%; losses: 53 (4.0%), each ≈ −100%
+    2024: n 457, win 0.969 vs px 0.980, excess -2.74%
+    2025: n 572, win 0.963 vs px 0.977, excess -3.08%
+    2026: n 310, win 0.942 vs px 0.976, excess -3.92%
+
+Buy first touch ≥0.97 (+0.5¢), hold: n=1273, win rate 0.973 vs avg price 0.987, median hold 88d
+  mean return -1.47% vs T-bill over same holds 1.31% → excess -2.78% (event-level t -3.8, 428 events)
+  capital-weighted annualized: -4.9%/yr vs T-bill 4.25%; losses: 35 (2.7%), each ≈ −100%
+    2024: n 435, win 0.972 vs px 0.987, excess -3.01%
+    2025: n 547, win 0.980 vs px 0.987, excess -2.32%
+    2026: n 290, win 0.959 vs px 0.987, excess -3.31%
