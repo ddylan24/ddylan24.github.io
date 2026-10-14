@@ -67,7 +67,7 @@ Status: [ ] todo  [~] in progress  [x] done. Each item: derive, verify numerical
 ## P. Prediction markets (user request — prioritized)
 - [ ] P1 Market structure & venues: Kalshi (CFTC DCM), Polymarket (CLOB, USDC), PredictIt, Betfair; contract math (binary = probability), fees, capital lockup.
 - [x] P2 Real-data calibration study: resolved markets (Polymarket/Kalshi public APIs) — price vs outcome, Brier score, favorite–longshot bias.
-- [ ] P3 Market-maker math: Hanson's LMSR (cost function, b, worst-case loss b·ln n); CLOB quoting; inventory risk on binaries.
-- [ ] P4 Arbitrage: Dutch books (outcomes summing ≠ 1), cross-venue, combinatorial; fees & resolution risk; literature on Polymarket arbitrage.
+- [x] P3 Market-maker math: Hanson's LMSR (cost function, b, worst-case loss b·ln n); CLOB quoting; inventory risk on binaries.
+- [x] P4 Arbitrage: Dutch books (outcomes summing ≠ 1), cross-venue, combinatorial; fees & resolution risk; literature on Polymarket arbitrage.
 - [ ] P5 Betting math for binaries: Kelly for prediction markets, edge vs fees, time value of capital (why longshots/long-dated markets misprice).
 - [ ] P6 Literature: Wolfers & Zitzewitz 2004; Iowa Electronic Markets vs polls (Berg et al.); Snowberg & Wolfers 2010 favorite–longshot; manipulation evidence.

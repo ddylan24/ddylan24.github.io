@@ -101,7 +101,17 @@ This file is a condensed briefing of everything researched in the original sessi
   - Mid-priced (5–95¢) YES contracts were **underpriced by ~4–5¢** (event-clustered t ≈ 3.5) when measured h days before the **scheduled** end date.
   - Pitfall: measuring relative to *close time* leaks the outcome ("by-date" markets that resolve YES close early), which inflated the bias to +8.9¢.
   - Caveats: top-volume selection, last-trade prices, no fees or spread, one venue.
-- Remaining work, see `agenda.md` section P: market structure, LMSR market-maker math, arbitrage (Dutch books, cross-venue), Kelly for binaries, literature (Wolfers & Zitzewitz; Snowberg & Wolfers).
+- **LMSR (Hanson):**
+  - C(q) = b·ln Σ e^(q_i/b); prices are a softmax and always sum to 1.
+  - Worst-case market-maker loss = b·ln n.
+  - An informed trader who moves the price to the truth costs the market maker exactly b·KL(p‖p₀) (verified numerically). The market maker is subsidizing information.
+- **Arbitrage mechanics (Polymarket neg-risk):** a NO in one outcome converts to a YES in all the others, so n NOs become n−1 USDC immediately.
+  - Buying every NO earns Σbids − 1 instantly.
+  - Buying every YES only beats cash if Σasks < e^(−rT), so time value matters.
+  - Live scan of 2,100 events / 632 multi-outcome events on 2026-10-14: Σmid median 0.995. Sell-side gaps in 15 events, median 0.8¢ and max 1.5¢, all fee-sized.
+  - Buy-side gaps were mostly artifacts (incomplete outcome sets) or below the T-bill carry. Example: the 2028 market at Σask 0.990 earns 0.5%/yr vs 4.25% T-bills.
+  - Literature: Saguillo et al. 2025 (arXiv:2508.03474) estimate ~$40M of realized Polymarket arbitrage, using LLMs to find dependent markets.
+- Remaining work, see `agenda.md` section P: Kelly for binaries, literature (Wolfers & Zitzewitz; Snowberg & Wolfers; IEM vs polls), Kalshi data, cross-venue comparison.
 
 ## 4. Pitfalls checklist (learned the hard way)
 

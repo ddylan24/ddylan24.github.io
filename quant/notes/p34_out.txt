@@ -1,0 +1,20 @@
+Live Polymarket snapshot 2026-10-14: 2100 active events scanned, 632 multi-outcome (negRisk) events with quotes on every outcome
+  sum of mid prices across outcomes: median 0.995, 5–95% [0.932, 1.105]
+  'buy every YES' Dutch book (Σ best asks < $1): 116 events; median edge 0.90¢; max 80.60¢
+  'sell every YES / buy every NO' (Σ best bids > $1): 15 events; median edge 0.80¢; max 1.50¢
+    MLB World Series Champion 2026                               n=  4 Σask 1.028 Σbid 1.002 ends 2026-10-31 → edge 0.20¢, annualized 4.4% (has fees)
+    NBA: 2027 Champion                                           n= 30 Σask 1.076 Σbid 1.010 ends 2027-07-01 → edge 1.00¢, annualized 1.4% (has fees)
+    MLB: 2026 National League Champion                           n=  2 Σask 1.014 Σbid 1.001 ends 2026-12-01 → edge 0.10¢, annualized 0.8% (has fees)
+    Fed Decision in December?                                    n=  5 Σask 1.031 Σbid 1.008 ends 2026-12-10 → edge 0.80¢, annualized 5.2% (has fees)
+    Which party wins 2028 US Presidential Election?              n=  2 Σask 0.990 Σbid 0.970 ends 2028-11-08 → edge 1.00¢, annualized 0.5% (has fees)
+    OpenAI IPO Closing Market Cap                                n=  7 Σask 0.998 Σbid 0.966 ends 2027-01-01 → edge 0.20¢, annualized 0.9% (has fees)
+  caveat: best-quote size is often tiny; touching all n books needs n fills; capital locked to resolution; resolution/UMA dispute risk
+LMSR b=1000, binary, start 50/50: worst-case MM loss b·ln2 = $693.15
+  move YES 50%→80%: buy 1386.3 YES shares for $916.29 (avg 0.661/share); payoff if YES $1386.3 → MM loss 470.00 = b·ln(1/0.5)−... check: b·ln(p1/p0)=470.00
+  informed trader moves price to true p=0.6: expected MM loss $20.14 (= b·KL(p‖0.5) = 20.14)
+  informed trader moves price to true p=0.8: expected MM loss $192.74 (= b·KL(p‖0.5) = 192.74)
+  informed trader moves price to true p=0.95: expected MM loss $494.63 (= b·KL(p‖0.5) = 494.63)
+  informed trader moves price to true p=0.999: expected MM loss $685.24 (= b·KL(p‖0.5) = 685.24)
+  n=2 outcomes: max loss b·ln n = $693 per $1000 of b
+  n=10 outcomes: max loss b·ln n = $2303 per $1000 of b
+  n=128 outcomes: max loss b·ln n = $4852 per $1000 of b
