@@ -127,6 +127,12 @@ This file is a condensed briefing of everything researched in the original sessi
   - Snowberg & Wolfers 2010: favorite-longshot bias comes from misperception, not risk-love.
 - **Takeaway:** the edge is in short-dated markets, better models, fast arbitrage and market making.
 - **Calibration vs horizon:** logit slope b ≈ 0.76–0.87 at 1/7/30/90/180 days (se ~0.08–0.11). That's a mild **reverse** favorite-longshot pattern (longshots cheap), the opposite of Page & Clemen. One hypothesis is the "buy NO at 97–99¢" yield trade. Tentative, about 2σ.
+- **By category** (7 days before end, keyword-classified):
+  - Politics: b 1.17, +2.2¢ (t 1.3). Well calibrated.
+  - Sports: b 1.04, +5.5¢ (t 2.7).
+  - "Other" (culture/tech): b 0.51, +13.2¢ (t 3.0). Worst calibrated.
+  - Crypto: b 0.76, −5.1¢ (t −1.5).
+  - Mispricing concentrates where attention and liquidity are thin.
 - **Kalshi vs Polymarket, 2028 presidential winner, 24 matched candidates:**
   - Mids correlate 0.977. Mean |diff| 0.81¢, max 3.2¢ (AOC 10¢ vs 13.1¢).
   - Best gross cross-venue lock is 3.1¢, which isn't arbitrage after fees, two-year lockup (needs >8.4% to beat T-bills) and resolution-rule risk.

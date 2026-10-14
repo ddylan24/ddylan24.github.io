@@ -1,0 +1,7 @@
+M1 Polymarket calibration by category (scheduled-end design, 7 days before, 1¢<p<99¢); category by keyword rules on question/event title
+  market counts: sports 642, other 448, politics 436, crypto 138, economics 87
+  crypto     n=  60 (29 events): Brier 0.1234, slope b 0.76 ± 0.23; mid-priced outcome−price -0.051 (clustered t -1.52, n 37)
+  economics  n=35 (too few)
+  other      n= 145 (100 events): Brier 0.2048, slope b 0.51 ± 0.13; mid-priced outcome−price +0.132 (clustered t +3.00, n 97)
+  politics   n= 138 (72 events): Brier 0.1301, slope b 1.17 ± 0.22; mid-priced outcome−price +0.022 (clustered t +1.31, n 107)
+  sports     n= 232 (163 events): Brier 0.1966, slope b 1.04 ± 0.17; mid-priced outcome−price +0.055 (clustered t +2.68, n 222)

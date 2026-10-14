@@ -1046,6 +1046,17 @@ b &lt; 1: prices too extreme (longshots cheap, favorites dear)     b &gt; 1: pri
     <tbody><tr><td>Calibration slope b (±1 s.e., clustered)</td><td class="r">0.87 ± .09</td><td class="r">0.84 ± .08</td><td class="r">0.83 ± .08</td><td class="r">0.76 ± .08</td><td class="r">0.84 ± .11</td></tr></tbody>
   </table></div>
   <p>Page &amp; Clemen found older prediction markets pulled toward 50% far from expiry (b &gt; 1). Polymarket's slope sits around <b>0.8 at every horizon</b>, about two standard errors <i>below</i> 1. That's a mild <i>reverse</i> favorite-longshot pattern: longshots slightly cheap, near-certainties slightly expensive. One plausible cause is the popular "buy NO at 97–99¢ for a safe yield" trade, which pushes longshot YES prices below fair. Treat it as tentative: it's about 2σ, on one venue and a top-volume sample.</p>
+  <h3>Where the mispricing lives: by category</h3>
+  <div class="tablewrap"><table>
+    <thead><tr><th>7 days before end</th><th class="r">Markets</th><th class="r">Brier</th><th class="r">Slope b</th><th class="r">YES outcome − price</th><th class="r">t</th></tr></thead>
+    <tbody>
+      <tr><td>Politics</td><td class="r">138</td><td class="r">0.130</td><td class="r">1.17</td><td class="r">+2.2¢</td><td class="r">1.3</td></tr>
+      <tr><td>Sports</td><td class="r">232</td><td class="r">0.197</td><td class="r">1.04</td><td class="r gain">+5.5¢</td><td class="r">2.7</td></tr>
+      <tr><td>Other (culture, tech, misc.)</td><td class="r">145</td><td class="r">0.205</td><td class="r loss">0.51</td><td class="r gain">+13.2¢</td><td class="r">3.0</td></tr>
+      <tr><td>Crypto</td><td class="r">60</td><td class="r">0.123</td><td class="r">0.76</td><td class="r">−5.1¢</td><td class="r">−1.5</td></tr>
+    </tbody>
+  </table></div>
+  <p>The high-attention <b>political</b> markets are the best calibrated, with no significant bias. The mispricing concentrates in <b>"other"</b> markets: pop culture, tech and miscellany. There, prices were far too extreme (slope 0.51) and YES won 13¢ more often than priced. Sports YES (a named team or player) was about 5¢ cheap. This is the efficient-markets pattern again: <b>edges live where attention and liquidity are thin.</b> Categories come from keyword rules on the market titles, and the per-category samples are small.</p>
   <h3>Same event, two venues: Kalshi vs Polymarket</h3>
   <p>I matched 24 candidates in the 2028 presidential-winner markets on both venues (live quotes, October 14, 2026). The mid prices correlate <b>0.977</b> and differ by 0.8¢ on average, at most 3.2¢. AOC was 10¢ on Kalshi and 13.1¢ on Polymarket; Newsom 11.5¢ vs 9.1¢. The best gross "lock" (YES on one venue, NO on the other) was 3.1¢ per $1. But it ties up capital on two venues until November 2028 (it would need 8.4% just to match T-bills), pays fees on both, and the two venues' resolution rules may differ. The venues track each other closely, and what's left over isn't free money.</p>
   <h3>Market-maker math: Hanson's LMSR</h3>
