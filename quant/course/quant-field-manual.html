@@ -1205,6 +1205,10 @@ worth doing:   gap g on capital K locked for T years  →  need g/K &gt; e^(rT) 
     <li><b>The contract only prices the decision.</b> Bonds actually rallied in the first minute, because an 87%-expected hike is only a 3bp surprise. Over the next hour, through the press conference, the 10-year yield rose 6bp and SPY fell 0.84%. The guidance carried most of the information, and the prediction market can't express it.</li>
   </ul>
   <p>The realistic edge isn't reacting to the announcement. It's modeling how data surprises (CPI, payrolls) move the decision probabilities before the meeting.</p>
+  <h3>Polymarket vs the bond market on the next Fed meeting</h3>
+  <p>Fed funds futures settle at 100 minus the month's average overnight rate, so they imply the expected rate change at a meeting. The October 28 meeting changes the rate for all of November:</p>
+<div class="formula">E[Δ] = (100 − Nov futures price) − today's EFFR       P(+25bp) ≈ E[Δ] / 25bp</div>
+  <p>On October 14, 2026, the November contract (96.045) and EFFR (3.88%, from FRED) implied a +7.5bp expected move, or a 30% chance of a hike. Polymarket's five outcome buckets implied +7.2bp, a 28.5% chance. <b>They agree within about 1¢</b>, less than Polymarket's spread. Together with the 6-second reaction to the September decision and the Bitcoin contracts matching the options market, that's three checks showing liquid prediction markets track professional markets closely. Any edge has to be in questions no futures market prices.</p>
   <h3>Price-threshold markets are digital options</h3>
   <p>"Bitcoin above $82,000 on Friday at noon" is a <b>cash-or-nothing digital option</b>, and options math prices it. A digital is the slope of the call price with respect to strike, so a tight call spread replicates it:</p>
 <div class="formula">digital  D(K) = −∂C/∂K = e^(−rT)·N(d2),   d2 = [ln(F/K) − σ²T/2] / (σ√T)        (flat vol)

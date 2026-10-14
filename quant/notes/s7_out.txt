@@ -1,0 +1,6 @@
+EFFR 3.88% (2026-10-13); ZQ Oct 96.1125, Nov 96.0450, Dec 95.9000
+Futures-implied expected change at the Oct 28 meeting: Nov contract +7.5bp, Oct contract +7.7bp
+  → P(+25bp) ≈ E[Δ]/25bp = 0.30 (Nov) / 0.31 (Oct), if the only alternatives are hold or +25
+Polymarket Oct meeting (bid/ask/mid): No change 0.700/0.710; 25 bps increase 0.280/0.290; 50+ bps increase 0.005/0.006; 25 bps decrease 0.003/0.004; 50+ bps decrease 0.001/0.002
+  Σ mids 1.000; Polymarket expected change +7.2bp (normalised mids)
+  Difference Polymarket − futures(Nov): -0.3bp ≈ -0.011 in P(+25bp)
