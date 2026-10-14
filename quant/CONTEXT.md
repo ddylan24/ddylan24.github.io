@@ -252,6 +252,10 @@ This file is a condensed briefing of everything researched in the original sessi
   - Polymarket (104k daily changes): price shape β 0.99 ± 0.05 (theory 1), time β 0.53 ± 0.05 (theory 1), R² 0.93.
   - 90–98¢ contracts have 2.2× the predicted sd (jumps), linking to the S3 favorites losses.
 
+- **Jump risk at ≥90¢** (notes/S10.md; 44,884 contract-days):
+  - One-day drops ≥10/20/40¢ are 6×/39×/2,800× the normal-diffusion rate. Kurtosis ~1,000.
+  - 90–95¢ contracts lost 9.1% vs 7.2% implied. Use jump models and exceedance counts, not normal VaR.
+
 ## 4. Pitfalls checklist (learned the hard way)
 
 1. Compare against a random or unconditional baseline, not against 0.
