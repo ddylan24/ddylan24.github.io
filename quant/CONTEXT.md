@@ -248,6 +248,10 @@ This file is a condensed briefing of everything researched in the original sessi
   - Market log loss 1.196 vs GFS-MOS model 1.811 (t 4.5). Any blend is worse; model-based trading −1 to −2¢/contract.
   - Data: IEM MOS archive `mesonet.agron.iastate.edu/cgi-bin/request/mos.py` (rate-limited; cache). Open-Meteo has a daily IP limit.
 
+- **Probability diffusion** (notes/S9.md): p = N(X/√τ) ⇒ dp = φ(N⁻¹p)/√τ dW.
+  - Polymarket (104k daily changes): price shape β 0.99 ± 0.05 (theory 1), time β 0.53 ± 0.05 (theory 1), R² 0.93.
+  - 90–98¢ contracts have 2.2× the predicted sd (jumps), linking to the S3 favorites losses.
+
 ## 4. Pitfalls checklist (learned the hard way)
 
 1. Compare against a random or unconditional baseline, not against 0.
