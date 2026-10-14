@@ -1,0 +1,12 @@
+true half-life 43.7d |  1y data: median est 22.3d, 10–90% [10.6, 59.0]
+true half-life 43.7d |  3y data: median est 33.8d, 10–90% [21.1, 54.6]
+true half-life 43.7d | 10y data: median est 41.0d, 10–90% [30.8, 54.1]
+true half-life 43.7d | 30y data: median est 42.0d, 10–90% [36.1, 50.3]
+VIX (1990-01-02→2026-10-13, n=9294): AR1 b=0.9769, θ=5.90/yr, mean=19.41, half-life=30 trading days | log-VIX half-life=34d, long-run level=18.2
+    1990-2007: half-life 42d, mean 18.1
+    2008-2019: half-life 35d, mean 17.7
+    2020-2026: half-life 20d, mean 19.7
+10y–2y Treasury spread (1976-06-01→2026-10-13, n=12588): AR1 b=0.9987, θ=0.32/yr, mean=0.83, half-life=548 trading days
+High-yield credit spread (2023-10-16→2026-10-13, n=785): AR1 b=0.9782, θ=5.56/yr, mean=3.02, half-life=31 trading days
+ADF VIXCLS: stat=-7.34, p=0.0000
+ADF T10Y2Y: stat=-3.57, p=0.0065

@@ -1,0 +1,24 @@
+Vasicek fit to 3m T-bill (FRED, weekly) 1981–2026: κ=0.26/yr (half-life 2.7 yrs), long-run mean θ=2.76%, σ=1.15%; stationary sd 1.60%; P(r<0) under stationary dist 4.2%
+Vasicek fit to 3m T-bill (FRED, weekly) 1981–2007: κ=0.45/yr (half-life 1.5 yrs), long-run mean θ=4.37%, σ=1.42%; stationary sd 1.49%; P(r<0) under stationary dist 0.2%
+Vasicek fit to 3m T-bill (FRED, weekly) 2009–2026: κ=-0.02/yr (half-life -33.1 yrs), long-run mean θ=-9.70%, σ=0.43%; stationary sd nan%; P(r<0) under stationary dist nan%
+CIR fit 1981–2026: κ=0.13, θ=1.77%, σ=0.062; Feller 2κθ ≥ σ²? 0.0047 vs 0.0038 → yes (stays positive)
+Vasicek 5y zero-coupon bond (κ=.3, θ=4%, σ=1.5%, r0=4.25%): closed form 0.81488 vs Monte Carlo 0.81488; yield 4.094%
+Calendar effects on CRSP daily market, 16 tests (Welch t vs all other days); Bonferroni p<0.0031:
+  turn-of-month (last day + first 3), 1926–1989 +16.9bp vs +1.2bp, t=+7.89, p=0.0000  ✓ survives
+  Mon, 1926–1989                               -15.7bp vs +8.4bp, t=-10.88, p=0.0000  ✓ survives
+  Tue, 1926–1989                               +3.0bp vs +4.3bp, t=-0.62, p=0.5373
+  Wed, 1926–1989                               +11.5bp vs +2.3bp, t=+4.33, p=0.0000  ✓ survives
+  Thu, 1926–1989                               +7.5bp vs +3.2bp, t=+2.20, p=0.0282
+  Fri, 1926–1989                               +9.4bp vs +2.8bp, t=+3.33, p=0.0009  ✓ survives
+  Nov–Apr ("sell in May"), 1926–1989           +5.3bp vs +2.8bp, t=+1.61, p=0.1067
+  January, 1926–1989                           +8.4bp vs +3.6bp, t=+1.98, p=0.0480
+  turn-of-month (last day + first 3), 1990–2026 +8.9bp vs +3.9bp, t=+1.68, p=0.0930
+  Mon, 1990–2026                               +3.7bp vs +5.1bp, t=-0.41, p=0.6802
+  Tue, 1990–2026                               +6.5bp vs +4.4bp, t=+0.71, p=0.4776
+  Wed, 1990–2026                               +6.7bp vs +4.3bp, t=+0.82, p=0.4146
+  Thu, 1990–2026                               +3.2bp vs +5.2bp, t=-0.68, p=0.4969
+  Fri, 1990–2026                               +3.8bp vs +5.0bp, t=-0.43, p=0.6709
+  Nov–Apr ("sell in May"), 1990–2026           +6.3bp vs +3.3bp, t=+1.28, p=0.2018
+  January, 1990–2026                           +3.2bp vs +5.0bp, t=-0.44, p=0.6586
+  small-minus-big in January 1926–1989: +233.8bp/month vs -9.0bp other months (t=+7.95)
+  small-minus-big in January 1990–2026: +45.2bp/month vs -2.1bp other months (t=+0.99)

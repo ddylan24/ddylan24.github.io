@@ -1,0 +1,13 @@
+BETA-sorted deciles (Ken French/CRSP, value-weighted) 1963–2026:
+  Lo 10 : excess  6.8%/yr, realized β 0.59, CAPM α +2.5%/yr, Sharpe 0.57
+  Dec 5 : excess  7.6%/yr, realized β 1.02, CAPM α +0.3%/yr, Sharpe 0.46
+  Hi 10 : excess  8.7%/yr, realized β 1.60, CAPM α -2.9%/yr, Sharpe 0.30
+  slope of avg excess return on beta across deciles: 3.4% per unit β (CAPM predicts market premium 7.2%)
+  BAB-style (long low-β levered to β=1, short high-β scaled to β=1): +6.0%/yr, Sharpe 0.32, t 2.51
+VAR-sorted deciles (Ken French/CRSP, value-weighted) 1963–2026:
+  Lo 10 : excess  6.0%/yr, realized β 0.59, CAPM α +1.7%/yr, Sharpe 0.51
+  Dec 5 : excess  8.2%/yr, realized β 1.06, CAPM α +0.6%/yr, Sharpe 0.47
+  Hi 10 : excess  1.8%/yr, realized β 1.68, CAPM α -10.3%/yr, Sharpe 0.06
+  slope of avg excess return on beta across deciles: -1.0% per unit β (CAPM predicts market premium 7.2%)
+James–Stein on 30 industries: first-half Sharpe dispersion var 0.0080 vs pure sampling noise 1/years=0.0198 → keep 0% of each industry's deviation from the average
+  predicting 1977–2026 Sharpe: raw first-half estimate MSE 0.0525; grand mean only 0.0502; James–Stein 0.0502; corr(first half, second half) 0.22

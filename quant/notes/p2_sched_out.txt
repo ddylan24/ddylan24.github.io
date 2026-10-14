@@ -1,0 +1,46 @@
+Polymarket resolved binary markets, volume ≥ $50k, top 1751 by volume (gamma + CLOB APIs); date range 2023-03-31 → 2027-04-01; YES won 23.3%
+
+1 day(s) before SCHEDULED end date (market still open): n=1057 markets in 527 events; Brier 0.0995 vs base-rate forecast 0.1938 (skill 49%)
+  price 0.00–0.05: n= 511, avg price 0.006, won 0.010 [0.004,0.021]  EV of $1 YES +60%
+  price 0.05–0.10: n=  55, avg price 0.070, won 0.127 [0.059,0.234]  EV of $1 YES +83%
+  price 0.10–0.20: n=  71, avg price 0.143, won 0.197 [0.118,0.301]  EV of $1 YES +38%
+  price 0.20–0.30: n=  63, avg price 0.243, won 0.302 [0.199,0.422]  EV of $1 YES +24%
+  price 0.30–0.40: n=  43, avg price 0.347, won 0.326 [0.200,0.473]  EV of $1 YES -6%
+  price 0.40–0.50: n=  56, avg price 0.446, won 0.554 [0.423,0.678]  EV of $1 YES +24%
+  price 0.50–0.60: n=  85, avg price 0.552, won 0.565 [0.459,0.666]  EV of $1 YES +2%
+  price 0.60–0.70: n=  65, avg price 0.641, won 0.692 [0.574,0.794]  EV of $1 YES +8%
+  price 0.70–0.80: n=  37, avg price 0.747, won 0.811 [0.664,0.911]  EV of $1 YES +9%
+  price 0.80–0.90: n=  23, avg price 0.847, won 0.783 [0.587,0.912]  EV of $1 YES -8%
+  price 0.90–0.95: n=  12, avg price 0.921, won 0.917 [0.672,0.991]  EV of $1 YES -1%
+  price 0.95–1.00: n=  36, avg price 0.983, won 1.000 [0.933,1.000]  EV of $1 YES +2%
+  longshots (<10¢): avg price 0.012 vs win rate 0.021; favorites (>90¢): avg price 0.968 vs win rate 0.979
+
+7 day(s) before SCHEDULED end date (market still open): n=982 markets in 484 events; Brier 0.1054 vs base-rate forecast 0.1908 (skill 45%)
+  price 0.00–0.05: n= 478, avg price 0.008, won 0.013 [0.005,0.026]  EV of $1 YES +50%
+  price 0.05–0.10: n=  64, avg price 0.070, won 0.188 [0.107,0.296]  EV of $1 YES +167%
+  price 0.10–0.20: n=  78, avg price 0.146, won 0.231 [0.148,0.333]  EV of $1 YES +58%
+  price 0.20–0.30: n=  46, avg price 0.249, won 0.326 [0.204,0.469]  EV of $1 YES +31%
+  price 0.30–0.40: n=  35, avg price 0.350, won 0.400 [0.251,0.565]  EV of $1 YES +14%
+  price 0.40–0.50: n=  69, avg price 0.449, won 0.478 [0.363,0.595]  EV of $1 YES +7%
+  price 0.50–0.60: n=  65, avg price 0.548, won 0.554 [0.433,0.670]  EV of $1 YES +1%
+  price 0.60–0.70: n=  52, avg price 0.651, won 0.654 [0.519,0.772]  EV of $1 YES +0%
+  price 0.70–0.80: n=  35, avg price 0.744, won 0.829 [0.680,0.925]  EV of $1 YES +11%
+  price 0.80–0.90: n=  26, avg price 0.852, won 0.885 [0.723,0.966]  EV of $1 YES +4%
+  price 0.90–0.95: n=  10, avg price 0.918, won 0.900 [0.619,0.989]  EV of $1 YES -2%
+  price 0.95–1.00: n=  24, avg price 0.982, won 0.958 [0.821,0.995]  EV of $1 YES -2%
+  longshots (<10¢): avg price 0.016 vs win rate 0.033; favorites (>90¢): avg price 0.963 vs win rate 0.941
+
+30 day(s) before SCHEDULED end date (market still open): n=946 markets in 372 events; Brier 0.0984 vs base-rate forecast 0.1661 (skill 41%)
+  price 0.00–0.05: n= 488, avg price 0.009, won 0.010 [0.004,0.022]  EV of $1 YES +17%
+  price 0.05–0.10: n=  80, avg price 0.072, won 0.150 [0.085,0.240]  EV of $1 YES +107%
+  price 0.10–0.20: n=  83, avg price 0.149, won 0.217 [0.139,0.314]  EV of $1 YES +45%
+  price 0.20–0.30: n=  69, avg price 0.252, won 0.333 [0.231,0.450]  EV of $1 YES +32%
+  price 0.30–0.40: n=  35, avg price 0.350, won 0.400 [0.251,0.565]  EV of $1 YES +14%
+  price 0.40–0.50: n=  37, avg price 0.454, won 0.432 [0.283,0.592]  EV of $1 YES -5%
+  price 0.50–0.60: n=  46, avg price 0.546, won 0.587 [0.443,0.720]  EV of $1 YES +7%
+  price 0.60–0.70: n=  36, avg price 0.646, won 0.806 [0.656,0.909]  EV of $1 YES +25%
+  price 0.70–0.80: n=  29, avg price 0.741, won 0.586 [0.406,0.750]  EV of $1 YES -21%
+  price 0.80–0.90: n=  22, avg price 0.837, won 0.864 [0.679,0.960]  EV of $1 YES +3%
+  price 0.90–0.95: n=  12, avg price 0.917, won 0.833 [0.564,0.964]  EV of $1 YES -9%
+  price 0.95–1.00: n=   9, avg price 0.975, won 1.000 [0.762,1.000]  EV of $1 YES +3%
+  longshots (<10¢): avg price 0.018 vs win rate 0.030; favorites (>90¢): avg price 0.944 vs win rate 0.950

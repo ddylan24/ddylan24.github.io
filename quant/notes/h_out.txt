@@ -1,0 +1,10 @@
+Almgren–Chriss: numerical optimum vs closed form sinh trajectory: max trade-size diff 3.72e-05 of X; κ=0.85; first interval sells 2.4%, last 1.8% (TWAP = 2.0%)
+  λ=0e+00: expected impact cost $2,500,000, risk (std) $556,703
+  λ=2e-07: expected impact cost $2,500,286, risk (std) $554,124
+  λ=2e-06: expected impact cost $2,525,356, risk (std) $532,631
+  λ=2e-05: expected impact cost $3,557,852, risk (std) $412,627
+  sqrt law (SPY: ADV $32.29B, daily σ 0.68%, Y=0.7): $10k→0.0bp $1,000k→0.3bp $100,000k→2.7bp
+  sqrt law (IWM: ADV $6.17B, daily σ 0.84%, Y=0.7): $10k→0.1bp $1,000k→0.7bp $100,000k→7.5bp
+  sqrt law (UPST: ADV $0.12B, daily σ 3.00%, Y=0.7): $10k→1.9bp $1,000k→19.3bp $100,000k→193.3bp
+Avellaneda–Stoikov γ=0.1: inventory-skewed (AS): profit 64.86 ± 6.78 (std), final inventory std 2.8
+Avellaneda–Stoikov γ=0.1: symmetric around mid: profit 66.84 ± 13.35 (std), final inventory std 7.9

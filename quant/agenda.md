@@ -1,0 +1,73 @@
+# Research agenda — goal: expert-level command of the math behind quant trading
+Status: [ ] todo  [~] in progress  [x] done. Each item: derive, verify numerically, test on real data, fold into course.
+
+## A. Statistics of trading results (foundation for everything)
+- [x] A1 Hypothesis tests on event outcomes: CI of mean, t-test, why fat tails/serial dependence break them. Real data: replicate QP02 prior-day high/low sweeps on SPY daily (1999–2026), ATR double barrier, by sub-period.
+- [x] A2 Sharpe ratio statistics: SE of SR (Lo 2002, Mertens 2002 w/ skew & kurtosis), Probabilistic SR, Minimum Track Record Length, Deflated SR. Verify by simulation.
+- [x] A3 Multiple testing: Bonferroni, Holm, Benjamini-Hochberg FDR, Harvey-Liu-Zhu haircuts. Experiment: 50 context splits on sweep events.
+- [x] A4 Bootstrap: iid vs stationary/block bootstrap (Politis-Romano), drawdown distributions on real strategy returns.
+
+## B. Stochastic processes & calculus
+- [x] B1 Random walk -> Brownian motion; Itô's lemma derivation; why GBM drift is mu - sigma^2/2 (volatility drag). Verify numerically.
+- [x] B2 Ornstein-Uhlenbeck: exact discretization = AR(1), MLE of theta/mu/sigma, half-life. Real data: a pair/spread.
+- [x] B3 Markov chains & HMMs: stationary distribution, Baum-Welch/forward algorithm, Viterbi. Real data: 2-state HMM on SPY.
+- [x] B4 Jumps & fat tails: kurtosis of real returns, Student-t fits, why normal VaR fails.
+
+## C. Volatility modeling
+- [x] C1 (EWMA covered; range estimators deferred) Realized vol estimators (close-close, Parkinson, Garman-Klass, Yang-Zhang), EWMA (RiskMetrics).
+- [x] C2 GARCH(1,1): MLE, persistence, half-life of vol shocks; real SPY fit. Vol forecasting -> vol targeting (Moreira-Muir replication on SPY).
+
+## D. Derivatives math
+- [x] D1 Black-Scholes derivation (delta hedge + Itô), risk-neutral pricing, Feynman-Kac; verify BS formula vs Monte Carlo.
+- [x] D2 Greeks and P&L of a delta-hedged option: gamma-theta tradeoff, P&L = ½Γ S²(σ_realized² − σ_implied²)dt. Simulate.
+- [x] D3 (skew deferred) Implied vol, skew, variance risk premium (VIX vs realized).
+
+## E. Portfolio math
+- [x] E1 Mean-variance (Markowitz), tangency portfolio, why estimation error kills it; shrinkage (Ledoit-Wolf); risk parity.
+- [x] E2 (PCA+RMT; FF regression deferred) Factor models & PCA: CAPM beta, Fama-French regression, PCA on sector ETFs, random matrix theory (Marchenko-Pastur) for covariance cleaning.
+- [x] E3 Kelly derivation (discrete & continuous), multi-asset Kelly = mean-variance; drawdown math.
+
+## F. Time series & stat arb
+- [x] F1 Stationarity tests (ADF, KPSS), cointegration (Engle-Granger, Johansen). Real pair test.
+- [x] F2 (tuning-sensitive; noted) Kalman filter for dynamic hedge ratios.
+- [x] F3 Fractional differentiation (López de Prado) — memory vs stationarity tradeoff on real data.
+
+## G. Signals on real data (replications)
+- [x] G1 Time-series momentum on ETF universe, vol-scaled, with costs; Deflated SR of the variants.
+- [x] G2 QP03 CUSUM events on BTC & SPY vs random baseline.
+- [x] G3 Triple-barrier labels + meta-labeling with purged CV.
+
+## H. Microstructure & execution
+- [x] H1 Almgren-Chriss solution (sinh trajectory), square-root impact law.
+- [x] H2 (AS done; Kyle/GM deferred) Market making: Avellaneda-Stoikov reservation price & spread; adverse selection (Glosten-Milgrom, Kyle lambda).
+- [x] H3 Prop-firm challenge as a barrier problem: pass probability via gambler's ruin / Brownian first passage, verified by Monte Carlo.
+
+## I. Added after core agenda
+- [x] I1 Fundamental Law of Active Management: IR ≈ IC·√breadth (Grinold 1989); verify by simulation; measure IC of a real signal.
+- [x] I2 Factor regressions: alpha attribution with FF5 + momentum (Ken French) for strategies built today (TSMOM, vol-managed).
+- [x] I3 Adverse selection: Glosten–Milgrom spread, Kyle's lambda.
+- [x] I4 Range-based volatility estimators (Parkinson, Garman–Klass, Yang–Zhang) vs close-to-close efficiency.
+
+## J. Evening additions
+- [x] Formula sheet (Module 14) + full-page render check
+- [x] J1 Momentum crashes (Daniel & Moskowitz 2016) on Ken French MOM: skew, crash timing, bear-market rebounds, dynamic scaling.
+- [x] J2 Real implied-vol smile from a live SPY option chain (Yahoo) vs Black-Scholes flat vol; skew math.
+- [x] J3 Low-volatility / betting-against-beta anomaly on Ken French portfolios.
+- [x] J4 Bayesian shrinkage (James–Stein) of many strategies' Sharpe ratios.
+- [x] K1 Heston stochastic volatility: simulate, price options, show it generates the SPY skew.
+- [x] K2 Yield-curve PCA (level/slope/curvature) on FRED Treasury yields; duration & convexity.
+
+## L. Second evening wave
+- [x] L1 Jump-diffusion (Merton): fit jump intensity/size to CRSP daily returns; does it explain short-dated SPY skew better than Heston?
+- [x] L2 Interest-rate models: Vasicek/CIR fit to FRED 3m T-bill; mean reversion of rates; bond pricing formula check.
+- [ ] L3 Carry: currency/bond carry with FRED rates; carry crash skew.
+- [x] L4 Seasonality & calendar anomalies on CRSP (turn-of-month, January, day-of-week) with multiple-testing control.
+- [x] L5 Value factor's 2007–2020 drawdown and recovery (Ken French HML): how unusual vs its own history (drawdown statistics math).
+
+## P. Prediction markets (user request — prioritized)
+- [ ] P1 Market structure & venues: Kalshi (CFTC DCM), Polymarket (CLOB, USDC), PredictIt, Betfair; contract math (binary = probability), fees, capital lockup.
+- [x] P2 Real-data calibration study: resolved markets (Polymarket/Kalshi public APIs) — price vs outcome, Brier score, favorite–longshot bias.
+- [ ] P3 Market-maker math: Hanson's LMSR (cost function, b, worst-case loss b·ln n); CLOB quoting; inventory risk on binaries.
+- [ ] P4 Arbitrage: Dutch books (outcomes summing ≠ 1), cross-venue, combinatorial; fees & resolution risk; literature on Polymarket arbitrage.
+- [ ] P5 Betting math for binaries: Kelly for prediction markets, edge vs fees, time value of capital (why longshots/long-dated markets misprice).
+- [ ] P6 Literature: Wolfers & Zitzewitz 2004; Iowa Electronic Markets vs polls (Berg et al.); Snowberg & Wolfers 2010 favorite–longshot; manipulation evidence.

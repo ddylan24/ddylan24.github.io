@@ -166,6 +166,7 @@ include:
   - _pages
   - files
 exclude:
+  - quant
   - "*.sublime-project"
   - "*.sublime-workspace"
   - .asset-cache

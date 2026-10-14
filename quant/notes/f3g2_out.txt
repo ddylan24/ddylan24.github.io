@@ -1,0 +1,39 @@
+Fractional differentiation (fixed-width window, weight cutoff 1e-4) on log SPY 1999–2026:
+  d=0.0: window    1, ADF   0.93 (not at 5%), corr with log price 1.000
+  d=0.1: window  503, ADF  -0.26 (not at 5%), corr with log price 0.999
+  d=0.2: window  497, ADF  -1.68 (not at 5%), corr with log price 0.994
+  d=0.3: window  388, ADF  -3.51 (stationary at 5%), corr with log price 0.982
+  d=0.4: window  282, ADF  -6.61 (stationary at 5%), corr with log price 0.958
+  d=0.5: window  200, ADF -11.42 (stationary at 5%), corr with log price 0.909
+  d=0.6: window  140, ADF -18.46 (stationary at 5%), corr with log price 0.815
+  d=0.8: window   64, ADF -39.65 (stationary at 5%), corr with log price 0.468
+  d=1.0: window    2, ADF -62.87 (stationary at 5%), corr with log price 0.025
+  minimum d passing ADF 5% on this grid: 0.3
+BTC-USD 2015–2026, k=2: 814 events (69/yr)
+     1d after up  : mean +0.29% vs random day +0.13%, excess t=+0.91 (n=459)
+     1d after down: mean +0.20% vs random day +0.13%, excess t=+0.29 (n=355)
+     5d after up  : mean +1.01% vs random day +0.66%, excess t=+0.90 (n=459)
+     5d after down: mean +0.36% vs random day +0.66%, excess t=-0.71 (n=355)
+    20d after up  : mean +4.07% vs random day +2.72%, excess t=+1.68 (n=459)
+    20d after down: mean +0.84% vs random day +2.72%, excess t=-2.17 (n=354)
+BTC-USD 2015–2026, k=3: 496 events (42/yr)
+     1d after up  : mean +0.48% vs random day +0.13%, excess t=+1.52 (n=288)
+     1d after down: mean -0.29% vs random day +0.13%, excess t=-1.26 (n=208)
+     5d after up  : mean +1.70% vs random day +0.66%, excess t=+2.04 (n=288)
+     5d after down: mean -0.18% vs random day +0.66%, excess t=-1.38 (n=207)
+    20d after up  : mean +5.10% vs random day +2.72%, excess t=+2.36 (n=288)
+    20d after down: mean +0.85% vs random day +2.72%, excess t=-1.59 (n=207)
+SPY 1999–2026, k=2: 1465 events (53/yr)
+     1d after up  : mean -0.04% vs random day +0.03%, excess t=-2.05 (n=834)
+     1d after down: mean +0.10% vs random day +0.03%, excess t=+1.08 (n=631)
+     5d after up  : mean -0.07% vs random day +0.16%, excess t=-3.14 (n=834)
+     5d after down: mean +0.45% vs random day +0.16%, excess t=+2.50 (n=631)
+    20d after up  : mean +0.57% vs random day +0.66%, excess t=-0.63 (n=831)
+    20d after down: mean +0.97% vs random day +0.66%, excess t=+1.40 (n=629)
+SPY 1999–2026, k=3: 869 events (31/yr)
+     1d after up  : mean -0.01% vs random day +0.03%, excess t=-1.36 (n=505)
+     1d after down: mean +0.25% vs random day +0.03%, excess t=+2.58 (n=364)
+     5d after up  : mean -0.06% vs random day +0.16%, excess t=-2.51 (n=505)
+     5d after down: mean +0.79% vs random day +0.16%, excess t=+3.88 (n=364)
+    20d after up  : mean +0.44% vs random day +0.66%, excess t=-1.19 (n=503)
+    20d after down: mean +1.32% vs random day +0.66%, excess t=+2.17 (n=364)

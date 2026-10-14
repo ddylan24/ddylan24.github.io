@@ -1,0 +1,21 @@
+CRSP market daily log returns 1926-07-01→2026-08-31, n=26317: skew -0.46, kurtosis 20.0 (normal = 3)
+  |move| >  3σ: observed  463, normal predicts 71.1  (once every 1.47 years under normal)
+  |move| >  4σ: observed  192, normal predicts 1.67  (once every 62.6 years under normal)
+  |move| >  5σ: observed  104, normal predicts 0.0151  (once every 6.92e+03 years under normal)
+  |move| >  7σ: observed   32, normal predicts 6.74e-08  (once every 1.55e+09 years under normal)
+  |move| > 10σ: observed    5, normal predicts 4.01e-19  (once every 2.6e+20 years under normal)
+  worst day: 1987-10-19 -17.4% = -17.8σ  (normal probability ~ 6.1e-71)
+  Student-t fit: ν=2.49 dof
+    t predicts |move|>5σ: 150.3 days (observed 104)
+    t predicts |move|>10σ: 26.9 days (observed 5)
+  Hill tail index α (top 100 losses) = 3.24  → moments of order ≥ α infinite in the limit
+  Hill tail index α (top 250 losses) = 3.04  → moments of order ≥ α infinite in the limit
+  Hill tail index α (top 500 losses) = 2.83  → moments of order ≥ α infinite in the limit
+99% 1-day VaR backtest 1991–2026 (rolling 1y window, n=8983, expected breaches 90): normal 216, hist 146, t 143
+  Kupiec LR normal: nan (reject correct coverage if > 3.84)
+  Kupiec LR hist: nan (reject correct coverage if > 3.84)
+  Kupiec LR t: inf (reject correct coverage if > 3.84)
+  horizon  1d: kurtosis 20.0, skew -0.46
+  horizon  5d: kurtosis 8.9, skew -0.74
+  horizon 21d: kurtosis 8.2, skew -0.88
+  horizon 63d: kurtosis 7.0, skew -0.84

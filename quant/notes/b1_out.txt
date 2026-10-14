@@ -1,0 +1,10 @@
+n=    10: Σ(ΔW)²=1.6716  Σ|ΔW|=3.4  ΣΔW·Δt=0.17381
+n=  1000: Σ(ΔW)²=0.9681  Σ|ΔW|=25.1  ΣΔW·Δt=-0.00045
+n=100000: Σ(ΔW)²=0.9994  Σ|ΔW|=252.2  ΣΔW·Δt=-0.00000
+GBM mu=8% sigma=40% 10y: E[S_T]=2.23 (theory e^(μT)=2.23); median=1.00 (theory e^((μ-σ²/2)T)=1.00); P(S_T<1)=0.50
+SPY (1x) 2009-07→2026-10: actual CAGR 15.2% | 'L× SPY compounded' 15.2% | Itô Lμ−L²σ²/2 (no costs) 15.2% | daily tracking: corr 1.0000, mean ratio 1.00
+SSO (2x) 2009-07→2026-10: actual CAGR 25.2% | 'L× SPY compounded' 32.6% | Itô Lμ−L²σ²/2 (no costs) 28.9% | daily tracking: corr 0.9987, mean ratio 1.82
+UPRO (3x) 2009-07→2026-10: actual CAGR 33.0% | 'L× SPY compounded' 52.8% | Itô Lμ−L²σ²/2 (no costs) 40.1% | daily tracking: corr 0.9983, mean ratio 2.68
+SPY annual arithmetic mean μ=15.6%, σ=17.0%, drag σ²/2=1.45%
+growth-optimal leverage μ/σ² = 5.37x (before financing costs, using realized 2009-26 μ — hindsight)
+round-trip example: index -10% then +11.11% → -0.00%; 3x → -6.67%

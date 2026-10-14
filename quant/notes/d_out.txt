@@ -1,0 +1,12 @@
+MC call, risk-neutral (drift r=4%): 9.9123 ± 0.0200
+MC call, real-world drift μ=10% (WRONG for pricing): 14.0719 ± 0.0237
+Black-Scholes call 9.9251, put 6.0040; parity C−P=3.9211 vs S−Ke^(−rT)=3.9211
+short 3m ATM call sold at 20% IV, daily hedge, realized 15%: mean P&L +0.992, std 0.464  (option premium 4.485)
+short 3m ATM call sold at 20% IV, daily hedge, realized 20%: mean P&L -0.013, std 0.442  (option premium 4.485)
+short 3m ATM call sold at 20% IV, daily hedge, realized 25%: mean P&L -0.998, std 0.683  (option premium 4.485)
+  hedge   13x over 3m (σi=σr): P&L std 0.934
+  hedge   63x over 3m (σi=σr): P&L std 0.426
+  hedge  252x over 3m (σi=σr): P&L std 0.217
+  hedge 1008x over 3m (σi=σr): P&L std 0.110
+VIX vs next-21-day realized SPY vol, 1999-01-04→2026-09-14 (n=6966): mean VIX 20.0, mean realized 16.3, mean gap +3.7 vol pts; VIX > realized on 84% of days; worst gap -68.9 on 2020-02-20
+  in variance terms: mean (VIX²−RV²) = +0.0097; median +0.0121; 5th pct -0.0284 → short-variance payoff: frequent small gains, rare huge losses (skew -7.2)

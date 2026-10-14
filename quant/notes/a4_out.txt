@@ -1,0 +1,4 @@
+Politis-White optimal block length on |returns|: stationary=172.3
+SPY buy&hold: SR=0.51 actual maxDD=55.2% | iid bootstrap maxDD median=47.1% 95th=68.5% P(DD>=actual)=0.25 | stationary(L=40) median=44.8% 95th=65.7% P(DD>=actual)=0.19
+SPY 200d trend filter: SR=0.62 actual maxDD=27.3% | iid bootstrap maxDD median=28.4% 95th=43.7% P(DD>=actual)=0.57 | stationary(L=40) median=27.6% 95th=43.1% P(DD>=actual)=0.51
+SPY autocorr of returns lag1/5/20 = [-0.082 -0.016  0.003]; of |returns| = [0.282 0.328 0.218]  -> returns ~uncorrelated, volatility strongly persistent

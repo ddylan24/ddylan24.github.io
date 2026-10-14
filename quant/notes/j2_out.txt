@@ -1,0 +1,10 @@
+SPY options chain (Yahoo), expiry 2026-11-13 (30 days), spot 768.33, r=4.25% (FRED 3m T-bill); OTM puts below spot, OTM calls above; mid prices, spread<50%
+  K/S=0.852: my IV 30.8% (Yahoo's 29.7%)
+  K/S=0.898: my IV 25.1% (Yahoo's 24.1%)
+  K/S=0.950: my IV 19.3% (Yahoo's 18.2%)
+  K/S=0.975: my IV 16.7% (Yahoo's 15.5%)
+  K/S=1.000: my IV 14.5% (Yahoo's 12.9%)
+  K/S=1.026: my IV 11.4% (Yahoo's 12.2%)
+  K/S=1.050: my IV 10.4% (Yahoo's 10.8%)
+  skew: 90% put IV − ATM IV = +10.6% vol pts; 105% call − ATM = -4.2%
+  Breeden–Litzenberger risk-neutral density (from smoothed smile): skew -1.42; P(SPY falls >10% by expiry) = 2.6% vs 0.5% under flat-vol Black–Scholes at ATM IV

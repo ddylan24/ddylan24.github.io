@@ -1,0 +1,12 @@
+bearish sweep events=1555, context splits tested M=42
+naive p<0.05: 6   |t|>3: 1   Bonferroni<0.05: 1   Holm<0.05: 1   BH q<0.10: 1
+top 6:
+      feature   n    diff       t      p   bonf   holm   bh_q
+   above_sma5 951 -0.0047 -3.5874 0.0003 0.0147 0.0147 0.0147
+near_10d_high 750 -0.0032 -2.7160 0.0067 0.2812 0.2745 0.1406
+  month_start 217 -0.0048 -2.4875 0.0135 0.5659 0.5389 0.1545
+    month_end 369  0.0033  2.4458 0.0147 0.6179 0.5738 0.1545
+   strong_red 466  0.0030  2.1298 0.0335 1.0000 1.0000 0.2531
+     gap_down 205 -0.0041 -2.1063 0.0362 1.0000 1.0000 0.2531
+placebo (random event dates, 300 runs): naive 'significant' splits per run mean=6.1, 95th pct=13, max=23  (expected under pure independence = 2.1)
+P(at least one false positive at 5% among 42 independent tests) = 0.884

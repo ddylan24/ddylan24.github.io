@@ -1,0 +1,11 @@
+MOM (Ken French UMD) monthly 1927-01-31→2026-08-31: mean 7.4%/yr, Sharpe 0.45, skew -3.02, kurtosis 30.4
+  worst months: 1932-08 -52.6% (mkt +37.1%), 1932-07 -45.6% (mkt +33.6%), 2009-04 -34.4% (mkt +10.2%), 1939-09 -31.4% (mkt +16.9%), 2001-01 -25.4% (mkt +3.3%), 1938-06 -24.9% (mkt +23.9%)
+  bear market (past 24m mkt<0) & market up this month  n= 156: mean MOM -2.64%/month
+  bear market & market down                            n= 119: mean MOM +3.19%/month
+  normal times                                         n= 921: mean MOM +0.83%/month
+  MOM market beta in bear states: -0.64
+  MOM market beta in normal states: +0.05
+Constant-vol momentum (scale = 12%/trailing 6m vol, lagged), 1927–2026: Sharpe 0.87 vs raw 0.45; skew -0.40 vs -3.01; worst month -29.1% vs -52.6%; max leverage 4.7x
+  1927–1999: const-vol Sharpe 1.00 vs raw 0.58
+  2000–2026: const-vol Sharpe 0.40 vs raw 0.13
+  raw MOM max drawdown 78% (trough 1939-09); 2009 Mar–May cumulative -49.4%

@@ -1,0 +1,19 @@
+Glosten–Milgrom (V∈{99,101}, informed share π=0.3): initial spread 0.600 (= π·(VH−VL) = 0.600); after 10 trades 0.290, 30 trades 0.086; mid drifts to true value: 100.00→100.53→100.86
+  initial spread with π=0.1: 0.20  (spread ∝ share of informed traders)
+  initial spread with π=0.3: 0.60  (spread ∝ share of informed traders)
+  initial spread with π=0.6: 1.20  (spread ∝ share of informed traders)
+Kyle: β=σu/σv=0.50, λ=σv/(2σu)=1.00; sim: regression of p on order flow slope 1.00; E[p|y]≈E[v|y]? slope of v on y 1.00; Var(v|p)/Var(v) = 0.500 (theory 0.5); insider profit 1.002 (theory σuσv/2=1.000)
+  insider with β=0.25: expected profit 0.751
+  insider with β=0.5: expected profit 1.002
+  insider with β=1.0: expected profit 0.001
+Roll estimator SPY (2y daily): autocov -3.1922 → spread = 2√(−cov) = 3.573 $ (54.4 bp)
+Roll estimator IWM (2y daily): autocov -0.6043 → spread = 2√(−cov) = 1.555 $ (63.4 bp)
+Roll estimator UPST (2y daily): autocov -0.3832 → spread = 2√(−cov) = 1.238 $ (259.7 bp)
+  sim (no gaps) close-close     : mean/σ² 1.005, efficiency vs close-close 1.0x
+  sim (no gaps) Parkinson       : mean/σ² 0.939, efficiency vs close-close 5.2x
+  sim (no gaps) Garman–Klass    : mean/σ² 0.913, efficiency vs close-close 8.3x
+  sim (no gaps) Rogers–Satchell : mean/σ² 0.913, efficiency vs close-close 6.5x
+Real SPY 1999–2026 annualized vol: close-close 19.2%, Parkinson 15.8%, Garman–Klass 16.0%, overnight-gap share of variance 34% → range estimators miss the overnight part; Yang–Zhang adds it back
+  next-month variance forecast QLIKE loss using close-close             : 0.4728 (lower is better)
+  next-month variance forecast QLIKE loss using Parkinson+overnight     : 0.3939 (lower is better)
+  next-month variance forecast QLIKE loss using Garman–Klass+overnight  : 0.3905 (lower is better)

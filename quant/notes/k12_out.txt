@@ -1,0 +1,16 @@
+Heston dS=rSdt+√v S dW1, dv=κ(θ−v)dt+σ_v√v dW2, corr(dW1,dW2)=ρ. MC 60k paths, 30-day expiry, full-truncation Euler.
+  market IV (SPY 2026-11-13): 0.850:30.8% 0.900:25.1% 0.950:19.3% 0.975:16.7% 1.000:14.5% 1.025:11.4% 1.050:10.4%
+  ρ=+0.0, σv=1.0: 21.5% 18.8% 16.0% 14.6% 13.7% 14.2% 15.4%  (RMSE 5.0%)
+  ρ=-0.5, σv=1.0: 24.7% 21.7% 18.1% 16.0% 13.8% 12.5% 12.6%  (RMSE 2.8%)
+  ρ=-0.7, σv=1.0: 25.9% 22.7% 18.7% 16.4% 13.8% 11.5% 10.8%  (RMSE 2.1%)
+  ρ=-0.9, σv=1.0: 26.9% 23.5% 19.4% 16.9% 13.8% 10.0% 7.8%  (RMSE 2.0%)
+  best on grid: ρ=-0.7, σv=1.4, v0=0.021 (√v0=14.5%), κ=3, θ=.04 → 28.2% 24.2% 19.2% 16.2% 12.8% 10.2% 10.6%  RMSE 1.31%
+  ρ=0 gives a symmetric smile; negative spot–vol correlation (leverage effect, C2) creates the put skew.
+Yield-curve PCA (FRED Treasury CMT 3m,1y,2y,5y,10y,30y), daily changes 1990-01-03→2026-10-09 (n=9199): variance explained PC1 75.6%, PC2 14.2%, PC3 6.6%
+  PC1 (level) loadings: 3m:+0.17 1y:+0.32 2y:+0.45 5y:+0.52 10y:+0.48 30y:+0.39
+  PC2 (slope) loadings: 3m:-0.73 1y:-0.41 2y:-0.21 5y:+0.10 10y:+0.30 30y:+0.40
+  PC3 (curvature) loadings: 3m:-0.61 1y:+0.26 2y:+0.50 5y:+0.16 10y:-0.19 30y:-0.49
+  10y 4% bond, yield +100bp: exact -7.72%, duration-only -8.11%, duration+convexity -7.71%
+  10y 4% bond, yield -100bp: exact +8.53%, duration-only +8.11%, duration+convexity +8.51%
+  10y 4% bond, yield +300bp: exact -21.07%, duration-only -24.33%, duration+convexity -20.70%
+  modified duration 8.11, convexity 80.8

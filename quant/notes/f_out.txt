@@ -1,0 +1,8 @@
+Spurious regression (two INDEPENDENT random walks, n=500, 1000 trials): |t|>1.96 in 90% of trials; median R² 0.18
+KO/PEP: full-sample Engle–Granger p=0.990; cointegrated (p<.05) in 15% of rolling 2y windows; tradable years 2, mean yearly spread P&L +0.039 log-units, positive in 100%
+XOM/CVX: full-sample Engle–Granger p=0.743; cointegrated (p<.05) in 12% of rolling 2y windows; tradable years 1, mean yearly spread P&L -0.010 log-units, positive in 0%
+EWA/EWC: full-sample Engle–Granger p=0.533; cointegrated (p<.05) in 15% of rolling 2y windows; tradable years 5, mean yearly spread P&L +0.025 log-units, positive in 80%
+GLD/GDX: full-sample Engle–Granger p=0.382; cointegrated (p<.05) in 12% of rolling 2y windows; tradable years 1, mean yearly spread P&L +0.039 log-units, positive in 100%
+HD/LOW: full-sample Engle–Granger p=0.197; cointegrated (p<.05) in 0% of rolling 2y windows; tradable years 1, mean yearly spread P&L -0.037 log-units, positive in 0%
+V/MA: full-sample Engle–Granger p=0.093; cointegrated (p<.05) in 18% of rolling 2y windows; tradable years 6, mean yearly spread P&L +0.061 log-units, positive in 83%
+Kalman hedge ratio EWA~EWC: β ranged 0.74–0.93 (static OLS β=0.93); normalized innovations std 0.29 (≈1 if model well-specified)

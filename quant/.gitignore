@@ -1,0 +1,18 @@
+# raw downloaded data (re-create with data/fetch_data.sh)
+data/*.zip
+data/F-F_*.csv
+data/*Industry*.csv
+data/Portfolios_*.csv
+data/DGS*.csv
+data/VIXCLS.csv
+data/T10Y2Y.csv
+data/BAMLH0A0HYM2.csv
+data/*.xlsx
+data/spy.csv
+data/ff3_daily.csv
+data/lev_etfs.csv
+data/pairs.csv
+data/tsmom_etfs.csv
+data/btc.csv
+data/pm/
+__pycache__/

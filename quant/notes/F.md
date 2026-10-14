@@ -1,0 +1,7 @@
+# F1/F2 — Cointegration & Kalman (Yahoo adjusted closes, 2008-03 → 2026-10; common window set by V's IPO)
+Math: x_t, y_t each I(1) (random-walk-like). Cointegrated if ∃β: y − βx is I(0) (stationary). Engle–Granger: OLS y on x, ADF on residual with special (MacKinnon) critical values. Johansen for >2 series.
+Spurious regression (Granger–Newbold 1974): regress two INDEPENDENT random walks (n=500, 1000 trials): |t|>1.96 in 90% of trials, median R² 0.18. Never regress price levels and trust the t-stat.
+Real pairs, full-sample EG p-values: KO/PEP 0.990; XOM/CVX 0.743; EWA/EWC 0.533; GLD/GDX 0.382; HD/LOW 0.197; V/MA 0.093 → none cointegrated over 18 years at 5%.
+Share of rolling 2-year windows (step 6m) cointegrated at 5%: KO/PEP 15%, XOM/CVX 12%, EWA/EWC 15%, GLD/GDX 12%, HD/LOW 0%, V/MA 18% — barely above the 5% false-positive rate. Relationships come and go.
+Form-2y/trade-1y z-score rule (enter |z|>2, exit |z|<.5, stop |z|>4; no costs): tradable years only 1–6 per pair; tiny samples, mixed P&L (V/MA +0.061 log/yr avg, 5/6 positive; HD/LOW, XOM/CVX negative). Not enough evidence either way; consistent with Gatev et al. post-2000 decline (Do & Faff 2010).
+Kalman dynamic hedge ratio EWA~EWC (δ=1e-5, Ve=1e-3): β drifted 0.74–0.93 vs static 0.93, but normalized innovation std 0.29 (should be ≈1) → Ve set too high; Kalman output depends heavily on noise parameters — estimate them by MLE, don't eyeball.

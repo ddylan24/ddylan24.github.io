@@ -1,0 +1,15 @@
+Barrier formula P(hit +a before −b) for drift μ, vol σ per day: (1−e^{2μb/σ²})/(e^{−2μa/σ²}−e^{2μb/σ²}); μ=0 ⇒ b/(a+b)
+  no edge                            formula 0.40 | MC static 0.41 (median 28 days) | MC trailing-DD 0.29
+  no edge, 3x size                   formula 0.40 | MC static 0.43 (median 5 days) | MC trailing-DD 0.35
+  costs only (−0.05%/day)            formula 0.29 | MC static 0.28 (median 28 days) | MC trailing-DD 0.20
+  costs only, 3x size                formula 0.36 | MC static 0.37 (median 4 days) | MC trailing-DD 0.31
+  Sharpe 1 strategy, 1% daily vol    formula 0.55 | MC static 0.58 (median 27 days) | MC trailing-DD 0.43
+  Sharpe 2, 1% daily vol             formula 0.69 | MC static 0.72 (median 24 days) | MC trailing-DD 0.56
+  Sharpe 2, 0.5% daily vol           formula 0.87 | MC static 0.89 (median 68 days) | MC trailing-DD 0.73
+  need annual Sharpe 5.24 for 93% pass at 1.00% daily vol (static DD) — median days to pass ≈ 16
+  need annual Sharpe 2.62 for 93% pass at 0.50% daily vol (static DD) — median days to pass ≈ 59
+  need annual Sharpe 1.31 for 93% pass at 0.25% daily vol (static DD) — median days to pass ≈ 229
+  note: with true Sharpe S, P depends only on k·b = 2μb/σ² ⇒ lower vol raises pass prob for a positive edge (but slower); for a NEGATIVE edge, bigger size (more vol) RAISES pass prob — 'bold play' (Dubins–Savage)
+  pass prob 40%: break-even expected payout per pass = fee/P = $375 per $150 attempt
+  pass prob 60%: break-even expected payout per pass = fee/P = $250 per $150 attempt
+  pass prob 93%: break-even expected payout per pass = fee/P = $161 per $150 attempt

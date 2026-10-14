@@ -1,0 +1,12 @@
+HMM fit on CRSP market (Ken French) 1926–1999 daily, n=19612
+  state CALM: mean +20.5%/yr, vol 9.6%/yr, stay prob 0.9862 → expected duration 73 days
+  state TURBULENT: mean -34.3%/yr, vol 31.0%/yr, stay prob 0.9436 → expected duration 18 days
+  stationary distribution: calm 80.4%, turbulent 19.6%
+Out-of-sample 2000–2026 (params frozen from 1926–1999); signal applied NEXT day:
+  buy & hold market                            CAGR   8.6%  Sharpe 0.42  maxDD 54.6%  time invested 100%
+  HMM filtered P(calm)>0.5 (real-time)         CAGR   5.3%  Sharpe 0.36  maxDD 37.5%  time invested 67%
+  HMM SMOOTHED (uses future data = cheating)   CAGR  15.2%  Sharpe 1.43  maxDD  8.8%  time invested 64%
+  HMM vol-scaled to 15% (cap 1x)               CAGR   7.5%  Sharpe 0.47  maxDD 36.8%  time invested 82%
+  filtered vs smoothed regime agree 89.8% of days; filtered switches 584x, smoothed 156x
+  2008-09: filter first flagged turbulent on 2008-09-02
+  2020-02: filter first flagged turbulent on 2020-02-24

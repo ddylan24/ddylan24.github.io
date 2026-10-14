@@ -1,0 +1,1209 @@
+<title>Quant Trading Field Manual</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500;62..125,700;62..125,800&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<style>
+/* Layout: research-notebook course. Sticky module index on wide screens, one reading column, lab widgets inset as instruments. */
+:root{
+  --bg:#F2F4F3; --surface:#FFFFFF; --ink:#16202A; --muted:#56636C; --rule:#D3DBD8;
+  --accent:#1D5E86; --accent-soft:#E2EDF3; --loss:#A63A22; --gain:#2B7A4B; --grid:#E6EBE9;
+  --display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0F1518; --surface:#162026; --ink:#E3E9E7; --muted:#97A5AC; --rule:#2B383E;
+  --accent:#74B6E0; --accent-soft:#1A2D3A; --loss:#E8876A; --gain:#71C995; --grid:#1F2A30; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0F1518; --surface:#162026; --ink:#E3E9E7; --muted:#97A5AC; --rule:#2B383E;
+  --accent:#74B6E0; --accent-soft:#1A2D3A; --loss:#E8876A; --gain:#71C995; --grid:#1F2A30; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:1.0625rem;line-height:1.62;padding-inline:clamp(16px,4vw,48px);padding-block:0 64px}
+a{color:var(--accent);text-underline-offset:2px}
+a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.12;margin:0}
+h2{font-size:clamp(1.55rem,3.2vw,2rem);font-weight:800;font-stretch:88%;letter-spacing:-.01em}
+h3{font-size:1.12rem;font-weight:700;font-stretch:95%;margin-top:1.6em}
+p,ul,ol{margin:0}
+.flow>*+*{margin-top:1em}
+code,.num{font-family:var(--mono);font-size:.88em}
+.num{font-variant-numeric:tabular-nums}
+blockquote{margin:0;padding:4px 0 4px 16px;border-left:2px solid var(--rule);font-style:italic;color:var(--ink)}
+blockquote cite{display:block;font-style:normal;font-family:var(--mono);font-size:.76rem;color:var(--muted);margin-top:4px}
+
+/* masthead */
+.mast{max-width:1180px;margin-inline:auto;padding-block:56px 36px;border-bottom:1px solid var(--rule);display:grid;gap:18px}
+.eyebrow{font-family:var(--mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.mast h1{font-size:clamp(2.4rem,7vw,4.6rem);font-weight:800;font-stretch:72%;letter-spacing:-.015em;line-height:.98}
+.mast h1 span{color:var(--accent)}
+.mast .lede{max-width:62ch;font-size:1.15rem;color:var(--ink)}
+.ticker{display:flex;flex-wrap:wrap;gap:8px 22px;font-family:var(--mono);font-size:.82rem;color:var(--muted)}
+.ticker b{color:var(--ink);font-weight:500}
+
+/* shell */
+.shell{max-width:1180px;margin-inline:auto;display:grid;grid-template-columns:220px minmax(0,1fr);gap:56px;padding-top:40px}
+nav.toc{position:sticky;top:calc(env(safe-area-inset-top,0px) + 20px);align-self:start;font-family:var(--display);font-size:.9rem}
+nav.toc ol{list-style:none;padding:0;display:grid;gap:2px;counter-reset:m}
+nav.toc li{counter-increment:m}
+nav.toc a{display:grid;grid-template-columns:2.2em 1fr;padding:5px 8px;border-radius:4px;color:var(--muted);text-decoration:none;font-stretch:92%}
+nav.toc a::before{content:counter(m,decimal-leading-zero);font-family:var(--mono);font-size:.78rem;padding-top:2px}
+nav.toc a:hover{background:var(--accent-soft);color:var(--ink)}
+main{min-width:0;max-width:72ch}
+section{padding-block:28px 40px;border-bottom:1px solid var(--rule)}
+section:last-child{border-bottom:0}
+.mod{font-family:var(--mono);font-size:.78rem;color:var(--accent);letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px;display:block}
+
+/* devices */
+.src{font-family:var(--mono);font-size:.74rem;letter-spacing:.04em;text-transform:uppercase;padding:2px 7px;border-radius:3px;white-space:nowrap;vertical-align:2px}
+.src.dt{background:var(--accent-soft);color:var(--accent)}
+.src.rs{background:var(--grid);color:var(--muted)}
+.callout{border-left:3px solid var(--accent);padding:12px 16px;background:var(--surface)}
+.callout.warn{border-left-color:var(--loss)}
+.callout p+p,.callout p+ul,.callout ul+p{margin-top:.6em}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.kpi{background:var(--surface);border:1px solid var(--rule);padding:14px 14px 12px}
+.kpi .v{font-family:var(--display);font-weight:800;font-stretch:80%;font-size:2rem;line-height:1;font-variant-numeric:tabular-nums}
+.kpi .v.loss{color:var(--loss)}
+.kpi .l{font-size:.86rem;color:var(--muted);margin-top:6px;line-height:1.35}
+.pipe{list-style:none;padding:0;display:grid;gap:0;counter-reset:p;border:1px solid var(--rule);background:var(--surface)}
+.pipe li{counter-increment:p;display:grid;grid-template-columns:2.6em minmax(0,1fr);gap:10px;padding:10px 14px;border-top:1px solid var(--rule)}
+.pipe li:first-child{border-top:0}
+.pipe li::before{content:counter(p,decimal-leading-zero);font-family:var(--mono);color:var(--accent);font-size:.85rem;padding-top:3px}
+.pipe b{font-family:var(--display);font-stretch:92%}
+.tablewrap{overflow-x:auto;border:1px solid var(--rule);background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:.93rem}
+th,td{text-align:left;padding:8px 12px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-family:var(--display);font-stretch:92%;font-weight:700;font-size:.85rem;color:var(--muted)}
+td.r,th.r{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums}
+tr:last-child td{border-bottom:0}
+.formula{font-family:var(--mono);font-size:.92rem;background:var(--surface);border:1px solid var(--rule);padding:10px 14px;overflow-x:auto;white-space:pre}
+ul.tight,ol.tight{padding-left:1.25em;display:grid;gap:.35em}
+
+/* lab */
+.lab{background:var(--surface);border:1px solid var(--rule);padding:16px;display:grid;gap:14px}
+.lab-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;align-items:baseline}
+.lab-head b{font-family:var(--display);font-stretch:85%;font-size:1.05rem}
+.controls{display:flex;flex-wrap:wrap;gap:12px 18px;align-items:center;font-family:var(--display);font-size:.9rem}
+.controls label{display:flex;align-items:center;gap:8px}
+.controls input[type=range]{width:160px;accent-color:var(--accent)}
+.controls input[type=checkbox]{accent-color:var(--accent);width:16px;height:16px}
+.controls input[type=number]{width:5.5em;font-family:var(--mono);padding:4px 6px;border:1px solid var(--rule);background:var(--bg);color:var(--ink)}
+button{font-family:var(--display);font-weight:700;font-stretch:90%;font-size:.9rem;padding:7px 14px;border:1px solid var(--accent);background:var(--accent);color:var(--surface);border-radius:3px;cursor:pointer}
+canvas{width:100%;height:260px;display:block}
+.readout{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;font-family:var(--mono);font-size:.85rem}
+.readout div{border-top:2px solid var(--rule);padding-top:6px}
+.readout span{display:block;color:var(--muted);font-family:var(--display);font-size:.78rem}
+.readout b{font-size:1.25rem;font-weight:500;font-variant-numeric:tabular-nums}
+.gain{color:var(--gain)} .loss{color:var(--loss)}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-family:var(--display);font-size:.8rem;color:var(--muted)}
+.legend i{display:inline-block;width:14px;height:3px;vertical-align:middle;margin-right:6px}
+
+/* quiz */
+details{border:1px solid var(--rule);background:var(--surface);padding:10px 14px}
+details+details{margin-top:8px}
+summary{cursor:pointer;font-family:var(--display);font-stretch:95%;font-weight:700}
+details p{margin-top:.6em}
+
+#m-formulas td:first-child{min-width:15em}
+#m-formulas td:last-child{white-space:nowrap;color:var(--muted);font-size:.86rem}
+.refs{font-size:.92rem;display:grid;gap:.45em;padding-left:1.2em}
+
+@media (max-width:860px){
+  .shell{grid-template-columns:minmax(0,1fr);gap:8px}
+  nav.toc{position:static}
+  nav.toc ol{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
+}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+html{scroll-behavior:smooth}
+</style>
+
+<header class="mast">
+  <div class="eyebrow">A self-study course · built from DeltaTrend Trading's videos + the research literature · October 2026</div>
+  <h1>Quant Trading<br><span>Field Manual</span></h1>
+  <p class="lede">Fifteen modules that take you from "what is an edge" to testing one without fooling yourself. They follow the method in DeltaTrend's <i>Quant Process</i> series, checked against the published research, with three labs where you can watch the ideas work.</p>
+  <div class="ticker"><span><b>5</b> video transcripts read</span><span><b>25+</b> papers read</span><span><b>25</b> experiments on real data</span><span><b>3</b> interactive labs</span><span><span class="src dt">DeltaTrend</span> = from the videos</span><span><span class="src rs">Research</span> = from papers</span></div>
+</header>
+
+<div class="shell">
+<nav class="toc" aria-label="Modules">
+  <ol>
+    <li><a href="#m-sources">The videos</a></li>
+    <li><a href="#m-baseline">The baseline</a></li>
+    <li><a href="#m-edge">Where edge comes from</a></li>
+    <li><a href="#m-process">The quant process</a></li>
+    <li><a href="#m-features">Feature engineering</a></li>
+    <li><a href="#m-events">Events lab</a></li>
+    <li><a href="#m-models">Price models</a></li>
+    <li><a href="#m-overfit">Overfitting lab</a></li>
+    <li><a href="#m-decay">Edge decay</a></li>
+    <li><a href="#m-sizing">Sizing lab</a></li>
+    <li><a href="#m-costs">Costs and execution</a></li>
+    <li><a href="#m-ml">Machine learning</a></li>
+    <li><a href="#m-path">Your practice path</a></li>
+    <li><a href="#m-pm">Prediction markets</a></li>
+    <li><a href="#m-formulas">Formula sheet</a></li>
+  </ol>
+</nav>
+
+<main>
+
+<section id="m-sources" class="flow">
+  <span class="mod">Module 01 · Read this first</span>
+  <h2>The videos, and who made them</h2>
+  <p><span class="src dt">DeltaTrend</span> Thomas, the creator, describes himself as an applied physics student at Columbia University. He says his father is an institutional trader, and that this is what steered him away from guru strategies and toward math and programming. I couldn't verify either claim independently.</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Video</th><th>What it teaches</th></tr></thead>
+    <tbody>
+      <tr><td><a href="https://www.youtube.com/watch?v=M3-0LfZMsz4">The Quant Process 01</a><br><small>also <a href="https://www.youtube.com/watch?v=TSmF8IU-rrM">TSmF8IU-rrM</a></small></td><td>"How Trading Is Actually Done." Why the retail workflow is backwards, why public strategies can't have edge, and an introduction to QuantPad.</td></tr>
+      <tr><td><a href="https://www.youtube.com/watch?v=TEVRiSNxs50">The Quant Process 02</a></td><td>"Turning Data Into Meaning." What a feature is, feature types, a step-by-step method for building one, and a live test of prior-day high/low sweeps on ES futures.</td></tr>
+      <tr><td><a href="https://www.youtube.com/watch?v=Zu4sL5u-WyU">The Quant Process 03</a></td><td>"STOP Sampling EVERY CANDLE." Event-defining features, the frequency-vs-sample-size tradeoff, and a volatility-scaled CUSUM event detector on Bitcoin.</td></tr>
+      <tr><td><a href="https://www.youtube.com/watch?v=A5w-dEgIU1M">A5w-dEgIU1M</a></td><td>Veritasium, "The Trillion Dollar Equation." Thorp, Black-Scholes-Merton, Jim Simons. Not a DeltaTrend video, but it fits Module 07.</td></tr>
+      <tr><td><a href="https://www.youtube.com/watch?v=KZeIEiBrT_w">KZeIEiBrT_w</a></td><td>Veritasium, on Markov chains: Markov vs. Nekrasov, Ulam and von Neumann's Monte Carlo method, PageRank, text prediction. The foundation for regime models and simulation (Modules 07 and 09).</td></tr>
+      <tr><td><a href="https://www.youtube.com/watch?v=BiTqwX-4rNw">BiTqwX-4rNw</a></td><td>No transcript yet. It may be a re-upload of one of the above.</td></tr>
+    </tbody>
+  </table></div>
+  <div class="callout"><p><b>Be aware of the sales angle.</b> Thomas built <b>QuantPad</b>, a paid AI tool, and Episode 01 is largely a pitch for it. The method he teaches is sound and matches the academic literature. You don't need QuantPad to use it: everything in this course can be done in free Python, and Module 13 shows how.</p></div>
+</section>
+
+<section id="m-baseline" class="flow">
+  <span class="mod">Module 02</span>
+  <h2>The baseline: most active traders lose</h2>
+  <p>Start with the base rate. Two of the largest studies of real brokerage records:</p>
+  <div class="kpis">
+    <div class="kpi"><div class="v loss">87%</div><div class="l">of Taiwanese day traders lost money net of fees in a typical year (about 360,000 traders a year, 1992–2006)</div></div>
+    <div class="kpi"><div class="v">&lt;1%</div><div class="l">of them (about 1,000 people) outperformed consistently year after year</div></div>
+    <div class="kpi"><div class="v loss">97%</div><div class="l">of Brazilians who day traded futures for 300+ days lost money</div></div>
+    <div class="kpi"><div class="v">0.4%</div><div class="l">of that Brazilian group earned more than a bank teller's wage (about US$54 a day)</div></div>
+  </div>
+  <p><span class="src rs">Research</span> Barber, Lee, Liu &amp; Odean found skill does exist: the top 500 Taiwanese day traders went on to earn 28 basis points a day after fees the following year. But it's rare. Chague, De-Losso &amp; Giovannetti found no evidence that Brazilian day traders improved with practice.</p>
+  <h3>Why Thomas says retail does it backwards</h3>
+  <p><span class="src dt">QP 01</span> He describes the standard retail path as four steps, each of which serves the seller:</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>What retail is told</th><th>What it actually does</th></tr></thead>
+    <tbody>
+      <tr><td>1. Learn someone's strategy</td><td>Makes you buy something before you start, as if you can't begin without one.</td></tr>
+      <tr><td>2. Validate it with a manual backtest</td><td>Win rate and P&amp;L from a hand count can't tell an edge from luck, so you can't prove the strategy doesn't work.</td></tr>
+      <tr><td>3. Work on psychology and discipline</td><td>Puts the blame on you when it fails. "If every strategy works with perfect discipline, why do funds pay PhDs millions to design strategies that machines execute with no psychology at all?"</td></tr>
+      <tr><td>4. Be consistent, never give up</td><td>Keeps you paying. "Losing for a long time before figuring things out is not something that should happen."</td></tr>
+    </tbody>
+  </table></div>
+  <p>He backs this up: he coded strategies from popular influencers (TJR, Justin Werlein, ICT concepts), and he says all of them did worse than claimed, many of them terribly. His replacement is the institutional workflow: start from an idea, test whether it has predictive power, and only then build a strategy around it.</p>
+  <div class="callout warn"><p><b>One place I'd push back.</b> "There should be no prolonged and inexplicable losing" is too strong. Even a real edge has long losing stretches. A strategy with a true Sharpe ratio of 0.5, which is a good long-run strategy, still loses money in about <b>31%</b> of years and over <b>19%</b> of 3-year periods. At Sharpe 1.0 it's 16% of years. Validation tells you what losing stretch is <i>normal</i> for your strategy, so you can tell bad luck from a broken edge (Module 09).</p></div>
+</section>
+
+<section id="m-edge" class="flow">
+  <span class="mod">Module 03</span>
+  <h2>Where edge comes from</h2>
+  <p><span class="src dt">QP 02</span> Thomas's definition: outside of arbitrage, trading means finding conditions under which <b>the distribution of future outcomes differs</b> from normal. A real difference needs a reason to exist. Ask which of these three your idea is:</p>
+  <ol class="tight">
+    <li><b>Risk premium.</b> You get paid for holding a risk others don't want, such as crash risk, liquidity risk or value stocks in recessions. These edges persist but come with painful drawdowns.</li>
+    <li><b>Behavioral.</b> People under-react to news and then over-react. Momentum is the classic example.</li>
+    <li><b>Structural.</b> Someone has to trade for reasons unrelated to price: hedgers, index rebalancing, forced sellers. You're paid for supplying liquidity.</li>
+  </ol>
+  <p><span class="src dt">QP 03</span> He adds where an individual can compete: <b>better data</b> (harder to get, so fewer people use it) or <b>better interpretation</b> (a smarter model of common data). High-frequency firms also compete on faster execution, but for retail traders it's almost always one of those two.</p>
+  <h3>The effects that have survived decades of scrutiny</h3>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Effect</th><th>What the paper found</th></tr></thead>
+    <tbody>
+      <tr><td>Cross-sectional momentum<br><small>Jegadeesh &amp; Titman 1993</small></td><td>Buying the past 3–12 months' winners and shorting the losers earned roughly 1% a month in US stocks.</td></tr>
+      <tr><td>Time-series momentum (trend)<br><small>Moskowitz, Ooi &amp; Pedersen 2012</small></td><td>All 58 futures markets studied showed 1–12 month return persistence, which partly reverses later. It worked best in extreme markets. Speculators profit at hedgers' expense.</td></tr>
+      <tr><td>Value + momentum everywhere<br><small>Asness, Moskowitz &amp; Pedersen 2013</small></td><td>Both pay off in all eight markets tested, and they're negatively correlated, so combining them raises the Sharpe ratio a lot.</td></tr>
+      <tr><td>Pairs trading<br><small>Gatev, Goetzmann &amp; Rouwenhorst</small></td><td>About 12% annual excess return, 1962–1997. Smaller after costs, but still positive. "Attractive enough to sustain low cost market participants … but not attractive enough to support large amounts of investor capital."</td></tr>
+      <tr><td>PCA statistical arbitrage<br><small>Avellaneda &amp; Lee 2010</small></td><td>Mean-reversion on stock residuals: Sharpe 1.44 after costs over 1997–2007, falling to 0.9 in 2003–2007. Hit hard in the August 2007 quant unwind.</td></tr>
+      <tr><td>Volatility timing<br><small>Moreira &amp; Muir 2017</small></td><td>Cutting exposure when volatility is high raises Sharpe ratios for the market, value, momentum, profitability, investment and currency carry strategies.</td></tr>
+    </tbody>
+  </table></div>
+  <h3>I replicated trend following, and checked it against AQR</h3>
+  <p>A 15-ETF universe covering US, international and emerging equities, Treasuries, credit, gold, silver, commodities, oil, the dollar, the euro, the yen and real estate. Each month: long if the asset's trailing excess return is positive, short if negative, sized to 40% ÷ its volatility, acting one month later. Period 2008–2026, Yahoo prices, T-bill rates from Ken French.</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Lookback</th><th class="r">Sharpe, vol-scaled</th><th class="r">After 20bp costs</th><th class="r">Sharpe, equal-sized</th></tr></thead>
+    <tbody>
+      <tr><td>1 month</td><td class="r">0.14</td><td class="r loss">−0.32</td><td class="r">0.20</td></tr>
+      <tr><td>3 months</td><td class="r">0.40</td><td class="r">0.16</td><td class="r">0.23</td></tr>
+      <tr><td>6 months</td><td class="r">0.47</td><td class="r">0.29</td><td class="r">0.39</td></tr>
+      <tr><td>12 months</td><td class="r">0.43</td><td class="r">0.29</td><td class="r">0.22</td></tr>
+    </tbody>
+  </table></div>
+  <p>My 12-month version correlates <b>0.79</b> with AQR's own published TSMOM factor over the same period, with a Sharpe of 0.42 against AQR's 0.41. So the replication checks out against an independent source. What it shows:</p>
+  <ul class="tight">
+    <li><b>Decay is real.</b> AQR's factor had a Sharpe of 1.62 in 1985–1999, 1.13 in 2000–2009 and 0.40 since 2010.</li>
+    <li><b>Its value today is crisis protection.</b> In 2008 it made +26% while SPY lost 38%. In 2022 it made +29% while SPY lost 19%. In the COVID crash it made +8% while SPY lost 10%.</li>
+    <li><b>Volatility scaling roughly doubles the Sharpe ratio.</b> Short lookbacks trade so often that costs kill them.</li>
+    <li><b>Deflated Sharpe:</b> counting the 10 variants I tried, the 12-month version has a DSR of 0.84. Even one of the best-documented strategies in finance is only about 84% likely to beat luck on 18 years of data. That's Module 08 in action.</li>
+  </ul>
+  <h3>Low risk, high reward: the flat security market line</h3>
+  <p>The CAPM says expected excess return = β × market premium. Ken French's beta-sorted and variance-sorted deciles (CRSP, 1963–2026) disagree:</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Portfolio</th><th class="r">Realized β</th><th class="r">Excess return</th><th class="r">CAPM alpha</th><th class="r">Sharpe</th></tr></thead>
+    <tbody>
+      <tr><td>Lowest-beta 10%</td><td class="r">0.59</td><td class="r">6.8%</td><td class="r gain">+2.5%</td><td class="r">0.57</td></tr>
+      <tr><td>Middle</td><td class="r">1.02</td><td class="r">7.6%</td><td class="r">+0.3%</td><td class="r">0.46</td></tr>
+      <tr><td>Highest-beta 10%</td><td class="r">1.60</td><td class="r">8.7%</td><td class="r loss">−2.9%</td><td class="r">0.30</td></tr>
+      <tr><td>Highest-variance 10%</td><td class="r">1.68</td><td class="r">1.8%</td><td class="r loss">−10.3%</td><td class="r loss">0.06</td></tr>
+    </tbody>
+  </table></div>
+  <p>Each unit of beta earned only 3.4% a year, not the 7.2% market premium. Betting against beta (low-beta stocks levered up to β = 1, minus high-beta stocks scaled down to β = 1) earned <b>+6.0% a year</b> (t = 2.51) before financing costs. The most volatile stocks were the worst investment of all. The leading explanation (Frazzini &amp; Pedersen 2014) is that investors who can't or won't borrow get extra risk by buying high-beta stocks, which bids them up. Lottery-seeking does the same to the most volatile names. It's a structural edge, and capturing it requires leverage.</p>
+  <h3>Momentum's hidden risk: crashes</h3>
+  <p>Stock momentum (Ken French's UMD factor, 1927–2026) earned 7.4% a year with a Sharpe of 0.45. But its skew is <b>−3.0</b> and its kurtosis 30, and its worst months are brutal:</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Month</th><th class="r">Momentum</th><th class="r">Market that month</th></tr></thead>
+    <tbody>
+      <tr><td>August 1932</td><td class="r loss">−52.6%</td><td class="r">+37.1%</td></tr>
+      <tr><td>July 1932</td><td class="r loss">−45.6%</td><td class="r">+33.6%</td></tr>
+      <tr><td>April 2009</td><td class="r loss">−34.4%</td><td class="r">+10.2%</td></tr>
+      <tr><td>September 1939</td><td class="r loss">−31.4%</td><td class="r">+16.9%</td></tr>
+    </tbody>
+  </table></div>
+  <p>Every crash happened while the <i>market rallied</i>. The mechanism (Daniel &amp; Moskowitz 2016): after a bear market, momentum is short the beaten-down losers, which are high-beta stocks. Its market beta flips from +0.05 in normal times to <b>−0.64</b> after a bear market. When the market rebounds, the short side explodes. After a 24-month market decline, momentum averaged <b>−2.6% a month</b> in up-market months.</p>
+  <p><b>The fix is volatility scaling</b> (Barroso &amp; Santa-Clara 2015). Size momentum by 12% ÷ its trailing 6-month volatility. On the same data, that raised the Sharpe from <b>0.45 to 0.87</b>, cut the skew from −3.0 to −0.4, and shrank the worst month from −53% to −29%. It works far better here than on the market itself (Module 10), because momentum's crash risk is visible in its own volatility before it hits.</p>
+  <div class="callout"><p><b>"Public strategies can't have edge" needs one refinement.</b> Thomas (QP 01) argues that once an edge is made public it ceases to exist. That holds for <i>mispricings</i>: they get arbitraged away, and published signals lose about 58% of their returns (Module 09). <i>Risk premia</i> are different. Everything in the table above is public, and much of it still pays, because you're being paid to bear a risk most people don't want. It shrinks, but it doesn't vanish. Your own private, event-based edges will be mispricings, so his rule applies to them: keep them private.</p></div>
+</section>
+
+<section id="m-process" class="flow">
+  <span class="mod">Module 04 · The Quant Process</span>
+  <h2>The pipeline, one step at a time</h2>
+  <p><span class="src dt">QP 03</span> Thomas summarizes the whole workflow at the start of Episode 03. In order:</p>
+  <ol class="pipe">
+    <li><div><b>Define an event</b> <span class="src dt">QP 03</span>. Pick the moments worth studying: a breakout, a sweep, a news release, a volatility spike. Not every bar.</div></li>
+    <li><div><b>Measure outcomes</b> <span class="src dt">QP 02</span>. Decide what "worked" means: which barrier gets hit first, forward returns, or forward volatility.</div></li>
+    <li><div><b>Add contextual features</b> <span class="src dt">QP 02–04</span>. The same event produces different outcomes. Find what explains the difference: time of day, relative volume, trend, volatility regime.</div></li>
+    <li><div><b>Model the relationship.</b> Use statistics and then machine learning to find which combinations of context predict which outcomes.</div></li>
+    <li><div><b>Signal processing.</b> Turn model output into trade decisions: thresholds and filters.</div></li>
+    <li><div><b>Risk protocol.</b> Place and manage bets: sizing, stops, exits (Module 10).</div></li>
+    <li><div><b>Validate.</b> Bootstrapping, Monte Carlo, out-of-sample testing, counting your trials (Module 08).</div></li>
+    <li><div><b>Deploy and monitor.</b> Only after validation. Compare live results to the expected range and retire the strategy when it decays (Module 09).</div></li>
+  </ol>
+  <p>The key mindset shift: <b>you test whether an idea has predictive power before you ever build a strategy around it.</b> Most retail traders start at step 6 with someone else's entries and exits.</p>
+</section>
+
+<section id="m-features" class="flow">
+  <span class="mod">Module 05 · Quant Process 02</span>
+  <h2>Feature engineering</h2>
+  <p><span class="src dt">QP 02</span> A <b>feature</b> is raw data collapsed into a number that captures something you care about. Raw candles (open, high, low, close) make a terrible model on their own. But every chart trader already uses features without calling them that. A trend line, ATR, RSI and relative volume are all transformations of the same OHLCV data.</p>
+  <blockquote>"Your discretion is just a multi-dimensional pattern between features that you've engineered mentally but haven't actually quantified, and the outcomes of your trades."<cite>Thomas, QP 02</cite></blockquote>
+  <p>His airline analogy: to predict ticket prices from raw dates and temperatures, you'd naturally think "days until departure," "is it a holiday window?" and "how much warmer is the destination?" That's feature engineering. Once those are numbers, a computer can find the combinations far better than your intuition can.</p>
+
+  <h3>Feature types</h3>
+  <div class="tablewrap"><table>
+    <thead><tr><th>By value</th><th>Examples</th></tr></thead>
+    <tbody>
+      <tr><td><b>Continuous</b></td><td>ATR, realized volatility, RSI, % distance to a moving average or VWAP, % distance to yesterday's low</td></tr>
+      <tr><td><b>Binary</b> (0/1)</td><td>Regular trading hours? Bar made a new high of day? Bar range &gt; 2× ATR(14)? Prior-day low swept?</td></tr>
+      <tr><td><b>Ordinal</b> (ranked buckets)</td><td>Volatility regime 1–5, trend strength −2 to +2, news impact 1–3</td></tr>
+    </tbody>
+  </table></div>
+  <div class="tablewrap" style="margin-top:12px"><table>
+    <thead><tr><th>By purpose</th><th>Job</th><th>Examples</th></tr></thead>
+    <tbody>
+      <tr><td><b>Event-defining</b></td><td>Which moments are part of the experiment</td><td>Breakout candle, sweep of prior-session high, earnings release</td></tr>
+      <tr><td><b>Contextual</b></td><td>Why the same event behaves differently</td><td>Volatility regime, trend strength, time of day, wick size</td></tr>
+      <tr><td><b>Reference</b></td><td>Anchors other features are measured from</td><td>Prior session high/low, 6-month low, all-time high</td></tr>
+      <tr><td><b>Outcome</b></td><td>What happened after (the target)</td><td>Which barrier was hit first, forward returns over N bars, forward volatility</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>How to build one: the logic tree</h3>
+  <ol class="pipe">
+    <li><div><b>What do I care about?</b> Urgency, rejection, regime, distance, imbalance. Example: "Is the market trending or choppy?"</div></li>
+    <li><div><b>What raw data holds traces of it?</b> For trendiness, price alone is enough: trend efficiency, moving-average slope.</div></li>
+    <li><div><b>What type should it be?</b> Continuous (how efficient is the trend), binary (trending or not), or ordinal (−2 to +2). Try more than one and see which relates best to outcomes.</div></li>
+    <li><div><b>What transformation makes the idea explicit?</b> See the four transforms below.</div></li>
+    <li><div><b>Visualize and validate.</b> Plot examples and confirm the feature fires exactly when you meant it to. Thomas calls this extremely important.</div></li>
+  </ol>
+<div class="formula">normalize   MA slope in % per bar, not $ per bar
+ratio       ATR(short) / ATR(long)          → "violent" breakout when ≫ 1
+difference  (price − SMA) / SMA             → % stretch from the average
+encoding    z = (stretch − mean) / std      → how rare is this stretch?</div>
+  <p><b>Why normalize?</b> A moving-average slope in dollars swings much more when the S&amp;P is at 6,000 than when it was at 2,000, but the idea you care about (how steep is the trend) hasn't changed. Converting to percent keeps the feature's range stable across history, so a model doesn't mistake "the asset got more expensive" for "the trend got stronger."</p>
+
+  <h3>Stationarity without amnesia: fractional differentiation</h3>
+  <p>Models need inputs whose statistics don't drift, which is why prices get converted to returns. But returns throw away all memory of the price level. López de Prado's fix is to difference by a <i>fraction</i>:</p>
+<div class="formula">(1 − B)^d · Xₜ = Σₖ wₖ·Xₜ₋ₖ,     w₀ = 1,  wₖ = −wₖ₋₁·(d − k + 1)/k      (B = "one step back")</div>
+  <p>On real log SPY prices, 1999–2026:</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>d</th><th class="r">ADF statistic (stationary below −2.86)</th><th class="r">Correlation with price level</th></tr></thead>
+    <tbody>
+      <tr><td>0 (raw price)</td><td class="r">0.93</td><td class="r">1.000</td></tr>
+      <tr><td>0.2</td><td class="r">−1.68</td><td class="r">0.994</td></tr>
+      <tr><td><b>0.3</b></td><td class="r gain">−3.51</td><td class="r gain">0.982</td></tr>
+      <tr><td>0.5</td><td class="r">−11.4</td><td class="r">0.909</td></tr>
+      <tr><td>1.0 (ordinary returns)</td><td class="r">−62.9</td><td class="r loss">0.025</td></tr>
+    </tbody>
+  </table></div>
+  <p>d = 0.3 is already stationary and still 98% correlated with the price level. Ordinary returns keep almost none of it. That matches López de Prado's result of about d = 0.35 on S&amp;P futures. Most of the memory that standard returns discard isn't needed to get stationarity.</p>
+  <h3>Case study: sweeps of the prior day's high or low</h3>
+  <p><span class="src dt">QP 02</span> Thomas tested an idea popular with ICT traders on ES (S&amp;P 500 futures). Event: price wicks beyond the previous day's high or low, then closes back inside. Outcome: an ATR-based double barrier, meaning which of an upper or lower level gets hit first.</p>
+  <ul class="tight">
+    <li><b>2023 only:</b> the bearish case (high swept) had a 95% confidence interval for expected value that was entirely negative, so it was statistically significant. The bullish case's interval included zero.</li>
+    <li><b>2022–2025, 512 events:</b> the bearish interval now included zero. The "edge" from 2023 didn't hold over a longer period.</li>
+  </ul>
+  <p>His conclusion: when one event leads to different outcomes in different periods, that's what contextual features are for. Mine, from Module 08: also suspect luck. A result that shows up in one year and fades with more data is the classic signature of an effect that was never there. Both explanations deserve testing.</p>
+<div class="formula">95% CI for expected value  ≈  mean ± 1.96 × (std / √n)
+if the interval includes 0 → "statistically indistinguishable from zero"</div>
+  <h3>I re-ran it on 27 years of real SPY data</h3>
+  <p>Same idea on daily SPY bars, January 1999 to October 2026. Barriers at ±1.5 ATR(14) from the close, with a 10-day time limit. The outcome is the return to whichever barrier is hit first. Thomas used ES futures on intraday bars, so this tests whether the effect shows up at the daily scale.</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>1999–2026</th><th class="r">Events</th><th class="r">Mean outcome</th><th class="r">t vs 0</th><th class="r">t vs ordinary day</th></tr></thead>
+    <tbody>
+      <tr><td>Every day (baseline)</td><td class="r">6,961</td><td class="r">+0.150%</td><td class="r">5.44</td><td class="r">–</td></tr>
+      <tr><td>Low swept (bullish)</td><td class="r">1,187</td><td class="r">+0.145%</td><td class="r gain">2.18</td><td class="r">−0.09</td></tr>
+      <tr><td>High swept (bearish)</td><td class="r">1,243</td><td class="r">+0.059%</td><td class="r">0.91</td><td class="r">−1.44</td></tr>
+    </tbody>
+  </table></div>
+  <ul class="tight">
+    <li><b>The bullish sweep passes the usual test (t = 2.18) and is still worthless.</b> An ordinary SPY day earns the same, because the market drifts up. Measured against the baseline, the "edge" is −0.006%. That's the random-baseline lesson from QP 03, confirmed on real data.</li>
+    <li>No sub-period (1999–2008, 2009–2016, 2017–2026) shows a significant difference from an ordinary day for either sweep. The chance of hitting the upper barrier first is within a few points of the baseline every time.</li>
+    <li>2023 had only 38 bearish events, and the confidence interval ran from −0.44% to +0.65%. A single year is rarely enough.</li>
+  </ul>
+  <h3>The hidden problem: overlapping outcomes</h3>
+  <p>Each event's outcome looks up to 10 days ahead, so events a day or two apart share most of their future. Consecutive outcomes on SPY have a correlation of <b>0.62</b> (0.44 two days apart, 0.19 five days apart). The √n in the formula assumes independent samples. Overlap means you have fewer than you think:</p>
+<div class="formula">effective n  ≈  n / (1 + 2·Σ ρₖ)        ρₖ = correlation of outcomes k events apart
+true SE      ≈  naive SE × √(n / effective n)</div>
+  <p>Resampling blocks of 10 consecutive events (a block bootstrap) widened the bearish confidence interval by about 30%, from [−0.07%, +0.18%] to [−0.11%, +0.22%]. Even the baseline's t of 5.44 is overstated. Fixes: block bootstrap, Newey-West standard errors, or only counting events whose outcome windows don't overlap.</p>
+</section>
+
+<section id="m-events" class="flow">
+  <span class="mod">Module 06 · Quant Process 03 · Lab</span>
+  <h2>Event-defining features: stop sampling every candle</h2>
+  <p><span class="src dt">QP 03</span> An event-defining feature says: <i>this timestamp is a decision point, include it in the experiment.</i> If you try to predict the outcome of every bar, most bars have no catalyst, so you're forecasting noise and your accuracy will be terrible. Pick events where something happened, and the outcome may be learnable.</p>
+  <p>The tradeoff: events that fire too often are just noise again. Events that fire too rarely (once a year) don't give you enough samples to learn anything.</p>
+  <h3>Event ideas from the episode</h3>
+  <ul class="tight">
+    <li><b>Price structure:</b> breakout through a significant level, sweep of a prior session high or low, new day or week opening gap</li>
+    <li><b>Volatility:</b> volatility spike, compression followed by expansion</li>
+    <li><b>Microstructure:</b> order-book anomalies (Level 3 data)</li>
+    <li><b>Cross-asset:</b> spread deviations between related instruments</li>
+    <li><b>News:</b> earnings, CPI, FOMC</li>
+  </ul>
+  <p>Common events like breakouts can still work, but then you need better context data or a better model than everyone else using them.</p>
+  <h3>The CUSUM event detector</h3>
+  <p>A classic in quant finance, and the example Thomas builds. Add up returns in two buckets, one for upward pressure and one for downward. When a bucket crosses a threshold, enough movement has piled up in one direction to count as an event. Flag it and reset that bucket.</p>
+<div class="formula">S⁺ₜ = max(0, S⁺ₜ₋₁ + rₜ)        S⁻ₜ = min(0, S⁻ₜ₋₁ + rₜ)
+event when S⁺ₜ &gt; h  or  S⁻ₜ &lt; −h,   then reset that bucket to 0
+h = k × current volatility   (Thomas uses an ATR multiple)</div>
+  <p>Scaling the threshold by volatility matters. With a fixed threshold, a high-volatility regime spams you with events and a calm one gives you none. Try it:</p>
+
+  <div class="lab" id="lab-cusum">
+    <div class="lab-head"><b>Lab A · CUSUM events on a simulated market</b><span class="eyebrow">6 years of daily data, calm and volatile regimes</span></div>
+    <div class="controls">
+      <label for="cs-k">Threshold multiple k <input id="cs-k" type="range" min="0.5" max="8" step="0.25" value="3"><span class="num" id="cs-k-out">3.00</span></label>
+      <label for="cs-norm"><input id="cs-norm" type="checkbox" checked> Scale threshold by current volatility</label>
+    </div>
+    <canvas id="cs-canvas" aria-label="Simulated price with CUSUM up and down events marked"></canvas>
+    <div class="legend"><span><i style="background:var(--gain)"></i>Upward-pressure event</span><span><i style="background:var(--loss)"></i>Downward-pressure event</span><span>Shaded = high-volatility regime</span></div>
+    <div class="readout">
+      <div><span>Events found</span><b id="cs-n">–</b></div>
+      <div><span>Events per year</span><b id="cs-py">–</b></div>
+      <div><span>Share in volatile regime</span><b id="cs-hv">–</b></div>
+      <div><span>Volatile regime's share of time</span><b id="cs-hvt">–</b></div>
+    </div>
+  </div>
+  <p>Turn off volatility scaling and watch events pile up in the shaded volatile periods. Drag k to 0.5 and nearly every few bars becomes an "event" (noise). Drag it to 8 and you're left with too few to study. That's Thomas's parameter sweep.</p>
+  <div class="callout warn"><p><b>Events are not signals.</b> Thomas repeats this several times: the triangles don't mean buy or sell. They only mark what's in scope for the experiment.</p><p>When he checked forward returns after Bitcoin CUSUM events, everything looked positive at 20 days, <i>including randomly chosen days</i>, because Bitcoin rose strongly in 2024. Always compare against a <b>random baseline</b> to separate your event's effect from the market's overall drift.</p></div>
+  <h3>CUSUM events on real Bitcoin and SPY</h3>
+  <p>I ran the same detector (threshold = k × 20-day volatility) on real data and compared returns after each event with returns after a random day:</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>k = 3</th><th class="r">Events/yr</th><th class="r">5 days after an up event</th><th class="r">5 days after a down event</th><th class="r">Random day</th></tr></thead>
+    <tbody>
+      <tr><td>Bitcoin 2015–2026</td><td class="r">42</td><td class="r gain">+1.70% (t 2.0)</td><td class="r">−0.18% (t −1.4)</td><td class="r">+0.66%</td></tr>
+      <tr><td>SPY 1999–2026</td><td class="r">31</td><td class="r">−0.06% (t −2.5)</td><td class="r gain">+0.79% (t 3.9)</td><td class="r">+0.16%</td></tr>
+    </tbody>
+  </table></div>
+  <p>The two markets behave in opposite ways. <b>Bitcoin continues</b>: big up moves are followed by more upside, and the 20-day excess after up events has t = 2.4. <b>SPY reverses</b>: big down moves are followed by bounces. With 24 tests and overlapping windows, only the SPY bounce clearly survives a Bonferroni correction. Both are well-known generic effects, crypto trend and equity short-term reversal, not something special about the events. They're the <b>base rates your contextual features have to beat</b>.</p>
+  <p>Next in his series: contextual features. His analogy is predicting someone's height from where they're from alone, ignoring age, sex and parents' height. Averaging every event together throws that context away.</p>
+  <div class="callout"><p><b>Homework, from QP 03.</b> Define three event-based features for a market you know. Examples: CUSUM fires at 3× volatility; volume exceeds 3× its 20-day median; a candle closes beyond the prior session's high with almost no upper wick. For each one, write the outcome you'd measure (double barrier or forward return) and the random baseline you'd compare against.</p></div>
+</section>
+
+<section id="m-models" class="flow">
+  <span class="mod">Module 07</span>
+  <h2>Models of price: Markov chains, Monte Carlo, Black-Scholes</h2>
+  <p><b>"The Trillion Dollar Equation"</b> traces the history. A few links to the rest of this course:</p>
+  <ul class="tight">
+    <li><b>Ed Thorp</b>, a physics PhD, invented card counting and bet more when the count favored him and less when it didn't. That's Kelly sizing (Module 10). He took the same thinking to markets and earned about 20% a year for 20 years.</li>
+    <li><b>Dynamic hedging.</b> If Bob sells Alice a call option, he can offset it by holding Δ shares of the stock and adjusting as the price moves. The hedged position has minimal risk, so in effect he "manufactures" the option.</li>
+    <li><b>Black, Scholes &amp; Merton (1973)</b> argued that a perfectly hedged portfolio must earn the risk-free rate. That gave an explicit formula for option prices. The CBOE opened the same year, and derivatives markets are now several hundred trillion dollars.</li>
+    <li><b>Jim Simons</b> founded Renaissance Technologies in 1978 and hired scientists, not finance people. One of them, Leonard Baum, pioneered <b>hidden Markov models</b>, which infer hidden states from what you can observe (Module 09). The Medallion fund became the best-performing fund ever.</li>
+    <li>The video's closing point matches Thomas's: <i>once a pattern is found and exploited, it starts to disappear.</i></li>
+  </ul>
+  <h3>Markov chains: probability when events depend on each other</h3>
+  <p><b>The Markov chain video</b> explains the tool underneath regime models, simulation and the HMMs Renaissance used.</p>
+  <ul class="tight">
+    <li><b>The law of large numbers</b> says averages settle down as you collect more trials. Bernoulli proved it for <i>independent</i> events like coin flips. Nekrasov then argued backwards: if averages settle, the events must be independent.</li>
+    <li><b>Markov proved him wrong</b> with vowels and consonants in Pushkin's <i>Eugene Onegin</i>. 43% of letters were vowels, so independent vowel-vowel pairs would be about 18%. He counted only 6%: letters depend on the previous one. Yet a chain built from those dependencies still settled to 43% vowels.</li>
+    <li><b>A Markov chain</b> is a set of <b>states</b> plus <b>transition probabilities</b> between them. The next step depends only on the current state, not the full history ("memoryless"). Run it long enough and the share of time in each state converges to a <b>stationary distribution</b>.</li>
+    <li><b>Monte Carlo</b> came from Ulam estimating his odds of winning solitaire by playing many games and counting. Von Neumann saw that neutrons, unlike solitaire deals, depend on their own history, so they simulated a Markov chain of events many times on ENIAC and read off the distribution of outcomes.</li>
+    <li><b>Where it breaks:</b> systems with feedback loops. Markets have them: crowded trades unwinding together (the August 2007 quant crash), and models trained on data that the models themselves moved.</li>
+  </ul>
+  <p>In trading, the states are usually <b>regimes</b>. Lab A in Module 06 is built on one: a two-state chain where a calm day turns volatile with 0.8% probability and a volatile day turns calm with 2.5% probability.</p>
+<div class="formula">expected time in a state   = 1 / P(leave)      calm ≈ 125 days, volatile ≈ 40 days
+stationary share volatile  = 0.008 / (0.008 + 0.025) ≈ 24%</div>
+  <p><b>Why this matters for testing.</b> Trade outcomes are rarely independent. Losses cluster in bad regimes. Averages still converge, as Markov showed, but more slowly, so 500 clustered trades contain less information than 500 independent ones. Use a <b>block bootstrap</b> (resample runs of consecutive trades, not single trades) when you stress-test a backtest.</p>
+  <p>I tested when this matters. I simulated a strategy whose edge depends on a hidden regime: it gains 0.12% a day in the good state and loses 0.25% a day in the bad one. Over 10 years, its true median max drawdown is <b>41%</b>. Resampling single days from one history (iid bootstrap) estimated <b>22%</b>, about half. A stationary block bootstrap (Politis &amp; Romano, random block lengths averaging 60 days) estimated <b>36%</b>, much closer. The day-to-day correlation of that strategy's returns was only 0.06, so a tiny autocorrelation was enough to halve the drawdown estimate.</p>
+  <p>For plain SPY returns it barely matters. Real 2000–2026 max drawdown: 55%. iid bootstrap median: 47%. Block bootstrap: 45–51%. SPY's daily returns are nearly uncorrelated (lag-1: −0.08) even though their <i>size</i> is very persistent (correlation of absolute returns 0.28–0.33 out to 20 days). Volatility clustering alone doesn't break the iid bootstrap. A clustering <i>edge</i> does. Default to the block bootstrap anyway: it costs nothing.</p>
+  <h3>The math you need</h3>
+  <p><b>Geometric Brownian motion</b> is the default model: the price drifts at rate μ and is shaken by noise proportional to its level, at volatility σ. This is "random movement plus a drift," which improved on Bachelier's earlier model.</p>
+<div class="formula">dS = μ·S·dt + σ·S·dW
+S(t+Δt) = S(t) · exp((μ − σ²/2)Δt + σ·√Δt·Z),   Z ~ N(0,1)</div>
+  <h3>What GBM gets wrong: fat tails</h3>
+  <p>GBM assumes daily returns are normally distributed. A century of real data (CRSP US market, 1926–2026, 26,317 days) says otherwise: kurtosis is <b>20</b>, against 3 for a normal distribution.</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Daily move larger than</th><th class="r">Days observed</th><th class="r">Normal distribution predicts</th></tr></thead>
+    <tbody>
+      <tr><td>3 standard deviations</td><td class="r">463</td><td class="r">71</td></tr>
+      <tr><td>4</td><td class="r">192</td><td class="r">1.7</td></tr>
+      <tr><td>5</td><td class="r">104</td><td class="r">0.015</td></tr>
+      <tr><td>7</td><td class="r">32</td><td class="r">0.00000007</td></tr>
+      <tr><td>10</td><td class="r">5</td><td class="r">0.0000000000000000004</td></tr>
+    </tbody>
+  </table></div>
+  <p>October 19, 1987 (−17.4%) was a 17.8-standard-deviation day. Under a normal distribution, its probability is about 10⁻⁷¹.</p>
+  <ul class="tight">
+    <li><b>Tails follow a power law.</b> The Hill estimator puts the loss-tail exponent at α ≈ 3 (2.8–3.2 depending on how many extremes you use), which matches the "inverse cubic law" found across markets. That implies the variance exists but the fourth moment doesn't, so sample kurtosis is unstable and driven by a handful of days.</li>
+    <li><b>A single fat-tailed distribution overcorrects.</b> A Student-t fit (ν ≈ 2.5) predicts 27 days beyond 10σ, when there were 5. The real cause is mostly volatility switching between calm and turbulent regimes (Module 09): a mixture of normals with different volatilities is fat-tailed.</li>
+    <li><b>Longer horizons are less fat-tailed but more skewed.</b> Kurtosis falls from 20 at 1 day to 7 at 3 months, while skew goes from −0.46 to −0.84. Crashes are a multi-day phenomenon.</li>
+  </ul>
+  <p><b>The risk-management test.</b> I backtested a "99% one-day Value at Risk" over 1991–2026 using the trailing year of data. It should be breached on 1% of days, which is 90 times.</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>VaR method</th><th class="r">Breaches (expected 90)</th><th class="r">Kupiec test (fails above 3.84)</th></tr></thead>
+    <tbody>
+      <tr><td>Normal distribution</td><td class="r loss">216</td><td class="r">128.5</td></tr>
+      <tr><td>Historical 1st percentile</td><td class="r loss">146</td><td class="r">29.8</td></tr>
+      <tr><td>Student-t (4 degrees of freedom)</td><td class="r loss">143</td><td class="r">26.9</td></tr>
+    </tbody>
+  </table></div>
+  <p>All three fail. Even the purely historical method, with no distribution assumed, gets breached 60% too often. The reason is that a one-year window reacts too slowly when volatility jumps. Fixing that requires a model of <i>changing</i> volatility.</p>
+  <h3>Modeling changing volatility: EWMA and GARCH</h3>
+<div class="formula">EWMA (RiskMetrics)   σ²ₜ = λ·σ²ₜ₋₁ + (1−λ)·r²ₜ₋₁            λ = 0.94
+GARCH(1,1)           σ²ₜ = ω + α·r²ₜ₋₁ + β·σ²ₜ₋₁
+  persistence α+β,   shock half-life = ln(½)/ln(α+β),   long-run variance = ω/(1−α−β)
+GJR (asymmetric)     add  γ·r²ₜ₋₁ when yesterday was a down day</div>
+  <p>Fitted to the CRSP market, 1926–2026:</p>
+  <ul class="tight">
+    <li><b>Volatility is extremely persistent.</b> α = 0.10, β = 0.90, α+β = 0.997, so a volatility shock takes about <b>216 trading days</b> to decay by half. That's why a calm year tells you little about next month once a shock hits.</li>
+    <li><b>Volatility clustering explains most of the fat tails.</b> Dividing each day's return by GARCH's volatility forecast cuts kurtosis from 20 to 8.5, and days beyond 5σ from 104 to 31. The remainder is true jumps, like 1987.</li>
+    <li><b>Down moves drive volatility; up moves barely do.</b> An asymmetric GJR fit on 1990–2026 gives α = 0.001 for up-shocks and α+γ = 0.175 for down-shocks. This is the "leverage effect," and it's why the market's return distribution is skewed left.</li>
+    <li><b>Better, not perfect.</b> In the same 99% VaR backtest, refitted each year with no look-ahead, GARCH with t-distributed shocks had 134 breaches against 90 expected. EWMA with a normal quantile had 183. GARCH still fails the Kupiec test, but it's the best of the five methods.</li>
+  </ul>
+  <h3>Getting more out of each daily bar: range-based volatility</h3>
+<div class="formula">Parkinson        σ² = (ln H/L)² / (4 ln 2)
+Garman-Klass     σ² = ½(ln H/L)² − (2 ln 2 − 1)(ln C/O)²
+Rogers-Satchell  σ² = ln(H/C)·ln(H/O) + ln(L/C)·ln(L/O)        (unaffected by drift)
+Yang-Zhang       overnight variance + weighted open-to-close + Rogers-Satchell</div>
+  <p>The high and low contain information that the close throws away. In simulation, Parkinson was <b>5.2× more efficient</b> than close-to-close (matching theory), and Garman-Klass about 8×. One day's high-low range tells you as much as a week of closes.</p>
+  <p>On real SPY, 1999–2026, there's a catch. Close-to-close volatility was 19.2%, Parkinson 15.8% and Garman-Klass 16.0%. The gap is overnight moves: <b>34% of SPY's variance happens between the close and the next open</b>, and the high-low range never sees it. Adding the overnight gap back fixes this. Forecasting next month's variance from the past month, Garman-Klass plus overnight beat plain close-to-close by about 17% (QLIKE loss 0.391 vs 0.473), using the same daily bars.</p>
+  <h3>Itô's lemma: where the −σ²/2 comes from</h3>
+  <p>Ordinary calculus drops second-order terms. Random motion can't, because a Brownian step of size √dt squared is dt, the same order as the drift. The rules:</p>
+<div class="formula">(dW)² = dt      dW·dt = 0      (dt)² = 0
+df = f′(S)·dS + ½·f″(S)·(dS)²            ← Itô's lemma
+for f = ln S:  d ln S = (μ − ½σ²)dt + σ·dW</div>
+  <p>I checked the first rule numerically. Splitting one unit of time into 100,000 random steps, the sum of squared steps came to 0.9994 (theory: exactly 1). The sum of absolute steps came to 252 and keeps growing. Brownian paths are infinitely jagged but have a well-defined squared variation, and that's what makes Itô calculus work.</p>
+  <p><b>What it means for your money:</b> the <i>average</i> outcome grows at μ, but the <i>typical</i> (median) outcome grows at μ − ½σ². The ½σ² is <b>volatility drag</b>. With μ = 8% and σ = 40% over 10 years, 200,000 simulated paths had a mean of 2.23× (theory e^0.8 = 2.23), but a median of exactly 1.00×. Half the paths lost money despite a positive expected return.</p>
+  <h3>Real test: leveraged ETFs</h3>
+  <p>A daily-rebalanced L× fund should grow at about Lμ − ½L²σ², minus the cost of borrowing (L−1)× at the T-bill rate, minus fees. Real data from July 2009 to August 2026, with T-bill rates from the Ken French library:</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Fund</th><th class="r">L × SPY's return</th><th class="r">Model: drag + financing + fee</th><th class="r">Actual</th></tr></thead>
+    <tbody>
+      <tr><td>SSO (2×)</td><td class="r">30.3%</td><td class="r">25.9%</td><td class="r">25.2%</td></tr>
+      <tr><td>UPRO (3×)</td><td class="r">45.5%</td><td class="r">34.6%</td><td class="r">33.0%</td></tr>
+    </tbody>
+  </table></div>
+  <p>The model lands within 0.7–1.6 points a year of reality. The remainder is swap spreads above T-bill rates plus trading costs. UPRO lost about 5.8 points a year to volatility drag and 5.1 to financing and fees, so "3× the market" delivered about 2.2×. In a choppy market it's worse: the index falling 10% and then rising 11.1% leaves it flat, but a 3× fund is down 6.7%.</p>
+  <p>The same equation, g(L) = Lμ − ½L²σ², is the Kelly growth curve in Module 10. Maximizing it gives L* = μ/σ². <b>Kelly sizing is Itô's lemma applied to your bet size.</b></p>
+  <p>GBM is itself a Markov process: tomorrow's price depends only on today's. Simulating thousands of GBM paths is Ulam's <b>Monte Carlo</b> method applied to prices. Thomas used Monte Carlo to tune a prop-firm strategy, and QuantPad uses it (plus bootstrapping) to show the range of outcomes a backtest could have produced. The term <b>MCMC</b> (Markov chain Monte Carlo), from his TikTok title, usually means something more specific: building a Markov chain whose stationary distribution is a probability distribution you want to sample, such as the uncertainty in a model's μ and σ.</p>
+  <p><b>Mean reversion</b> uses the Ornstein-Uhlenbeck process, which pulls a value back toward its mean at speed θ. It's the math behind pairs and stat-arb: Avellaneda &amp; Lee traded each stock's "s-score," opening at |s| &gt; 1.25, closing longs at −0.50 and shorts at 0.75.</p>
+<div class="formula">dX = θ(μ − X)dt + σ·dW        half-life = ln(2) / θ
+s-score = (X − μ) / σ_eq</div>
+  <h3>Estimating mean reversion, and how it fools you</h3>
+  <p>Sampled at a fixed step Δ, an OU process is <i>exactly</i> a first-order autoregression. So you estimate it with a simple regression of tomorrow's value on today's:</p>
+<div class="formula">X(t+1) = a + b·X(t) + ε
+b = e^(−θΔ)   →   θ = −ln(b)/Δ,   mean μ = a/(1−b),   half-life = ln 2 / θ</div>
+  <p><b>The trap:</b> in short samples, b comes out biased low, so mean reversion looks <i>faster</i> than it really is. I simulated a process with a true half-life of 43.7 trading days. With 1 year of data the median estimate was <b>22 days</b>, half the truth, and 10% of estimates were under 11 days. With 3 years it was 34 days, and with 10 years 41. A spread that seems to snap back in two weeks on one year of data may really take two months, and that's the difference between a trade that works and one that bleeds while you wait.</p>
+  <p>Real series from FRED (the St. Louis Fed):</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Series</th><th class="r">Half-life</th><th class="r">Long-run mean</th></tr></thead>
+    <tbody>
+      <tr><td>VIX, 1990–2026</td><td class="r">30 trading days</td><td class="r">19.4</td></tr>
+      <tr><td>&nbsp;&nbsp;1990–2007 / 2008–2019 / 2020–2026</td><td class="r">42 / 35 / 20 days</td><td class="r">18.1 / 17.7 / 19.7</td></tr>
+      <tr><td>10-year minus 2-year Treasury spread, 1976–2026</td><td class="r">~550 days (2.2 yrs)</td><td class="r">0.83%</td></tr>
+    </tbody>
+  </table></div>
+  <h3>Cointegration: what pairs trading actually needs</h3>
+  <p>Two prices that each wander like random walks are <b>cointegrated</b> if some combination of them, y − β·x, stays stationary and mean-reverts. That spread is what a pairs trader trades. The Engle-Granger test regresses y on x, then checks the residual for stationarity using special critical values.</p>
+  <div class="callout warn"><p><b>Never trust a regression of one price on another.</b> I regressed pairs of completely <i>independent</i> random walks (500 points, 1,000 trials). The slope was "significant" (|t| &gt; 1.96) in <b>90%</b> of trials, with a median R² of 0.18. This is Granger &amp; Newbold's "spurious regression" (1974). Trending series always look related.</p></div>
+  <p>I tested six classic pairs on Yahoo adjusted prices from 2008 to 2026:</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Pair</th><th class="r">Full-sample p-value</th><th class="r">Share of 2-year windows cointegrated</th></tr></thead>
+    <tbody>
+      <tr><td>Coca-Cola / Pepsi</td><td class="r">0.99</td><td class="r">15%</td></tr>
+      <tr><td>Exxon / Chevron</td><td class="r">0.74</td><td class="r">12%</td></tr>
+      <tr><td>Australia / Canada ETFs (EWA/EWC)</td><td class="r">0.53</td><td class="r">15%</td></tr>
+      <tr><td>Gold / gold miners (GLD/GDX)</td><td class="r">0.38</td><td class="r">12%</td></tr>
+      <tr><td>Home Depot / Lowe's</td><td class="r">0.20</td><td class="r">0%</td></tr>
+      <tr><td>Visa / Mastercard</td><td class="r">0.09</td><td class="r">18%</td></tr>
+    </tbody>
+  </table></div>
+  <p><b>None of the textbook pairs is cointegrated over 18 years.</b> In rolling two-year windows, the test passed only 0–18% of the time, barely above the 5% you'd get by chance. "Similar businesses" doesn't mean a stable spread. Relationships form and break: GLD/GDX famously split when mining costs surged. A formation-then-trade backtest found only 1–6 tradable years per pair, too few to conclude anything. That's consistent with research showing pairs-trading returns fell sharply after 2000 (Do &amp; Faff 2010). Today's stat arb trades hundreds of residuals at once (Avellaneda &amp; Lee), not a handful of famous pairs.</p>
+  <p><b>Kalman filters</b> let the hedge ratio drift over time instead of fixing it. On EWA/EWC it moved between 0.74 and 0.93. But the output depends heavily on the noise settings you choose: my first settings produced innovations with a standard deviation of 0.29 when a well-specified model gives 1. Estimate those settings by maximum likelihood rather than guessing.</p>
+  <h3>Beyond stocks: the yield curve's three factors</h3>
+  <p>Principal components of daily changes in Treasury yields (FRED: 3-month, 1-, 2-, 5-, 10- and 30-year, 1990–2026, 9,199 days) show that three movements explain <b>96%</b> of everything the curve does:</p>
+  <ul class="tight">
+    <li><b>Level (75.6%)</b>: all yields move together.</li>
+    <li><b>Slope (14.2%)</b>: short and long yields move in opposite directions, so the curve steepens or flattens.</li>
+    <li><b>Curvature (6.6%)</b>: the 2–5-year middle moves against both ends.</li>
+  </ul>
+  <p>This matches Litterman &amp; Scheinkman (1991), and it's the fixed-income version of the "only a few eigenvalues are real" result in Module 10. A bond's sensitivity to the level factor is its <b>duration</b>. For a 10-year 4% bond, modified duration is 8.11 and convexity 80.8. A 300 basis-point rise costs exactly −21.1%. Duration alone predicts −24.3%, and adding convexity (½·C·Δy²) gives −20.7%.</p>
+  <h3>Interest-rate models: Vasicek and CIR</h3>
+<div class="formula">Vasicek   dr = κ(θ − r)dt + σ·dW            (an OU process for rates; can go negative)
+CIR       dr = κ(θ − r)dt + σ·√r·dW         (stays positive if 2κθ ≥ σ²)
+zero-coupon bond (Vasicek):  P = A·e^(−B·r₀),   B = (1 − e^(−κT))/κ</div>
+  <p>Fitted to the 3-month T-bill (FRED, weekly, 1981–2026), Vasicek gives a long-run rate of 2.76% with a 2.7-year half-life, and a 4.2% chance of negative rates. CIR passes the Feller condition (0.0047 ≥ 0.0038), so it stays positive. The bond formula is exact: 0.81488 by closed form and 0.81488 by Monte Carlo (200,000 paths). But fitted to 2009–2026 alone, Vasicek's mean-reversion speed turns <b>negative</b>. Years at zero followed by a hiking cycle don't look like a mean-reverting process at all. Rate models are useful tools whose parameters break across policy regimes.</p>
+  <p>Two lessons. First, the speed of mean reversion itself changes: VIX snaps back twice as fast since 2020 as it did before 2008. Second, a mean-reverting <i>index</i> isn't automatically a trade. You can't buy VIX itself, and VIX futures already price in the expected reversion.</p>
+  <p><b>Option greeks:</b> <b>Delta</b> is the hedge ratio (option move per $1 stock move). <b>Gamma</b> is how fast delta changes. <b>Theta</b> is time decay. Hedgers who are long gamma make money re-hedging and pay for it in theta. Selling options collects theta in exchange for gamma risk: it feels like steady income until a big move.</p>
+  <h3>Black-Scholes, derived and checked</h3>
+<div class="formula">hold V (option), short Δ shares:   Π = V − Δ·S
+Itô:   dΠ = (∂V/∂t + ½σ²S²·∂²V/∂S²)dt + (∂V/∂S − Δ)·dS
+pick Δ = ∂V/∂S  → the random dS term vanishes → Π is riskless → dΠ = rΠ·dt
+⇒  ∂V/∂t + ½σ²S²·V_SS + rS·V_S − rV = 0          (the Black-Scholes PDE)
+Feynman-Kac:  V = e^(−rT) · E^Q[payoff],  where under Q the stock drifts at r, not μ</div>
+  <p>A check with S = K = 100, one year, r = 4%, σ = 20%. The Black-Scholes call price is <b>9.925</b>. Two million Monte Carlo paths drifting at the risk-free rate give 9.912 ± 0.020. Simulating with the stock's "real" expected return of 10% instead gives 14.07, which is wrong. Your view on where the stock is going doesn't enter the price, because the hedge removes it. Put-call parity holds exactly: C − P = 3.9211 = S − K·e^(−rT).</p>
+  <h3>Where option traders actually make money</h3>
+  <p>I simulated selling a 3-month at-the-money call at 20% implied volatility and delta-hedging it daily, with the stock drifting at 8%:</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Volatility that actually happened</th><th class="r">Average P&amp;L (premium 4.49)</th></tr></thead>
+    <tbody><tr><td>15%</td><td class="r gain">+0.99</td></tr><tr><td>20%</td><td class="r">−0.01</td></tr><tr><td>25%</td><td class="r loss">−1.00</td></tr></tbody>
+  </table></div>
+<div class="formula">hedged P&amp;L ≈ ½ ∫ Γ·S²·(σ²_implied − σ²_realized) dt  ≈  vega × (σ_implied − σ_realized)</div>
+  <p>A hedged option position is a bet on <b>volatility, not direction</b>. You win if realized volatility comes in below the implied volatility you traded at. The 8% drift made no difference. Hedging error shrinks like 1/√(number of rebalances): its standard deviation was 0.93 hedging 13 times over three months, 0.43 daily, 0.22 four times a day and 0.11 sixteen times a day. Each rebalance costs a spread, so real desks trade off the two.</p>
+  <h3>The variance risk premium, on real data</h3>
+  <p>VIX is the market's implied volatility for the next 30 days. Comparing it (from FRED) with the volatility SPY actually delivered over the following month, 1999–2026:</p>
+  <div class="kpis">
+    <div class="kpi"><div class="v">20.0 vs 16.3</div><div class="l">average VIX vs. volatility that actually happened</div></div>
+    <div class="kpi"><div class="v">84%</div><div class="l">of days VIX was higher than what followed</div></div>
+    <div class="kpi"><div class="v loss">−68.9</div><div class="l">worst gap, in volatility points (February 20, 2020, just before the COVID crash)</div></div>
+  </div>
+  <p>Options are systematically overpriced relative to the volatility that follows, because buyers pay for crash insurance. Selling volatility collects that premium, but the payoff distribution has a skew of −7.2: steady small gains and rare enormous losses. It's a genuine risk premium (Module 03), and it's the trade that blew up several short-volatility funds in February 2018.</p>
+  <h3>The real market rejects Black-Scholes: the volatility smile</h3>
+  <p>If Black-Scholes were literally true, every strike would imply the same volatility. I pulled SPY's live 30-day option chain (Yahoo; T-bill rate from FRED) on October 14, 2026, with SPY at 768, and solved for the implied volatility of each out-of-the-money option:</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Strike as % of spot</th><th class="r">85%</th><th class="r">90%</th><th class="r">95%</th><th class="r">100%</th><th class="r">105%</th></tr></thead>
+    <tbody><tr><td>Implied volatility</td><td class="r loss">30.8%</td><td class="r">25.1%</td><td class="r">19.3%</td><td class="r">14.5%</td><td class="r">10.4%</td></tr></tbody>
+  </table></div>
+  <p>Downside puts cost twice the at-the-money volatility. That's the <b>skew</b>, and it's been there since the 1987 crash. A sanity check: at-the-money volatility of 14.5% sits just under VIX's 15.3, as it should, since VIX averages in the expensive puts.</p>
+<div class="formula">Breeden-Litzenberger:   risk-neutral density  q(K) = e^(rT) · ∂²C/∂K²</div>
+  <p>Differentiating call prices twice across strikes recovers the probability distribution the market is pricing. From this chain it has a skew of −1.42. The market priced a <b>2.6%</b> chance of SPY falling more than 10% in 30 days. Flat-volatility Black-Scholes says 0.5%. Historically, SPY dropped more than 10% in 2.2% of 21-day windows (1999–2026). The smile is much closer to reality than the formula.</p>
+  <p>That's how professionals use Black-Scholes: as a <i>quoting convention</i> (prices expressed in volatility units), not a model of the world. Models that produce a smile add stochastic volatility (Heston), jumps (Merton, Bates) or volatility that depends on price level (Dupire's local vol).</p>
+  <h3>Where the skew comes from: Heston stochastic volatility</h3>
+<div class="formula">dS = rS·dt + √v·S·dW₁        dv = κ(θ − v)·dt + σᵥ·√v·dW₂        corr(dW₁, dW₂) = ρ</div>
+  <p>Let volatility itself be random and correlated with the price. I simulated Heston prices (60,000 paths) for the same 30-day SPY options and solved for their implied volatilities:</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Strike as % of spot</th><th class="r">85%</th><th class="r">90%</th><th class="r">95%</th><th class="r">100%</th><th class="r">105%</th><th class="r">Error</th></tr></thead>
+    <tbody>
+      <tr><td>Market</td><td class="r">30.8%</td><td class="r">25.1%</td><td class="r">19.3%</td><td class="r">14.5%</td><td class="r">10.4%</td><td class="r">–</td></tr>
+      <tr><td>Heston, ρ = 0</td><td class="r">21.5%</td><td class="r">18.8%</td><td class="r">16.0%</td><td class="r">13.7%</td><td class="r">15.4%</td><td class="r loss">5.0 pts</td></tr>
+      <tr><td>Heston, ρ = −0.7</td><td class="r">28.2%</td><td class="r">24.2%</td><td class="r">19.2%</td><td class="r">12.8%</td><td class="r">10.6%</td><td class="r gain">1.3 pts</td></tr>
+    </tbody>
+  </table></div>
+  <p>With zero correlation the smile is symmetric. A <b>negative correlation between price and volatility</b> tilts it into the market's skew, and that's the same leverage effect GARCH found (down moves raise volatility). One weakness: matching a 30-day skew required a very high volatility-of-volatility (1.4). Short-dated skew is better explained by adding jumps (the Bates model).</p>
+  <h3>Jumps: what the market thinks a crash looks like</h3>
+<div class="formula">Merton:  daily return ~ Σₖ Poisson(k; λ·dt) · Normal(μ·dt + k·μ_J,  σ²·dt + k·σ_J²)</div>
+  <p>Fitting Merton's jump-diffusion to daily CRSP returns since 2000 by maximum likelihood beats a normal distribution decisively (log-likelihood +847). But the fit uses about 110 small "jumps" a year, which really stand in for volatility clustering. Priced with those historical parameters, options would have a nearly flat smile, 20.5% down to 18.7%, missing the market by 6.4 points.</p>
+  <p>Calibrating the jumps <i>to the option prices</i> instead gives a striking answer. The market is pricing about <b>1.1 crashes a year averaging −10.7%</b>. That fits the 30-day SPY smile with a 0.77-point error, better than Heston's 1.31. History has nowhere near one 11% crash a year, and the gap is the crash risk premium that option sellers collect (the variance risk premium above).</p>
+  <p>The video also shows options' built-in leverage. GameStop buyers moved $10–20 of stock exposure per $1 of options. That cuts both ways, and it's why derivatives can stabilize markets in normal times and amplify crashes in stressed ones.</p>
+</section>
+
+<section id="m-overfit" class="flow">
+  <span class="mod">Module 08 · Lab</span>
+  <h2>The overfitting trap</h2>
+  <p>This is the most important module. If you try enough strategies on the same data, one of them will look great by pure luck. The lab below creates a <b>random walk</b>, a market with zero edge by construction. It then tests many moving-average crossover strategies on the first half and picks the best one. Watch the second half.</p>
+
+  <div class="lab" id="lab-overfit">
+    <div class="lab-head"><b>Lab B · Find a "winning" strategy in pure noise</b><span class="eyebrow">10 years of simulated daily data</span></div>
+    <div class="controls">
+      <label for="ov-n">Strategies tried <input id="ov-n" type="range" min="1" max="800" step="1" value="300"><span class="num" id="ov-n-out">300</span></label>
+      <button id="ov-run" type="button">New random market</button>
+    </div>
+    <canvas id="ov-canvas" aria-label="Equity curve of the best in-sample strategy, with the out-of-sample half shaded"></canvas>
+    <div class="legend"><span><i style="background:var(--accent)"></i>Best strategy's equity</span><span><i style="background:var(--muted)"></i>The random market itself</span><span>Shaded half = out-of-sample (never seen while choosing)</span></div>
+    <div class="readout">
+      <div><span>In-sample Sharpe (best of N)</span><b id="ov-is">–</b></div>
+      <div><span>Same strategy, out-of-sample</span><b id="ov-oos">–</b></div>
+      <div><span>Expected best Sharpe from luck alone</span><b id="ov-exp">–</b></div>
+      <div><span>Best rule found</span><b id="ov-rule">–</b></div>
+    </div>
+  </div>
+  <p><small>The luck benchmark assumes independent strategies. Crossover rules overlap heavily, so the true benchmark for this lab is somewhat lower, but the in-sample winner still rarely holds up.</small></p>
+
+  <p><span class="src rs">Research</span> Bailey &amp; López de Prado derived how big the best Sharpe ratio gets from luck alone. I computed it for 5 years of data:</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Independent strategies tried</th><th class="r">Expected best annual Sharpe, true edge = 0</th></tr></thead>
+    <tbody><tr><td>10</td><td class="r">0.70</td></tr><tr><td>100</td><td class="r">1.13</td></tr><tr><td>1,000</td><td class="r">1.46</td></tr><tr><td>10,000</td><td class="r">1.73</td></tr></tbody>
+  </table></div>
+  <p>When I ran the same experiment offline, the best of 826 crossover rules on a random walk had an in-sample Sharpe of <span class="num">1.35</span> and an out-of-sample Sharpe of <span class="num loss">−0.40</span>.</p>
+  <div class="callout warn"><p><b>This applies to contextual features too.</b> Thomas's next step is to test many contextual features to explain why events behave differently. Every feature and threshold you try is another trial. Test 50 context filters on 512 events and some will look significant by chance. Count them, and keep a held-out period you only test once.</p><p><b>It also applies to Monte Carlo validation.</b> Bootstrapping and resampling a backtest (what QuantPad does) shows the range of outcomes <i>if the backtest's edge is real</i>. It can't detect that the backtest was the lucky winner of many tries. And resampling single trades assumes they're independent; use a block bootstrap when losses cluster (Module 07). You need both.</p></div>
+  <h3>Multiple testing on real data: 42 context filters</h3>
+  <p>I ran Thomas's next step (Module 05) on real data: 1,555 bearish-sweep days on SPY, 1999–2026, split 42 ways by plausible context. The splits covered price vs. 5- to 200-day averages, momentum, volatility regime, ATR ratio, volume, wick size, day of week, quarter, gaps, inside bars, nearness to highs, and start or end of month. The outcome was the 5-day forward return, and each split was tested for a difference.</p>
+  <div class="kpis">
+    <div class="kpi"><div class="v">6</div><div class="l">filters "significant" at p &lt; 0.05</div></div>
+    <div class="kpi"><div class="v">6.1</div><div class="l">average number of hits when the same search runs on <i>random</i> dates (300 runs)</div></div>
+    <div class="kpi"><div class="v">88%</div><div class="l">chance of at least one false positive among 42 independent tests</div></div>
+  </div>
+  <p>Six hits is exactly what noise produces. Random dates averaged 6.1 hits, not the 2.1 you'd expect from 42 × 5%. The features are correlated with each other and the outcomes overlap, so false positives come in clusters. In one random run, 23 filters looked significant.</p>
+  <p>The corrections, from strictest to most lenient:</p>
+<div class="formula">Bonferroni   reject if  p &lt; α / M                       (controls any false positive)
+Holm         sort p ascending; reject p₍ᵢ₎ &lt; α/(M−i+1) until one fails
+Benj.-Hoch.  largest i with p₍ᵢ₎ ≤ i·q/M; reject tests 1..i  (controls the false-discovery share)
+Placebo      rerun the entire search on random dates; compare your hit count</div>
+  <p>One filter survived all three corrections: price above its 5-day average (t = −3.59, 0.47% lower 5-day return). Then I checked it on <i>all</i> days, not just sweep days. Same effect: t = −5.32 everywhere, and −3.07 using only non-overlapping windows. <b>It has nothing to do with sweeps.</b> It's plain short-term reversal, and it's fading: t = −4.17 in 1999–2008, −3.68 in 2009–2016, −1.92 in 2017–2026. Short-term reversal is also the one effect Frazzini, Israel &amp; Moskowitz found doesn't survive trading costs at scale.</p>
+  <div class="callout"><p><b>Rule:</b> before crediting a context filter to your event, test whether it works on every day. If it does, your event adds nothing.</p></div>
+  <h3>Is it alpha, or a factor you forgot to control for?</h3>
+<div class="formula">r_strategy − r_f = α + β₁·(Mkt−RF) + β₂·SMB + β₃·HML + β₄·RMW + β₅·CMA + β₆·MOM + ε</div>
+  <p>Regress your returns on the known factors (Fama-French five plus momentum, from the Ken French library). Only the intercept α is your own edge. Using Newey-West t-statistics:</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Strategy</th><th class="r">Alpha/yr</th><th class="r">t-stat</th><th>Main exposure</th></tr></thead>
+    <tbody>
+      <tr><td>AQR trend following, 1985–2026</td><td class="r gain">+9.7%</td><td class="r">5.27</td><td>momentum β 0.32</td></tr>
+      <tr><td>AQR trend following, 2010–2026</td><td class="r">+3.7%</td><td class="r">1.36</td><td>momentum β 0.49</td></tr>
+      <tr><td>Industry momentum, vs FF5 only</td><td class="r gain">+3.6%</td><td class="r">4.37</td><td>–</td></tr>
+      <tr><td>Industry momentum, vs FF5 + momentum</td><td class="r">+0.8%</td><td class="r">1.47</td><td>momentum β 0.32 (t 23.7)</td></tr>
+    </tbody>
+  </table></div>
+  <p>Industry momentum shows a highly significant 3.6% "alpha" until you add the stock momentum factor. Then it disappears, because it was momentum all along. <b>Leaving out one relevant factor manufactures alpha.</b> Trend following still had real alpha over the full 41 years, but not significantly since 2010.</p>
+  <h3>How uncertain is a Sharpe ratio? The math</h3>
+  <p>A Sharpe ratio is an estimate: the average return divided by its standard deviation. Its standard error (Lo 2002; Mertens 2002 for non-normal returns), with SR measured per period and T periods:</p>
+<div class="formula">Var(SR̂) ≈ ( 1 + ½·SR² − skew·SR + (kurt − 3)/4 · SR² ) / T
+annualized:  SE(SR_annual) ≈ 1 / √(years of data)</div>
+  <p>The second line is the key fact. It holds because per-day Sharpe ratios are tiny, so the SR² terms nearly vanish and the √252 factors cancel. <b>Sampling more often doesn't help. Only more calendar time shrinks the uncertainty.</b> Five years of data means your annual Sharpe is ±0.45 at one standard error, whether you use daily or minute bars. I checked this by simulation: 4,000 five-year daily samples gave a standard error of 0.0282 per day, matching the formula exactly.</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>True annual Sharpe</th><th class="r">Years of data to be 95% sure it's above 0</th></tr></thead>
+    <tbody><tr><td>0.5</td><td class="r">10.8</td></tr><tr><td>1.0</td><td class="r">2.7</td></tr><tr><td>2.0</td><td class="r">0.7</td></tr></tbody>
+  </table></div>
+  <p>That's the <b>Minimum Track Record Length</b>: MinTRL = 1 + (1 − skew·SR + (kurt−1)/4·SR²) × (1.645 / SR)², in periods. Real SPY, 1999–2026: annual Sharpe <b>0.44 ± 0.19</b>, with skew −0.20 and kurtosis 14.3. Even the stock market itself needed about 14 years to clear the bar.</p>
+  <ul class="tight">
+    <li><b>When skew and fat tails matter:</b> at low frequency with a high Sharpe. A monthly strategy with an annual Sharpe of 1.7, skew −3 and kurtosis 20 (typical of option selling) has a standard error <b>1.8× larger</b> than the normal formula says. The <b>Probabilistic Sharpe Ratio</b> builds this in: PSR = Φ[(SR̂ − SR*)·√(T−1) / √(1 − skew·SR̂ + (kurt−1)/4·SR̂²)].</li>
+    <li><b>When returns are autocorrelated</b> (smoothed or stale prices, slow-moving positions), the usual √12 or √252 annualization overstates the Sharpe. Lo's correction: SR_annual = SR × q/√(q + 2Σ(q−k)ρₖ). On a simulated series with lag-1 correlation 0.5, the naive annual Sharpe of 1.79 was really 1.31.</li>
+  </ul>
+  <h3>Ranking by past Sharpe mostly ranks luck: James-Stein shrinkage</h3>
+<div class="formula">shrunk estimate = average + B·(own estimate − average),     B = max(0, 1 − noise variance / spread variance)</div>
+  <p>When you compare many strategies or assets, part of the spread in their Sharpe ratios is just noise, about 1/years of variance each (from the Sharpe error formula above). I estimated each of the 30 Ken French industries' Sharpe ratios on 1927–1976. The spread across industries (variance 0.008) was <i>smaller</i> than pure noise would produce (0.020), so the optimal shrinkage keeps <b>0%</b> of each industry's difference from the average. Checking against 1977–2026: the raw first-half Sharpes predicted the second half <i>worse</i> than simply using the average (error 0.0525 vs 0.0502), and the two halves correlated only 0.22. Fifty years of data couldn't tell the industries apart. Before you pick the "best" strategy from a list, shrink toward the group average.</p>
+  <h3>What the literature says about this problem</h3>
+  <ul class="tight">
+    <li><b>Harvey, Liu &amp; Zhu (2016).</b> Hundreds of factors have been data-mined, so a new one needs a t-statistic above <b>3.0</b>, not the usual 2.0. They conclude "most claimed research findings in financial economics are likely false."</li>
+    <li><b>Hou, Xue &amp; Zhang (2020).</b> Replicated 447 published anomalies: <b>64%</b> were insignificant at the 5% level, and <b>85%</b> failed the t &gt; 3 hurdle.</li>
+    <li><b>Jensen, Kelly &amp; Pedersen (2023) disagree.</b> With a Bayesian approach, most factors do replicate, fall into 13 themes, and work in 93 countries. The robust effects are real. The weak, narrow ones are noise.</li>
+    <li><b>Deflated Sharpe Ratio.</b> Corrects a backtest's Sharpe for the number of trials, return length, skew and fat tails. <b>Probability of Backtest Overfitting</b> (CSCV) estimates how often your in-sample winner ranks below median out of sample.</li>
+  </ul>
+  <h3>Your backtest checklist</h3>
+  <ol class="tight">
+    <li>Write down every variant you try. The trial count is part of the result.</li>
+    <li>Hold out data you never touch until the end. Test it once.</li>
+    <li>No look-ahead: signals use only data available before the trade. Watch for revised data and close prices you couldn't actually trade at.</li>
+    <li>Include delisted and bankrupt stocks, so there's no survivorship bias.</li>
+    <li>Use purged and embargoed cross-validation when labels overlap in time.</li>
+    <li>Compare against a random-entry baseline over the same period (QP 03).</li>
+    <li>Charge realistic costs, then double them and see if the edge survives.</li>
+    <li>Check robustness: nearby parameters should work almost as well. A lone spike is a fluke.</li>
+    <li>Make sure the edge has an economic reason (Module 03).</li>
+  </ol>
+</section>
+
+<section id="m-decay" class="flow">
+  <span class="mod">Module 09</span>
+  <h2>Edge decay and non-stationarity</h2>
+  <p><span class="src dt">QP 01</span> Thomas got pushback when he explained alpha decay, the process by which signals lose predictive power over time. It's one of the best-documented findings in finance:</p>
+  <div class="kpis">
+    <div class="kpi"><div class="v loss">−26%</div><div class="l">average drop in anomaly returns between the original sample period and publication</div></div>
+    <div class="kpi"><div class="v loss">−58%</div><div class="l">average drop after publication, across 97 predictors (McLean &amp; Pontiff 2016)</div></div>
+    <div class="kpi"><div class="v">1.44 → 0.9</div><div class="l">PCA stat-arb Sharpe, 1997–2007 vs 2003–2007 (Avellaneda &amp; Lee)</div></div>
+  </div>
+  <p>Some of that 26% is overfitting in the original study. The extra drop after publication comes from traders piling in. The anomalies with the biggest in-sample returns decayed the most.</p>
+  <h3>Regimes</h3>
+  <p>Markets switch between states such as calm uptrend, choppy range and crisis. A <b>hidden Markov model</b>, the tool Leonard Baum brought to Renaissance, is a Markov chain of regimes you can't see directly (Module 07). It estimates which state you're probably in from returns and volatility, and how likely each switch is. Thomas's volatility-regime and trend features (QP 02) are simpler versions of the same idea. Use regime estimates to <i>size</i> or <i>switch off</i> a strategy, not as a crystal ball: they're only known with confidence after the fact.</p>
+  <h3>I fitted one to 100 years of market data</h3>
+  <p>I fitted a two-state model to daily US market returns from the Ken French / CRSP data, training on 1926–1999 only. It found:</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>State</th><th class="r">Return</th><th class="r">Volatility</th><th class="r">Chance of staying</th><th class="r">Average length</th></tr></thead>
+    <tbody>
+      <tr><td>Calm</td><td class="r">+20.5%/yr</td><td class="r">9.6%</td><td class="r">98.62%</td><td class="r">73 days</td></tr>
+      <tr><td>Turbulent</td><td class="r">−34.3%/yr</td><td class="r">31.0%</td><td class="r">94.36%</td><td class="r">18 days</td></tr>
+    </tbody>
+  </table></div>
+  <p>The math has two directions. The <b>forward filter</b> uses only data up to today:</p>
+<div class="formula">αₜ(j) ∝ p(rₜ | state j) × Σᵢ αₜ₋₁(i)·Aᵢⱼ         → P(state today | data up to today)
+smoothing: αₜ(j)·βₜ(j), where β runs BACKWARD from the end → uses the future</div>
+  <p>Then I froze the model and tested it on 2000–2026, holding the market in the calm state and T-bills otherwise, acting the next day:</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>2000–2026, out of sample</th><th class="r">Annual return</th><th class="r">Sharpe</th><th class="r">Max drawdown</th></tr></thead>
+    <tbody>
+      <tr><td>Buy and hold</td><td class="r">8.6%</td><td class="r">0.42</td><td class="r">54.6%</td></tr>
+      <tr><td>HMM, real-time filter</td><td class="r">5.3%</td><td class="r">0.36</td><td class="r">37.5%</td></tr>
+      <tr><td>HMM, volatility-scaled to 15%</td><td class="r">7.5%</td><td class="r">0.47</td><td class="r">36.8%</td></tr>
+      <tr><td class="loss">HMM, smoothed (uses future data)</td><td class="r loss">15.2%</td><td class="r loss">1.43</td><td class="r loss">8.8%</td></tr>
+    </tbody>
+  </table></div>
+  <div class="callout warn"><p><b>Same model, same data. Using the smoothed probabilities quadruples the Sharpe ratio, and it's completely fake.</b> Most HMM trading tutorials call <code>model.predict()</code> or <code>predict_proba()</code> on the full history. Those return smoothed or Viterbi states, which already know what happened next. Only the forward filter is tradable.</p></div>
+  <p>The honest result: the real-time filter did catch turmoil quickly (September 2, 2008 and February 24, 2020) and cut the worst drawdown from 55% to 38%. But it switched 584 times, gave up return, and didn't beat buy-and-hold on Sharpe before trading costs. The useful thing it detects is <b>volatility</b>, not direction. Using it to scale position size did slightly better than switching in and out.</p>
+  <h3>Calendar anomalies: a graveyard of published edges</h3>
+  <p>I tested 8 classic calendar effects in two eras of CRSP daily market data (16 tests, Bonferroni cutoff p &lt; 0.003):</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Effect (first published)</th><th class="r">1926–1989</th><th class="r">1990–2026</th></tr></thead>
+    <tbody>
+      <tr><td>Monday returns vs other days (French 1980)</td><td class="r gain">−15.7bp, t −10.9 ✓</td><td class="r">+3.7bp, t −0.4</td></tr>
+      <tr><td>Turn of month: last day + first 3 (Ariel 1987)</td><td class="r gain">+16.9bp, t 7.9 ✓</td><td class="r">+8.9bp, t 1.7</td></tr>
+      <tr><td>Small caps in January (Keim 1983)</td><td class="r gain">+234bp/month, t 8.0 ✓</td><td class="r">+45bp, t 1.0</td></tr>
+      <tr><td>"Sell in May" (Nov–Apr vs May–Oct)</td><td class="r">t 1.6</td><td class="r">t 1.3</td></tr>
+    </tbody>
+  </table></div>
+  <p>Before publication, the Monday, turn-of-month and January effects were among the strongest results in finance, with t-statistics of 8 to 11. <b>After 1990, not one survives.</b> This is McLean &amp; Pontiff's decay in its purest form: simple, free-to-exploit patterns get traded away once everyone knows about them.</p>
+  <h3>Value's lost decade and a half</h3>
+  <p>The value factor (Ken French HML, 1926–2026, Sharpe 0.35) peaked in December 2006, then fell <b>56%</b> to September 2020. As of August 2026 it still hasn't regained that peak. Before 2007 its worst drawdown had been 44%, in 1935.</p>
+  <p>Was 56% "impossible"? Resampling value's own pre-2007 history in 2-year blocks over 100-year paths, a drawdown that deep showed up <b>13%</b> of the time. Extreme, but not inconsistent with its past. A normal-distribution calculation says a Sharpe-0.46 strategy loses over 14 years only 4% of the time, which understates it. Even a century-old risk premium can go nowhere for 14+ years. Size your expectations from block bootstraps of the strategy's own history, not textbook formulas, and decide in advance what would make you quit (the table below).</p>
+  <h3>When is a losing streak a broken edge?</h3>
+  <div class="tablewrap"><table>
+    <thead><tr><th>True Sharpe ratio</th><th class="r">Chance of losing over 1 year</th><th class="r">3 years</th><th class="r">5 years</th></tr></thead>
+    <tbody><tr><td>0.5</td><td class="r">31%</td><td class="r">19%</td><td class="r">13%</td></tr><tr><td>1.0</td><td class="r">16%</td><td class="r">4%</td><td class="r">1%</td></tr></tbody>
+  </table></div>
+  <div class="callout"><p><b>In practice:</b> before going live, use your validated backtest to decide what drawdown or how many months of underperformance falls outside the normal range. Write it down while you're not emotionally invested. A losing stretch inside that range is expected. One outside it means the edge may be gone.</p></div>
+</section>
+
+<section id="m-sizing" class="flow">
+  <span class="mod">Module 10 · Lab</span>
+  <h2>Position sizing: Kelly and volatility targeting</h2>
+  <p>Even a real edge can ruin you if you bet too big. Thorp's blackjack rule, bet more when the odds favor you, is formalized by the <b>Kelly criterion</b>: the bet size that maximizes long-run growth. For a continuous return stream with excess return μ and volatility σ:</p>
+<div class="formula">f* = μ / σ²          growth(f) = f·μ − ½·f²·σ²</div>
+  <div class="lab" id="lab-kelly">
+    <div class="lab-head"><b>Lab C · Growth vs. bet size</b><span class="eyebrow">annualized</span></div>
+    <div class="controls">
+      <label for="k-mu">Edge μ (%) <input id="k-mu" type="number" step="0.5" value="8"></label>
+      <label for="k-sig">Volatility σ (%) <input id="k-sig" type="number" step="1" value="20"></label>
+    </div>
+    <canvas id="k-canvas" aria-label="Long-run growth rate as a function of position size"></canvas>
+    <div class="readout">
+      <div><span>Full Kelly leverage</span><b id="k-f">–</b></div>
+      <div><span>Growth at full Kelly</span><b id="k-g1">–</b></div>
+      <div><span>Growth at half Kelly</span><b id="k-g5">–</b></div>
+      <div><span>Growth at 2× Kelly</span><b id="k-g2">–</b></div>
+    </div>
+  </div>
+  <p>Three things to notice:</p>
+  <ul class="tight">
+    <li><b>Half Kelly keeps 75% of the growth with half the volatility.</b> Most professionals bet at or below half Kelly.</li>
+    <li><b>At 2× Kelly, growth drops to zero.</b> Bet more than that and you lose money despite having an edge.</li>
+    <li>Your μ is an <i>estimate</i>, probably inflated by overfitting (Module 08). If you overestimate your edge, full Kelly is actually over-betting, which is another reason to bet a fraction.</li>
+  </ul>
+  <h3>The Kelly math, and a century of evidence</h3>
+<div class="formula">discrete bets:   maximize  p·ln(1+f·b) + q·ln(1−f)   ⇒   f* = p − q/b
+continuous:      g(L) = r + L(μ−r) − ½L²σ²        ⇒   L* = (μ−r)/σ²,  g* = r + ½·Sharpe²
+many assets:     w* = Σ⁻¹(μ − r)   ← the Markowitz tangency portfolio, scaled
+drawdown law:    P(ever falling to fraction x of your money) = x^(2/c − 1),  c = fraction of Kelly</div>
+  <p>A 55% coin at even odds: bet 10% of your bankroll. The drawdown law is the one to memorize. At <b>full Kelly there's a 50% chance you'll be cut in half</b> at some point, and a 25% chance you'll lose three-quarters. At half Kelly those drop to 12.5% and 1.6%. I checked by simulation (3,000 paths, 50 years): full Kelly gave 49% and 23%, half Kelly 11% and 1%.</p>
+  <p>I also tested it on the real CRSP market, 1926–2026, at constant daily-rebalanced leverage, generously assuming you could borrow at the T-bill rate:</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Leverage</th><th class="r">Real growth/yr</th><th class="r">Itô formula</th><th class="r">Max drawdown</th></tr></thead>
+    <tbody>
+      <tr><td>0.5×</td><td class="r">6.6%</td><td class="r">6.6%</td><td class="r">57%</td></tr>
+      <tr><td>1×</td><td class="r">9.4%</td><td class="r">9.4%</td><td class="r">84%</td></tr>
+      <tr><td>2×</td><td class="r">12.8%</td><td class="r">12.9%</td><td class="r">98.4%</td></tr>
+      <tr><td>2.5× (≈ hindsight Kelly)</td><td class="r">13.4%</td><td class="r">13.5%</td><td class="r">99.5%</td></tr>
+      <tr><td>4×</td><td class="r loss">10.4%</td><td class="r">11.0%</td><td class="r loss">&gt;99.9%</td></tr>
+    </tbody>
+  </table></div>
+  <p>The Itô growth formula matches a century of real compounding almost exactly. But look at the drawdowns: the growth-optimal leverage meant watching 99.5% of your money disappear in 1929–32. No person or fund survives that. Worse, the inputs aren't knowable in advance. Estimating Kelly from the trailing 10 years gave anything from 0× to 15.5× depending on the year. That's why practitioners treat half Kelly as a ceiling, not a target.</p>
+  <p><span class="src rs">Research</span> <b>Volatility targeting</b> scales each position by 1/σ so every position carries the same risk. Moskowitz, Ooi &amp; Pedersen sized every futures position to 40% annualized volatility. Moreira &amp; Muir showed that cutting size when volatility spikes improved Sharpe ratios across many factors.</p>
+  <p>I replicated their market result on CRSP data, 1926–2026. Each month the position is sized by 1 ÷ last month's realized variance, then scaled to match the market's overall volatility:</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Period</th><th class="r">Sharpe, vol-managed</th><th class="r">Sharpe, market</th><th class="r">Alpha t-stat</th><th class="r">Max leverage needed</th></tr></thead>
+    <tbody>
+      <tr><td>1926–2026</td><td class="r">0.52</td><td class="r">0.45</td><td class="r">2.74</td><td class="r">15×</td></tr>
+      <tr><td>1926–1999</td><td class="r">0.53</td><td class="r">0.45</td><td class="r">2.55</td><td class="r">15×</td></tr>
+      <tr><td>2000–2026</td><td class="r">0.51</td><td class="r">0.48</td><td class="r">1.20</td><td class="r">6×</td></tr>
+    </tbody>
+  </table></div>
+  <p>The effect is real over the century: 4.4% a year of alpha. But it's weaker and not statistically significant since 2000, and it sometimes needed 15× leverage that nobody could actually use. Cederburg, O'Doherty, Wang &amp; Yan (2020) reached a similar conclusion: many volatility-managed strategies don't survive realistic out-of-sample implementation. The robust lesson is the defensive half. Cut size when volatility spikes. Don't lever up 15× when it's quiet.</p>
+  <h3>Combining many bets: portfolio math</h3>
+<div class="formula">max-Sharpe (tangency)   w ∝ Σ⁻¹·μ          needs expected returns μ and covariance Σ
+minimum variance        w ∝ Σ⁻¹·1          needs only Σ
+inverse volatility      wᵢ ∝ 1/σᵢ           needs only each asset's volatility
+Ledoit-Wolf shrinkage   Σ̂ = δ·F + (1−δ)·S   pull the noisy sample covariance S toward a simple target F</div>
+  <p>Markowitz's tangency portfolio is the theoretically best mix. In practice it's usually the worst. I tested each method on the 30 Ken French industry portfolios, re-estimating every month from the prior 10 years and holding the result for the next month, 1973–2026:</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Method</th><th class="r">Sharpe</th><th class="r">Worst month</th><th class="r">Gross leverage</th></tr></thead>
+    <tbody>
+      <tr><td>Equal weight (1/N)</td><td class="r">0.51</td><td class="r">−26%</td><td class="r">1.0</td></tr>
+      <tr><td>Max-Sharpe, sample estimates</td><td class="r loss">0.23</td><td class="r">−29%</td><td class="r">10.0</td></tr>
+      <tr><td>Max-Sharpe, shrunk covariance</td><td class="r loss">0.28</td><td class="r">−25%</td><td class="r">6.9</td></tr>
+      <tr><td>Inverse volatility</td><td class="r">0.52</td><td class="r">−25%</td><td class="r">1.0</td></tr>
+      <tr><td>Minimum variance, shrunk covariance</td><td class="r gain">0.55</td><td class="r">−12%</td><td class="r">2.9</td></tr>
+      <tr><td class="loss">Max-Sharpe with hindsight (in-sample)</td><td class="r loss">0.90</td><td class="r">–</td><td class="r">–</td></tr>
+    </tbody>
+  </table></div>
+  <p>The optimizer looks like a 0.90 Sharpe in hindsight, then delivers 0.23. That matches DeMiguel, Garlappi &amp; Uppal (2009): naive 1/N is very hard to beat. The culprit is <b>expected returns</b>. Means are estimated so poorly (Module 08: a Sharpe needs years to pin down) that the optimizer mostly bets on noise, then inverting Σ magnifies it into 10× leverage. What works is ignoring expected returns (minimum variance) and shrinking the covariance.</p>
+  <p><b>How much of a correlation matrix is real?</b> Random matrix theory gives the answer. For N assets and T observations of pure noise, eigenvalues fall between (1 ± √(N/T))². On the 30 industries' last two years of daily data, that noise band tops out at 1.55. Only <b>3 of 30</b> eigenvalues exceed it. The biggest (12.3) is the market itself, explaining 41% of all variance. The other 27 dimensions are statistically indistinguishable from noise. A pure-noise control with the same N and T gave a maximum of 1.47, matching the theory. That's why practitioners clip small eigenvalues before inverting a covariance matrix.</p>
+  <h3>Prop-firm challenges</h3>
+  <p><span class="src dt">QP 01</span> Thomas treats funded-account challenges as "a financial carnival game": hit a profit target before a loss limit. Kelly doesn't apply directly because the payoff isn't long-run growth. It's a pass/fail bet with a fee. He says he used Monte Carlo simulation to tune a strategy with a 93% modeled chance of passing a Topstep challenge, then passed his first one on the first try. That's a good use of simulation. Keep in mind that one pass is a single sample, and 93% is only as good as the backtest it was resampled from.</p>
+  <h3>The math of passing a challenge</h3>
+  <p>A challenge is a Brownian motion between two barriers: a profit target +a and a loss limit −b. With daily drift μ and volatility σ, the probability of hitting the target first has a closed form (gambler's ruin with drift):</p>
+<div class="formula">P(pass) = (1 − e^(2μb/σ²)) / (e^(−2μa/σ²) − e^(2μb/σ²))          no edge (μ = 0):  P = b / (a + b)</div>
+  <p>With a +6% target and a −4% limit, checked against 20,000 simulated paths per case:</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Trader</th><th class="r">Pass, fixed loss limit</th><th class="r">Pass, trailing drawdown</th><th class="r">Median days</th></tr></thead>
+    <tbody>
+      <tr><td>No edge</td><td class="r">40%</td><td class="r">29%</td><td class="r">28</td></tr>
+      <tr><td>Paying costs, no edge</td><td class="r">29%</td><td class="r">20%</td><td class="r">28</td></tr>
+      <tr><td>Paying costs, 3× position size</td><td class="r">36%</td><td class="r">31%</td><td class="r">4</td></tr>
+      <tr><td>Sharpe 1, 1% daily volatility</td><td class="r">55%</td><td class="r">43%</td><td class="r">27</td></tr>
+      <tr><td>Sharpe 2, 1% daily volatility</td><td class="r">69%</td><td class="r">56%</td><td class="r">24</td></tr>
+      <tr><td>Sharpe 2, 0.5% daily volatility</td><td class="r">87%</td><td class="r">73%</td><td class="r">68</td></tr>
+    </tbody>
+  </table></div>
+  <ul class="tight">
+    <li><b>A coin-flipper passes 40% of the time.</b> Passing proves very little. That's why the firms can sell challenges profitably.</li>
+    <li><b>With no edge, bigger size raises your odds.</b> A trader paying costs passes 29% of the time at normal size but 36% at 3× size. This is "bold play" (Dubins &amp; Savage): when the odds are against you, fewer, bigger bets are better. It's why gamblers swinging huge positions sometimes pass, and why firms add consistency rules.</li>
+    <li><b>With a real edge, smaller size raises your odds</b>, but it takes longer.</li>
+    <li><b>A trailing drawdown costs 11–16 points</b> of pass probability.</li>
+    <li><b>Reaching 93%</b> with a fixed limit takes an annual Sharpe of 5.2 at 1% daily volatility, 2.6 at 0.5% (about 60 days), or 1.3 at 0.25% (about 227 days). Thomas's figure is achievable with a real edge, small size and patience, but not otherwise.</li>
+  </ul>
+  <p>Break-even: with fee F and pass probability P, your expected payout per pass must exceed F/P. For a $150 challenge that's $375 at a 40% pass rate and $161 at 93%.</p>
+</section>
+
+<section id="m-costs" class="flow">
+  <span class="mod">Module 11</span>
+  <h2>Costs and execution</h2>
+  <p>Small edges die from costs. Take a 55% win rate with equal-sized wins and losses (1R), and add a cost per side as a fraction of R:</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Cost per side</th><th class="r">Expected value per trade</th></tr></thead>
+    <tbody><tr><td>0</td><td class="r gain">+0.10R</td></tr><tr><td>0.05R</td><td class="r">0.00R</td></tr><tr><td>0.10R</td><td class="r loss">−0.10R</td></tr><tr><td>0.15R</td><td class="r loss">−0.20R</td></tr></tbody>
+  </table></div>
+  <p>On a tight-stop scalp, spread plus slippage of 5% of your stop distance wipes out a 55% win rate entirely. The shorter your holding period, the bigger costs are relative to the edge.</p>
+  <ul class="tight">
+    <li><span class="src rs">Research</span> <b>Frazzini, Israel &amp; Moskowitz</b> used about $1.7 trillion of AQR's real trades. Size, value and momentum survive costs at large scale. <b>Short-term reversal does not.</b></li>
+    <li><b>Almgren &amp; Chriss</b> describe the execution tradeoff. Trading fast pays more market impact. Trading slow leaves you exposed to price moves. The optimal schedule sits on an "efficient frontier" between the two.</li>
+    <li>Pairs-trading profits shrank once bid-ask bounce was accounted for. Always ask whether a backtest's fill price was actually tradable.</li>
+  </ul>
+  <h3>The math of trading big: Almgren-Chriss</h3>
+<div class="formula">minimize   E[cost] + λ·Var[cost]      selling X shares over time T
+optimal holdings   x(t) = X · sinh(κ(T−t)) / sinh(κT),     κ = √(λσ²/η)
+λ → 0: sell evenly (TWAP)        large λ: sell fast up front to cut price risk</div>
+  <p>η is the temporary impact per unit of trading speed, and σ is the asset's volatility. I solved the problem numerically for 50 trading intervals, and the result matched the closed-form sinh path to within 0.004%. Along the efficient frontier, in one example, paying an extra $1.06M in impact bought a $144k reduction in the standard deviation of the outcome. Every desk chooses where on that curve to sit.</p>
+  <h3>The square-root law of market impact</h3>
+<div class="formula">price impact  ≈  Y · σ_daily · √( order size / average daily dollar volume ),     Y ≈ 0.5–1</div>
+  <p>This is one of the most robust empirical laws in finance (Tóth et al. 2011; Bouchaud et al. 2018). It holds across stocks, futures, eras and countries. Impact grows with the <i>square root</i> of size, so a 100× bigger order costs about 10× more per share. Using the last 60 days of real volume and volatility:</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Order size</th><th class="r">SPY</th><th class="r">IWM</th><th class="r">Small/mid cap (UPST)</th></tr></thead>
+    <tbody>
+      <tr><td>$10,000</td><td class="r">0.0 bp</td><td class="r">0.1 bp</td><td class="r">1.9 bp</td></tr>
+      <tr><td>$1 million</td><td class="r">0.3 bp</td><td class="r">0.7 bp</td><td class="r">19 bp</td></tr>
+      <tr><td>$100 million</td><td class="r">2.7 bp</td><td class="r">7.5 bp</td><td class="r loss">193 bp</td></tr>
+    </tbody>
+  </table></div>
+  <p>For a retail-sized trade in a liquid market, impact is essentially zero. Your costs are the spread, fees and slippage from slow execution. Impact is what limits <i>capacity</i>: why a strategy that works with $100k can fail with $100M.</p>
+  <h3>Market making: Avellaneda-Stoikov</h3>
+<div class="formula">reservation price   r = mid − q·γ·σ²·(T−t)          q = your inventory
+total spread        δ_ask + δ_bid = γσ²(T−t) + (2/γ)·ln(1 + γ/k)</div>
+  <p>A market maker earns the spread but gets stuck with inventory when prices move. The fix is to shade both quotes against your position: long inventory, quote lower to sell it off. I re-ran the paper's simulation with its exact parameters over 1,000 paths. Inventory-shaded quoting earned 64.9 ± 6.8 with an inventory standard deviation of 2.8. Symmetric quoting around the mid earned 66.8 ± 13.4 with an inventory standard deviation of 7.9. The paper reports 62.9 ± 5.9 and 67.2 ± 13.4. <b>Shading by inventory halves the risk for about 3% less profit.</b></p>
+  <h3>Why spreads exist: trading against people who know more</h3>
+<div class="formula">Glosten-Milgrom:  ask = E[V | someone buys],  bid = E[V | someone sells]
+                  initial spread = π · (V_high − V_low)        π = share of informed traders
+Kyle:             price = λ · order flow,   λ = σ_v / (2σ_u)   ("Kyle's lambda" = market depth)</div>
+  <ul class="tight">
+    <li><b>Glosten-Milgrom.</b> With 30% informed traders and a $2 range of possible values, the spread starts at exactly $0.60. Each trade carries information, so the dealer updates. In my simulation (2,000 runs) the spread shrank to $0.29 after 10 trades and $0.09 after 30, while the price moved toward the true value. The spread is what the dealer charges everyone to cover losses to the informed.</li>
+    <li><b>Kyle.</b> An insider who knows the true value trades β = σ_u/σ_v units per dollar of mispricing and hides inside the noise traders' orders. I simulated 400,000 rounds: the price-impact slope came out at 1.00 (theory 1.00), exactly half the insider's information leaked into the price (0.500), and the insider's profit was 1.002 (theory 1.000). Trading twice as aggressively drove the insider's profit to about zero.</li>
+  </ul>
+  <p>For you: <b>when your orders fill instantly at good prices, ask who's on the other side.</b> Fills that go against you right away are the sign of adverse selection.</p>
+  <p><b>A model that fails on real data:</b> Roll's (1984) spread estimator, s = 2√(−Cov(Δpₜ, Δpₜ₋₁)), applied to two years of daily SPY prices, says the spread is 54 basis points. The real spread is about 0.2. The estimator assumes bid-ask bounce is the only source of negative autocorrelation in price changes, but daily SPY has short-term reversal (Module 08). When a model's assumptions break, its output is meaningless.</p>
+</section>
+
+<section id="m-ml" class="flow">
+  <span class="mod">Module 12</span>
+  <h2>Machine learning: what it really buys you</h2>
+  <p><span class="src dt">QP 02</span> Thomas's plan is to engineer features, then let machine learning find the "multi-dimensional, nonlinear" relationships between context and outcomes. The research supports that, with realistic expectations. <span class="src rs">Research</span> The benchmark study is Gu, Kelly &amp; Xiu (2020):</p>
+  <ul class="tight">
+    <li>Trees and neural networks did best because they capture <b>interactions</b> between predictors that linear models miss. That's exactly what Thomas means by "multi-dimensional."</li>
+    <li>Monthly out-of-sample R² for individual stocks was only <b>0.33–0.40%</b>. Predictability is tiny, but across thousands of stocks it was enough to double some strategies' performance.</li>
+    <li>Every method found the same dominant signals: <b>momentum, liquidity and volatility</b>. ML found better ways to combine known effects, not secret new ones.</li>
+  </ul>
+  <h3>The Fundamental Law of Active Management</h3>
+<div class="formula">IR ≈ IC × √breadth          IC = correlation of your forecast with what happens
+                            breadth = independent bets per year</div>
+  <p>Grinold's law explains why a tiny predictive edge can be valuable. In simulation it's exact: an IC of 0.02 across 3,000 independent stocks a month gave an information ratio of 3.76, against a predicted 3.79. An IC of 0.05 on 30 assets gave 0.94 against 0.95. The 0.3–0.4% R² in Gu, Kelly &amp; Xiu corresponds to an IC around 0.06, which is useful across thousands of stocks.</p>
+  <p><b>In practice it overpromises.</b> Industry momentum on the 30 Ken French industries (1927–2026) has a mean rank IC of 0.067, so the law predicts IR = 0.067 × √(30 × 12) = 1.27. The real long-short Sharpe was <b>0.49</b>. There are two reasons. The IC swings wildly from month to month (standard deviation 0.31), so a better estimate is mean IC ÷ std IC × √12 = 0.74. And the 30 industries are highly correlated, so they're nowhere near 30 independent bets. Measure your signal's IC over time, and treat IC × √N as an upper bound.</p>
+  <div class="callout warn"><p><b>Be wary of any claim of 70%+ accuracy predicting tomorrow's direction.</b> Real, publishable predictability is closer to a coin flip with a slight tilt. Very high accuracy almost always means look-ahead bias or overlapping labels leaking into the test set.</p></div>
+  <p>A good fit for Thomas's event framework is <b>meta-labeling</b> (López de Prado): your event rule proposes the trade and its direction, and a model trained on contextual features decides only whether to take it and how big.</p>
+  <h3>I ran the full pipeline on real SPY data</h3>
+  <p>This is everything in the Quant Process, end to end:</p>
+  <ol class="tight">
+    <li><b>Event:</b> CUSUM with threshold 2 × 20-day volatility. 1,422 events from 1999 to 2026.</li>
+    <li><b>Primary rule:</b> bet on reversal. Buy after a down move, short after an up move.</li>
+    <li><b>Outcome:</b> triple barrier at ±1.5σ√10 with a 10-day limit.</li>
+    <li><b>Context features:</b> volatility ratio, distance to the 200-day average, 5- and 20-day return, VIX level and 5-day change (from FRED), side, weekday.</li>
+    <li><b>Meta-model:</b> a random forest, retrained each year only on events whose outcomes had already finished, then tested on the next year, 2008–2026.</li>
+  </ol>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Out of sample, 2008–2026</th><th class="r">Trades</th><th class="r">Hit rate</th><th class="r">Mean/trade</th><th class="r">Per-trade Sharpe</th></tr></thead>
+    <tbody>
+      <tr><td>Take every event</td><td class="r">994</td><td class="r">47.0%</td><td class="r">+0.09%</td><td class="r">0.027</td></tr>
+      <tr><td>Meta-model filter (P &gt; 0.5)</td><td class="r">475</td><td class="r">56.0%</td><td class="r">+0.50%</td><td class="r">0.129</td></tr>
+      <tr><td><b>Simple rule: only take the longs</b></td><td class="r">416</td><td class="r gain">61.1%</td><td class="r gain">+0.57%</td><td class="r gain">0.146</td></tr>
+    </tbody>
+  </table></div>
+  <p>The meta-model looks impressive: out-of-sample AUC of 0.60 and five times the per-trade Sharpe. But 74% of the trades it kept were longs. <b>It mostly rediscovered "don't short an index that drifts up."</b> The one-line rule "only buy the dip" beat it. The model did add something within the longs: its top half averaged +0.90% per trade versus +0.25% for the bottom half, which makes it useful for sizing.</p>
+  <div class="callout"><p><b>Two lessons.</b> First, always benchmark a model against the simplest rule it might be rediscovering. Second, about purging: 92% of these label windows overlapped the next event, yet shuffled cross-validation (AUC 0.597) and purged, embargoed cross-validation (0.593) agreed here, because the features weren't built from overlapping windows. Leakage can be large in other setups. Test for it rather than assuming either way.</p></div>
+</section>
+
+<section id="m-path" class="flow">
+  <span class="mod">Module 13</span>
+  <h2>Your practice path</h2>
+  <p>Do these in order. Each one teaches you a skill the next one needs. Python with <code>pandas</code>, <code>numpy</code> and free data (<code>yfinance</code> for daily ETFs and crypto) covers all of them. If you'd rather not code, this is the workflow QuantPad automates, so you can use it there instead.</p>
+  <ol class="pipe">
+    <li><div><b>Simulate before you trade.</b> Generate GBM paths and a random walk. Recreate Lab B and confirm a "great" backtest appears in noise.</div></li>
+    <li><div><b>Write a strategy spec.</b> Pick one idea and write rules exact enough for a stranger to trade without asking you anything (Thomas's minimum bar).</div></li>
+    <li><div><b>Replicate QP 03.</b> Code a volatility-scaled CUSUM on SPY or BTC daily data. Sweep k, count events, and plot 1/5/20-day forward returns next to a random-day baseline.</div></li>
+    <li><div><b>Replicate QP 02.</b> Prior-day high/low sweeps with ATR double-barrier outcomes. Compute expected value with 95% confidence intervals, first for one year, then for five. See whether the result holds.</div></li>
+    <li><div><b>Add three contextual features</b> using the logic tree: one continuous, one binary, one ordinal, all normalized. Split events by each and log every split you test.</div></li>
+    <li><div><b>Walk-forward and deflate.</b> Fit on early years, test later ones, roll forward. Compute the Deflated Sharpe Ratio using your trial count.</div></li>
+    <li><div><b>Paper trade for three months.</b> Compare live fills to backtest assumptions. The gap is your real cost.</div></li>
+  </ol>
+  <h3>Where to get data you can trust</h3>
+  <div class="tablewrap"><table>
+    <thead><tr><th>What</th><th>Source</th><th>Why</th></tr></thead>
+    <tbody>
+      <tr><td>Factor returns (market, size, value, momentum)</td><td><a href="https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html">Ken French Data Library</a></td><td>Built from CRSP, the academic standard. Free, back to 1926.</td></tr>
+      <tr><td>Rates, macro, VIX</td><td><a href="https://fred.stlouisfed.org">FRED</a> (St. Louis Fed)</td><td>Official, versioned, documented.</td></tr>
+      <tr><td>ETF, stock and crypto prices</td><td>Yahoo Finance via <code>yfinance</code></td><td>Free but unofficial. Cross-check it.</td></tr>
+      <tr><td>Research factors and long histories</td><td><a href="https://www.aqr.com/Insights/Datasets">AQR datasets</a></td><td>Published alongside peer-reviewed papers.</td></tr>
+    </tbody>
+  </table></div>
+  <p>I cross-checked the Yahoo SPY data used in this course against Ken French's CRSP market return for 1999–2026. Daily correlation 0.983, monthly 0.989, annual return 8.72% vs. 9.18%. The gap is expected: the S&amp;P 500 isn't the whole US market, and SPY charges a fee. Free data's common failure modes are missing dividends, delisted stocks that vanish (survivorship bias), and bad ticks on extreme days. The biggest daily disagreement was 3.2%, on October 13, 2008.</p>
+  <h3>Check yourself</h3>
+  <details><summary>What's the difference between an event-defining and a contextual feature?</summary><p>An event-defining feature picks which bars are in the experiment, such as a sweep of yesterday's high. A contextual feature explains why the same event has different outcomes, such as the volatility regime or time of day when it happened.</p></details>
+  <details><summary>Why normalize a moving-average slope to percent?</summary><p>In dollars, the slope gets bigger just because the asset got more expensive. The idea you care about, how steep the trend is, hasn't changed. Percent keeps the feature comparable across history.</p></details>
+  <details><summary>Bitcoin is up 20 days after your CUSUM events. Is that an edge?</summary><p>Not yet. Compare against random days in the same period. In 2024 Bitcoin rose so much that random days looked just as good. The event only matters if it beats the baseline.</p></details>
+  <details><summary>You tried 200 parameter combos and the best has a Sharpe of 1.2 over 5 years. Impressive?</summary><p>No. Luck alone gives an expected best of about 1.2 with 100–200 independent tries. You need the Deflated Sharpe Ratio, a held-out test, or evidence that neighboring parameters also work.</p></details>
+  <details><summary>Your edge estimate is 8% a year with 20% vol. What leverage would you actually use?</summary><p>Full Kelly is 2×. Since the 8% is probably overstated, half Kelly (1×) or less is sensible. You'd keep about 75% of the growth with half the risk.</p></details>
+  <details><summary>A strategy worked great 2010–2018 and has been flat since it was posted online. Why?</summary><p>Edge decay. Published or popular signals lose about half their returns once people trade them (McLean &amp; Pontiff). Part of the original result may also have been overfitting.</p></details>
+  <details><summary>Your backtest's trade results average out nicely over 500 trades. Does that mean the trades were independent?</summary><p>No. That was Nekrasov's mistake. Markov showed that dependent events also converge. If your losses cluster in certain regimes, your 500 trades carry less information than 500 independent ones, so use a block bootstrap and expect larger drawdowns.</p></details>
+  <details><summary>Black-Scholes doesn't use the stock's expected return. Why not?</summary><p>A delta-hedged option position is riskless over small moves, so it must earn the risk-free rate no matter what the stock's drift is. Only volatility matters.</p></details>
+
+  <h3>Sources</h3>
+  <ol class="refs">
+    <li>DeltaTrend Trading, <i>The Quant Process</i> <a href="https://www.youtube.com/watch?v=M3-0LfZMsz4">01</a>, <a href="https://www.youtube.com/watch?v=TEVRiSNxs50">02</a>, <a href="https://www.youtube.com/watch?v=Zu4sL5u-WyU">03</a>; channel on <a href="https://www.youtube.com/@deltatrendtrading">YouTube</a> and <a href="https://www.tiktok.com/@deltatrendtrading">TikTok</a></li>
+    <li>Veritasium, <a href="https://www.youtube.com/watch?v=A5w-dEgIU1M">The Trillion Dollar Equation</a> and <a href="https://www.youtube.com/watch?v=KZeIEiBrT_w">the Markov chain video</a></li>
+    <li>Barber, Lee, Liu &amp; Odean, <a href="https://faculty.haas.berkeley.edu/odean/papers/Day%20Traders/Day%20Trading%20Skill%20110523.pdf">The Cross-Section of Speculator Skill: Evidence from Day Trading</a></li>
+    <li>Chague, De-Losso &amp; Giovannetti, <a href="https://repositorio.fgv.br/items/e87d04fc-4b4c-4a56-ab5a-1c84c1afde1b/full">Day Trading for a Living?</a> (2020)</li>
+    <li>Moskowitz, Ooi &amp; Pedersen, <a href="https://pages.stern.nyu.edu/~lpederse/papers/TimeSeriesMomentum.pdf">Time Series Momentum</a> (JFE 2012)</li>
+    <li>Asness, Moskowitz &amp; Pedersen, <a href="https://pages.stern.nyu.edu/~lpederse/papers/ValMomEverywhere.pdf">Value and Momentum Everywhere</a> (JF 2013)</li>
+    <li>Jegadeesh &amp; Titman, <a href="https://www.nber.org/papers/w4120">Returns to Buying Winners and Selling Losers</a> (1993)</li>
+    <li>Gatev, Goetzmann &amp; Rouwenhorst, <a href="https://www.nber.org/papers/w7032">Pairs Trading</a></li>
+    <li>Avellaneda &amp; Lee, <a href="https://math.nyu.edu/~avellane/AvellanedaLeeStatArb20090616.pdf">Statistical Arbitrage in the U.S. Equities Market</a></li>
+    <li>Moreira &amp; Muir, <a href="https://www.nber.org/papers/w22208">Volatility-Managed Portfolios</a></li>
+    <li>Bailey, Borwein, López de Prado &amp; Zhu, <a href="https://www.davidhbailey.com/dhbpapers/backtest-prob.pdf">The Probability of Backtest Overfitting</a></li>
+    <li>Bailey &amp; López de Prado, <a href="https://www.davidhbailey.com/dhbpapers/deflated-sharpe.pdf">The Deflated Sharpe Ratio</a></li>
+    <li>Harvey, Liu &amp; Zhu, <a href="https://www.nber.org/papers/w20592">… and the Cross-Section of Expected Returns</a></li>
+    <li>Hou, Xue &amp; Zhang, <a href="https://www.nber.org/papers/w23394">Replicating Anomalies</a></li>
+    <li>Jensen, Kelly &amp; Pedersen, <a href="https://www.nber.org/papers/w28432">Is There a Replication Crisis in Finance?</a></li>
+    <li>McLean &amp; Pontiff, <a href="https://ivey.uwo.ca/media/3775549/pontiff.pdf">Does Academic Research Destroy Stock Return Predictability?</a> (JF 2016)</li>
+    <li>Gu, Kelly &amp; Xiu, <a href="https://www.nber.org/papers/w25398">Empirical Asset Pricing via Machine Learning</a></li>
+    <li>Frazzini, Israel &amp; Moskowitz, <a href="https://www.aqr.com/Insights/Research/Working-Paper/Trading-Costs-of-Asset-Pricing-Anomalies">Trading Costs of Asset Pricing Anomalies</a></li>
+    <li>Almgren &amp; Chriss, Optimal Execution of Portfolio Transactions (2000)</li>
+    <li>López de Prado, <a href="https://www.oreilly.com/library/view/advances-in-financial/9781119482086/">Advances in Financial Machine Learning</a> (Wiley 2018)</li>
+  </ol>
+  <p><small>This is education, not investment advice. Simulated results are illustrations, not forecasts.</small></p>
+</section>
+
+<section id="m-pm" class="flow">
+  <span class="mod">Module 14 · New track</span>
+  <h2>Prediction markets</h2>
+  <p>A prediction-market contract pays $1 if an event happens and $0 if not, so its price <i>is</i> a probability. Polymarket runs a central limit order book settled in USDC. Kalshi is a CFTC-regulated exchange. The quant questions are the same as anywhere else: are the prices calibrated, where are they biased, and can you trade the bias after costs?</p>
+<div class="formula">contract price p ≈ market's probability        profit on YES per $1 staked = 1/p − 1 if it wins
+Brier score = mean (p − outcome)²              skill = 1 − Brier / Brier(base rate)</div>
+  <h3>First real-data study: is Polymarket calibrated?</h3>
+  <p>I pulled 1,751 resolved Yes/No Polymarket markets with at least $50k volume (2023–2026) from Polymarket's own APIs, along with each market's daily price history. Then I compared the price some days before the scheduled end date with what actually happened:</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Measured</th><th class="r">Markets</th><th class="r">Brier skill vs base rate</th><th class="r">YES outcome − price (5–95¢ markets)</th><th class="r">t (clustered by event)</th></tr></thead>
+    <tbody>
+      <tr><td>1 day before</td><td class="r">1,057</td><td class="r">49%</td><td class="r gain">+4.1¢</td><td class="r">3.5</td></tr>
+      <tr><td>7 days before</td><td class="r">982</td><td class="r">45%</td><td class="r gain">+5.3¢</td><td class="r">3.7</td></tr>
+      <tr><td>30 days before</td><td class="r">946</td><td class="r">41%</td><td class="r gain">+4.7¢</td><td class="r">3.3</td></tr>
+    </tbody>
+  </table></div>
+  <p>Prices are strongly informative: they remove 41–49% of the forecasting error of simply guessing the base rate. But in this sample, mid-priced <b>YES contracts won about 4–5 cents more often than their price implied</b>, and the gap was larger in thinner markets.</p>
+  <div class="callout warn"><p><b>A look-ahead trap I fell into first.</b> My first version measured prices "7 days before the market closed" and found a 9-cent bias. But "Will X happen by date D" markets close <i>early</i> when X happens, so conditioning on the close date quietly tells you the outcome. Measuring relative to the <i>scheduled</i> end date, and only using markets still open at that point, cut the bias almost in half. Same lesson as the HMM in Module 09: check what your timestamps know.</p>
+  <p><b>Before trading it:</b> this uses last-trade prices, not the bid/ask you'd actually pay. It ignores fees, covers one venue and about three years, and the API only returned the top ~2,100 markets by volume. Outcomes within an event are correlated (one candidate wins), so I clustered the t-statistics by event. It needs an out-of-sample test with real quotes.</p></div>
+  <p>Coming next in this track: market-maker math (Hanson's LMSR and order-book quoting), arbitrage when outcome prices don't sum to $1, Kelly sizing for binary contracts, and the academic literature on favorite-longshot bias.</p>
+</section>
+
+<section id="m-formulas" class="flow">
+  <span class="mod">Module 15 · Reference</span>
+  <h2>Formula sheet</h2>
+  <p>Every formula in this course, grouped by job. Each one was derived, then checked by simulation or on real data. The last column is the result of that check.</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Formula</th><th>What it tells you</th><th>Check</th></tr></thead>
+    <tbody>
+      <tr><td colspan="3"><b>Testing whether an edge is real</b></td></tr>
+      <tr><td><code>CI = x̄ ± 1.96·s/√n</code></td><td>Range for the true average outcome</td><td>SPY sweeps: no edge</td></tr>
+      <tr><td><code>n_eff ≈ n / (1 + 2Σρₖ)</code></td><td>Overlapping outcomes mean fewer real samples</td><td>SPY ρ₁ = 0.62</td></tr>
+      <tr><td><code>SE(SR_annual) ≈ 1/√years</code></td><td>Only calendar time shrinks Sharpe uncertainty</td><td>sim exact</td></tr>
+      <tr><td><code>MinTRL = 1 + (1 − γ₃SR + (γ₄−1)/4·SR²)(z/SR)²</code></td><td>Track record needed to trust a Sharpe</td><td>SR 1 → 2.7 yrs</td></tr>
+      <tr><td><code>E[max SR] ≈ σ_SR·[(1−γ)Φ⁻¹(1−1/N) + γΦ⁻¹(1−1/(Ne))]</code></td><td>Best Sharpe from pure luck after N tries</td><td>Lab B</td></tr>
+      <tr><td><code>Bonferroni α/M · Holm · BH i·q/M</code></td><td>Corrections for testing many ideas</td><td>42 filters → 1</td></tr>
+      <tr><td><code>α from r = α + Σβᵢfᵢ + ε</code></td><td>Edge left after known factors</td><td>ind. mom → 0</td></tr>
+      <tr><td><code>IR ≈ IC·√breadth</code></td><td>Small edges × many bets (an upper bound)</td><td>sim exact</td></tr>
+      <tr><td colspan="3"><b>How prices move</b></td></tr>
+      <tr><td><code>d ln S = (μ − ½σ²)dt + σdW</code></td><td>Typical path grows at μ − ½σ² (volatility drag)</td><td>UPRO within 1.6%</td></tr>
+      <tr><td><code>X(t+1) = a + bX(t),  θ = −ln b/Δ</code></td><td>Mean reversion speed; half-life ln2/θ</td><td>VIX 30 days</td></tr>
+      <tr><td><code>σ²ₜ = ω + αr²ₜ₋₁ + βσ²ₜ₋₁</code></td><td>Volatility clusters; shock half-life ln½/ln(α+β)</td><td>216 days</td></tr>
+      <tr><td><code>αₜ(j) ∝ p(rₜ|j)·Σαₜ₋₁(i)Aᵢⱼ</code></td><td>Real-time regime probability (forward filter only)</td><td>Sharpe 0.36 vs fake 1.43</td></tr>
+      <tr><td><code>(1−B)^d Xₜ</code></td><td>Stationary but keeps memory</td><td>d = 0.3, corr 0.98</td></tr>
+      <tr><td><code>Δy ≈ level·PC1 + slope·PC2 + curve·PC3</code></td><td>Three factors drive the yield curve</td><td>75.6 / 14.2 / 6.6%</td></tr>
+      <tr><td><code>ΔP/P ≈ −D·Δy + ½·C·Δy²</code></td><td>Bond price sensitivity (duration, convexity)</td><td>+300bp: −20.7 vs −21.1%</td></tr>
+      <tr><td colspan="3"><b>Options</b></td></tr>
+      <tr><td><code>dv = κ(θ−v)dt + σᵥ√v dW₂,  ρ &lt; 0</code></td><td>Heston: negative spot-vol correlation creates the skew</td><td>SPY smile, 1.3 pt error</td></tr>
+      <tr><td><code>q(K) = e^(rT)·∂²C/∂K²</code></td><td>Market-implied probability distribution</td><td>P(−10%) 2.6% vs BS 0.5%</td></tr>
+      <tr><td><code>V_t + ½σ²S²V_SS + rSV_S − rV = 0</code></td><td>Black-Scholes; price = e^(−rT)E^Q[payoff]</td><td>MC 9.912 vs 9.925</td></tr>
+      <tr><td><code>P&amp;L ≈ ½∫ΓS²(σ²_impl − σ²_real)dt</code></td><td>Hedged options bet on volatility, not direction</td><td>±0.99 at ±5 vol pts</td></tr>
+      <tr><td colspan="3"><b>Sizing and portfolios</b></td></tr>
+      <tr><td><code>f* = p − q/b;   L* = (μ−r)/σ²</code></td><td>Kelly bet size</td><td>CRSP growth matches</td></tr>
+      <tr><td><code>P(fall to x) = x^(2/c − 1)</code></td><td>Drawdown odds at fraction c of Kelly</td><td>sim 0.49 vs 0.50</td></tr>
+      <tr><td><code>w ∝ Σ⁻¹μ · w ∝ Σ⁻¹1 · Σ̂ = δF + (1−δ)S</code></td><td>Tangency, min-variance, shrinkage</td><td>min-var LW best</td></tr>
+      <tr><td><code>λ± = (1 ± √(N/T))²</code></td><td>Noise band for correlation eigenvalues</td><td>3 of 30 real</td></tr>
+      <tr><td><code>P(pass) = (1−e^(2μb/σ²))/(e^(−2μa/σ²) − e^(2μb/σ²))</code></td><td>Odds of hitting a target before a loss limit</td><td>no edge: 40%</td></tr>
+      <tr><td colspan="3"><b>Execution and microstructure</b></td></tr>
+      <tr><td><code>x(t) = X·sinh(κ(T−t))/sinh(κT)</code></td><td>Optimal liquidation schedule</td><td>matches to 0.004%</td></tr>
+      <tr><td><code>impact ≈ Y·σ·√(Q/ADV)</code></td><td>Square-root impact law</td><td>$100M SPY ≈ 2.7bp</td></tr>
+      <tr><td><code>r = s − qγσ²(T−t)</code></td><td>Market maker shades quotes by inventory</td><td>paper reproduced</td></tr>
+      <tr><td><code>spread₀ = π(V_H − V_L);   λ = σ_v/(2σ_u)</code></td><td>Adverse selection sets spreads</td><td>sim exact</td></tr>
+    </tbody>
+  </table></div>
+  <p>The research notes behind every number (data source, period, method) are saved alongside this course, so anything here can be re-run.</p>
+</section>
+</main>
+</div>
+
+<script>
+(function(){
+  const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+  function gauss(rand){let u=0,v=0;while(u===0)u=rand();while(v===0)v=rand();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v)}
+  function normInv(p){ // Acklam approximation
+    const a=[-39.6968302866538,220.946098424521,-275.928510446969,138.357751867269,-30.6647980661472,2.50662827745924],
+          b=[-54.4760987982241,161.585836858041,-155.698979859887,66.8013118877197,-13.2806815528857],
+          c=[-0.00778489400243029,-0.322396458041136,-2.40075827716184,-2.54973253934373,4.37466414146497,2.93816398269878],
+          d=[0.00778469570904146,0.32246712907004,2.445134137143,3.75440866190742];
+    const pl=0.02425;let q,r;
+    if(p<pl){q=Math.sqrt(-2*Math.log(p));return(((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5])/((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1)}
+    if(p>1-pl){q=Math.sqrt(-2*Math.log(1-p));return-(((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5])/((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1)}
+    q=p-.5;r=q*q;return(((((a[0]*r+a[1])*r+a[2])*r+a[3])*r+a[4])*r+a[5])*q/(((((b[0]*r+b[1])*r+b[2])*r+b[3])*r+b[4])*r+1)}
+  function expMaxSR(n,years){if(n<2)return 0;const e=0.5772156649;return (1/Math.sqrt(years))*((1-e)*normInv(1-1/n)+e*normInv(1-1/(n*Math.E)))}
+  function sharpe(x,a,b){let s=0,s2=0,n=b-a;for(let i=a;i<b;i++){s+=x[i];s2+=x[i]*x[i]}const m=s/n,v=s2/n-m*m;return v>0?Math.sqrt(252)*m/Math.sqrt(v):0}
+  function setupCanvas(cv){const dpr=window.devicePixelRatio||1,w=cv.clientWidth,h=cv.clientHeight;cv.width=w*dpr;cv.height=h*dpr;const ctx=cv.getContext('2d');ctx.setTransform(dpr,0,0,dpr,0,0);return{ctx,w,h}}
+
+  // ---------- Lab A: CUSUM events ----------
+  const CT=1512, csRand=mulberry32(424242);
+  const cs={r:new Float64Array(CT),p:new Float64Array(CT),hv:new Uint8Array(CT),vol:new Float64Array(CT)};
+  (function(){let state=0,lp=Math.log(100);
+    for(let i=0;i<CT;i++){
+      if(state===0&&csRand()<0.008)state=1;else if(state===1&&csRand()<0.025)state=0;
+      cs.hv[i]=state;const sd=state?0.03:0.009;
+      cs.r[i]=0.0003+sd*gauss(csRand);lp+=cs.r[i];cs.p[i]=Math.exp(lp)}
+    for(let i=0;i<CT;i++){const a=Math.max(0,i-20);let s=0,s2=0,n=0;for(let j=a;j<i;j++){s+=cs.r[j];s2+=cs.r[j]*cs.r[j];n++}
+      cs.vol[i]=n>4?Math.sqrt(Math.max(s2/n-(s/n)**2,1e-8)):0.012}
+  })();
+  const avgVol=cs.vol.reduce((a,b)=>a+b,0)/CT;
+  function runCusum(){
+    const k=+document.getElementById('cs-k').value, norm=document.getElementById('cs-norm').checked;
+    document.getElementById('cs-k-out').textContent=k.toFixed(2);
+    let sp=0,sn=0;const ev=[];
+    for(let i=21;i<CT;i++){const h=k*(norm?cs.vol[i]:avgVol);sp=Math.max(0,sp+cs.r[i]);sn=Math.min(0,sn+cs.r[i]);
+      if(sp>h){ev.push([i,1]);sp=0}else if(sn<-h){ev.push([i,-1]);sn=0}}
+    const hvEv=ev.filter(e=>cs.hv[e[0]]).length, hvT=cs.hv.reduce((a,b)=>a+b,0);
+    document.getElementById('cs-n').textContent=ev.length;
+    document.getElementById('cs-py').textContent=(ev.length/(CT/252)).toFixed(1);
+    document.getElementById('cs-hv').textContent=ev.length?Math.round(100*hvEv/ev.length)+'%':'–';
+    document.getElementById('cs-hvt').textContent=Math.round(100*hvT/CT)+'%';
+    const cv=document.getElementById('cs-canvas');const{ctx,w,h}=setupCanvas(cv);
+    const pad={l:44,r:10,t:14,b:22},W=w-pad.l-pad.r,H=h-pad.t-pad.b;
+    let lo=Infinity,hi=-Infinity;for(let i=0;i<CT;i++){const v=Math.log(cs.p[i]);lo=Math.min(lo,v);hi=Math.max(hi,v)}
+    const X=i=>pad.l+i/(CT-1)*W,Y=v=>pad.t+8+(hi-v)/(hi-lo||1)*(H-16);
+    ctx.clearRect(0,0,w,h);
+    ctx.fillStyle=css('--grid');for(let i=0;i<CT;i++){if(cs.hv[i]){let j=i;while(j<CT&&cs.hv[j])j++;ctx.fillRect(X(i),pad.t,X(j-1)-X(i)+1,H);i=j}}
+    ctx.font='11px '+css('--mono');ctx.fillStyle=css('--muted');ctx.strokeStyle=css('--rule');ctx.lineWidth=1;
+    for(let k2=0;k2<=3;k2++){const v=lo+(hi-lo)*k2/3,yy=Y(v);ctx.beginPath();ctx.moveTo(pad.l,yy);ctx.lineTo(w-pad.r,yy);ctx.stroke();ctx.textAlign='right';ctx.fillText(Math.exp(v).toFixed(0),pad.l-6,yy+4)}
+    ctx.textAlign='left';for(let y=0;y<6;y++)ctx.fillText('yr '+(y+1),X(y*252)+3,h-6);
+    ctx.strokeStyle=css('--ink');ctx.lineWidth=1.2;ctx.beginPath();for(let i=0;i<CT;i++){const xx=X(i),yy=Y(Math.log(cs.p[i]));i?ctx.lineTo(xx,yy):ctx.moveTo(xx,yy)}ctx.stroke();
+    const tri=(x,y,up)=>{ctx.beginPath();if(up){ctx.moveTo(x,y);ctx.lineTo(x-4,y+7);ctx.lineTo(x+4,y+7)}else{ctx.moveTo(x,y);ctx.lineTo(x-4,y-7);ctx.lineTo(x+4,y-7)}ctx.closePath();ctx.fill()};
+    for(const[i,d]of ev){const x=X(i),y=Y(Math.log(cs.p[i]));ctx.fillStyle=d>0?css('--gain'):css('--loss');tri(x,d>0?y+3:y-3,d>0)}
+  }
+  ['cs-k','cs-norm'].forEach(id=>document.getElementById(id).addEventListener('input',runCusum));
+
+  // ---------- Lab B: overfitting ----------
+  const T=2520, HALF=1260;
+  let seed=20261013, market=null;
+  const combos=[];for(let f=2;f<=50;f+=2)for(let s=f+5;s<=200;s+=5)combos.push([f,s]);
+  function shuffle(a,rand){for(let i=a.length-1;i>0;i--){const j=Math.floor(rand()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+  function makeMarket(){const rand=mulberry32(seed);const r=new Float64Array(T),p=new Float64Array(T);let lp=Math.log(100);
+    for(let i=0;i<T;i++){r[i]=0.01*gauss(rand);lp+=r[i];p[i]=Math.exp(lp)}
+    const c=new Float64Array(T+1);for(let i=0;i<T;i++)c[i+1]=c[i]+p[i];
+    return{r,p,cs:c,order:shuffle(combos.slice(),mulberry32(seed^0x9e3779b9))}}
+  function stratReturns(m,f,s){const out=new Float64Array(T);for(let t=s;t<T-1;t++){const fm=(m.cs[t+1]-m.cs[t+1-f])/f,sm=(m.cs[t+1]-m.cs[t+1-s])/s;out[t+1]=(fm>sm?1:-1)*m.r[t+1]}return out}
+  function runOverfit(){
+    const n=+document.getElementById('ov-n').value;document.getElementById('ov-n-out').textContent=n;
+    const m=market;let best=null;
+    for(let k=0;k<Math.min(n,m.order.length);k++){const[f,s]=m.order[k];const x=stratReturns(m,f,s);const sr=sharpe(x,200,HALF);if(!best||sr>best.sr)best={sr,f,s,x}}
+    const oos=sharpe(best.x,HALF,T);
+    document.getElementById('ov-is').textContent=best.sr.toFixed(2);
+    const o=document.getElementById('ov-oos');o.textContent=oos.toFixed(2);o.className=oos<0?'loss':(oos>0.5?'gain':'');
+    document.getElementById('ov-exp').textContent=expMaxSR(n,(HALF-200)/252).toFixed(2);
+    document.getElementById('ov-rule').textContent=best.f+' / '+best.s+' MA';
+    drawOverfit(best.x,m);
+  }
+  function drawOverfit(x,m){
+    const cv=document.getElementById('ov-canvas');const{ctx,w,h}=setupCanvas(cv);
+    const eq=new Float64Array(T);let v=0;for(let i=0;i<T;i++){v+=x[i];eq[i]=v}
+    const mk=new Float64Array(T);for(let i=0;i<T;i++)mk[i]=Math.log(m.p[i]/m.p[0]);
+    let lo=Infinity,hi=-Infinity;for(let i=0;i<T;i++){lo=Math.min(lo,eq[i],mk[i]);hi=Math.max(hi,eq[i],mk[i])}
+    const pad={l:44,r:10,t:12,b:22},W=w-pad.l-pad.r,H=h-pad.t-pad.b;
+    const X=i=>pad.l+i/(T-1)*W,Y=y=>pad.t+(hi-y)/(hi-lo||1)*H;
+    ctx.clearRect(0,0,w,h);
+    ctx.fillStyle=css('--grid');ctx.fillRect(X(HALF),pad.t,X(T-1)-X(HALF),H);
+    ctx.font='11px '+css('--mono');ctx.fillStyle=css('--muted');ctx.strokeStyle=css('--rule');ctx.lineWidth=1;
+    for(let k=0;k<=4;k++){const yv=lo+(hi-lo)*k/4,yy=Y(yv);ctx.beginPath();ctx.moveTo(pad.l,yy);ctx.lineTo(w-pad.r,yy);ctx.stroke();ctx.textAlign='right';ctx.fillText((Math.exp(yv)*100-100).toFixed(0)+'%',pad.l-6,yy+4)}
+    ctx.textAlign='left';ctx.fillText('in-sample (searched)',pad.l+4,h-6);ctx.fillText('out-of-sample',X(HALF)+4,h-6);
+    ctx.strokeStyle=css('--rule');ctx.beginPath();ctx.moveTo(X(0),Y(0));ctx.lineTo(X(T-1),Y(0));ctx.stroke();
+    const line=(arr,col,wd)=>{ctx.strokeStyle=col;ctx.lineWidth=wd;ctx.beginPath();for(let i=0;i<T;i+=2){const xx=X(i),yy=Y(arr[i]);i?ctx.lineTo(xx,yy):ctx.moveTo(xx,yy)}ctx.stroke()};
+    line(mk,css('--muted'),1);line(eq,css('--accent'),2);
+    ctx.fillStyle=css('--accent');ctx.beginPath();ctx.arc(X(T-1),Y(eq[T-1]),3.5,0,7);ctx.fill();
+  }
+  document.getElementById('ov-n').addEventListener('input',runOverfit);
+  document.getElementById('ov-run').addEventListener('click',()=>{seed=(seed*1664525+1013904223)>>>0;market=makeMarket();runOverfit()});
+
+  // ---------- Lab C: Kelly ----------
+  function runKelly(){
+    const mu=(+document.getElementById('k-mu').value||0)/100, sg=Math.max(0.01,(+document.getElementById('k-sig').value||0)/100);
+    const fk=mu/(sg*sg), g=f=>f*mu-0.5*f*f*sg*sg, pct=v=>(v*100).toFixed(2)+'%';
+    document.getElementById('k-f').textContent=fk.toFixed(2)+'×';
+    document.getElementById('k-g1').textContent=pct(g(fk));
+    document.getElementById('k-g5').textContent=pct(g(fk/2));
+    const g2=document.getElementById('k-g2');g2.textContent=pct(g(2*fk));g2.className=g(2*fk)<-1e-9?'loss':'';
+    const cv=document.getElementById('k-canvas');const{ctx,w,h}=setupCanvas(cv);
+    const pad={l:52,r:12,t:14,b:30},W=w-pad.l-pad.r,H=h-pad.t-pad.b,kmax=3;
+    const gmax=Math.max(g(fk),1e-6),gmin=Math.min(g(kmax*fk),-gmax*0.6);
+    const X=k=>pad.l+k/kmax*W,Y=v=>pad.t+(gmax-v)/(gmax-gmin)*H;
+    ctx.clearRect(0,0,w,h);ctx.font='11px '+css('--mono');ctx.lineWidth=1;
+    ctx.strokeStyle=css('--rule');ctx.fillStyle=css('--muted');
+    for(let k=0;k<=kmax;k+=0.5){const xx=X(k);ctx.beginPath();ctx.moveTo(xx,pad.t);ctx.lineTo(xx,pad.t+H);ctx.stroke();ctx.textAlign='center';ctx.fillText(k+'× K',xx,h-10)}
+    [gmax,0,gmin].forEach(v=>{const yy=Y(v);ctx.beginPath();ctx.moveTo(pad.l,yy);ctx.lineTo(w-pad.r,yy);ctx.stroke();ctx.textAlign='right';ctx.fillText(pct(v).replace('.00',''),pad.l-6,yy+4)});
+    ctx.fillStyle=css('--loss');ctx.globalAlpha=0.12;ctx.fillRect(X(2),pad.t,X(kmax)-X(2),H);ctx.globalAlpha=1;
+    ctx.strokeStyle=css('--accent');ctx.lineWidth=2;ctx.beginPath();
+    for(let i=0;i<=200;i++){const k=kmax*i/200,xx=X(k),yy=Y(g(k*fk));i?ctx.lineTo(xx,yy):ctx.moveTo(xx,yy)}ctx.stroke();
+    [[0.5,'½ Kelly'],[1,'Kelly'],[2,'2× = zero growth']].forEach(([k,l])=>{ctx.fillStyle=css('--accent');ctx.beginPath();ctx.arc(X(k),Y(g(k*fk)),4,0,7);ctx.fill();ctx.fillStyle=css('--ink');ctx.textAlign=k===2?'left':'center';ctx.fillText(l,X(k)+(k===2?6:0),Y(g(k*fk))-9)});
+  }
+  ['k-mu','k-sig'].forEach(id=>document.getElementById(id).addEventListener('input',runKelly));
+
+  market=makeMarket();
+  const draw=()=>{runCusum();runOverfit();runKelly()};
+  draw();
+  let rt;window.addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(draw,150)});
+  if(window.matchMedia)matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change',draw);
+  new MutationObserver(draw).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+})();
+</script>

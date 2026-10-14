@@ -1,0 +1,6 @@
+# H1/H2 — Execution & market making
+Almgren–Chriss (2000): sell X over T; holdings x(t); temp impact cost η·v², risk λσ²∫x²dt. Optimal x(t) = X·sinh(κ(T−t))/sinh(κT), κ = √(λσ²/η) (discrete: cosh(κτ) = 1 + λσ²τ²/(2η)). λ→0 ⇒ TWAP; high λ ⇒ front-load.
+Check: SLSQP numerical optimum vs closed form, N=50: max diff 3.7e−5·X ✓. Frontier: λ 0 → cost $2.50M, risk $557k; λ 2e−5 → cost $3.56M, risk $413k (pay ~$1M more to cut std $144k).
+Square-root law (Tóth et al. 2011; Bouchaud, Bonart, Donier & Gould 2018): impact ≈ Y·σ_daily·√(Q/ADV), Y≈0.5–1, universal across assets/eras. With Y=0.7, last-60-day Yahoo data: SPY (ADV $32B, σ .68%): $10k 0.0bp, $1M 0.3bp, $100M 2.7bp. IWM: 0.1/0.7/7.5bp. UPST (ADV $0.12B, σ 3%): 1.9/19.3/193bp. Retail size: impact ≈ 0; spread + fees dominate. Concave: 100× bigger order ≈ 10× more impact per share.
+Avellaneda–Stoikov (2008): reservation price r = s − qγσ²(T−t); total spread δ_a+δ_b = γσ²(T−t) + (2/γ)ln(1+γ/k); fills Poisson A·e^{−kδ}.
+Sim (paper params s=100, σ=2, T=1, dt=.005, γ=.1, k=1.5, A=140; 1000 paths): inventory-skewed profit 64.86 ± 6.78, inventory std 2.8; symmetric 66.84 ± 13.35, inventory std 7.9. Paper reports 62.94 ± 5.89 vs 67.21 ± 13.43 ✓. Skewing quotes by inventory halves risk for ~3% less profit.

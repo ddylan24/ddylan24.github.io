@@ -1,0 +1,13 @@
+discrete Kelly p=.55, even odds: f*=0.10; growth/bet at f*: 0.00501
+0.5×Kelly (1.0x lev), 50y: P(ever lose 50%) sim 0.11 theory 0.12; P(ever lose 75%) sim 0.01 theory 0.02
+1.0×Kelly (2.0x lev), 50y: P(ever lose 50%) sim 0.49 theory 0.50; P(ever lose 75%) sim 0.23 theory 0.25
+2.0×Kelly (4.0x lev), 50y: P(ever lose 50%) sim 0.90 theory 1.00; P(ever lose 75%) sim 0.79 theory 1.00
+CRSP 1926–2026: excess μ=7.8%, σ=17.1% → hindsight Kelly L*=μ/σ²=2.68x
+  L=0.5x daily-rebalanced: realized log growth  6.57%/yr (Itô pred  6.57%), max drawdown 57.1%
+  L=1.0x daily-rebalanced: realized log growth  9.39%/yr (Itô pred  9.39%), max drawdown 84.1%
+  L=1.5x daily-rebalanced: realized log growth 11.47%/yr (Itô pred 11.49%), max drawdown 94.6%
+  L=2.0x daily-rebalanced: realized log growth 12.81%/yr (Itô pred 12.85%), max drawdown 98.4%
+  L=2.5x daily-rebalanced: realized log growth 13.40%/yr (Itô pred 13.48%), max drawdown 99.5%
+  L=3.0x daily-rebalanced: realized log growth 13.21%/yr (Itô pred 13.38%), max drawdown 99.9%
+  L=4.0x daily-rebalanced: realized log growth 10.42%/yr (Itô pred 10.99%), max drawdown 100.0%  (wiped out)
+trailing-10y Kelly estimate across years: median 3.5x, range 0.0x–15.5x  → the input swings wildly

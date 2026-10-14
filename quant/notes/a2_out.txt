@@ -1,0 +1,9 @@
+normal: daily SR=0.0408 skew=-0.00 kurt=3.0 | simulated SE(SR̂)=0.0282  Lo iid-normal SE=0.0282  Mertens SE=0.0282
+skewed fat (short-vol like): daily SR=0.0446 skew=-0.22 kurt=13.2 | simulated SE(SR̂)=0.0281  Lo iid-normal SE=0.0282  Mertens SE=0.0284
+SPY daily 1999-2026: T=6986 SR_daily=0.0275 (ann 0.44) skew=-0.20 kurt=14.3 SE_ann naive=0.19 Mertens SE_ann=0.19 PSR(SR>0)=0.989  MinTRL(95%)=14.3 yrs
+SPY daily 2017-2026: T=2458 SR_daily=0.0498 (ann 0.79) skew=-0.59 kurt=18.1 SE_ann naive=0.32 Mertens SE_ann=0.33 PSR(SR>0)=0.992  MinTRL(95%)=4.5 yrs
+annual SR 0.5: years of daily data to be 95% sure SR>0 (normal) = 10.8; with skew -1, kurt 10 = 11.2
+annual SR 1.0: years of daily data to be 95% sure SR>0 (normal) = 2.7; with skew -1, kurt 10 = 2.9
+annual SR 2.0: years of daily data to be 95% sure SR>0 (normal) = 0.7; with skew -1, kurt 10 = 0.8
+SPY monthly SR=0.181; naive annual=√12·SR=0.63; Lo-adjusted=0.60; lag1 autocorr=0.002
+smoothed series (like illiquid/stale prices): lag1 rho=0.50; naive ann SR=1.79 vs Lo-adjusted=1.31

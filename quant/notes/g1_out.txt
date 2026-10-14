@@ -1,0 +1,19 @@
+AQR TSMOM factor file: columns ['TSMOM', 'TSMOM^CM', 'TSMOM^EQ', 'TSMOM^FI', 'TSMOM^FX'], 1985-01-31→2026-05-31
+  AQR TSMOM 1985–1999: ann ret 18.4%, Sharpe 1.62
+  AQR TSMOM 2000–2009: ann ret 14.5%, Sharpe 1.13
+  AQR TSMOM 2010–2026: ann ret 5.3%, Sharpe 0.40
+  ETF TSMOM lookback  1m, vol-scaled: Sharpe 0.14 (with 20bp costs -0.32)
+  ETF TSMOM lookback  1m, equal-notional: Sharpe 0.20 (with 20bp costs -0.08)
+  ETF TSMOM lookback  3m, vol-scaled: Sharpe 0.40 (with 20bp costs 0.16)
+  ETF TSMOM lookback  3m, equal-notional: Sharpe 0.23 (with 20bp costs 0.09)
+  ETF TSMOM lookback  6m, vol-scaled: Sharpe 0.47 (with 20bp costs 0.29)
+  ETF TSMOM lookback  6m, equal-notional: Sharpe 0.39 (with 20bp costs 0.29)
+  ETF TSMOM lookback  9m, vol-scaled: Sharpe 0.49 (with 20bp costs 0.33)
+  ETF TSMOM lookback  9m, equal-notional: Sharpe 0.25 (with 20bp costs 0.16)
+  ETF TSMOM lookback 12m, vol-scaled: Sharpe 0.43 (with 20bp costs 0.29)
+  ETF TSMOM lookback 12m, equal-notional: Sharpe 0.22 (with 20bp costs 0.15)
+  correlation of my 12m vol-scaled ETF version with AQR TSMOM (2008–2026, monthly): 0.79; AQR Sharpe same window 0.41, mine 0.42
+  Deflated Sharpe for the 12m vol-scaled variant among 10 tried: monthly SR 0.124, benchmark max-from-luck SR0 0.057; PSR(>0) 0.97, DSR 0.84
+  2008 GFC: my TSMOM +26.1%, AQR +24.6%, SPY -38.0%
+  2022 rates shock: my TSMOM +28.9%, AQR +24.7%, SPY -19.2%
+  COVID crash: my TSMOM +8.2%, AQR +9.0%, SPY -9.6%

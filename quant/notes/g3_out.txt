@@ -1,0 +1,14 @@
+Primary model: SPY CUSUM(k=2) events, bet on reversal; triple barrier ±1.5σ√10, 10-day limit. Events 1422, primary hit rate 48.1%, mean return/trade +0.13%
+  share of events whose label window overlaps the next event: 92%
+  CV AUC, shuffled K-fold (no purge): 0.597 | purged+embargoed sequential K-fold: 0.593
+Walk-forward 2008–2026 (train only on events whose labels ended before each test year), out-of-sample AUC 0.603
+  primary: take every event            trades  994, hit 47.0%, mean +0.09%, per-trade Sharpe 0.027
+  meta-filtered: take if P>0.5         trades  475, hit 56.0%, mean +0.50%, per-trade Sharpe 0.129
+  meta-filtered: top half by P         trades  497, hit 55.9%, mean +0.53%, per-trade Sharpe 0.135
+  meta-sized (bet ∝ 2p−1): mean +0.042%, per-trade Sharpe 0.091
+  by side long after down-move: primary hit 61.1% mean +0.57% (n=416)
+  by side short after up-move: primary hit 36.9% mean -0.25% (n=578)
+  feature importance (full fit, MDI): ret5 0.18, vix_chg 0.15, ret20 0.15, dist200 0.14, vix 0.13, vol_ratio 0.13, side 0.10, dow 0.04
+meta-filtered trades that are longs: 74% (all events: 42%)
+simple rule 'longs only': trades 416, hit 61.1%, mean +0.57%, per-trade Sharpe 0.146
+within longs: top-half P hit 61.5% mean +0.90% | bottom-half hit 60.6% mean +0.25%

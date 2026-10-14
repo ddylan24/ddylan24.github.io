@@ -1,0 +1,6 @@
+# D — Derivatives
+D1 Black–Scholes: hedged Π = V − ΔS; Itô ⇒ dΠ = (∂V/∂t + ½σ²S²∂²V/∂S²)dt (dW cancels with Δ=∂V/∂S). Riskless ⇒ dΠ = rΠdt ⇒ PDE ∂V/∂t + ½σ²S²V_SS + rSV_S − rV = 0. Feynman–Kac ⇒ V = e^{−rT}E^Q[payoff], under Q the stock drifts at r.
+Check (S=K=100, T=1, r=4%, σ=20%): BS call 9.9251; MC 2M paths under Q 9.9123 ± 0.020 ✓. MC under real drift μ=10%: 14.07 ✗ (wrong measure). Put 6.0040; parity C−P = 3.9211 = S − Ke^{−rT} ✓.
+D2 Delta-hedged P&L (sold 3m ATM call at 20% IV, hedged daily with 20% delta, real drift 8%): realized 15% → +0.992; 20% → −0.013; 25% → −0.998 (premium 4.485). Theory: P&L ≈ ½∫Γ S²(σ_i² − σ_r²)dt ≈ vega × (σ_i − σ_r) ≈ 0.199/vol-pt × 5 = 0.99 ✓. Drift irrelevant ✓.
+Discrete-hedging error std (σ_i=σ_r): 13 rebalances 0.934; 63 → 0.426; 252 → 0.217; 1008 → 0.110 → ∝ 1/√N (Boyle–Emanuel; Derman). 4× hedges halves risk, but each costs spread.
+D3 Variance risk premium (FRED VIX vs next-21d realized SPY vol, 1999–2026, n=6,966): mean VIX 20.0 vs realized 16.3 (+3.7 pts); VIX > realized 84% of days; worst −68.9 pts (2020-02-20). In variance: mean +0.0097, 5th pct −0.0284, skew −7.2. Selling vol = insurance seller: steady premium, crash losses. Compensated risk premium (Carr–Wu 2009; Bollerslev–Tauchen–Zhou 2009).

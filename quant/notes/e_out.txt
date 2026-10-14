@@ -1,0 +1,12 @@
+30 industries (Ken French, value-weighted), monthly excess returns 1963-07-31→2026-08-31, n=758
+Rolling 120-month estimation, out-of-sample 1973-07-31→2026-08-31 (638 months):
+  1/N                              Sharpe  0.51  vol  16.7%  worst month  -26.1%  avg gross leverage  1.00
+  sample tangency (MV)             Sharpe -0.12  vol 682.7%  worst month -4870.2%  avg gross leverage 33.87
+  min-variance (sample)            Sharpe  0.47  vol  13.4%  worst month  -13.9%  avg gross leverage  4.14
+  min-variance (Ledoit-Wolf)       Sharpe  0.55  vol  12.5%  worst month  -12.2%  avg gross leverage  2.93
+  inverse-vol (risk-parity-lite)   Sharpe  0.52  vol  16.0%  worst month  -25.3%  avg gross leverage  1.00
+  tangency + LW cov                Sharpe -0.02  vol 136.5%  worst month -574.3%  avg gross leverage 19.58
+  IN-SAMPLE tangency over full period (hindsight): Sharpe 0.90
+PCA on 30 industries, daily, last 504 days: top eigenvalue 12.3 explains 41% of variance (the 'market mode'); next [3.93 1.81 1.49]
+  Marchenko–Pastur noise edge λ+=(1+√(N/T))² = 1.55; eigenvalues above it: 3 of 30 → only those carry structure, rest indistinguishable from noise
+  control (pure noise, same N,T): largest eigenvalue 1.47, smallest 0.62  (theory λ+=1.55, λ−=0.57)

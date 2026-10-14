@@ -1,0 +1,8 @@
+GARCH(1,1)-t on CRSP market 1926–2026: ω=0.0089 α=0.1007 β=0.8961 ν=5.5; persistence α+β=0.9968; shock half-life=216 days; long-run vol=26.4%/yr
+kurtosis raw returns 20.0 → GARCH standardized residuals 8.5; |z|>5: 31 days (raw had 104)
+99% VaR backtest 1991–2026 (n=8980, expect 90): EWMA(0.94) normal: 183, GARCH-t: 134
+   Kupiec EWMA(0.94) normal: 75.1
+   Kupiec GARCH-t: 19.1
+Moreira–Muir vol-managed market 1926–2026 (monthly, weight ∝ 1/last month's realized variance, scaled to same vol): Sharpe 0.52 vs market 0.45; alpha 4.36%/yr (t=2.74), beta 0.62
+   1926–1999: Sharpe 0.53 vs 0.45, alpha t=2.55; max leverage used 15.2x, median 1.05x
+   2000–2026: Sharpe 0.51 vs 0.48, alpha t=1.20; max leverage used 6.0x, median 0.63x
