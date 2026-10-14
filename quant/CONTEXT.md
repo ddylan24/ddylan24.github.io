@@ -274,6 +274,12 @@ This file is a condensed briefing of everything researched in the original sessi
 
 - **Partial pooling of calibration** (notes/U3.md): Kalshi weather city slopes 1.04–1.47 but τ̂ = 0 (Q 4.7/5 df). Use one pooled slope, 1.17. Shrinkage b̃ = μ̂ + τ²/(τ²+s²)(b̂−μ̂).
 
+- **Scoring tournament / DM tests** (notes/U4.md):
+  - Weather: additive (t −3.3) and Shin (t −3.2) beat multiplicative OOS.
+  - **Candidate edge:** Kalshi BTC T−6h slope-only recalibration p' = logit⁻¹(1.21·logit p) beats the market over 34 OOS days (log loss −0.0082, DM t −4.0), and trading it after fees gives +3.1¢/contract (daily t 3.0), with balanced buys and sells.
+  - The intercept version was a BTC-drift bet (fades).
+  - Pre-registered for forward paper trading on the home PC, not live money.
+
 ## 4. Pitfalls checklist (learned the hard way)
 
 1. Compare against a random or unconditional baseline, not against 0.
@@ -286,7 +292,8 @@ This file is a condensed briefing of everything researched in the original sessi
 8. Include the right factors (MOM!) before claiming alpha.
 9. Model assumptions must hold (Roll estimator; Vasicek across policy regimes).
 10. Skill tests across traders need a null with a SHARED outcome draw per market; independent per-trader nulls overstate significance.
-11. Costs kill short horizons. Short-term reversal doesn't survive costs at scale.
+11. Never sort date strings ("26AUG08" sorts AUG < OCT < SEP); parse to dates before splitting train/test.
+12. Costs kill short horizons. Short-term reversal doesn't survive costs at scale.
 
 ## 5. Data sources and environment notes
 

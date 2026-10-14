@@ -127,4 +127,4 @@ Status: [ ] todo  [~] in progress  [x] done. Each item: derive, verify numerical
 - [ ] U1 Recession / macro contracts (Kalshi/Polymarket): do outcomes tied to aggregate wealth carry a risk premium (unlike elections, T4)?
 - [ ] U2 Information aggregation across venues over time: does Kalshi or Polymarket lead on identical BTC strikes (minute data from capture.py)?
 - [x] U3 Empirical-Bayes pooling of calibration slopes (Kalshi weather cities): τ̂=0, Q 4.7/5df → one pooled slope 1.17; city differences are noise.
-- [ ] U4 Proper-scoring tournament: score every model built this session (market, DVOL, MOS, Shin, recalibrated) on common test sets with Diebold–Mariano tests.
+- [x] U4 Scoring tournament + DM tests. Additive/Shin de-vig confirmed OOS. Candidate edge: slope-only recal (b≈1.2) of Kalshi BTC at T−6h beats market OOS (DM t −4.0; +3.1¢/contract, t 3.0) — verify forward.

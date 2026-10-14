@@ -1,0 +1,26 @@
+Arena 1 — Kalshi weather, out-of-sample 116 city-days (recalibration slope fit on first half: b 1.21)
+  multiplicative  log loss 1.2115  Brier 0.6230   DM vs multiplicative: +0.0000 (t +nan)
+  additive        log loss 1.1963  Brier 0.6196   DM vs multiplicative: -0.0152 (t -3.3)
+  shin            log loss 1.2035  Brier 0.6208   DM vs multiplicative: -0.0080 (t -3.2)
+  recalibrated    log loss 1.2042  Brier 0.6187   DM vs multiplicative: -0.0073 (t -0.6)
+
+Arena 2 — Kalshi BTC daily T−24h, out-of-sample 34 days (recal slope 0.67 fit on first 34 days)
+  market               log loss/contract 0.2735   DM vs market +0.0000 (t +0.0)
+  DVOL lognormal       log loss/contract 0.2949   DM vs market +0.0214 (t +3.6)
+  recalibrated market  log loss/contract 0.3005   DM vs market +0.0270 (t +1.1)
+
+Arena 2 — Kalshi BTC daily T−6h, out-of-sample 34 days (recal slope 1.21 fit on first 34 days)
+  market               log loss/contract 0.1094   DM vs market +0.0000 (t +0.0)
+  DVOL lognormal       log loss/contract 0.1065   DM vs market -0.0028 (t -0.8)
+  recalibrated market  log loss/contract 0.1031   DM vs market -0.0062 (t -1.6)
+
+Trading the recalibrated T−6h probabilities out of sample (buy at ask / sell at bid when edge > e + fee):
+  e=0.00: 374 buys / 207 sells on 34 days, mean +2.58¢/contract, daily-P&L t +1.6
+  e=0.01: 228 buys / 0 sells on 34 days, mean +4.09¢/contract, daily-P&L t +1.1
+  e=0.02: 177 buys / 0 sells on 34 days, mean +3.92¢/contract, daily-P&L t +0.9
+  e=0.03: 140 buys / 0 sells on 34 days, mean +3.90¢/contract, daily-P&L t +0.7
+
+Robustness: first-half fit intercept +0.26, slope 1.21; YES rate first half 0.542 vs second 0.509; BTC log-return first half +17.3%, second +5.8%
+  slope-only recal (b 1.21, no intercept), e=0.00: 312 buys / 289 sells, mean +3.08¢, daily t +3.0
+  slope-only recal (b 1.21, no intercept), e=0.01: 134 buys / 129 sells, mean +4.92¢, daily t +2.3
+  slope-only recal log loss vs market: -0.0082 (DM t -4.0)
