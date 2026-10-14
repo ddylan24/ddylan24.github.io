@@ -115,3 +115,9 @@ Status: [ ] todo  [~] in progress  [x] done. Each item: derive, verify numerical
 - [x] S9 Diffusion of a probability: dp = φ(N⁻¹p)/√τ dW; Polymarket fits the price shape (β 0.99) but τ^−0.53; near-certainties jump.
 - [x] S10 Jump risk at ≥90¢: 20¢ one-day drops 39× diffusion, kurtosis ~1000; 90–95¢ lose 9.1% vs 7.2% implied.
 - [ ] HOME-PC: tasks needing the user's home PC/Pi (local backtest data, live access) are listed in CONTEXT §5b.
+
+## T. Ninth wave
+- [ ] T1 Jump-diffusion for probabilities: fit a Merton-style jump intensity to ≥90¢ contract paths; price the "insurance" a favorite buyer sells.
+- [ ] T2 Optimal market-making quotes in a binary using the S9 vol law + S10 jump rates (Avellaneda–Stoikov in probability space), simulated on real paths.
+- [ ] T3 Cross-venue BTC daily: Polymarket noon-ET vs Kalshi 5pm-ET same-day contracts — consistency of implied distributions over time (term structure of the two venues).
+- [ ] T4 Election-market hedging demand: correlation of Polymarket election prices with SPY/sector returns (do prices embed a risk premium?).
