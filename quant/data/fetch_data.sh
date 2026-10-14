@@ -10,6 +10,7 @@ for f in F-F_Research_Data_Factors_daily_CSV F-F_Research_Data_5_Factors_2x3_CSV
   curl -sL -o $f.zip "$KF/$f.zip" && unzip -o -q $f.zip && rm $f.zip; done
 for s in VIXCLS T10Y2Y BAMLH0A0HYM2 DGS3MO DGS1 DGS2 DGS5 DGS10 DGS30; do
   curl -sL -o $s.csv "https://fred.stlouisfed.org/graph/fredgraph.csv?id=$s"; done
+mkdir -p fx; for s in DEXJPUS DEXUSEU DEXUSAL DEXCAUS DEXUSUK DEXSZUS DEXUSNZ DEXNOUS DEXSDUS IR3TIB01AUM156N IR3TIB01CAM156N IR3TIB01CHM156N IR3TIB01GBM156N IR3TIB01JPM156N IR3TIB01NZM156N IR3TIB01USM156N IR3TIB01EZM156N IR3TIB01NOM156N IR3TIB01SEM156N; do curl -sL -o fx/$s.csv "https://fred.stlouisfed.org/graph/fredgraph.csv?id=$s"; done
 curl -sL -A "Mozilla/5.0" -o aqr_tsmom.xlsx "https://www.aqr.com/-/media/AQR/Documents/Insights/Data-Sets/Time-Series-Momentum-Factors-Monthly.xlsx"
 # Yahoo prices (SPY etc.) are downloaded inside the scripts via yfinance. Polymarket: python3 -I code/p2_fetch.py .
 # NOTE: several scripts expect a parsed daily FF3 file ff3_daily.csv (columns mkt_rf,smb,hml,rf as decimals) and spy.csv;

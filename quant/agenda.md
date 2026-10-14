@@ -60,7 +60,7 @@ Status: [ ] todo  [~] in progress  [x] done. Each item: derive, verify numerical
 ## L. Second evening wave
 - [x] L1 Jump-diffusion (Merton): fit jump intensity/size to CRSP daily returns; does it explain short-dated SPY skew better than Heston?
 - [x] L2 Interest-rate models: Vasicek/CIR fit to FRED 3m T-bill; mean reversion of rates; bond pricing formula check.
-- [ ] L3 Carry: currency/bond carry with FRED rates; carry crash skew.
+- [x] L3 Carry: currency/bond carry with FRED rates; carry crash skew.
 - [x] L4 Seasonality & calendar anomalies on CRSP (turn-of-month, January, day-of-week) with multiple-testing control.
 - [x] L5 Value factor's 2007–2020 drawdown and recovery (Ken French HML): how unusual vs its own history (drawdown statistics math).
 
@@ -73,3 +73,9 @@ Status: [ ] todo  [~] in progress  [x] done. Each item: derive, verify numerical
 - [x] P6 Literature: Wolfers & Zitzewitz 2004; Iowa Electronic Markets vs polls (Berg et al.); Snowberg & Wolfers 2010 favorite–longshot; manipulation evidence.
 - [x] P7 Calibration vs horizon on our Polymarket data (test Page & Clemen pull-toward-50%).
 - [x] P8 Cross-venue: Kalshi vs Polymarket prices on the same live events.
+
+## M. Third wave
+- [ ] M1 Polymarket calibration split by category (sports vs politics vs crypto vs other) — where are the biases?
+- [ ] M2 Crypto perpetual-futures funding rates as carry (exchange APIs), basis math.
+- [ ] M3 Prediction-market price reaction to news: how fast do prices converge after a resolving event (event study on intraday history).
+- [ ] M4 Risk parity / all-weather across asset classes with real ETF data vs 60/40 (leverage, rates regime 2022).

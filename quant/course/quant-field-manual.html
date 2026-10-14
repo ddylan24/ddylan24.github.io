@@ -232,6 +232,15 @@ html{scroll-behavior:smooth}
     <li><b>Volatility scaling roughly doubles the Sharpe ratio.</b> Short lookbacks trade so often that costs kill them.</li>
     <li><b>Deflated Sharpe:</b> counting the 10 variants I tried, the 12-month version has a DSR of 0.84. Even one of the best-documented strategies in finance is only about 84% likely to beat luck on 18 years of data. That's Module 08 in action.</li>
   </ul>
+  <h3>Carry: collecting interest-rate differences</h3>
+<div class="formula">carry return = (S_t+1 / S_t)·(1 + i_foreign/12) − (1 + i_USD/12)
+uncovered interest parity (UIP): high-rate currencies should depreciate by the rate gap → carry earns 0</div>
+  <p>Using FRED daily exchange rates and OECD 3-month rates for 9 major currencies against the dollar (2002–2025), I went long the 3 highest-rate currencies and short the 3 lowest each month, using last month's rates:</p>
+  <ul class="tight">
+    <li><b>2.5% a year, Sharpe 0.35, skew −0.63.</b> +45% in 2002–2007 (Sharpe 1.08), then <b>−26.5% in 2008</b> (worst month −10.6%, September 2008), then +60% since 2009.</li>
+    <li><b>UIP fails.</b> The rate gap paid +3.1% a year, and high-rate currencies fell only 0.6% a year, not the 3.1% UIP predicts. In Fama's regression the slope is −0.13 (t −0.35): closer to "exchange rates are a random walk" (0) than to UIP (−1). This is the forward-premium puzzle.</li>
+    <li><b>Carry is short crash risk.</b> Its monthly return correlates −0.46 with the change in VIX. "Up the stairs, down the elevator": steady gains, sudden losses when fear spikes. It's a risk premium in the same family as selling volatility.</li>
+  </ul>
   <h3>Low risk, high reward: the flat security market line</h3>
   <p>The CAPM says expected excess return = β × market premium. Ken French's beta-sorted and variance-sorted deciles (CRSP, 1963–2026) disagree:</p>
   <div class="tablewrap"><table>

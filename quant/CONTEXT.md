@@ -59,6 +59,11 @@ This file is a condensed briefing of everything researched in the original sessi
   - Constant-vol momentum: Sharpe 0.45 → 0.87, worst month −29%.
 - **Low beta / low vol:** the SML slope is 3.4%/β vs a 7.2% premium. BAB +6.0%/yr (t 2.5). The highest-variance decile has α −10.3%/yr.
 - **Value (HML):** −56% from 2006-12 to 2020-09, still below that peak as of 2026-08. Block bootstrap of pre-2007 history: P(drawdown ≥ 56%) = 13%.
+- **Currency carry** (FRED FX + OECD 3m rates, 9 currencies vs USD, 2002–2025), long top-3 / short bottom-3:
+  - 2.5%/yr, Sharpe 0.35, skew −0.63. 2008: −26.5%.
+  - The rate gap earned +3.1%/yr; spot moved only −0.6%/yr.
+  - Fama UIP slope −0.13 (t −0.35), vs UIP's −1: the forward-premium puzzle.
+  - Correlation with ΔVIX −0.46 (it's short crash risk).
 - **Pairs:** none of KO/PEP, XOM/CVX, EWA/EWC, GLD/GDX, HD/LOW, V/MA is cointegrated over 2008–26. They pass in only 0–18% of rolling 2-year windows. Spurious regression of independent random walks: "significant" 90% of the time.
 - **Full QuantProcess pipeline on SPY** (CUSUM k=2 → reversal bet → triple barrier → RF meta-model, walk-forward 2008–26):
   - OOS AUC 0.60. Hit rate 47% → 56%, per-trade SR 0.027 → 0.129.

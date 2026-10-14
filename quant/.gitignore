@@ -16,3 +16,4 @@ data/tsmom_etfs.csv
 data/btc.csv
 data/pm/
 __pycache__/
+data/fx/

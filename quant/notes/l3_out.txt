@@ -1,0 +1,8 @@
+G10 carry vs USD (FRED daily FX, OECD 3m rates), monthly 2002-04-30→2025-12-31, 9 currencies
+  long top-3 / short bottom-3 rate currencies: 2.5%/yr, vol 7.2%, Sharpe 0.35, skew -0.63, worst month -10.6% (2008-09), max drawdown 30%
+    2002–2007: +45.5% total, Sharpe 1.08
+    2008–2008: -26.5% total, Sharpe -2.21
+    2009–2026: +59.5% total, Sharpe 0.45
+  decomposition: interest-rate differential +3.1%/yr, spot FX move -0.6%/yr (UIP predicts spot ≈ −differential)
+  Fama (1984) pooled regression of next-month FX appreciation on rate differential: β=-0.13 (t -0.35); UIP predicts β=−1, 'random walk' β=0
+  corr(carry return, VIX change same month) = -0.46 → carry loses when fear spikes
