@@ -1183,6 +1183,21 @@ worth doing:   gap g on capital K locked for T years  →  need g/K &gt; e^(rT) 
     <li><b>Republican names were overpriced relative to the party.</b> Bids on 24 candidates summed to 0.371, against a 0.350 ask for "Republican wins," a 2.1¢ gap. It isn't riskless, because a Republican could win as an independent. Most legs are at the tick floor, and the trade ties up about $23.6 for two years per $1 of payoff, which is roughly 0.09% total. Not worth it.</li>
   </ul>
   <p><b>Lesson:</b> logical arbitrage needs an <em>exact</em> implication, executable prices (not mids), real size and a short lockup. Check all four. Bots harvest the gaps that pass, so what's left is either in longshot tails or locked up for years (Saguillo et al. 2025).</p>
+  <h3>How fast does news reach a prediction market?</h3>
+  <p>On September 16, 2026 the Fed hiked 25bp. That's verified by FRED: the upper target went from 3.75% to 4.00%. Polymarket's "Fed decision in September" market traded $208M. I pulled every trade around the 2:00pm ET statement, along with one-minute bars for Treasuries and SPY:</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>seconds from 2:00:00pm</th><th>−60</th><th>0</th><th>+5</th><th>+10</th><th>+120</th></tr></thead>
+    <tbody>
+      <tr><td>P(25bp hike)</td><td>0.880</td><td>0.870</td><td>0.899</td><td>0.990</td><td>0.999</td></tr>
+      <tr><td>P(no change)</td><td>0.130</td><td>0.140</td><td>0.010</td><td>0.010</td><td>0.001</td></tr>
+    </tbody>
+  </table></div>
+  <ul class="tight">
+    <li><b>The move was 90% done in 6 seconds</b>, about two or three blocks on the chain. Trades filled at stale prices were worth only a few thousand dollars against $3.8M traded in those five minutes. Reacting to scheduled news is a speed game that retail traders can't win.</li>
+    <li><b>No leak.</b> The price sat at 0.86–0.88 for the hour before. Its big jumps came in the weeks before, on data-release mornings: jobs and CPI at 8:30am ET.</li>
+    <li><b>The contract only prices the decision.</b> Bonds actually rallied in the first minute, because an 87%-expected hike is only a 3bp surprise. Over the next hour, through the press conference, the 10-year yield rose 6bp and SPY fell 0.84%. The guidance carried most of the information, and the prediction market can't express it.</li>
+  </ul>
+  <p>The realistic edge isn't reacting to the announcement. It's modeling how data surprises (CPI, payrolls) move the decision probabilities before the meeting.</p>
   <h3>Sizing binary bets: Kelly for prediction markets</h3>
 <div class="formula">buy YES at price p with your probability q:   f* = (q − p) / (1 − p)        (NO side: f* = (p − q) / p)
 growth per bet  G(f) = q·ln(1 + f(1−p)/p) + (1−q)·ln(1 − f)</div>

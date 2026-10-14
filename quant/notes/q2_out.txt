@@ -1,0 +1,69 @@
+50+ bps decrease   trades fetched   500  from 12:35:42 to 18:06:30 UTC
+25 bps decrease    trades fetched   500  from 11:59:40 to 18:29:04 UTC
+No change          trades fetched  2000  from 14:40:13 to 20:02:13 UTC
+25 bps increase    trades fetched  1500  from 14:56:15 to 21:39:28 UTC
+50+ bps increase   trades fetched   500  from 14:54:14 to 19:46:45 UTC
+
+25 bps increase (YES price) around 18:00:00 UTC statement:
+  t-3600s  hike 0.8800   no-change 0.1200
+  t -600s  hike 0.8600   no-change 0.1400
+  t  -60s  hike 0.8800   no-change 0.1300
+  t  -10s  hike 0.8700   no-change 0.1300
+  t   +0s  hike 0.8700   no-change 0.1400
+  t   +5s  hike 0.8993   no-change 0.0100
+  t  +10s  hike 0.9900   no-change 0.0100
+  t  +20s  hike 0.9900   no-change 0.0100
+  t  +30s  hike 0.9900   no-change 0.0100
+  t  +60s  hike 0.9900   no-change 0.0100
+  t +120s  hike 0.9990   no-change 0.0010
+  t +300s  hike 0.9990   no-change 0.0010
+  t +900s  hike 0.9990   no-change 0.0010
+  first trade after statement: 18:00:00 at 0.880 (BUY Yes, $27,720)
+  90% of move (pre 0.870 → 0.999) reached at 18:00:06 (+6s)
+  trades after 18:00 at YES < 0.99 within 5 min: 22, $269,985; prices 0.880–0.990
+  window -3600s..-600s: 337 trades, $6,676,425, YES vwap 0.861
+  window  -600s.. -60s: 113 trades, $2,236,185, YES vwap 0.862
+  window   -60s..  +0s: 14 trades, $339,518, YES vwap 0.878
+
+Hike probability path (daily): 05-14 0.28, 05-28 0.15, 06-11 0.20, 06-25 0.36, 07-09 0.38, 07-23 0.49, 08-06 0.45, 08-20 0.28, 09-03 0.54, 09-16 0.885
+Largest hourly jumps in the last 4 weeks: 09-11 13:00 +0.220→0.795; 08-28 15:00 +0.170→0.475; 09-04 13:00 +0.120→0.525; 09-10 13:00 +0.100→0.625; 09-16 19:00 +0.090→1.000
+
+Cross-asset minute bars (Yahoo; bar labelled by start minute):
+  SPY  pre 760.280  +1m -0.08%  +2m -0.18%  +5m -0.01%  +15m -0.04%  +60m -0.84%
+  TLT  pre 81.250  +1m +0.17%  +2m +0.18%  +5m +0.09%  +15m +0.20%  +60m -0.29%
+  SHY  pre 81.435  +1m -0.03%  +2m -0.07%  +5m -0.07%  +15m -0.10%  +60m -0.21%
+  IRX  pre 3.938  +1m -1.6bp  +2m -1.0bp  +5m -0.3bp  +15m +1.5bp  +60m +3.2bp
+  TNX  pre 4.947  +1m -0.4bp  +2m +0.8bp  +5m +1.0bp  +15m +1.2bp  +60m +5.9bp
+  SHY 1-min return sd: 10:00-13:55 ET 0.45bp, 14:00-14:30 ET 1.20bp
+
+Implied policy surprise from Polymarket: (1 − 0.870) × 25bp ≈ 3.2bp of unexpected tightening (plus guidance effects).
+
+Tick detail, all buckets, 17:59:50–18:00:30 UTC (YES-equivalent price):
+  17:59:54 No change        BUY  Yes @ 0.140 (YES 0.140) $5,880
+  17:59:54 50+ bps increase BUY  Yes @ 0.008 (YES 0.008) $84
+  17:59:58 No change        BUY  Yes @ 0.140 (YES 0.140) $5,880
+  18:00:00 25 bps increase  BUY  Yes @ 0.880 (YES 0.880) $27,720
+  18:00:01 25 bps increase  SELL No  @ 0.120 (YES 0.880) $3,780
+  18:00:01 50+ bps increase BUY  Yes @ 0.008 (YES 0.008) $84
+  18:00:03 25 bps increase  BUY  Yes @ 0.880 (YES 0.880) $27,720
+  18:00:03 No change        BUY  Yes @ 0.140 (YES 0.140) $5,880
+  18:00:03 50+ bps increase BUY  Yes @ 0.010 (YES 0.010) $105
+  18:00:04 50+ bps increase BUY  No  @ 0.993 (YES 0.007) $10,426
+  18:00:04 25 bps increase  SELL No  @ 0.060 (YES 0.940) $1,890
+  18:00:04 25 bps increase  SELL No  @ 0.097 (YES 0.903) $3,048
+  18:00:04 25 bps increase  SELL No  @ 0.120 (YES 0.880) $3,780
+  18:00:04 25 bps increase  SELL No  @ 0.100 (YES 0.900) $3,150
+  18:00:04 25 bps increase  BUY  Yes @ 0.888 (YES 0.888) $27,984
+  18:00:04 25 bps increase  SELL No  @ 0.120 (YES 0.880) $3,780
+  18:00:04 25 bps increase  SELL No  @ 0.101 (YES 0.899) $3,171
+  18:00:04 50+ bps increase BUY  No  @ 0.993 (YES 0.007) $10,426
+  18:00:04 50+ bps increase BUY  No  @ 0.993 (YES 0.007) $10,426
+  18:00:04 50+ bps increase BUY  Yes @ 0.010 (YES 0.010) $105
+  18:00:04 50+ bps increase BUY  No  @ 0.993 (YES 0.007) $10,426
+  18:00:04 50+ bps increase BUY  No  @ 0.993 (YES 0.007) $10,426
+  18:00:04 50+ bps increase BUY  No  @ 0.993 (YES 0.007) $10,426
+  18:00:04 50+ bps increase BUY  Yes @ 0.010 (YES 0.010) $105
+  18:00:04 50+ bps increase BUY  No  @ 0.993 (YES 0.007) $10,426
+
+Takers in the first 5 min after the statement: 197 trades, $3,772,160 notional, taker P&L vs resolution $5,649 (= makers' loss); first 60s: $5,855
+  by bucket: 25 bps decrease $-38, 25 bps increase $2,296, 50+ bps decrease $-0, 50+ bps increase $294, No change $3,096

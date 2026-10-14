@@ -92,5 +92,5 @@ Status: [ ] todo  [~] in progress  [x] done. Each item: derive, verify numerical
 
 ## Q. Sixth wave
 - [x] Q1 Logical (combinatorial) consistency on Polymarket: P(president) ≤ P(party nominee); party-level vs candidate-level sums.
-- [ ] Q2 Speed of information: minute-level Polymarket prices around a scheduled event (FOMC 2026-09-16).
+- [x] Q2 Speed of information: minute-level Polymarket prices around a scheduled event (FOMC 2026-09-16).
 - [ ] Q3 Binary options math: digital = e^{−rT}N(d2); compare crypto price-threshold prediction markets to options-implied / lognormal probabilities.
