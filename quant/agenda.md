@@ -102,3 +102,10 @@ Status: [ ] todo  [~] in progress  [x] done. Each item: derive, verify numerical
 - [x] R4 Order-flow imbalance on Polymarket tick data: does signed taker flow predict the next-minute price move (Cont–Kukanov–Stoikov)?
 - [x] R5 Shin's model of insider trading and vig removal: derive it, then apply it to multi-outcome prediction-market sums.
 - [x] R6 Excess belief movement (Augenblick–Rabin): Σ(Δπ)² vs π0(1−π0) on resolved Polymarket paths.
+
+## S. Eighth wave
+- [ ] S1 Fade large daily moves on Polymarket (from R6's excess movement / −0.08 autocorrelation): event-clustered backtest with spread and fees.
+- [ ] S2 Kalshi hourly BTC markets (KXBTCD non-5pm events): calibration slope vs horizon (1h–24h). Does under-confidence grow as expiry nears? Use batch candles.
+- [ ] S3 Optimal stopping for a binary position: when to sell before resolution given time value and spread (dynamic programming).
+- [ ] S4 Polymarket maker vs taker P&L split (takerOnly=false rows): who earns the spread net of adverse selection?
+- [ ] HOME-PC: tasks needing the user's home PC/Pi (local backtest data, live access) are listed in CONTEXT §5b.
