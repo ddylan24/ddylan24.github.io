@@ -203,6 +203,11 @@ This file is a condensed briefing of everything researched in the original sessi
   - Total variance is monotone (no calendar arb). Vols within 0–3 pts of Deribit, including the weekend dip.
   - Venue centers flat at ~spot while the options forward rises with carry (gap ~$100→$190).
 
+- **BTC price discovery** (notes/U2.md):
+  - Kalshi KXBTCD quotes respond 63% same-minute / 80% by 1 min (R² 0.42); total 0.19¢/bp ≈ digital delta 0.22.
+  - Polymarket BTC binaries are thin: daily ~$3.6k in 6h, hourly ≈$15/strike. Trades barely track spot (R² 0.02).
+  - Kalshi 1-min candles: period_interval=1 via the batch endpoint.
+
 ### Math foundations (later waves)
 - **Proper scoring:** with truth 0.7, Brier and log are maximized at 0.70; a linear score at 0.99 (improper). LMSR = market log score; a trader's payoff b·ln(p1/p0) is verified. Polymarket log-loss skill 38% vs Brier 45%.
 - **MC variance reduction** (BS call, N=20k): plain sd 0.101, antithetic 0.068, control variate 0.039 (variance ÷6.8). Importance sampling for P(30-day −20%) = 4.42e-5: plain 3.0e-5 (3 hits), IS 4.41e-5.

@@ -1,0 +1,4 @@
+Window: last 6h to 2026-10-14 23:46 UTC; spot 81,533; 1-min spot sd 3.9bp
+Kalshi Oct 15 5pm contracts with 1-min quotes: 8; Polymarket Oct 15 noon strikes within 2%: trades/$ in window 80,000: 48 / $2,169, 82,000: 30 / $1,414
+  Kalshi (quote mids): n 1588; Δp (¢) per 1bp spot move at lags 0..5: +0.120, +0.033, +0.026, +0.004, +0.004, +0.004; total +0.191; share at lag 0 63%, by lag 1 80%; R² 0.42
+  Polymarket (trade prices): n 710; Δp (¢) per 1bp spot move at lags 0..5: +0.009, +0.009, +0.005, +0.009, +0.010, +0.000; total +0.041; share at lag 0 21%, by lag 1 43%; R² 0.02
