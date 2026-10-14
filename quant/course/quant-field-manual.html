@@ -1294,6 +1294,8 @@ REL = Σ nₖ(p̄ₖ − ȳₖ)²/N  (calibration error)   RES = Σ nₖ(ȳₖ �
     </tbody>
   </table></div>
   <p>Calibration error is only 0.5–3.5% of the score everywhere. Every bias in this module is real but tiny next to the information prices already contain. That's why recalibration strategies struggle after costs. Beating a market takes <b>resolution</b>, meaning information the crowd doesn't have, not a correction curve.</p>
+  <h3>Can the weather service's own forecast beat the weather market?</h3>
+  <p>The obvious information source for "high temperature in Chicago tomorrow" is the National Weather Service's model output (GFS MOS). I fitted a bias-corrected normal distribution around the previous day's forecast for each city, then tested it on 116 later city-days. Measured by log loss, where lower is better, <b>the market won easily</b>: 1.20 against 1.81 for the model. Blending in any share of the model made the forecast worse, and trading on disagreements lost 1–2¢ a contract. By the time the market price is taken at midnight, traders already have newer model runs and live observations. Public, stale information is already in the price. An edge needs <em>newer</em> or <em>better-processed</em> information.</p>
   <h3>What the research says</h3>
   <ul class="tight">
     <li><b>Markets beat polls.</b> Iowa Electronic Markets prices were closer to the final result than polls in 74% of 964 comparisons, 1988–2004, and significantly better more than 100 days out (Berg, Nelson &amp; Rietz 2008).</li>

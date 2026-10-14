@@ -1,0 +1,12 @@
+199 complete city-days (08-07 → 10-13); train < 09-10, test ≥ 09-10
+Fitted forecast bias μ (actual − forecast, °F) and error sd σ by city (train): AUS μ +2.1 σ 1.3, CHI μ -2.0 σ 2.2, DEN μ -1.4 σ 2.4, LAX μ +1.9 σ 4.3, MIA μ -0.4 σ 1.2, NY μ +1.2 σ 1.7
+
+Test set 116 city-days:
+  market (additive de-vig)   log loss 1.1963  Brier 0.6196   Δlog loss vs market +0.0000 (t +0.0)
+  NWP model                  log loss 1.8113  Brier 0.7684   Δlog loss vs market +0.6150 (t +4.5)
+  75% market + 25% model     log loss 1.2289  Brier 0.6259   Δlog loss vs market +0.0326 (t +1.5)
+  50/50                      log loss 1.3026  Brier 0.6528   Δlog loss vs market +0.1063 (t +2.8)
+  25% market + 75% model     log loss 1.4243  Brier 0.7003   Δlog loss vs market +0.2280 (t +4.0)
+  trade when |model − quote| > 0.03+fee: 218 buys, 220 sells, mean -2.29¢/contract (event-clustered t -1.3)
+  trade when |model − quote| > 0.05+fee: 187 buys, 181 sells, mean -1.69¢/contract (event-clustered t -0.9)
+  trade when |model − quote| > 0.10+fee: 118 buys, 124 sells, mean -1.02¢/contract (event-clustered t -0.4)

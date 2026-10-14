@@ -111,4 +111,5 @@ Status: [ ] todo  [~] in progress  [x] done. Each item: derive, verify numerical
 - [x] S5 Kelly for mutually exclusive outcomes (horse-race solution), hedging bets, noisy beliefs.
 - [x] S6 Murphy Brier decomposition (REL/RES/UNC) for all forecast datasets.
 - [x] S7 Polymarket October FOMC odds vs CBOT fed funds futures (ZQ) and FRED EFFR.
+- [x] S8 NWS GFS MOS (IEM archive) vs Kalshi daily-high markets: market wins easily; mixing hurts; trading loses.
 - [ ] HOME-PC: tasks needing the user's home PC/Pi (local backtest data, live access) are listed in CONTEXT §5b.

@@ -240,6 +240,10 @@ This file is a condensed briefing of everything researched in the original sessi
   - Polymarket REL falls 0.0034→0.0016 and RES rises 0.071→0.095 from 30d to 1d. The Kalshi BTC market beats the DVOL model on both REL and RES at 24h.
   - **To beat markets you need resolution, not recalibration.**
 
+- **NWS MOS vs Kalshi weather** (notes/S8.md; 116 test city-days):
+  - Market log loss 1.196 vs GFS-MOS model 1.811 (t 4.5). Any blend is worse; model-based trading −1 to −2¢/contract.
+  - Data: IEM MOS archive `mesonet.agron.iastate.edu/cgi-bin/request/mos.py` (rate-limited; cache). Open-Meteo has a daily IP limit.
+
 ## 4. Pitfalls checklist (learned the hard way)
 
 1. Compare against a random or unconditional baseline, not against 0.
@@ -261,6 +265,7 @@ This file is a condensed briefing of everything researched in the original sessi
 - **Prices:** Yahoo via `yfinance`. Cross-checked against CRSP: daily correlation 0.983, monthly 0.989.
 - **Option chains:** `yfinance` `Ticker.option_chain`. Quotes are delayed, and the dividend wasn't adjusted.
 - **Prediction markets:** Polymarket `gamma-api.polymarket.com/markets` (closed=true, limit 100/page; paging stopped ~2,100) and `clob.polymarket.com/prices-history?market=TOKEN&interval=max&fidelity=1440`. Kalshi `api.elections.kalshi.com/trade-api/v2/markets`. PredictIt `predictit.org/api/marketdata/all/`. All reachable.
+- **Weather:** IEM (Iowa Environmental Mesonet) archives NWS MOS/METAR/CLI; rate-limited per IP.
 - **Blocked or unavailable:** YouTube (bot block on cloud IPs; transcripts were pasted by the user), SSRN (403), CBOE site (403), Everygen video analysis (needs a paid plan).
 - **Python libraries:** numpy, pandas, scipy, statsmodels, arch, hmmlearn, scikit-learn, yfinance, openpyxl.
 
