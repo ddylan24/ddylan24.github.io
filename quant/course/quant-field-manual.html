@@ -1029,6 +1029,16 @@ Brier score = mean (p − outcome)²              skill = 1 − Brier / Brier(ba
   <p>Prices are strongly informative: they remove 41–49% of the forecasting error of simply guessing the base rate. But in this sample, mid-priced <b>YES contracts won about 4–5 cents more often than their price implied</b>, and the gap was larger in thinner markets.</p>
   <div class="callout warn"><p><b>A look-ahead trap I fell into first.</b> My first version measured prices "7 days before the market closed" and found a 9-cent bias. But "Will X happen by date D" markets close <i>early</i> when X happens, so conditioning on the close date quietly tells you the outcome. Measuring relative to the <i>scheduled</i> end date, and only using markets still open at that point, cut the bias almost in half. Same lesson as the HMM in Module 09: check what your timestamps know.</p>
   <p><b>Before trading it:</b> this uses last-trade prices, not the bid/ask you'd actually pay. It ignores fees, covers one venue and about three years, and the API only returned the top ~2,100 markets by volume. Outcomes within an event are correlated (one candidate wins), so I clustered the t-statistics by event. It needs an out-of-sample test with real quotes.</p></div>
+  <h3>Does calibration change with time to expiry?</h3>
+<div class="formula">logit P(YES) = a + b · logit(price)        perfect: a = 0, b = 1
+b &lt; 1: prices too extreme (longshots cheap, favorites dear)     b &gt; 1: prices pulled toward 50%</div>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Days before scheduled end</th><th class="r">1</th><th class="r">7</th><th class="r">30</th><th class="r">90</th><th class="r">180</th></tr></thead>
+    <tbody><tr><td>Calibration slope b (±1 s.e., clustered)</td><td class="r">0.87 ± .09</td><td class="r">0.84 ± .08</td><td class="r">0.83 ± .08</td><td class="r">0.76 ± .08</td><td class="r">0.84 ± .11</td></tr></tbody>
+  </table></div>
+  <p>Page &amp; Clemen found older prediction markets pulled toward 50% far from expiry (b &gt; 1). Polymarket's slope sits around <b>0.8 at every horizon</b>, about two standard errors <i>below</i> 1. That's a mild <i>reverse</i> favorite-longshot pattern: longshots slightly cheap, near-certainties slightly expensive. One plausible cause is the popular "buy NO at 97–99¢ for a safe yield" trade, which pushes longshot YES prices below fair. Treat it as tentative: it's about 2σ, on one venue and a top-volume sample.</p>
+  <h3>Same event, two venues: Kalshi vs Polymarket</h3>
+  <p>I matched 24 candidates in the 2028 presidential-winner markets on both venues (live quotes, October 14, 2026). The mid prices correlate <b>0.977</b> and differ by 0.8¢ on average, at most 3.2¢. AOC was 10¢ on Kalshi and 13.1¢ on Polymarket; Newsom 11.5¢ vs 9.1¢. The best gross "lock" (YES on one venue, NO on the other) was 3.1¢ per $1. But it ties up capital on two venues until November 2028 (it would need 8.4% just to match T-bills), pays fees on both, and the two venues' resolution rules may differ. The venues track each other closely, and what's left over isn't free money.</p>
   <h3>Market-maker math: Hanson's LMSR</h3>
 <div class="formula">cost function   C(q) = b · ln Σᵢ e^(qᵢ/b)          price of outcome i = e^(qᵢ/b) / Σⱼ e^(qⱼ/b)
 cost of a trade = C(q_after) − C(q_before)          worst-case market-maker loss = b · ln(n)</div>

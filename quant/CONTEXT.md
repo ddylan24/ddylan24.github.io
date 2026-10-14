@@ -121,7 +121,11 @@ This file is a condensed briefing of everything researched in the original sessi
   - Page & Clemen 2013: calibration degrades with horizon (pulled toward 50%), and time value limits exploitation.
   - Snowberg & Wolfers 2010: favorite-longshot bias comes from misperception, not risk-love.
 - **Takeaway:** the edge is in short-dated markets, better models, fast arbitrage and market making.
-- Possible next steps: Kalshi data and a cross-venue comparison (Kalshi vs Polymarket on the same events), and a horizon-dependence test of calibration on our data.
+- **Calibration vs horizon:** logit slope b ≈ 0.76–0.87 at 1/7/30/90/180 days (se ~0.08–0.11). That's a mild **reverse** favorite-longshot pattern (longshots cheap), the opposite of Page & Clemen. One hypothesis is the "buy NO at 97–99¢" yield trade. Tentative, about 2σ.
+- **Kalshi vs Polymarket, 2028 presidential winner, 24 matched candidates:**
+  - Mids correlate 0.977. Mean |diff| 0.81¢, max 3.2¢ (AOC 10¢ vs 13.1¢).
+  - Best gross cross-venue lock is 3.1¢, which isn't arbitrage after fees, two-year lockup (needs >8.4% to beat T-bills) and resolution-rule risk.
+  - Kalshi API: `/trade-api/v2/events?status=open&with_nested_markets=true` (cursor paging; fields yes_bid_dollars/yes_ask_dollars, yes_sub_title).
 
 ## 4. Pitfalls checklist (learned the hard way)
 

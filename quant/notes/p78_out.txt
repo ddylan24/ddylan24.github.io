@@ -1,0 +1,17 @@
+P7 calibration vs horizon (Polymarket, scheduled end date, markets still open); logit(outcome) ~ a + b·logit(price): b>1 ⇒ prices too close to 50% (under-confident), b<1 ⇒ over-confident
+    1d: n= 620 (383 events)  slope b=0.87 (se 0.09), intercept a=+0.19; Brier 0.1696; mid-priced outcome−price +0.041
+    7d: n= 610 (378 events)  slope b=0.84 (se 0.08), intercept a=+0.21; Brier 0.1680; mid-priced outcome−price +0.053
+   30d: n= 600 (328 events)  slope b=0.83 (se 0.08), intercept a=+0.16; Brier 0.1551; mid-priced outcome−price +0.047
+   90d: n= 446 (184 events)  slope b=0.76 (se 0.08), intercept a=-0.17; Brier 0.1315; mid-priced outcome−price +0.014
+  180d: n= 340 (111 events)  slope b=0.84 (se 0.11), intercept a=+0.06; Brier 0.1160; mid-priced outcome−price +0.035
+P8 cross-venue KXPRESPERSON-28 vs Polymarket 'Presidential Election Winner 2028': 24 matched outcomes; mean |mid diff| 0.81¢, max 3.20¢; correlation of mids 0.977
+    J.D. Vance                   Kalshi 0.20/0.21  Polymarket 0.221/0.222  mid diff -1.6¢
+    Alexandria Ocasio-Cortez     Kalshi 0.10/0.10  Polymarket 0.131/0.132  mid diff -3.2¢
+    Jon Ossoff                   Kalshi 0.11/0.12  Polymarket 0.097/0.098  mid diff +1.7¢
+    Gavin Newsom                 Kalshi 0.11/0.12  Polymarket 0.090/0.091  mid diff +2.4¢
+    Marco Rubio                  Kalshi 0.09/0.09  Polymarket 0.078/0.079  mid diff +1.3¢
+    Kamala Harris                Kalshi 0.04/0.04  Polymarket 0.041/0.042  mid diff -0.1¢
+    Josh Shapiro                 Kalshi 0.03/0.03  Polymarket 0.031/0.032  mid diff -0.4¢
+    Pete Buttigieg               Kalshi 0.03/0.03  Polymarket 0.027/0.028  mid diff +0.2¢
+    best gross cross-venue lock (buy YES one venue + NO other, at quotes): +3.10¢ per $1 payout, before fees, capital locked to Nov 2028, and resolution rules may differ
+P8 KXPRESPARTY-2028: match failed (list index out of range)

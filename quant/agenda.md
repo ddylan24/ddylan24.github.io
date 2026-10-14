@@ -71,3 +71,5 @@ Status: [ ] todo  [~] in progress  [x] done. Each item: derive, verify numerical
 - [x] P4 Arbitrage: Dutch books (outcomes summing ≠ 1), cross-venue, combinatorial; fees & resolution risk; literature on Polymarket arbitrage.
 - [x] P5 Betting math for binaries: Kelly for prediction markets, edge vs fees, time value of capital (why longshots/long-dated markets misprice).
 - [x] P6 Literature: Wolfers & Zitzewitz 2004; Iowa Electronic Markets vs polls (Berg et al.); Snowberg & Wolfers 2010 favorite–longshot; manipulation evidence.
+- [x] P7 Calibration vs horizon on our Polymarket data (test Page & Clemen pull-toward-50%).
+- [x] P8 Cross-venue: Kalshi vs Polymarket prices on the same live events.
