@@ -1219,6 +1219,17 @@ growth per bet  G(f) = q·ln(1 + f(1−p)/p) + (1−q)·ln(1 − f)</div>
     <li><b>Time value.</b> The same 5¢ edge is worth 26% a year if the market resolves next week, 2% if it takes three months, and 0.25% over two years, when T-bills pay 4.25%. <b>Prediction-market edges only matter on short-dated contracts.</b></li>
     <li><b>Your probability is an estimate.</b> I simulated a trader with a real 3-point edge whose beliefs are off by ±5 points, over 2,000 bets. Full Kelly on those noisy beliefs <b>lost money 72% of the time</b> and lost 90%+ more than half the time. Half Kelly lost money 26% of the time, quarter Kelly 10%. Noisy beliefs turn "full Kelly" into over-betting.</li>
   </ul>
+  <h3>Is a price really a probability?</h3>
+  <p>Only under assumptions. Suppose traders hold beliefs q<sub>i</sub>, have wealth w<sub>i</sub> and constant relative risk aversion γ. Each trader's optimal YES position at price p, and the price that clears the market, are:</p>
+<div class="formula">x = w(k − 1)/(1 − p + kp),   k = [q(1−p) / ((1−q)p)]^(1/γ)
+log utility (γ = 1):   x = w(q − p)/(p(1−p))   ⇒   p = Σ wᵢqᵢ / Σ wᵢ   (wealth-weighted mean belief)
+risk-neutral (Manski): p = share of traders with q &gt; p   ⇒   mean belief anywhere in (p², 2p − p²)</div>
+  <p>I solved the equilibrium for 20,000 simulated traders:</p>
+  <ul class="tight">
+    <li><b>Log utility makes the price exactly the average belief.</b> Otherwise the gap grows with how much traders <em>disagree</em>, and it's zero at 50%. With a 5% average belief and a belief spread of 10 points, the price was +6.8¢ above the average when traders were barely risk-averse (γ = 0.1), and −4.0¢ below when they were very risk-averse (γ = 5).</li>
+    <li><b>Who trades sets the sign of the bias.</b> Aggressive traders (γ &lt; 1) overprice longshots, the classic favorite-longshot bias Kalshi's weather markets showed. Cautious traders (γ &gt; 1) underprice them, the reverse pattern Polymarket showed in 2025–26. That's a consistent story, not proof.</li>
+    <li><b>The price is a money-weighted average.</b> When wealth correlated 0.43 with belief, the average belief was 0.28 but the price was 0.48. A few large accounts can move the "probability."</li>
+  </ul>
   <h3>What the research says</h3>
   <ul class="tight">
     <li><b>Markets beat polls.</b> Iowa Electronic Markets prices were closer to the final result than polls in 74% of 964 comparisons, 1988–2004, and significantly better more than 100 days out (Berg, Nelson &amp; Rietz 2008).</li>
@@ -1269,6 +1280,13 @@ growth per bet  G(f) = q·ln(1 + f(1−p)/p) + (1−q)·ln(1 − f)</div>
       <tr><td><code>impact ≈ Y·σ·√(Q/ADV)</code></td><td>Square-root impact law</td><td>$100M SPY ≈ 2.7bp</td></tr>
       <tr><td><code>r = s − qγσ²(T−t)</code></td><td>Market maker shades quotes by inventory</td><td>paper reproduced</td></tr>
       <tr><td><code>spread₀ = π(V_H − V_L);   λ = σ_v/(2σ_u)</code></td><td>Adverse selection sets spreads</td><td>sim exact</td></tr>
+      <tr><td colspan="3"><b>Prediction markets</b></td></tr>
+      <tr><td><code>f* = (q − p)/(1 − p)</code></td><td>Kelly stake buying YES at price p, belief q</td><td>full Kelly on noisy q lost 72%</td></tr>
+      <tr><td><code>C(q) = b·ln Σ e^(q_i/b);   max loss b·ln n</code></td><td>LMSR market maker</td><td>trader payoff b·ln(p1/p0)</td></tr>
+      <tr><td><code>Σ asks &lt; e^(−rT)  ·  Σ bids &gt; 1</code></td><td>Dutch book on a complete outcome set</td><td>live gaps ≈ 1¢</td></tr>
+      <tr><td><code>fee = ⌈0.07·C·P·(1−P)⌉</code></td><td>Kalshi taker fee</td><td>100 @ 30¢ = $1.47</td></tr>
+      <tr><td><code>D = −∂C/∂K = e^(−rT)[N(d2) − Fφ(d1)√T·∂σ/∂K]</code></td><td>Threshold contract = digital option, with skew</td><td>BTC venues within 1.6¢</td></tr>
+      <tr><td><code>g/K &gt; e^(rT) − 1</code></td><td>When a locked-up arbitrage gap beats T-bills</td><td>2028 gap: 0.09%</td></tr>
     </tbody>
   </table></div>
   <p>The research notes behind every number (data source, period, method) are saved alongside this course, so anything here can be re-run.</p>

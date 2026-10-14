@@ -192,6 +192,12 @@ This file is a condensed briefing of everything researched in the original sessi
   - 55/100 wins gives P(edge) 84%. With a skeptical Beta(1250,1250) prior: 57.8%.
   - SPRT 50% vs 55% (α=β=5%) needs a median ~434 trades.
 
+- **Prices as beliefs** (notes/R3.md; Manski 2006, Wolfers–Zitzewitz 2006):
+  - CRRA demand x = w(k−1)/(1−p+kp), k = [q(1−p)/((1−q)p)]^{1/γ}. Log utility gives p = wealth-weighted mean belief exactly.
+  - Risk-neutral (Manski): p = (1−p)-quantile of beliefs, so the mean is only bounded in (p², 2p−p²).
+  - Sim: the bias scales with belief dispersion, is 0 at 0.5, and is +6.8¢ (γ=0.1) / −4.0¢ (γ=5) at mean 0.05 with sd 0.10. γ<1 gives the classic FLB (cf. Kalshi weather), γ>1 the reverse FLB (cf. Polymarket).
+  - Wealth–belief correlation 0.43 moved the price from 0.28 to 0.48.
+
 ## 4. Pitfalls checklist (learned the hard way)
 
 1. Compare against a random or unconditional baseline, not against 0.
