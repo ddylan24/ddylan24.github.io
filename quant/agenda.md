@@ -99,5 +99,5 @@ Status: [ ] todo  [~] in progress  [x] done. Each item: derive, verify numerical
 - [ ] R1 Calibration of Kalshi daily BTC threshold markets (KXBTCD, settled) vs a lognormal using Deribit DVOL at the time: is there a favorite-longshot bias, and does the options model beat the market?
 - [ ] R2 Skill vs luck among Polymarket traders: wallet-level P&L from data-api trades; persistence test (first half vs second half), multiple-testing correction.
 - [x] R3 Prices as beliefs: Manski (2006) vs Wolfers–Zitzewitz (2006). When does a prediction-market price equal the mean belief? Simulation with heterogeneous beliefs and log/CRRA utility.
-- [ ] R4 Order-flow imbalance on Polymarket tick data: does signed taker flow predict the next-minute price move (Cont–Kukanov–Stoikov)?
+- [x] R4 Order-flow imbalance on Polymarket tick data: does signed taker flow predict the next-minute price move (Cont–Kukanov–Stoikov)?
 - [x] R5 Shin's model of insider trading and vig removal: derive it, then apply it to multi-outcome prediction-market sums.

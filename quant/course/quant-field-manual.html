@@ -1235,6 +1235,13 @@ risk-neutral (Manski): p = share of traders with q &gt; p   ⇒   mean belief an
 <div class="formula">pᵢ = [ √(z² + 4(1−z)·πᵢ²/Σπ) − z ] / (2(1−z)),   z chosen so Σp = 1
 vs  multiplicative pᵢ = πᵢ/Σπ    ·  additive pᵢ = πᵢ − (Σπ−1)/n    ·  power pᵢ = πᵢ^k</div>
   <p>On 199 complete Kalshi weather days, simple division was the worst method. Buckets priced under 10¢ won 14 times; division predicted 18.9, Shin 16.9 and additive 15.5. Shin beat division on log loss (t = −3.4), with an implied insider share z ≈ 1–2%. Simple additive shading did best of all. So the markup sits mostly in the longshots, the same favorite-longshot pattern the calibration curve showed.</p>
+  <h3>Does order flow predict prices?</h3>
+  <p>I took the taker trades from the eight most active Polymarket markets and regressed each minute's price change on net signed buying (YES purchases minus YES sales, in dollars):</p>
+  <ul class="tight">
+    <li><b>Impact is real.</b> Kyle's λ was about 0.03¢ per $1,000 for a typical market. $10k of net buying moves the October Fed-hike contract about 1.1¢ but an NFL game only 0.05¢; sports books are far deeper.</li>
+    <li><b>Prediction is a mirage.</b> Polymarket's own minute-level price history is stamped about a minute late. Taken at face value, it says order flow "predicts" the next minute's move in all eight markets, with t-statistics up to 40. Align it with actual trade prices and the effect shrinks to well under the 1¢ spread. Flow explains the same minute, not the next, just as Cont, Kukanov &amp; Stoikov found for stocks.</li>
+  </ul>
+  <p><b>Lesson:</b> before believing any lead-lag result, check the data's timestamps against an independent source. A one-minute lag can manufacture a spectacular signal.</p>
   <h3>What the research says</h3>
   <ul class="tight">
     <li><b>Markets beat polls.</b> Iowa Electronic Markets prices were closer to the final result than polls in 74% of 964 comparisons, 1988–2004, and significantly better more than 100 days out (Berg, Nelson &amp; Rietz 2008).</li>

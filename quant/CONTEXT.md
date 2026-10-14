@@ -203,12 +203,17 @@ This file is a condensed briefing of everything researched in the original sessi
   - <10¢ buckets: 14 wins vs predicted 18.9 (multiplicative) / 16.9 (Shin) / 15.5 (additive).
   - Shin beats multiplicative with t −3.4. Never de-vig by simple division when longshots are involved.
 
+- **Order flow on Polymarket** (notes/R4.md; 8 most active markets, taker trades, 1-min):
+  - Kyle λ median 0.03¢ per $1k (Fed +25bp 0.11, NFL 0.005). Next-minute predictability is negligible (≤20% of impact, below the spread).
+  - **Trap:** CLOB prices-history fidelity=1 lags ~1 min (stamped :16–:20s). Raw data shows fake "flow predicts next minute" with t up to 40. Align with trade prices.
+  - data-api /trades default takerOnly=true, so `side` = taker.
+
 ## 4. Pitfalls checklist (learned the hard way)
 
 1. Compare against a random or unconditional baseline, not against 0.
 2. Overlapping outcome windows inflate t. Use effective n or a block bootstrap.
 3. Count every trial. Use Bonferroni, Holm or BH, plus a placebo run on random dates.
-4. **Look-ahead:** HMM smoothed/Viterbi states; measuring prediction-market prices relative to close time. Both produced fake results today.
+4. **Look-ahead:** HMM smoothed/Viterbi states; measuring prediction-market prices relative to close time; a price series whose timestamps lag (Polymarket prices-history). All three produced fake results.
 5. Short samples bias mean-reversion speed upward.
 6. Test a context effect on all days before crediting the event.
 7. Benchmark ML against the simplest rule it might be rediscovering.
