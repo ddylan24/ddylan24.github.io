@@ -144,6 +144,11 @@ This file is a condensed briefing of everything researched in the original sessi
   - "Other" (culture/tech): b 0.51, +13.2¢ (t 3.0). Worst calibrated.
   - Crypto: b 0.76, −5.1¢ (t −1.5).
   - Mispricing concentrates where attention and liquidity are thin.
+- **Out-of-sample test of the YES underpricing:**
+  - Train (ending before 2025-07): +1.8¢, t 0.7. Not significant; −8% with a 3¢ cost.
+  - Test (after): +6.5¢, t 3.7.
+  - Recalibration fitted on train didn't help on test (Brier 0.1914 vs 0.1905), and a selective rule lost 0.4%.
+  - So the bias is recent and regime-dependent, not learnable in advance.
 - **Live order books** (CLOB /book, merging YES and complementary NO orders; matches gamma bestAsk), 412 markets:
   - Spread median 1.0¢. Depth within ±1¢ median $1.8k.
   - Cost to buy vs mid: $1k 0.9¢, $10k 3.4¢. In thin markets: $1k 2.3¢, $10k 18.6¢.

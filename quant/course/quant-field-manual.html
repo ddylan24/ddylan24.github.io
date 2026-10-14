@@ -1100,6 +1100,16 @@ b &lt; 1: prices too extreme (longshots cheap, favorites dear)     b &gt; 1: pri
     </tbody>
   </table></div>
   <p>Now set this next to the biases. The ~5¢ YES underpricing, and the 13¢ in thin "other" markets, sit exactly where execution is most expensive. At $10,000 in a thin market, crossing the book costs about 19¢, more than the edge. <b>The bias survives because it's too small and too illiquid to arbitrage.</b> Realistic capacity is a few thousand dollars per market, and even then only with patient limit orders.</p>
+  <h3>The out-of-sample test</h3>
+  <p>The honest question: could a trader in mid-2025 have known about the YES underpricing and profited after that? I split the markets by scheduled end date, using 7-day-before prices on contracts between 5¢ and 95¢:</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Buy every mid-priced YES</th><th class="r">Outcome − price</th><th class="r">Return per $1, no cost</th><th class="r">With 1¢ cost</th><th class="r">With 3¢ cost</th><th class="r">t</th></tr></thead>
+    <tbody>
+      <tr><td>Before July 2025 (122 contracts)</td><td class="r">+1.8¢</td><td class="r">+4.2%</td><td class="r">−0.4%</td><td class="r loss">−8.1%</td><td class="r">0.7</td></tr>
+      <tr><td>After July 2025 (358 contracts)</td><td class="r gain">+6.5¢</td><td class="r gain">+49.5%</td><td class="r">+40.3%</td><td class="r">+26.5%</td><td class="r">3.7</td></tr>
+    </tbody>
+  </table></div>
+  <p><b>The bias isn't stable.</b> Before mid-2025 it was small and insignificant, so a trader couldn't have learned it then. A calibration model fitted on the early period didn't improve forecasts afterward (Brier 0.1914 vs 0.1905 raw), and a rule built from it lost 0.4%. All of the effect is in the recent period. That's consistent with a shift in market composition (more sports, more retail), not a timeless edge. And the large average return comes mostly from a few cheap contracts that won, which pay 1/price. The full-sample result was real, but it concentrated in one period. <b>Walk forward before you believe anything.</b></p>
   <h3>Same event, two venues: Kalshi vs Polymarket</h3>
   <p>I matched 24 candidates in the 2028 presidential-winner markets on both venues (live quotes, October 14, 2026). The mid prices correlate <b>0.977</b> and differ by 0.8¢ on average, at most 3.2¢. AOC was 10¢ on Kalshi and 13.1¢ on Polymarket; Newsom 11.5¢ vs 9.1¢. The best gross "lock" (YES on one venue, NO on the other) was 3.1¢ per $1. But it ties up capital on two venues until November 2028 (it would need 8.4% just to match T-bills), pays fees on both, and the two venues' resolution rules may differ. The venues track each other closely, and what's left over isn't free money.</p>
   <h3>Market-maker math: Hanson's LMSR</h3>

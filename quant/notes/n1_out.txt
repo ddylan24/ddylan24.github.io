@@ -1,0 +1,9 @@
+N1 out-of-sample: price 7d before scheduled end; train = markets ending before 2025-07-01 (n=178, 103 events), test = after (n=432, 282 events)
+  train buy every mid-priced YES at price+0¢: n=122, outcome−price +0.018, mean return per $1 +4.2%, event-clustered t +0.71
+  train buy every mid-priced YES at price+1¢: n=122, outcome−price +0.018, mean return per $1 -0.4%, event-clustered t +0.52
+  train buy every mid-priced YES at price+3¢: n=122, outcome−price +0.018, mean return per $1 -8.1%, event-clustered t +0.09
+  test buy every mid-priced YES at price+0¢: n=358, outcome−price +0.065, mean return per $1 +49.5%, event-clustered t +3.66
+  test buy every mid-priced YES at price+1¢: n=358, outcome−price +0.065, mean return per $1 +40.3%, event-clustered t +3.50
+  test buy every mid-priced YES at price+3¢: n=358, outcome−price +0.065, mean return per $1 +26.5%, event-clustered t +3.07
+  calibration fit on train: a=+0.13, b=1.15; test Brier raw price 0.1905 vs recalibrated 0.1914
+  test, buy YES only where recalibrated prob > price+cost+3¢ (cost 1¢): n=109 in 107 events, mean return -0.4%, clustered t +0.13
