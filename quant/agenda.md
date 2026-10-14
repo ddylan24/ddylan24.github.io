@@ -120,4 +120,4 @@ Status: [ ] todo  [~] in progress  [x] done. Each item: derive, verify numerical
 - [ ] T1 Jump-diffusion for probabilities: fit a Merton-style jump intensity to ≥90¢ contract paths; price the "insurance" a favorite buyer sells.
 - [x] T2 Binary market-making sim (S9 vol law + S10 jumps): inventory skew cuts P&L sd 3.6×, Sharpe/market 0.06→0.19; jumps cost ~$4/market.
 - [x] T3 BTC term structure across Polymarket+Kalshi: no calendar arb (w monotone over 8 expiries); vols within 0–3 pts of options; centers flat at spot vs forward rising with carry.
-- [ ] T4 Election-market hedging demand: correlation of Polymarket election prices with SPY/sector returns (do prices embed a risk premium?).
+- [x] T4 Election contract vs markets: SPY beta ≈0 (risk premium ≈0¢); Trump-trade signs (solar −, USD/MXN +, BTC +) marginal; off-by-one daily alignment flips signs.

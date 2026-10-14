@@ -268,12 +268,16 @@ This file is a condensed briefing of everything researched in the original sessi
 - **Binary market making with measured dynamics** (notes/T2.md; sim, illustrative arrivals):
   - P&L sd per market: fixed 1¢ $158, vol-scaled $135, vol + inventory skew **$43** (mean/sd 0.06→0.19). Jump pickoffs ~$4/market.
 
+- **Election contract vs markets** (notes/T4.md; Trump-2024, 198 days):
+  - SPY beta ≈ 0 (corr +0.02), so the risk premium is ≈0¢. Trump-trade signs: TAN −0.08 (t −1.9), USD/MXN +0.19 (t +1.8), IBIT + (t 1.3).
+  - Polymarket daily stamps are 00:00 UTC = previous evening ET; an off-by-one gave a fake corr +0.10.
+
 ## 4. Pitfalls checklist (learned the hard way)
 
 1. Compare against a random or unconditional baseline, not against 0.
 2. Overlapping outcome windows inflate t. Use effective n or a block bootstrap.
 3. Count every trial. Use Bonferroni, Holm or BH, plus a placebo run on random dates.
-4. **Look-ahead:** HMM smoothed/Viterbi states; measuring prediction-market prices relative to close time; a price series whose timestamps lag (Polymarket prices-history); bars stamped at their start (Deribit chart data). All four produced fake results.
+4. **Look-ahead:** HMM smoothed/Viterbi states; measuring prediction-market prices relative to close time; a price series whose timestamps lag (Polymarket prices-history); bars stamped at their start (Deribit chart data); daily stamps at 00:00 UTC = the previous evening in New York. All five produced fake results.
 5. Short samples bias mean-reversion speed upward.
 6. Test a context effect on all days before crediting the event.
 7. Benchmark ML against the simplest rule it might be rediscovering.
