@@ -1,0 +1,18 @@
+Q1 logical consistency, live Polymarket 2026-10-14: winner market 54 candidates, Dem nominee 53, GOP nominee 43, party market 2 outcomes
+  party market: Republican 0.340/0.350, Democratic 0.630/0.640
+  Dem Dwayne 'The Rock' Johnso P(win) 0.017  P(nominee) 0.011  implied P(win | nominated) 1.50
+  Dem Kim Kardashian           P(win) 0.001  P(nominee) 0.001  implied P(win | nominated) 1.00
+  Dem Tim Walz                 P(win) 0.001  P(nominee) 0.001  implied P(win | nominated) 1.00
+  Dem Adam Schiff              P(win) 0.001  P(nominee) 0.001  implied P(win | nominated) 1.00
+  Democratic: 27 matched; executable violations (winner bid > nominee ask): 1 → Dwayne 'The Rock' Johnson +0.4¢
+  Rep Thomas Massie            P(win) 0.009  P(nominee) 0.009  implied P(win | nominated) 1.12
+  Rep Tim Scott                P(win) 0.001  P(nominee) 0.001  implied P(win | nominated) 1.00
+  Rep Mike Johnson             P(win) 0.001  P(nominee) 0.001  implied P(win | nominated) 1.00
+  Rep Doug Burgum              P(win) 0.001  P(nominee) 0.001  implied P(win | nominated) 1.00
+  Republican: 25 matched; executable violations (winner bid > nominee ask): 0
+  Σ winner-market mids over Democratic names = 0.530 vs party market 0.635
+  Σ winner-market mids over Republican names = 0.384 vs party market 0.345
+  Σ all winner-market mids = 0.919 (Σ asks 0.947, Σ bids 0.891); names in both nominee lists: 1
+  winner names in neither nominee list: 3, Σ mid 0.006: Jamie Dimon 0.005, Stephen Smith 0.001, Jalen Brunson 0.001
+  top winner mids: JD Vance 0.222, Alexandria Ocasio-Cortez 0.132, Jon Ossoff 0.098, Gavin Newsom 0.090, Marco Rubio 0.079, Kamala Harris 0.042, Josh Shapiro 0.032, Pete Buttigieg 0.028
+  executable check GOP: Σ winner BIDS over Republican names = 0.371 vs party ASK 0.350 → gap +2.1¢ (24 legs; overlap name excluded: Kim Kardashian)

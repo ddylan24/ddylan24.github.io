@@ -1171,6 +1171,18 @@ buy every NO:   cost n − Σ bids, convert to n − 1 now  → instant profit �
     <li><b>Buy-side gaps (Σ asks &lt; 1):</b> 116 events, but mostly not arbitrage. Some have incomplete outcome sets. In others the gap is smaller than T-bill interest. The 2028 party market summed to 0.990, which earns 0.5% a year when T-bills pay 4.25%. Buying every outcome only beats cash if the asks sum below e^(−0.0425 × 2.07) ≈ 0.916.</li>
   </ul>
   <p>Arbitrage does exist. Saguillo et al. (2025) estimate about <b>$40 million</b> of realized arbitrage profit on Polymarket, using on-chain data and LLMs to find logically linked markets. But bots compete it away: what's left at the top of the book is about a cent and roughly the size of fees. <b>Time value is a structural force here:</b> long-dated contracts have to trade below their "fair" probability, or holding them loses to T-bills. That's one plausible contributor to the YES underpricing found above.</p>
+  <h3>Logical consistency across linked markets</h3>
+  <p>Separate markets on related questions must obey probability logic, but no single order book enforces it. I checked the four live 2028 election markets on Polymarket (winner, Democratic nominee, Republican nominee, winning party) on October 14, 2026:</p>
+<div class="formula">subset:        X wins presidency ⊂ X wins nomination   → P(win) ≤ P(nominee)
+               executable if  winner bid &gt; nominee ask  (sell win YES, buy nominee YES)
+additivity:    Σ_{c in party} P(c wins) ≤ P(party wins)
+worth doing:   gap g on capital K locked for T years  →  need g/K &gt; e^(rT) − 1</div>
+  <ul class="tight">
+    <li><b>Subset rule.</b> Of 52 matched candidates, exactly one was violated in executable prices. Dwayne Johnson's presidency bid was 0.4¢ above his nomination ask, implying P(win | nominated) = 1.5. That's a tiny longshot book; every other name sat at the 0.1¢ tick floor.</li>
+    <li><b>An incomplete list looks underpriced.</b> The winner market's mids add up to only 0.919. Buying every YES for 0.947 isn't arbitrage, because about 8% of the probability belongs to people who aren't listed. The same missing mass explains why Democratic candidates sum to 0.53 against 0.635 for the party.</li>
+    <li><b>Republican names were overpriced relative to the party.</b> Bids on 24 candidates summed to 0.371, against a 0.350 ask for "Republican wins," a 2.1¢ gap. It isn't riskless, because a Republican could win as an independent. Most legs are at the tick floor, and the trade ties up about $23.6 for two years per $1 of payoff, which is roughly 0.09% total. Not worth it.</li>
+  </ul>
+  <p><b>Lesson:</b> logical arbitrage needs an <em>exact</em> implication, executable prices (not mids), real size and a short lockup. Check all four. Bots harvest the gaps that pass, so what's left is either in longshot tails or locked up for years (Saguillo et al. 2025).</p>
   <h3>Sizing binary bets: Kelly for prediction markets</h3>
 <div class="formula">buy YES at price p with your probability q:   f* = (q − p) / (1 − p)        (NO side: f* = (p − q) / p)
 growth per bet  G(f) = q·ln(1 + f(1−p)/p) + (1−q)·ln(1 − f)</div>

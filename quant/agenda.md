@@ -89,3 +89,8 @@ Status: [ ] todo  [~] in progress  [x] done. Each item: derive, verify numerical
 - [x] O1 Proper scoring rules: Brier vs log score, why LMSR = log scoring rule; scoring traders/forecasters.
 - [x] O2 Monte Carlo variance reduction: antithetic, control variates, importance sampling for tail probabilities.
 - [x] O3 Bayesian inference for strategy evaluation: beta-binomial win rates, posterior of Sharpe, sequential testing (when to stop a strategy).
+
+## Q. Sixth wave
+- [x] Q1 Logical (combinatorial) consistency on Polymarket: P(president) ≤ P(party nominee); party-level vs candidate-level sums.
+- [ ] Q2 Speed of information: minute-level Polymarket prices around a scheduled event (FOMC 2026-09-16).
+- [ ] Q3 Binary options math: digital = e^{−rT}N(d2); compare crypto price-threshold prediction markets to options-implied / lognormal probabilities.
