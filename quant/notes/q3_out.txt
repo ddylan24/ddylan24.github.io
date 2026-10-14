@@ -1,0 +1,60 @@
+Snapshot 2026-10-14 22:17 UTC; Deribit BTC index 81,565; 449 OTM options across 11 expiries
+  ATM implied vol by expiry: 15OCT26 37%, 16OCT26 38%, 17OCT26 37%, 18OCT26 32%, 23OCT26 34%, 30OCT26 34%, 27NOV26 37%
+  USDT/USD (Kraken) 0.99872 -> Binance BTCUSDT strikes are K*0.99872 in USD
+  Deribit index during venue fetches: Polymarket 81,563, Kalshi 81,563 (chain snapshot 81,565)
+
+Kalshi: 130 strikes with two-sided quotes across 2 expiries; 47 with 3%<p<97%
+  mid − options prob: mean -0.19¢, mean |diff| 1.69¢, max |diff| 5.63¢; median spread 1.0¢
+  options prob inside the bid–ask: 26%;  executable vs options (ask < p_opt or bid > p_opt): 35 strikes, best 5.13¢
+  by moneyness: p_opt<30% mean diff +1.60¢ (n=15), 30–70% -1.66¢, >70% -0.78¢ (n=23)
+  skew correction (smile digital − flat N(d2)): mean +1.15¢, max |·| 7.06¢
+
+Polymarket: 70 strikes with two-sided quotes across 7 expiries; 34 with 3%<p<97%
+  mid − options prob: mean -0.57¢, mean |diff| 1.35¢, max |diff| 4.44¢; median spread 1.0¢
+  options prob inside the bid–ask: 53%;  executable vs options (ask < p_opt or bid > p_opt): 16 strikes, best 2.44¢
+  by moneyness: p_opt<30% mean diff +0.56¢ (n=13), 30–70% -1.63¢, >70% -1.12¢ (n=15)
+  skew correction (smile digital − flat N(d2)): mean +1.39¢, max |·| 6.97¢
+
+Implied forward shift (venue mids vs Deribit forward), USD; 'carry' = Deribit forward − index:
+  Kalshi     10-15 21:00  n=15  dF    -90  carry   +18  RMSE 3.12¢ → 2.49¢
+  Kalshi     10-16 21:00  n=11  dF    -25  carry   +29  RMSE 2.13¢ → 2.09¢
+  Polymarket 10-16 16:00  n= 3  dF    -68  carry   +27  RMSE 1.57¢ → 1.02¢
+  Polymarket 10-17 16:00  n= 3  dF    -63  carry   +38  RMSE 1.03¢ → 0.54¢
+  Polymarket 10-18 16:00  n= 3  dF   -103  carry   +53  RMSE 1.54¢ → 0.42¢
+  Polymarket 10-19 16:00  n= 3  dF   -130  carry   +68  RMSE 1.88¢ → 0.51¢
+  Polymarket 10-20 16:00  n= 4  dF   -153  carry   +82  RMSE 2.04¢ → 0.60¢
+  naive (no USDT, no timing) mean diff Polymarket +0.48¢
+  Kalshi: RMSE of mids vs smile digital 2.22¢ vs flat ATM-vol N(d2) 3.30¢ (venues price the skew)
+  Polymarket: RMSE of mids vs smile digital 1.72¢ vs flat ATM-vol N(d2) 3.36¢ (venues price the skew)
+
+Polymarket expiry 10-16 16:00 UTC (fwd 81,592, vol 42%):
+  K   76,000  bid/ask 0.975/0.979  options 0.977 (flat N(d2) 0.954)  diff -0.0¢
+  K   78,000  bid/ask 0.952/0.955  options 0.948 (flat N(d2) 0.900)  diff +0.6¢
+  K   80,000  bid/ask 0.800/0.810  options 0.827 (flat N(d2) 0.758)  diff -2.2¢
+  K   82,000  bid/ask 0.440/0.460  options 0.466 (flat N(d2) 0.437)  diff -1.6¢
+  K   84,000  bid/ask 0.120/0.130  options 0.123 (flat N(d2) 0.131)  diff +0.2¢
+  K   86,000  bid/ask 0.027/0.028  options 0.021 (flat N(d2) 0.034)  diff +0.7¢
+
+Kalshi expiry 10-16 21:00 UTC (fwd 81,593, vol 40%):
+  K   75,500  bid/ask 0.960/1.000  options 0.979 (flat N(d2) 0.956)  diff +0.1¢
+  K   76,000  bid/ask 0.960/0.990  options 0.974 (flat N(d2) 0.948)  diff +0.1¢
+  K   76,500  bid/ask 0.970/0.980  options 0.969 (flat N(d2) 0.937)  diff +0.6¢
+  K   77,000  bid/ask 0.960/0.970  options 0.961 (flat N(d2) 0.924)  diff +0.4¢
+  K   77,500  bid/ask 0.950/0.960  options 0.952 (flat N(d2) 0.908)  diff +0.3¢
+  K   78,000  bid/ask 0.940/0.950  options 0.938 (flat N(d2) 0.888)  diff +0.7¢
+  K   78,500  bid/ask 0.920/0.930  options 0.920 (flat N(d2) 0.863)  diff +0.5¢
+  K   79,000  bid/ask 0.890/0.900  options 0.892 (flat N(d2) 0.831)  diff +0.3¢
+  K   79,500  bid/ask 0.850/0.860  options 0.852 (flat N(d2) 0.789)  diff +0.3¢
+  K   80,000  bid/ask 0.760/0.770  options 0.806 (flat N(d2) 0.737)  diff -4.1¢
+  K   80,500  bid/ask 0.710/0.720  options 0.742 (flat N(d2) 0.673)  diff -2.7¢
+  K   81,000  bid/ask 0.620/0.630  options 0.659 (flat N(d2) 0.597)  diff -3.4¢
+  K   81,500  bid/ask 0.540/0.550  options 0.553 (flat N(d2) 0.511)  diff -0.8¢
+  K   82,000  bid/ask 0.440/0.450  options 0.444 (flat N(d2) 0.421)  diff +0.1¢
+  K   82,500  bid/ask 0.350/0.360  options 0.343 (flat N(d2) 0.333)  diff +1.2¢
+  K   83,000  bid/ask 0.260/0.270  options 0.256 (flat N(d2) 0.254)  diff +0.9¢
+  K   83,500  bid/ask 0.190/0.200  options 0.184 (flat N(d2) 0.187)  diff +1.1¢
+  K   84,000  bid/ask 0.150/0.160  options 0.122 (flat N(d2) 0.133)  diff +3.3¢
+  K   84,500  bid/ask 0.090/0.100  options 0.078 (flat N(d2) 0.095)  diff +1.7¢
+  K   85,000  bid/ask 0.070/0.080  options 0.051 (flat N(d2) 0.068)  diff +2.4¢
+  K   85,500  bid/ask 0.050/0.060  options 0.033 (flat N(d2) 0.049)  diff +2.2¢
+  K   86,000  bid/ask 0.040/0.050  options 0.023 (flat N(d2) 0.037)  diff +2.2¢

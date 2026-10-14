@@ -179,6 +179,12 @@ This file is a condensed briefing of everything researched in the original sessi
   - Cross-asset: bonds rallied in the first minute (TLT +0.17%). By 60 minutes, TNX +5.9bp and SPY −0.84%. The decision contract can't price guidance.
   - Tick trades: `data-api.polymarket.com/trades?market=<conditionId>&limit=500&offset=k`. Hourly prices-history needs ≤7-day ranges. Yahoo 1m bars only cover the last 30 days.
 
+- **Crypto threshold markets = digital options** (notes/Q3.md, 2026-10-14 snapshot, BTC ≈ $81.6k):
+  - Deribit surface (449 OTM options, 11 expiries) → smile-consistent digital −∂C/∂K, time-interpolated in total variance to venue settlement times.
+  - RMSE of mids: Polymarket 1.74¢ / Kalshi 1.55¢ vs smile digital, compared with 3.4¢ / 3.2¢ vs flat N(d2). **The venues price the skew.**
+  - Near ATM the venues sit 2–3¢ low. One forward shift per expiry gets RMSE to 0.4–1.2¢. Implied shift −$80…−$170 tracks Deribit carry (+$18…+$82), so **PM traders center on spot, not the forward.** That's a carry premium, not arbitrage.
+  - Details worth cents (digital delta ≈ 4¢/$100 ATM at 2 days): Polymarket = Binance BTC/USDT at noon ET (USDT 0.9987); Kalshi KXBTCD = 60s avg CF BRTI before 5pm ET; Deribit expiry 08:00 UTC, API `public/get_book_summary_by_currency?currency=BTC&kind=option`.
+
 ### Math foundations (later waves)
 - **Proper scoring:** with truth 0.7, Brier and log are maximized at 0.70; a linear score at 0.99 (improper). LMSR = market log score; a trader's payoff b·ln(p1/p0) is verified. Polymarket log-loss skill 38% vs Brier 45%.
 - **MC variance reduction** (BS call, N=20k): plain sd 0.101, antithetic 0.068, control variate 0.039 (variance ÷6.8). Importance sampling for P(30-day −20%) = 4.42e-5: plain 3.0e-5 (3 hits), IS 4.41e-5.

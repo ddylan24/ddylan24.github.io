@@ -1198,6 +1198,18 @@ worth doing:   gap g on capital K locked for T years  →  need g/K &gt; e^(rT) 
     <li><b>The contract only prices the decision.</b> Bonds actually rallied in the first minute, because an 87%-expected hike is only a 3bp surprise. Over the next hour, through the press conference, the 10-year yield rose 6bp and SPY fell 0.84%. The guidance carried most of the information, and the prediction market can't express it.</li>
   </ul>
   <p>The realistic edge isn't reacting to the announcement. It's modeling how data surprises (CPI, payrolls) move the decision probabilities before the meeting.</p>
+  <h3>Price-threshold markets are digital options</h3>
+  <p>"Bitcoin above $82,000 on Friday at noon" is a <b>cash-or-nothing digital option</b>, and options math prices it. A digital is the slope of the call price with respect to strike, so a tight call spread replicates it:</p>
+<div class="formula">digital  D(K) = −∂C/∂K = e^(−rT)·N(d2),   d2 = [ln(F/K) − σ²T/2] / (σ√T)        (flat vol)
+with a smile σ(K):  D = e^(−rT)·[ N(d2) − F·φ(d1)·√T · ∂σ/∂K ]                      (skew term)
+digital delta ≈ φ(d2) / (S·σ·√T)   → at the money, 2 days, 40% vol: ≈ 4¢ per $100 move</div>
+  <p>I built the Deribit BTC option surface (449 options, 11 expiries), interpolated it to Polymarket's noon-ET and Kalshi's 5pm-ET settlement times, and compared it with every live threshold contract on October 14, 2026:</p>
+  <ul class="tight">
+    <li><b>The venues track the options market.</b> Mids were within 1.7¢ (Polymarket) and 1.6¢ (Kalshi) RMSE of the skew-consistent digital, against 3.3¢ for plain flat-vol N(d2). The crowd prices the skew.</li>
+    <li><b>The leftover gap is the carry.</b> Near the money the venues sit 2–3¢ below options. One shift of the forward per expiry removes most of it (RMSE 0.4–1.2¢, about one spread). The implied center is $80–170 below Deribit's forward, which roughly matches the futures premium. Prediction-market traders center on <em>spot</em>, not the forward, and ignore the funding premium.</li>
+    <li><b>Small details are worth cents.</b> Polymarket settles on Binance BTC/<em>USDT</em> (USDT = $0.9987, which shifts strikes by about $105), Kalshi on a 60-second CF index average, and Deribit at 08:00 UTC. With digital delta at 4¢ per $100, reconcile all of it before calling anything "mispriced."</li>
+  </ul>
+  <p>Trading the gap means hedging with Deribit call spreads that settle at a different time and on a different index, with fees on both venues, while holding the carry premium. That's relative value with basis risk, not arbitrage.</p>
   <h3>Sizing binary bets: Kelly for prediction markets</h3>
 <div class="formula">buy YES at price p with your probability q:   f* = (q − p) / (1 − p)        (NO side: f* = (p − q) / p)
 growth per bet  G(f) = q·ln(1 + f(1−p)/p) + (1−q)·ln(1 − f)</div>
