@@ -104,7 +104,7 @@ Status: [ ] todo  [~] in progress  [x] done. Each item: derive, verify numerical
 - [x] R6 Excess belief movement (Augenblick–Rabin): Σ(Δπ)² vs π0(1−π0) on resolved Polymarket paths.
 
 ## S. Eighth wave
-- [ ] S1 Fade large daily moves on Polymarket (from R6's excess movement / −0.08 autocorrelation): event-clustered backtest with spread and fees.
+- [x] S1 Fade large daily moves on Polymarket: gross reversal real (t 6), net marginal (≥20¢ moves +3.2¢, t 2.5).
 - [ ] S2 Kalshi hourly BTC markets (KXBTCD non-5pm events): calibration slope vs horizon (1h–24h). Does under-confidence grow as expiry nears? Use batch candles.
 - [x] S3 Optimal early exit + "favorites as a bond" backtest (buy ≥95¢, hold) on resolved Polymarket markets.
 - [ ] S4 Polymarket maker vs taker P&L split (takerOnly=false rows): who earns the spread net of adverse selection?

@@ -223,6 +223,10 @@ This file is a condensed briefing of everything researched in the original sessi
   - Sell iff p − s > q·e^{−rτ}. Agreeing with the market at 95¢ with a 1¢ half-spread, sell if more than 91 days remain.
   - Buying first touch ≥0.95 and holding (1,340 trades) won 96.0% vs 97.8¢ paid: **−3.2% vs T-bills (t −3.7)**, negative every year 2024–26. ≥0.90: −4.9%; ≥0.97: −2.8%.
 
+- **Fading big daily moves** (notes/S1.md; 393 events):
+  - Gross reversal +0.9/+3.1/+5.2¢ at 5 days for ≥5/10/20¢ moves (t up to 6), about 25% of the move.
+  - Net of 2¢ round trip: ≥20¢ 5-day +3.2¢ (t 2.5), below the Bonferroni bar (9 variants). Suggestive; re-test on tick and book data.
+
 ## 4. Pitfalls checklist (learned the hard way)
 
 1. Compare against a random or unconditional baseline, not against 0.
