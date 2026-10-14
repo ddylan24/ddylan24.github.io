@@ -274,7 +274,7 @@ This file is a condensed briefing of everything researched in the original sessi
   - P&L sd per market: fixed 1¢ $158, vol-scaled $135, vol + inventory skew **$43** (mean/sd 0.06→0.19). Jump pickoffs ~$4/market.
 
 - **Election contract vs markets** (notes/T4.md; Trump-2024, 198 days):
-  - SPY beta ≈ 0 (corr +0.02), so the risk premium is ≈0¢. Trump-trade signs: TAN −0.08 (t −1.9), USD/MXN +0.19 (t +1.8), IBIT + (t 1.3).
+  - SPY beta ≈ 0 (corr +0.02), so the risk premium is ≈0.1¢. Trump-trade signs: TAN −0.08 (t −1.9), USD/MXN +0.19 (t +1.8), IBIT + (t 1.3).
   - Polymarket daily stamps are 00:00 UTC = previous evening ET; an off-by-one gave a fake corr +0.10.
 
 - **Partial pooling of calibration** (notes/U3.md): Kalshi weather city slopes 1.04–1.47 but τ̂ = 0 (Q 4.7/5 df). Use one pooled slope, 1.17. Shrinkage b̃ = μ̂ + τ²/(τ²+s²)(b̂−μ̂).
@@ -284,6 +284,10 @@ This file is a condensed briefing of everything researched in the original sessi
   - **Candidate edge:** Kalshi BTC T−6h slope-only recalibration p' = logit⁻¹(1.21·logit p) beats the market over 34 OOS days (log loss −0.0082, DM t −4.0), and trading it after fees gives +3.1¢/contract (daily t 3.0), with balanced buys and sells.
   - The intercept version was a BTC-drift bet (fades).
   - Pre-registered for forward paper trading on the home PC, not live money.
+
+- **Recession contracts = insurance** (notes/U1.md):
+  - Polymarket "US recession in 2025?" −0.96¢ per 1% SPY (t −4.9; corr −0.83 on |SPY|>2% days). CAPM premium = −(100·b)·ERP·T ≈ **+5.5¢** above the true probability. End-2026 contract: +2.8¢.
+  - Elections ≈ +0.1¢ (T4, corrected scaling). Read disaster contracts as risk-neutral probabilities, biased up.
 
 ## 4. Pitfalls checklist (learned the hard way)
 

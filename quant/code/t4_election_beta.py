@@ -24,6 +24,6 @@ X = J[['SPY', 'TAN', 'XLE', 'MXN=X', 'IBIT', 'TLT']].dropna() * 100
 f = sm.OLS(J.loc[X.index, 'dp'] * 100, sm.add_constant(X)).fit(cov_type='HAC', cov_kwds={'maxlags': 3})
 out.append("  joint: " + ", ".join(f"{k} {v:+.2f} (t {f.tvalues[k]:+.1f})" for k, v in f.params.items() if k != 'const') + f"; R² {f.rsquared:.3f}")
 b = sm.OLS(J.dp * 100, sm.add_constant(J.SPY * 100)).fit().params.iloc[1]
-out.append(f"\nRisk-premium bound: contract beta to SPY {b:+.3f}¢ per 1% → as a $1 position, beta ≈ {b/100/0.5:+.3f} (vs a 50¢ price).")
-out.append(f"  With a 5%/yr equity premium and ~0.8 yr to expiry, required discount ≈ beta × 5% × 0.8 × price ≈ {abs(b/100/0.5)*0.05*0.8*50:.2f}¢ — negligible vs fees and spread.")
+out.append(f"\nRisk-premium: dPrice/dSPY = {b:+.3f}¢ per 1% (= {b:+.3f}$ per 100%).")
+out.append(f"  CAPM premium ≈ −(100·beta¢)·ERP·T = {-100*b*0.05*0.8:+.2f}¢ (5% ERP, 0.8y) — negligible vs fees and spread.")
 txt = "\n".join(out); print(txt); open(f"{R}/notes/t4_out.txt", "w").write(txt)

@@ -1,0 +1,8 @@
+US recession in 2025?  outcome ["0", "1"]  (245 days 2025-01-10→2025-12-31, mean price 0.214)
+  beta -0.962¢ per 1% SPY (t -4.9), corr -0.494, R² 0.24; on |SPY|>2% days (n 14): corr -0.83
+  ⇒ dPrice/dMarket = -0.96¢ per 1% = -0.96$ per 100%; per $ invested at 21¢: CAPM beta ≈ -4.5
+  CAPM insurance premium: −dPrice/dMarket × ERP 5%/yr × 1.1y ≈ +5.5¢ (price ABOVE true probability); as share of price 25%
+US recession by end of 2026?  outcome ["0.075", "0.925"]  (247 days 2025-09-30→2026-10-14, mean price 0.222)
+  beta -0.423¢ per 1% SPY (t -2.3), corr -0.188, R² 0.04; on |SPY|>2% days (n 4): corr -0.94
+  ⇒ dPrice/dMarket = -0.42¢ per 1% = -0.42$ per 100%; per $ invested at 22¢: CAPM beta ≈ -1.9
+  CAPM insurance premium: −dPrice/dMarket × ERP 5%/yr × 1.3y ≈ +2.8¢ (price ABOVE true probability); as share of price 13%
