@@ -1,0 +1,7 @@
+400 simulated 30-day binaries, 5-min steps; quote size 100; jump rate 0.004/day (20–50¢); P&L in $ at resolution
+  fixed     jumps=False: mean $    9.7  sd $  157.5  Sharpe/market +0.06  5% worst $ -244.1  picked-off loss $  0.0
+  fixed     jumps=True : mean $   11.1  sd $  156.5  Sharpe/market +0.07  5% worst $ -259.9  picked-off loss $  4.4
+  vol       jumps=False: mean $   10.8  sd $  134.8  Sharpe/market +0.08  5% worst $ -185.7  picked-off loss $  0.0
+  vol       jumps=True : mean $    4.5  sd $  130.0  Sharpe/market +0.03  5% worst $ -204.9  picked-off loss $  4.3
+  vol+skew  jumps=False: mean $    8.3  sd $   42.9  Sharpe/market +0.19  5% worst $  -55.2  picked-off loss $  0.0
+  vol+skew  jumps=True : mean $    7.5  sd $   43.4  Sharpe/market +0.17  5% worst $  -55.2  picked-off loss $  4.3

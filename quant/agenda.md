@@ -118,6 +118,6 @@ Status: [ ] todo  [~] in progress  [x] done. Each item: derive, verify numerical
 
 ## T. Ninth wave
 - [ ] T1 Jump-diffusion for probabilities: fit a Merton-style jump intensity to ≥90¢ contract paths; price the "insurance" a favorite buyer sells.
-- [ ] T2 Optimal market-making quotes in a binary using the S9 vol law + S10 jump rates (Avellaneda–Stoikov in probability space), simulated on real paths.
+- [x] T2 Binary market-making sim (S9 vol law + S10 jumps): inventory skew cuts P&L sd 3.6×, Sharpe/market 0.06→0.19; jumps cost ~$4/market.
 - [ ] T3 Cross-venue BTC daily: Polymarket noon-ET vs Kalshi 5pm-ET same-day contracts — consistency of implied distributions over time (term structure of the two venues).
 - [ ] T4 Election-market hedging demand: correlation of Polymarket election prices with SPY/sector returns (do prices embed a risk premium?).

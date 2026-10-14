@@ -261,6 +261,9 @@ This file is a condensed briefing of everything researched in the original sessi
   - ROI persistence: Spearman +0.071 (p 0.001). Late median ROI −0.5% (bottom early quintile) → +1.3% (top).
   - The per-wallet z = P&L/√(n²p(1−p)) null is broken by round-trippers. Don't use it.
 
+- **Binary market making with measured dynamics** (notes/T2.md; sim, illustrative arrivals):
+  - P&L sd per market: fixed 1¢ $158, vol-scaled $135, vol + inventory skew **$43** (mean/sd 0.06→0.19). Jump pickoffs ~$4/market.
+
 ## 4. Pitfalls checklist (learned the hard way)
 
 1. Compare against a random or unconditional baseline, not against 0.
