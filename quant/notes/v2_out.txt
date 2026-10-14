@@ -1,0 +1,10 @@
+DVOL vs next-30d realized vol, 2021-04-01 → 2026-09-15 (1994 days)
+  mean DVOL 59.9, mean fwd RV 50.9 → VRP +9.0 vol pts; DVOL > RV on 74% of days
+  non-overlapping 30-day windows: n 67, mean VRP +9.5 ± 1.7 (t 5.6); worst -24.0
+  2021: DVOL  91.9  RV  73.1  VRP +18.8  share>0 86%
+  2022: DVOL  73.6  RV  60.9  VRP +12.7  share>0 76%
+  2023: DVOL  49.6  RV  42.8  VRP  +6.8  share>0 71%
+  2024: DVOL  57.7  RV  48.9  VRP  +8.8  share>0 77%
+  2025: DVOL  46.0  RV  41.7  VRP  +4.4  share>0 70%
+  2026: DVOL  43.4  RV  40.4  VRP  +3.0  share>0 63%
+  Mincer–Zarnowitz on non-overlapping windows: RV = 9.7 + 0.68·DVOL (R² 0.48); unbiased would be 0 + 1·DVOL

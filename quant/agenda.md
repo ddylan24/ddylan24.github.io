@@ -131,5 +131,5 @@ Status: [ ] todo  [~] in progress  [x] done. Each item: derive, verify numerical
 
 ## V. Eleventh wave
 - [x] V1 CONTEXT §0 top takeaways + LEDGER.md (every hypothesis and its fate).
-- [ ] V2 BTC variance risk premium: Deribit DVOL vs subsequent realized vol (perp), 2026; sign, size, and relation to prediction-market vol (T3).
+- [x] V2 BTC VRP: DVOL − fwd RV +9.5 vol pts (t 5.6), decaying 18.8 (2021) → 3.0 (2026); plausible mechanism for U4 under-confidence (slope ≈ σ_impl/σ_real).
 - [ ] V3 Kalshi economic-data markets (CPI/jobs, KXCPI etc.): calibration of settled markets vs outcomes.

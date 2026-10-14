@@ -310,6 +310,10 @@ This file is a condensed briefing of everything researched in the original sessi
   - Polymarket "US recession in 2025?" −0.96¢ per 1% SPY (t −4.9; corr −0.83 on |SPY|>2% days). CAPM premium = −(100·b)·ERP·T ≈ **+5.5¢** above the true probability. End-2026 contract: +2.8¢.
   - Elections ≈ +0.1¢ (T4, corrected scaling). Read disaster contracts as risk-neutral probabilities, biased up.
 
+- **BTC variance risk premium** (notes/V2.md; DVOL vs next-30d RV, 2021–2026):
+  - +9.5 vol pts (t 5.6, 67 non-overlapping windows), worst −24. Decays 18.8 → 12.7 → 6.8 → 8.8 → 4.4 → 3.0 by year. MZ slope 0.68.
+  - **Mechanism for U4:** venues price with implied vol (T3), so distributions are too wide and probabilities too close to 50%. Slope ≈ σ_impl/σ_real. Test: U4 slope vs short-dated VRP over time.
+
 ## 4. Pitfalls checklist (learned the hard way)
 
 1. Compare against a random or unconditional baseline, not against 0.

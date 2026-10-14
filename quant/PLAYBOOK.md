@@ -18,7 +18,7 @@ nohup python3 capture.py --out ~/pmdata --interval 300 > capture.log 2>&1 &
    - p' = logit⁻¹(1.21·logit(mid)).
    - Buy YES at the ask if p' − ask > 0.01 + fee; sell at the bid if bid − p' > 0.01 + fee.
    - Only strikes within ±6% of spot at T−24h with spread ≤ 10¢.
-   - Paper-trade for at least 4 weeks. Success = mean > 0 with daily-P&L t > 2 and fills checked against captured books. Do NOT re-fit the slope on forward data until the evaluation is complete.
+   - Paper-trade for at least 4 weeks. Also log the short-dated VRP (Deribit ATM IV vs realized) to test the V2 mechanism: the edge should shrink when the VRP does. Success = mean > 0 with daily-P&L t > 2 and fills checked against captured books. Do NOT re-fit the slope on forward data until the evaluation is complete.
 1. **Same-time weather information test (S8 follow-up).** Compare Kalshi weather mids with NWS NBM/HRRR/MOS forecasts *issued at the same time* (IEM archive), then a recalibrated blend. Only "resolution" can beat the market (S6).
 2. **Short-horizon BTC calibration (R1/S2 follow-up).** Logit slope at T−1…12h over ≥3 months of KXBTCD. Hint so far: slope 1.15–1.35 (under-confident), not yet significant.
 3. **Fade big moves with real books (S1 follow-up).** Re-test the ≥20¢ reversal (+3¢ net, t 2.5 on daily data) using captured books, to see if it's executable at the actual ask and bid.
