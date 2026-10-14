@@ -208,6 +208,11 @@ This file is a condensed briefing of everything researched in the original sessi
   - **Trap:** CLOB prices-history fidelity=1 lags ~1 min (stamped :16–:20s). Raw data shows fake "flow predicts next minute" with t up to 40. Align with trade prices.
   - data-api /trades default takerOnly=true, so `side` = taker.
 
+- **Excess movement** (notes/R6.md; Augenblick–Rabin 2021):
+  - Rational-forecast identity E[Σ(Δπ)²] = π0(1−π0).
+  - 1,625 resolved Polymarket markets (daily, to 1 day before close, then the outcome): Σm/Σr = **1.31 ± 0.06** (1.38 skipping the first 3–7 days). Simulated rational learner + 0.5¢ noise: 1.02.
+  - Largest for longshots (1.48) and 2w–2m horizons (1.68). No volume gradient. Daily-change AC −0.08.
+
 ## 4. Pitfalls checklist (learned the hard way)
 
 1. Compare against a random or unconditional baseline, not against 0.

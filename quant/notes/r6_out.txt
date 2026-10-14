@@ -1,0 +1,52 @@
+[skip first 0 daily points] 1625 resolved Polymarket markets (daily prices, start → 1 day before close, then the outcome)
+  Σm / Σr = 1.309 ± 0.056 (event-clustered bootstrap)   [rational benchmark 1.000]
+  movement split: path 0.913 + final jump 0.396
+  mean lag-1 autocorrelation of daily changes -0.080 (negative ⇒ noise/overreaction that reverts)
+  horizon <2w    n= 180  Σm/Σr 1.300 ± 0.096   path share 43%
+  horizon 2w–2m  n= 363  Σm/Σr 1.681 ± 0.119   path share 71%
+  horizon 2–6m   n= 558  Σm/Σr 1.056 ± 0.073   path share 70%
+  horizon >6m    n= 524  Σm/Σr 1.228 ± 0.113   path share 86%
+  volume tercile low vol  n= 542  Σm/Σr 1.307 ± 0.078
+  volume tercile mid vol  n= 541  Σm/Σr 1.337 ± 0.091
+  volume tercile high vol n= 542  Σm/Σr 1.279 ± 0.095
+  start price <10%    n= 717  Σm/Σr 1.477
+  start price 10–30%  n= 299  Σm/Σr 1.298
+  start price 30–70%  n= 534  Σm/Σr 1.255
+  start price 70–90%  n=  64  Σm/Σr 1.553
+  start price >90%    n=  11  Σm/Σr 2.904
+
+Sanity check (simulated Bayesian learner, same lengths, +0.5¢ quote noise): mean m/r 1.022; pooled ratio ~1 expected[skip first 3 daily points] 1561 resolved Polymarket markets (daily prices, start → 1 day before close, then the outcome)
+  Σm / Σr = 1.381 ± 0.066 (event-clustered bootstrap)   [rational benchmark 1.000]
+  movement split: path 0.924 + final jump 0.457
+  mean lag-1 autocorrelation of daily changes -0.114 (negative ⇒ noise/overreaction that reverts)
+  horizon <2w    n= 136  Σm/Σr 1.349 ± 0.133   path share 41%
+  horizon 2w–2m  n= 363  Σm/Σr 1.568 ± 0.112   path share 65%
+  horizon 2–6m   n= 543  Σm/Σr 1.178 ± 0.089   path share 70%
+  horizon >6m    n= 519  Σm/Σr 1.408 ± 0.150   path share 83%
+  volume tercile low vol  n= 521  Σm/Σr 1.374 ± 0.090
+  volume tercile mid vol  n= 520  Σm/Σr 1.413 ± 0.101
+  volume tercile high vol n= 520  Σm/Σr 1.352 ± 0.100
+  start price <10%    n= 830  Σm/Σr 1.767
+  start price 10–30%  n= 284  Σm/Σr 1.466
+  start price 30–70%  n= 370  Σm/Σr 1.230
+  start price 70–90%  n=  65  Σm/Σr 1.529
+  start price >90%    n=  12  Σm/Σr 1.940
+
+Sanity check (simulated Bayesian learner, same lengths, +0.5¢ quote noise): mean m/r 1.080; pooled ratio ~1 expected[skip first 7 daily points] 1522 resolved Polymarket markets (daily prices, start → 1 day before close, then the outcome)
+  Σm / Σr = 1.380 ± 0.064 (event-clustered bootstrap)   [rational benchmark 1.000]
+  movement split: path 0.910 + final jump 0.470
+  mean lag-1 autocorrelation of daily changes -0.122 (negative ⇒ noise/overreaction that reverts)
+  horizon <2w    n= 124  Σm/Σr 1.344 ± 0.128   path share 41%
+  horizon 2w–2m  n= 372  Σm/Σr 1.491 ± 0.109   path share 58%
+  horizon 2–6m   n= 535  Σm/Σr 1.226 ± 0.097   path share 74%
+  horizon >6m    n= 491  Σm/Σr 1.417 ± 0.139   path share 84%
+  volume tercile low vol  n= 508  Σm/Σr 1.330 ± 0.093
+  volume tercile mid vol  n= 507  Σm/Σr 1.445 ± 0.098
+  volume tercile high vol n= 507  Σm/Σr 1.370 ± 0.107
+  start price <10%    n= 854  Σm/Σr 1.656
+  start price 10–30%  n= 255  Σm/Σr 1.388
+  start price 30–70%  n= 338  Σm/Σr 1.261
+  start price 70–90%  n=  60  Σm/Σr 1.583
+  start price >90%    n=  15  Σm/Σr 3.064
+
+Sanity check (simulated Bayesian learner, same lengths, +0.5¢ quote noise): mean m/r 1.150; pooled ratio ~1 expected

@@ -1242,6 +1242,11 @@ vs  multiplicative pᵢ = πᵢ/Σπ    ·  additive pᵢ = πᵢ − (Σπ−1)
     <li><b>Prediction is a mirage.</b> Polymarket's own minute-level price history is stamped about a minute late. Taken at face value, it says order flow "predicts" the next minute's move in all eight markets, with t-statistics up to 40. Align it with actual trade prices and the effect shrinks to well under the 1¢ spread. Flow explains the same minute, not the next, just as Cont, Kukanov &amp; Stoikov found for stocks.</li>
   </ul>
   <p><b>Lesson:</b> before believing any lead-lag result, check the data's timestamps against an independent source. A one-minute lag can manufacture a spectacular signal.</p>
+  <h3>Do prices move too much? A one-line rationality test</h3>
+  <p>A rational forecast is a martingale: its expected next value equals its current value. That alone pins down how much it should move. Add up the squared daily changes all the way to the 0-or-1 outcome. On average that sum must equal the uncertainty the forecast started with (Augenblick &amp; Rabin 2021):</p>
+<div class="formula">E[ Σ (π_{t+1} − π_t)² ] = π_0 (1 − π_0)        (any sampling frequency; no model needed)
+proof per step: E[(Δπ)²] = E[π²_{t+1}] − E[π²_t] = E[u_t − u_{t+1}],   u = π(1−π)</div>
+  <p>Across 1,625 resolved Polymarket markets, the ratio was <b>1.31 ± 0.06</b>, and 1.38 after skipping the arbitrary opening days. A simulated rational learner with the same quote noise gave 1.02. <b>Polymarket prices swing 30–40% more than the information justifies.</b> The excess is largest for longshots (1.48), the same fact as the cheap YES contracts winning more often than priced. Daily changes reverse slightly (autocorrelation −0.08), but that's small next to a 1¢ spread. Apply the same test to your own forecasts: a ratio far above 1 means you're jumpy, far below 1 means you're sluggish.</p>
   <h3>What the research says</h3>
   <ul class="tight">
     <li><b>Markets beat polls.</b> Iowa Electronic Markets prices were closer to the final result than polls in 74% of 964 comparisons, 1988–2004, and significantly better more than 100 days out (Berg, Nelson &amp; Rietz 2008).</li>
