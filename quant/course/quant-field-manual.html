@@ -1043,7 +1043,23 @@ buy every NO:   cost n − Σ bids, convert to n − 1 now  → instant profit �
     <li><b>Buy-side gaps (Σ asks &lt; 1):</b> 116 events, but mostly not arbitrage. Some have incomplete outcome sets. In others the gap is smaller than T-bill interest. The 2028 party market summed to 0.990, which earns 0.5% a year when T-bills pay 4.25%. Buying every outcome only beats cash if the asks sum below e^(−0.0425 × 2.07) ≈ 0.916.</li>
   </ul>
   <p>Arbitrage does exist. Saguillo et al. (2025) estimate about <b>$40 million</b> of realized arbitrage profit on Polymarket, using on-chain data and LLMs to find logically linked markets. But bots compete it away: what's left at the top of the book is about a cent and roughly the size of fees. <b>Time value is a structural force here:</b> long-dated contracts have to trade below their "fair" probability, or holding them loses to T-bills. That's one plausible contributor to the YES underpricing found above.</p>
-  <p>Coming next in this track: Kelly sizing for binary contracts, and the academic literature on prediction-market accuracy and favorite-longshot bias.</p>
+  <h3>Sizing binary bets: Kelly for prediction markets</h3>
+<div class="formula">buy YES at price p with your probability q:   f* = (q − p) / (1 − p)        (NO side: f* = (p − q) / p)
+growth per bet  G(f) = q·ln(1 + f(1−p)/p) + (1−q)·ln(1 − f)</div>
+  <ul class="tight">
+    <li><b>Examples.</b> A 5-point edge on a 50¢ contract means staking 10%. A 10-point edge means 20%. Near-certainties are dangerous: believing 97% against a 95¢ price says stake <b>40%</b> for tiny growth.</li>
+    <li><b>Fees.</b> With a 5-point edge on a 50¢ contract, a fee of 2% of the payout cuts long-run growth by 36%.</li>
+    <li><b>Time value.</b> The same 5¢ edge is worth 26% a year if the market resolves next week, 2% if it takes three months, and 0.25% over two years, when T-bills pay 4.25%. <b>Prediction-market edges only matter on short-dated contracts.</b></li>
+    <li><b>Your probability is an estimate.</b> I simulated a trader with a real 3-point edge whose beliefs are off by ±5 points, over 2,000 bets. Full Kelly on those noisy beliefs <b>lost money 72% of the time</b> and lost 90%+ more than half the time. Half Kelly lost money 26% of the time, quarter Kelly 10%. Noisy beliefs turn "full Kelly" into over-betting.</li>
+  </ul>
+  <h3>What the research says</h3>
+  <ul class="tight">
+    <li><b>Markets beat polls.</b> Iowa Electronic Markets prices were closer to the final result than polls in 74% of 964 comparisons, 1988–2004, and significantly better more than 100 days out (Berg, Nelson &amp; Rietz 2008).</li>
+    <li><b>Calibration decays with horizon.</b> Prices are well calibrated near expiry but get pulled toward 50% for distant events, a favorite-longshot pattern that time value makes hard to exploit (Page &amp; Clemen 2013).</li>
+    <li><b>Why longshots are overbet in betting markets:</b> people misperceive small probabilities (prospect theory) more than they seek risk (Snowberg &amp; Wolfers 2010).</li>
+    <li><b>Arbitrage is real and bot-dominated:</b> about $40M extracted on Polymarket (Saguillo et al. 2025).</li>
+  </ul>
+  <p>Put together with the data above: prediction-market prices are good forecasts, with biases that are small, largest in thin and long-dated markets, and mostly eaten by fees and time value. The quant edge is in <b>short-dated markets, better models than the crowd, fast arbitrage and market making</b>. That's the same lesson as everywhere else in this course.</p>
 </section>
 
 <section id="m-formulas" class="flow">

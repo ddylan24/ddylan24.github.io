@@ -1,0 +1,15 @@
+belief 0.55, price 0.50: Kelly stake 10.0% of bankroll; expected log-growth per bet 0.0050; half-Kelly keeps 75% of growth
+belief 0.60, price 0.50: Kelly stake 20.0% of bankroll; expected log-growth per bet 0.0201; half-Kelly keeps 75% of growth
+belief 0.10, price 0.05: Kelly stake 5.3% of bankroll; expected log-growth per bet 0.0207; half-Kelly keeps 80% of growth
+belief 0.30, price 0.20: Kelly stake 12.5% of bankroll; expected log-growth per bet 0.0282; half-Kelly keeps 77% of growth
+belief 0.97, price 0.95: Kelly stake 40.0% of bankroll; expected log-growth per bet 0.0049; half-Kelly keeps 71% of growth
+fee 0% of payout: effective price 0.500, Kelly 10.0%, growth 0.0050
+fee 1% of payout: effective price 0.505, Kelly 9.1%, growth 0.0041
+fee 2% of payout: effective price 0.510, Kelly 8.2%, growth 0.0032
+edge 5¢ on 50¢ resolving in 1 weeks: Kelly growth per bet 0.0050 → annualized 26.04% vs T-bill 4.25% on the idle part
+edge 5¢ on 50¢ resolving in 13 weeks: Kelly growth per bet 0.0050 → annualized 2.00% vs T-bill 4.25% on the idle part
+edge 5¢ on 50¢ resolving in 52 weeks: Kelly growth per bet 0.0050 → annualized 0.50% vs T-bill 4.25% on the idle part
+edge 5¢ on 50¢ resolving in 104 weeks: Kelly growth per bet 0.0050 → annualized 0.25% vs T-bill 4.25% on the idle part
+true edge 3¢, belief noise ±5¢, 2000 bets: 1× Kelly on estimates → median log-wealth -3.01, P(lost money) 72%, P(lost 90%+) 55%
+true edge 3¢, belief noise ±5¢, 2000 bets: 0.5× Kelly on estimates → median log-wealth +1.55, P(lost money) 26%, P(lost 90%+) 5%
+true edge 3¢, belief noise ±5¢, 2000 bets: 0.25× Kelly on estimates → median log-wealth +1.57, P(lost money) 10%, P(lost 90%+) 0%

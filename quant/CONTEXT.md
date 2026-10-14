@@ -111,7 +111,17 @@ This file is a condensed briefing of everything researched in the original sessi
   - Live scan of 2,100 events / 632 multi-outcome events on 2026-10-14: Σmid median 0.995. Sell-side gaps in 15 events, median 0.8¢ and max 1.5¢, all fee-sized.
   - Buy-side gaps were mostly artifacts (incomplete outcome sets) or below the T-bill carry. Example: the 2028 market at Σask 0.990 earns 0.5%/yr vs 4.25% T-bills.
   - Literature: Saguillo et al. 2025 (arXiv:2508.03474) estimate ~$40M of realized Polymarket arbitrage, using LLMs to find dependent markets.
-- Remaining work, see `agenda.md` section P: Kelly for binaries, literature (Wolfers & Zitzewitz; Snowberg & Wolfers; IEM vs polls), Kalshi data, cross-venue comparison.
+- **Kelly for binaries:** f* = (q−p)/(1−p).
+  - A 5¢ edge at 50¢ means a 10% stake. q 0.97 vs p 0.95 says 40%, which is dangerous.
+  - A 2% payout fee costs 36% of growth.
+  - Time value: a 5¢ edge is worth 26%/yr if the market resolves in 1 week, but 0.25%/yr over 2 years (vs 4.25% T-bills).
+  - Sim with a true 3¢ edge and beliefs noisy by ±5¢: full Kelly lost money 72% of the time; half Kelly 26%; quarter Kelly 10%.
+- **Literature:**
+  - Berg, Nelson & Rietz 2008: IEM beat polls 74% of the time.
+  - Page & Clemen 2013: calibration degrades with horizon (pulled toward 50%), and time value limits exploitation.
+  - Snowberg & Wolfers 2010: favorite-longshot bias comes from misperception, not risk-love.
+- **Takeaway:** the edge is in short-dated markets, better models, fast arbitrage and market making.
+- Possible next steps: Kalshi data and a cross-venue comparison (Kalshi vs Polymarket on the same events), and a horizon-dependence test of calibration on our data.
 
 ## 4. Pitfalls checklist (learned the hard way)
 
