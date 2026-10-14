@@ -126,5 +126,5 @@ Status: [ ] todo  [~] in progress  [x] done. Each item: derive, verify numerical
 ## U. Tenth wave
 - [ ] U1 Recession / macro contracts (Kalshi/Polymarket): do outcomes tied to aggregate wealth carry a risk premium (unlike elections, T4)?
 - [ ] U2 Information aggregation across venues over time: does Kalshi or Polymarket lead on identical BTC strikes (minute data from capture.py)?
-- [ ] U3 Bayesian hierarchical calibration: partial pooling of calibration slopes across categories/venues (shrinkage of the noisy per-category estimates in P5/N2).
+- [x] U3 Empirical-Bayes pooling of calibration slopes (Kalshi weather cities): τ̂=0, Q 4.7/5df → one pooled slope 1.17; city differences are noise.
 - [ ] U4 Proper-scoring tournament: score every model built this session (market, DVOL, MOS, Shin, recalibrated) on common test sets with Diebold–Mariano tests.

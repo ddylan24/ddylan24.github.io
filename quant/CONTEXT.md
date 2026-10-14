@@ -272,6 +272,8 @@ This file is a condensed briefing of everything researched in the original sessi
   - SPY beta ≈ 0 (corr +0.02), so the risk premium is ≈0¢. Trump-trade signs: TAN −0.08 (t −1.9), USD/MXN +0.19 (t +1.8), IBIT + (t 1.3).
   - Polymarket daily stamps are 00:00 UTC = previous evening ET; an off-by-one gave a fake corr +0.10.
 
+- **Partial pooling of calibration** (notes/U3.md): Kalshi weather city slopes 1.04–1.47 but τ̂ = 0 (Q 4.7/5 df). Use one pooled slope, 1.17. Shrinkage b̃ = μ̂ + τ²/(τ²+s²)(b̂−μ̂).
+
 ## 4. Pitfalls checklist (learned the hard way)
 
 1. Compare against a random or unconditional baseline, not against 0.

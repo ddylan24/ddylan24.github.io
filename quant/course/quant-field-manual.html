@@ -1243,6 +1243,10 @@ risk-neutral (Manski): p = share of traders with q &gt; p   ⇒   mean belief an
     <li><b>Who trades sets the sign of the bias.</b> Aggressive traders (γ &lt; 1) overprice longshots, the classic favorite-longshot bias Kalshi's weather markets showed. Cautious traders (γ &gt; 1) underprice them, the reverse pattern Polymarket showed in 2025–26. That's a consistent story, not proof.</li>
     <li><b>The price is a money-weighted average.</b> When wealth correlated 0.43 with belief, the average belief was 0.28 but the price was 0.48. A few large accounts can move the "probability."</li>
   </ul>
+  <h3>One correction or many? Pooling noisy estimates</h3>
+  <p>Kalshi's weather calibration slope varied by city, from 1.04 in Miami to 1.47 in New York. Is that real? A hierarchical model treats each city's true slope as drawn from a common distribution and asks how much of the spread is genuine:</p>
+<div class="formula">b̂_g ~ N(b_g, s_g²),  b_g ~ N(μ, τ²)   →   b̃_g = μ̂ + τ²/(τ² + s_g²) · (b̂_g − μ̂)</div>
+  <p>The estimated spread between cities was τ̂ = 0 (Cochran's Q 4.7 on 5 degrees of freedom), so the differences are noise. Every city's best estimate is the pooled 1.17. Estimating on the first half of the days and predicting the second half, city-by-city slopes did no better than the pooled one. Test for real differences before fitting a separate correction for every group.</p>
   <h3>Removing the "vig": Shin's insider model</h3>
   <p>A complete set of outcomes usually costs more than $1. Kalshi weather buckets summed to 1.045 at mid and 1.09 at the ask. To get probabilities you have to take that excess out, and the method matters. Shin's model says the market maker shades prices against a fraction z of insiders. Longshots carry more insider risk, so they get marked up more:</p>
 <div class="formula">pᵢ = [ √(z² + 4(1−z)·πᵢ²/Σπ) − z ] / (2(1−z)),   z chosen so Σp = 1
