@@ -199,6 +199,10 @@ This file is a condensed briefing of everything researched in the original sessi
   - Logit slopes 1.08–1.50 at 1–12h; pooled 1.15 ± 0.14 (n.s.). Selling 5–20¢ contracts −0.3¢ (t −0.1).
   - The R1 under-confidence hint isn't confirmed. Needs continuous collection (home PC).
 
+- **BTC term structure across venues** (notes/T3.md): lognormal fit per venue-expiry (8 expiries).
+  - Total variance is monotone (no calendar arb). Vols within 0–3 pts of Deribit, including the weekend dip.
+  - Venue centers flat at ~spot while the options forward rises with carry (gap ~$100→$190).
+
 ### Math foundations (later waves)
 - **Proper scoring:** with truth 0.7, Brier and log are maximized at 0.70; a linear score at 0.99 (improper). LMSR = market log score; a trader's payoff b·ln(p1/p0) is verified. Polymarket log-loss skill 38% vs Brier 45%.
 - **MC variance reduction** (BS call, N=20k): plain sd 0.101, antithetic 0.068, control variate 0.039 (variance ÷6.8). Importance sampling for P(30-day −20%) = 4.42e-5: plain 3.0e-5 (3 hits), IS 4.41e-5.
