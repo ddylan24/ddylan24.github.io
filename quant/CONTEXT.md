@@ -185,6 +185,12 @@ This file is a condensed briefing of everything researched in the original sessi
   - Near ATM the venues sit 2–3¢ low. One forward shift per expiry gets RMSE to 0.4–1.2¢. Implied shift −$80…−$170 tracks Deribit carry (+$18…+$82), so **PM traders center on spot, not the forward.** That's a carry premium, not arbitrage.
   - Details worth cents (digital delta ≈ 4¢/$100 ATM at 2 days): Polymarket = Binance BTC/USDT at noon ET (USDT 0.9987); Kalshi KXBTCD = 60s avg CF BRTI before 5pm ET; Deribit expiry 08:00 UTC, API `public/get_book_summary_by_currency?currency=BTC&kind=option`.
 
+- **Kalshi daily BTC (KXBTCD) vs DVOL lognormal** (notes/R1.md; 68 days Aug–Oct 2026, strikes ±6% of T−24h spot, day-clustered):
+  - T−24h: market Brier 0.099 vs model 0.105 (t 3.7). Encompassing weights 1.82 market / −0.89 model. Fade-the-market rule −7.2¢/contract (t −2.5).
+  - T−6h: tie. Market calibration slope 1.35 (under-confident: 5–15¢ won 4.2%). Suggestive, too few days.
+  - **Trap:** Deribit chart bars are stamped at bar START. Using them as-of produced a fake +9.1¢ (t 3.6) edge.
+  - Kalshi batch candles `GET /markets/candlesticks?market_tickers=a,b,...` avoids the ~1 call/3s rate limit.
+
 ### Math foundations (later waves)
 - **Proper scoring:** with truth 0.7, Brier and log are maximized at 0.70; a linear score at 0.99 (improper). LMSR = market log score; a trader's payoff b·ln(p1/p0) is verified. Polymarket log-loss skill 38% vs Brier 45%.
 - **MC variance reduction** (BS call, N=20k): plain sd 0.101, antithetic 0.068, control variate 0.039 (variance ÷6.8). Importance sampling for P(30-day −20%) = 4.42e-5: plain 3.0e-5 (3 hits), IS 4.41e-5.
@@ -218,7 +224,7 @@ This file is a condensed briefing of everything researched in the original sessi
 1. Compare against a random or unconditional baseline, not against 0.
 2. Overlapping outcome windows inflate t. Use effective n or a block bootstrap.
 3. Count every trial. Use Bonferroni, Holm or BH, plus a placebo run on random dates.
-4. **Look-ahead:** HMM smoothed/Viterbi states; measuring prediction-market prices relative to close time; a price series whose timestamps lag (Polymarket prices-history). All three produced fake results.
+4. **Look-ahead:** HMM smoothed/Viterbi states; measuring prediction-market prices relative to close time; a price series whose timestamps lag (Polymarket prices-history); bars stamped at their start (Deribit chart data). All four produced fake results.
 5. Short samples bias mean-reversion speed upward.
 6. Test a context effect on all days before crediting the event.
 7. Benchmark ML against the simplest rule it might be rediscovering.

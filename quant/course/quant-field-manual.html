@@ -1171,6 +1171,13 @@ buy every NO:   cost n − Σ bids, convert to n − 1 now  → instant profit �
     <li><b>Buy-side gaps (Σ asks &lt; 1):</b> 116 events, but mostly not arbitrage. Some have incomplete outcome sets. In others the gap is smaller than T-bill interest. The 2028 party market summed to 0.990, which earns 0.5% a year when T-bills pay 4.25%. Buying every outcome only beats cash if the asks sum below e^(−0.0425 × 2.07) ≈ 0.916.</li>
   </ul>
   <p>Arbitrage does exist. Saguillo et al. (2025) estimate about <b>$40 million</b> of realized arbitrage profit on Polymarket, using on-chain data and LLMs to find logically linked markets. But bots compete it away: what's left at the top of the book is about a cent and roughly the size of fees. <b>Time value is a structural force here:</b> long-dated contracts have to trade below their "fair" probability, or holding them loses to T-bills. That's one plausible contributor to the YES underpricing found above.</p>
+  <h3>Can a simple options model beat Kalshi's daily Bitcoin markets?</h3>
+  <p>I backtested Kalshi's "BTC above K at 5pm ET" contracts over 68 days (August–October 2026). Strikes were picked within ±6% of the price a day earlier, so the outcome couldn't influence the selection. I compared the market against a lognormal model using Deribit's DVOL implied volatility. Every statistic is clustered by day, since all strikes on a day share one Bitcoin path.</p>
+  <ul class="tight">
+    <li><b>The market wins.</b> 24 hours out, the market's Brier score was 0.099 against the model's 0.105 (t = 3.7), and the model gets negative weight when both are combined. Trading whenever the model disagreed with the quote by more than 3¢ plus the fee <b>lost 7¢ a contract</b> (t = −2.5). Six hours out, it broke even.</li>
+    <li><b>The look-ahead trap.</b> My first run showed +9¢ a contract (t = 3.6) at six hours. Deribit stamps hourly bars at their <em>start</em>, so the model was seeing an hour of future prices. Re-stamped by close time, the edge was zero. Check whether a data source labels bars by open or by close.</li>
+    <li><b>A hint for later.</b> Six hours out, prices were under-confident: 5–15¢ contracts won only 4% of the time. That's a possible short-horizon favorite-longshot effect, but 68 days is too few to trade on.</li>
+  </ul>
   <h3>Logical consistency across linked markets</h3>
   <p>Separate markets on related questions must obey probability logic, but no single order book enforces it. I checked the four live 2028 election markets on Polymarket (winner, Democratic nominee, Republican nominee, winning party) on October 14, 2026:</p>
 <div class="formula">subset:        X wins presidency ⊂ X wins nomination   → P(win) ≤ P(nominee)
