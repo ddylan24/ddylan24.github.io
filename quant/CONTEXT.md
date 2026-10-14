@@ -2,6 +2,27 @@
 
 This file is a condensed briefing of everything researched in the original session (Oct 13–14, 2026). Paste it, or point a new session at this folder, to continue without re-deriving anything. Every number here was computed from real data or verified by simulation. The topic notes in `notes/` hold the details, and the scripts in `code/` re-run them.
 
+## 0. Top takeaways (read this first)
+
+1. **Almost every "edge" found in public data died under a fair baseline, costs or out-of-sample testing.** The SPY sweep was just drift. Calendar effects died after 1990. Momentum alpha mostly disappears with the MOM factor. Recalibration strategies are eaten by spreads. See `LEDGER.md` for every test and its fate.
+2. **Prediction-market prices are good forecasts.** Brier skill is 41–49% on Polymarket and 60–87% on Kalshi BTC. Calibration error (REL) is only 0.5–3.5% of the Brier score (S6). Liquid venues track professional markets within about 1¢: fed funds futures (S7), the Deribit option surface (Q3/T3), and a 6-second reaction to the Fed (Q2).
+3. **Real but small biases:**
+   - Polymarket shows reverse favorite-longshot pricing since mid-2025: cheap YES underpriced, 90–95¢ favorites overpriced (S3: −3% vs T-bills; S10: 20¢ crash risk 39× diffusion).
+   - Kalshi weather shows classic favorite-longshot pricing.
+   - Prices move 31–38% more than rational updating allows (R6).
+   - Recession contracts carry a ~3–5¢ insurance premium (U1); elections ~0.1¢ (T4).
+4. **Best candidate edge (unproven, pre-registered):** slope-only recalibration (b ≈ 1.2) of Kalshi daily BTC at T−6h. Out of sample: DM t −4.0, +3.1¢/contract after fees (t 3.0). Paper-trade it forward (`PLAYBOOK.md` §2.0).
+5. **Math that matters most:**
+   - Kelly with shrunk probabilities (≤ ½ Kelly; joint Kelly for multi-outcome events, S5).
+   - Digital = −∂C/∂K with skew (Q3).
+   - Probability diffusion dp = φ(N⁻¹p)/√τ dW (S9).
+   - Martingale movement test E[Σ(Δπ)²] = π₀(1−π₀) (R6).
+   - Shin/additive de-vig (R5/U4).
+   - Empirical-Bayes pooling (U3).
+   - Common-outcome nulls for skill tests (R2).
+6. **Data traps that faked results today:** close-time look-ahead, HMM smoothing, prices-history 1-minute lag, Deribit bars stamped at the open, daily stamps on the previous evening ET, date strings sorted alphabetically, independent per-trader nulls. Check timestamps and splits first.
+7. **Home PC / Pi:** run `live/capture.py` continuously. Most open questions need data no API keeps (CONTEXT §5b, PLAYBOOK).
+
 ## 1. Goal and starting point
 
 - The user asked to study the **DeltaTrend Trading** YouTube channel, learn quant trading in depth (with heavy emphasis on the **math**), use well-verified data, and build a course: the *Quant Trading Field Manual* (`course/quant-field-manual.html`, also published as a private claude.ai artifact).
