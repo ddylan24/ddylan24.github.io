@@ -144,6 +144,10 @@ This file is a condensed briefing of everything researched in the original sessi
   - "Other" (culture/tech): b 0.51, +13.2¢ (t 3.0). Worst calibrated.
   - Crypto: b 0.76, −5.1¢ (t −1.5).
   - Mispricing concentrates where attention and liquidity are thin.
+- **Live order books** (CLOB /book, merging YES and complementary NO orders; matches gamma bestAsk), 412 markets:
+  - Spread median 1.0¢. Depth within ±1¢ median $1.8k.
+  - Cost to buy vs mid: $1k 0.9¢, $10k 3.4¢. In thin markets: $1k 2.3¢, $10k 18.6¢.
+  - **The biases sit where costs are highest, so capacity is a few $k per market.**
 - **Kalshi vs Polymarket, 2028 presidential winner, 24 matched candidates:**
   - Mids correlate 0.977. Mean |diff| 0.81¢, max 3.2¢ (AOC 10¢ vs 13.1¢).
   - Best gross cross-venue lock is 3.1¢, which isn't arbitrage after fees, two-year lockup (needs >8.4% to beat T-bills) and resolution-rule risk.

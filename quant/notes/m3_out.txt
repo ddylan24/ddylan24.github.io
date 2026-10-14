@@ -1,0 +1,8 @@
+  check vs gamma bestBid/bestAsk: median |our best ask − gamma bestAsk| = 0.00¢
+Live Polymarket order books (CLOB /book), top 1000 active markets by volume → 412 with two-sided books and 3¢<mid<97¢, snapshot 2026-10-14
+  spread: median 1.0¢, 25–75% [0.8, 1.2]¢; share at 1-tick (≤0.1¢) 13%
+  $ depth within ±1¢ of mid: median $1,797, 25–75% [$131, $9,092]
+  slippage vs mid to buy $1k YES: median 5.59%; $10k: median 24.92% (NaN = book too thin: 3% of markets)
+  low 24h vol : spread 1.0¢, depth±1¢ $179, $10k slippage 223.97%
+  mid         : spread 1.0¢, depth±1¢ $2,637, $10k slippage 18.66%
+  high 24h vol: spread 1.0¢, depth±1¢ $7,513, $10k slippage 6.27%

@@ -1089,6 +1089,17 @@ b &lt; 1: prices too extreme (longshots cheap, favorites dear)     b &gt; 1: pri
     </tbody>
   </table></div>
   <p>The high-attention <b>political</b> markets are the best calibrated, with no significant bias. The mispricing concentrates in <b>"other"</b> markets: pop culture, tech and miscellany. There, prices were far too extreme (slope 0.51) and YES won 13¢ more often than priced. Sports YES (a named team or player) was about 5¢ cheap. This is the efficient-markets pattern again: <b>edges live where attention and liquidity are thin.</b> Categories come from keyword rules on the market titles, and the per-category samples are small.</p>
+  <h3>Can you actually trade it? Live order-book liquidity</h3>
+  <p>I pulled the live order books for the top 1,000 active Polymarket markets (October 14, 2026). Complementary orders are merged, because a NO bid at q is effectively a YES offer at 1 − q. The merged best prices matched Polymarket's own quotes exactly. For the 412 two-sided books between 3¢ and 97¢:</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>By 24-hour volume</th><th class="r">Spread</th><th class="r">$ within ±1¢ of mid</th><th class="r">Cost to buy $1k (vs mid)</th><th class="r">Cost to buy $10k</th></tr></thead>
+    <tbody>
+      <tr><td>Low</td><td class="r">1.0¢</td><td class="r">$179</td><td class="r">2.3¢</td><td class="r loss">18.6¢</td></tr>
+      <tr><td>Middle</td><td class="r">1.0¢</td><td class="r">$2,637</td><td class="r">1.0¢</td><td class="r">3.6¢</td></tr>
+      <tr><td>High</td><td class="r">1.0¢</td><td class="r">$7,513</td><td class="r">0.5¢</td><td class="r">1.3¢</td></tr>
+    </tbody>
+  </table></div>
+  <p>Now set this next to the biases. The ~5¢ YES underpricing, and the 13¢ in thin "other" markets, sit exactly where execution is most expensive. At $10,000 in a thin market, crossing the book costs about 19¢, more than the edge. <b>The bias survives because it's too small and too illiquid to arbitrage.</b> Realistic capacity is a few thousand dollars per market, and even then only with patient limit orders.</p>
   <h3>Same event, two venues: Kalshi vs Polymarket</h3>
   <p>I matched 24 candidates in the 2028 presidential-winner markets on both venues (live quotes, October 14, 2026). The mid prices correlate <b>0.977</b> and differ by 0.8¢ on average, at most 3.2¢. AOC was 10¢ on Kalshi and 13.1¢ on Polymarket; Newsom 11.5¢ vs 9.1¢. The best gross "lock" (YES on one venue, NO on the other) was 3.1¢ per $1. But it ties up capital on two venues until November 2028 (it would need 8.4% just to match T-bills), pays fees on both, and the two venues' resolution rules may differ. The venues track each other closely, and what's left over isn't free money.</p>
   <h3>Market-maker math: Hanson's LMSR</h3>

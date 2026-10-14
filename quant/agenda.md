@@ -77,5 +77,10 @@ Status: [ ] todo  [~] in progress  [x] done. Each item: derive, verify numerical
 ## M. Third wave
 - [x] M1 Polymarket calibration split by category (sports vs politics vs crypto vs other) — where are the biases?
 - [x] M2 Crypto perpetual-futures funding rates as carry (exchange APIs), basis math.
-- [ ] M3 Prediction-market price reaction to news: how fast do prices converge after a resolving event (event study on intraday history).
+- [x] M3 (replaced) Live Polymarket order-book liquidity: spreads, depth, capacity vs volume.
 - [x] M4 Risk parity / all-weather across asset classes with real ETF data vs 60/40 (leverage, rates regime 2022).
+
+## N. Fourth wave
+- [ ] N1 Out-of-sample test of Polymarket YES-underpricing: fit on markets ending before 2025-07, test after; include half-spread costs.
+- [ ] N2 Kalshi calibration on settled markets (candlesticks/market history API).
+- [ ] N3 Market-making economics on Polymarket: spread capture vs adverse selection, liquidity rewards.
