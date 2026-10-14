@@ -149,6 +149,11 @@ This file is a condensed briefing of everything researched in the original sessi
   - Test (after): +6.5¢, t 3.7.
   - Recalibration fitted on train didn't help on test (Brier 0.1914 vs 0.1905), and a selective rule lost 0.4%.
   - So the bias is recent and regime-dependent, not learnable in advance.
+- **Kalshi weather** (daily high-temp buckets, 6 cities, 2,188 contracts, Aug–Oct 2026; the settled-history API reaches back only ~2 months):
+  - Brier skill 27%. Slope b 1.18 ± 0.07 (classic favorite-longshot). Middle bias −0.3¢.
+  - <5¢ buckets won 0.9% vs a 2.3¢ price. Each city-day sums to ~1.04.
+  - Selling cheap buckets at the bid after fee (0.07·P·(1−P)) earned +0.74¢/contract, t 1.2, with 7 losses of ~98¢.
+  - So the pattern is opposite to Polymarket's: biases are venue- and category-specific.
 - **Live order books** (CLOB /book, merging YES and complementary NO orders; matches gamma bestAsk), 412 markets:
   - Spread median 1.0¢. Depth within ±1¢ median $1.8k.
   - Cost to buy vs mid: $1k 0.9¢, $10k 3.4¢. In thin markets: $1k 2.3¢, $10k 18.6¢.

@@ -1110,6 +1110,17 @@ b &lt; 1: prices too extreme (longshots cheap, favorites dear)     b &gt; 1: pri
     </tbody>
   </table></div>
   <p><b>The bias isn't stable.</b> Before mid-2025 it was small and insignificant, so a trader couldn't have learned it then. A calibration model fitted on the early period didn't improve forecasts afterward (Brier 0.1914 vs 0.1905 raw), and a rule built from it lost 0.4%. All of the effect is in the recent period. That's consistent with a shift in market composition (more sports, more retail), not a timeless edge. And the large average return comes mostly from a few cheap contracts that won, which pay 1/price. The full-sample result was real, but it concentrated in one period. <b>Walk forward before you believe anything.</b></p>
+  <h3>Kalshi weather markets: a different bias</h3>
+  <p>Kalshi lists daily "high temperature" contracts in temperature buckets for each city. They close on a fixed schedule, so there's no early-close look-ahead. I took 2,188 bucket contracts across 6 cities (August to October 2026; Kalshi's history API only goes back about two months), priced at the bid/ask mid 24 hours before close:</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Price bucket</th><th class="r">&lt;5¢</th><th class="r">5–15¢</th><th class="r">15–30¢</th><th class="r">30–50¢</th><th class="r">50–70¢</th></tr></thead>
+    <tbody>
+      <tr><td>Average price</td><td class="r">2.3¢</td><td class="r">9.2¢</td><td class="r">22.0¢</td><td class="r">38.9¢</td><td class="r">57.4¢</td></tr>
+      <tr><td>Actually won</td><td class="r loss">0.9%</td><td class="r">7.3%</td><td class="r">20.8%</td><td class="r">40.8%</td><td class="r">57.6%</td></tr>
+    </tbody>
+  </table></div>
+  <p>The middle is well calibrated (bias −0.3¢, not significant). The tails show the <i>classic</i> favorite-longshot bias (slope 1.18 ± 0.07): 2-cent longshots hit less than 1% of the time. The bucket prices for each city-day add up to about $1.04, a 4% overround. Selling those longshots at the actual bid, after Kalshi's taker fee (0.07 × P × (1−P) per contract), earned <b>+0.74¢ per contract</b>. That's t = 1.2 on 783 contracts with 7 losses of about 98¢ each: picking up pennies with tail risk, and not significant over two months.</p>
+  <p>Note the contrast: Polymarket's broad sample leaned the other way (longshots cheap), while Kalshi weather has longshots dear. <b>Biases are specific to venue and category</b>, so measure each market type before assuming anything.</p>
   <h3>Same event, two venues: Kalshi vs Polymarket</h3>
   <p>I matched 24 candidates in the 2028 presidential-winner markets on both venues (live quotes, October 14, 2026). The mid prices correlate <b>0.977</b> and differ by 0.8¢ on average, at most 3.2¢. AOC was 10¢ on Kalshi and 13.1¢ on Polymarket; Newsom 11.5¢ vs 9.1¢. The best gross "lock" (YES on one venue, NO on the other) was 3.1¢ per $1. But it ties up capital on two venues until November 2028 (it would need 8.4% just to match T-bills), pays fees on both, and the two venues' resolution rules may differ. The venues track each other closely, and what's left over isn't free money.</p>
   <h3>Market-maker math: Hanson's LMSR</h3>

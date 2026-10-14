@@ -1,0 +1,11 @@
+N2 Kalshi daily high-temperature markets (KXHIGHNY, KXHIGHCHI, KXHIGHMIA, KXHIGHLAX, KXHIGHAUS, KXHIGHDEN), settled 2026-08-08→2026-10-14: 2448 markets in 408 city-days; with a two-sided quote (spread ≤10¢) 24h before close and 1¢<p<99¢: n=2188 in 408 city-days
+  Brier 0.1104 vs base-rate 0.1517 (skill 27%); calibration slope b 1.18 ± 0.07, intercept +0.09
+  mid-priced (5–95¢) outcome − price -0.003 (clustered t -1.03, n 1405)
+    0.00–0.05: n= 783, avg price 0.023, won 0.009
+    0.05–0.15: n= 409, avg price 0.092, won 0.073
+    0.15–0.30: n= 384, avg price 0.220, won 0.208
+    0.30–0.50: n= 390, avg price 0.389, won 0.408
+    0.50–0.70: n= 198, avg price 0.574, won 0.576
+    0.70–0.85: n=  21, avg price 0.753, won 0.714
+  sum of quoted bucket mids per city-day (where all buckets quoted may be incomplete): median 1.040
+  selling the cheapest buckets (<5¢ mid) at the BID: avg bid 0.017, YES rate 0.009, EV per contract after Kalshi taker fee -0.14¢ (n 783)

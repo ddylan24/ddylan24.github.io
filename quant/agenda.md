@@ -82,5 +82,5 @@ Status: [ ] todo  [~] in progress  [x] done. Each item: derive, verify numerical
 
 ## N. Fourth wave
 - [x] N1 Out-of-sample test of Polymarket YES-underpricing: fit on markets ending before 2025-07, test after; include half-spread costs.
-- [ ] N2 Kalshi calibration on settled markets (candlesticks/market history API).
+- [x] N2 Kalshi calibration on settled markets (candlesticks/market history API).
 - [ ] N3 Market-making economics on Polymarket: spread capture vs adverse selection, liquidity rewards.
