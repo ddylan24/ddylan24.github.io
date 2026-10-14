@@ -1127,6 +1127,18 @@ b &lt; 1: prices too extreme (longshots cheap, favorites dear)     b &gt; 1: pri
 <div class="formula">cost function   C(q) = b · ln Σᵢ e^(qᵢ/b)          price of outcome i = e^(qᵢ/b) / Σⱼ e^(qⱼ/b)
 cost of a trade = C(q_after) − C(q_before)          worst-case market-maker loss = b · ln(n)</div>
   <p>The logarithmic market scoring rule is the classic automated market maker for prediction markets. Prices are a softmax, so they always sum to exactly $1. The liquidity parameter b sets depth: with b = 1,000, moving a binary from 50% to 80% takes 1,386 YES shares costing $916. The market maker's maximum loss is b·ln(n): $693 for a binary, $4,852 for a 128-outcome market. A trader who knows the true probability p and pushes the price there costs the market maker exactly <b>b × KL(p ‖ 0.5)</b>. I verified this numerically (e.g., $192.74 at p = 0.8). So the market maker is <i>paying</i> for information, and b is the size of the subsidy. Polymarket itself now runs a limit-order book, where the inventory-skewed quoting of Module 11 applies.</p>
+  <h3>Market making a binary: spread vs adverse selection</h3>
+  <p>I simulated a market maker quoting a two-week binary contract. The true probability drifts, the market maker's estimate lags the news by 6 hours, and a share of incoming orders are informed: they trade only when the quote is wrong.</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Profit per contract traded</th><th class="r">Half-spread 0.5¢</th><th class="r">1¢</th><th class="r">2¢</th><th class="r">4¢</th></tr></thead>
+    <tbody>
+      <tr><td>No informed traders</td><td class="r">+0.49¢</td><td class="r">+1.06¢</td><td class="r">+2.00¢</td><td class="r">+3.98¢</td></tr>
+      <tr><td>10% informed</td><td class="r">+0.13¢</td><td class="r">+0.66¢</td><td class="r">+1.65¢</td><td class="r">+3.54¢</td></tr>
+      <tr><td>30% informed</td><td class="r loss">−0.33¢</td><td class="r">+0.22¢</td><td class="r">+0.98¢</td><td class="r">+2.61¢</td></tr>
+    </tbody>
+  </table></div>
+  <p>Informed flow eats the spread, so the more informed traders, the wider the spread needed to break even (Glosten-Milgrom from Module 11). The profit's standard deviation was about ±12 contracts' worth in every case, because it's dominated by whatever inventory is left when the contract jumps to $0 or $1. Pulling quotes 72 hours before resolution cut that variance from 12.2 to 10.3 for slightly less profit. This model assumes uninformed demand doesn't care about the spread. In reality, competing market makers push spreads down toward break-even.</p>
+  <p>Polymarket also pays makers directly. Its liquidity rewards score each resting order as <code>S = ((v − s)/v)² · b</code>, where s is the distance from the midpoint and v is the market's maximum qualifying spread. Rewards are boosted for quoting both sides, sampled every minute, and paid daily (per <a href="https://docs.polymarket.com/market-makers/liquidity-rewards">Polymarket's docs</a>). Because the score is quadratic, it strongly rewards tight quotes, so rewards can make a slightly adverse-selected book profitable.</p>
   <h3>Arbitrage: when outcomes don't sum to $1</h3>
   <p>In a multi-outcome Polymarket event, exactly one outcome pays $1. Polymarket's neg-risk adapter lets a NO share in one outcome convert to a YES in every other outcome. So a full set of n NOs can be turned into n − 1 dollars right away, and the arithmetic of a Dutch book becomes:</p>
 <div class="formula">buy every YES:  cost Σ asks, receive $1 at resolution   → only worth it if Σ asks &lt; e^(−r·T)

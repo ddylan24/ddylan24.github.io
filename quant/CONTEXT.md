@@ -154,6 +154,10 @@ This file is a condensed briefing of everything researched in the original sessi
   - <5¢ buckets won 0.9% vs a 2.3¢ price. Each city-day sums to ~1.04.
   - Selling cheap buckets at the bid after fee (0.07·P·(1−P)) earned +0.74¢/contract, t 1.2, with 7 losses of ~98¢.
   - So the pattern is opposite to Polymarket's: biases are venue- and category-specific.
+- **Market making a binary (sim):**
+  - Profit per contract at 1¢ half-spread: 0% informed +1.06¢, 10% informed +0.66¢, 30% informed +0.22¢. At 0.5¢ with 30% informed: −0.33¢.
+  - P&L sd ~±12, dominated by inventory at the 0/1 resolution. Pulling quotes 72h early cuts the sd to 10.3.
+  - Polymarket liquidity rewards score each order S = ((v−s)/v)²·b, sampled each minute and paid daily.
 - **Live order books** (CLOB /book, merging YES and complementary NO orders; matches gamma bestAsk), 412 markets:
   - Spread median 1.0¢. Depth within ±1¢ median $1.8k.
   - Cost to buy vs mid: $1k 0.9¢, $10k 3.4¢. In thin markets: $1k 2.3¢, $10k 18.6¢.

@@ -1,0 +1,16 @@
+N3 market making a binary (2 weeks hourly; true prob = logit random walk; MM's estimate lags 6h; ~2 orders/hour; resolves to 0/1):
+  informed 0%, half-spread 0.5¢: P&L/market +3.26 ± 11.91 (per contract traded +0.49¢)
+  informed 0%, half-spread 1.0¢: P&L/market +7.14 ± 12.30 (per contract traded +1.06¢)
+  informed 0%, half-spread 2.0¢: P&L/market +13.45 ± 11.82 (per contract traded +2.00¢)
+  informed 0%, half-spread 4.0¢: P&L/market +26.75 ± 12.02 (per contract traded +3.98¢)
+  informed 10%, half-spread 0.5¢: P&L/market +0.87 ± 12.15 (per contract traded +0.13¢)
+  informed 10%, half-spread 1.0¢: P&L/market +4.45 ± 11.90 (per contract traded +0.66¢)
+  informed 10%, half-spread 2.0¢: P&L/market +11.09 ± 11.74 (per contract traded +1.65¢)
+  informed 10%, half-spread 4.0¢: P&L/market +23.75 ± 11.70 (per contract traded +3.54¢)
+  informed 30%, half-spread 0.5¢: P&L/market -2.19 ± 14.20 (per contract traded -0.33¢)
+  informed 30%, half-spread 1.0¢: P&L/market +1.46 ± 14.54 (per contract traded +0.22¢)
+  informed 30%, half-spread 2.0¢: P&L/market +6.58 ± 12.91 (per contract traded +0.98¢)
+  informed 30%, half-spread 4.0¢: P&L/market +17.58 ± 11.60 (per contract traded +2.61¢)
+  informed 10%, half-spread 1¢, stop quoting 0h before resolution: P&L +4.51 ± 12.23
+  informed 10%, half-spread 1¢, stop quoting 24h before resolution: P&L +4.63 ± 11.61
+  informed 10%, half-spread 1¢, stop quoting 72h before resolution: P&L +3.75 ± 10.27
