@@ -1275,6 +1275,21 @@ agree with the market (q = p):  sell if τ &gt; −ln(1 − s/p)/r   → 95¢ co
 <div class="formula">rank outcomes by qᵢ/pᵢ;  include i while qᵢ/pᵢ &gt; R,   R = (1 − Σ_S q)/(1 − Σ_S p)
 stake fraction  fᵢ = qᵢ − R·pᵢ    (keep R in cash)</div>
   <p>Take six buckets priced (3, 12, 35, 33, 15, 6)¢ against your beliefs (2, 10, 30, 40, 15, 3)%. The solution stakes 11.4% on the 33¢ bucket <em>and</em> 2.0% on the 15¢ bucket, even though that one is priced exactly at your belief. It pays off when your main bet loses, so it's a hedge. Long-run growth is 10% higher than sizing each bucket separately. The closed form matched a numerical optimizer exactly. As before, belief errors are deadly: with 25% noise in your probabilities, full Kelly loses money on average, while half Kelly still grows.</p>
+  <h3>Calibration vs information: the Brier decomposition</h3>
+  <p>The Brier score splits into three parts. One is fixable bias, one is genuine information, and one is how hard the question is (Murphy 1973):</p>
+<div class="formula">Brier = REL − RES + UNC
+REL = Σ nₖ(p̄ₖ − ȳₖ)²/N  (calibration error)   RES = Σ nₖ(ȳₖ − ȳ)²/N  (information)   UNC = ȳ(1 − ȳ)</div>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Forecasts</th><th>REL (fixable)</th><th>RES (information)</th><th>Skill</th></tr></thead>
+    <tbody>
+      <tr><td>Polymarket, 30 days out</td><td>0.0034</td><td>0.071</td><td>41%</td></tr>
+      <tr><td>Polymarket, 1 day out</td><td>0.0016</td><td>0.095</td><td>49%</td></tr>
+      <tr><td>Kalshi weather</td><td>0.0005</td><td>0.041</td><td>27%</td></tr>
+      <tr><td>Kalshi BTC, 24h out: market</td><td>0.0023</td><td>0.152</td><td>60%</td></tr>
+      <tr><td>Kalshi BTC, 24h out: DVOL model</td><td>0.0054</td><td>0.149</td><td>58%</td></tr>
+    </tbody>
+  </table></div>
+  <p>Calibration error is only 0.5–3.5% of the score everywhere. Every bias in this module is real but tiny next to the information prices already contain. That's why recalibration strategies struggle after costs. Beating a market takes <b>resolution</b>, meaning information the crowd doesn't have, not a correction curve.</p>
   <h3>What the research says</h3>
   <ul class="tight">
     <li><b>Markets beat polls.</b> Iowa Electronic Markets prices were closer to the final result than polls in 74% of 964 comparisons, 1988–2004, and significantly better more than 100 days out (Berg, Nelson &amp; Rietz 2008).</li>

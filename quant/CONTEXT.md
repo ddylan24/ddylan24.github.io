@@ -231,6 +231,11 @@ This file is a condensed briefing of everything researched in the original sessi
   - It backs zero-edge outcomes as hedges. Growth is +10% vs per-bucket binary Kelly.
   - With 25% belief noise, full Kelly has negative expected growth; half Kelly stays positive.
 
+- **Murphy Brier decomposition** (notes/S6.md):
+  - REL (fixable calibration error) is 0.0005–0.0054 across all datasets. RES (information) is 0.04–0.22.
+  - Polymarket REL falls 0.0034→0.0016 and RES rises 0.071→0.095 from 30d to 1d. The Kalshi BTC market beats the DVOL model on both REL and RES at 24h.
+  - **To beat markets you need resolution, not recalibration.**
+
 ## 4. Pitfalls checklist (learned the hard way)
 
 1. Compare against a random or unconditional baseline, not against 0.
