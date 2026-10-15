@@ -151,6 +151,6 @@ Status: [ ] todo  [~] in progress  [x] done. Each item: derive, verify numerical
 - [x] Y3 Spot-based FX-15m digital model fails (Brier 0.31 vs market 0.15): settlement-feed basis ≫ edge near expiry; needs exact feed.
 
 ## Z. Fifteenth wave
-- [ ] Z1 LIP net economics by series over 7 days: pools (lip_daily history) vs settlement-marked fill P&L (Y1 method) for KXTEMPMIAH, KXRT, KXTRUMPAPPROVE, FX 15m — which series pay best per unit of depth after fills?
+- [x] Z1 LIP net by series (7d, settlement-marked): total pool $256k, fills +$47k, net +$303k; reward intensity KXTEMPMIAH 5.8¢/contract vs FX ~1¢; gas FL fills −3.3¢ eat 92% of pool.
 - [x] Z2 Queue math: FX-15m visits ~10 contracts vs 1,000+ queues → P(fill) behind 500 <0.5%; but 40% of visits trade through (queues are CANCELLED) → LIP is a cancel-latency race; paper fill model matches.
 - [x] Z3 Decision-guide table at the top of Module 14 (from LEDGER + PLAYBOOK).

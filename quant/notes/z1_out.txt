@@ -1,0 +1,10 @@
+7-day LIP net economics (markets that carried LIP and settled in the window; fills marked to settlement)
+  KXRT             mkts   33  pool $   59,400  maker fill P&L $   +63,212  NET $  +122,612  | per filled contract: fills +2.22¢, reward 2.09¢
+  KXTRUMPAPPROVE   mkts   63  pool $   75,600  maker fill P&L $   -25,303  NET $   +50,297  | per filled contract: fills -0.85¢, reward 2.55¢
+  KXTEMPMIAH       mkts  403  pool $   40,300  maker fill P&L $    +7,485  NET $   +47,785  | per filled contract: fills +1.07¢, reward 5.78¢
+  KXUSDJPY15M      mkts  472  pool $   23,600  maker fill P&L $   +20,901  NET $   +44,501  | per filled contract: fills +1.02¢, reward 1.15¢
+  KXEURUSD15M      mkts  472  pool $   23,600  maker fill P&L $    +2,879  NET $   +26,479  | per filled contract: fills +0.11¢, reward 0.94¢
+  KXCRYPTOLEAD15M  mkts  417  pool $    8,340  maker fill P&L $    -3,215  NET $    +5,125  | per filled contract: fills -1.18¢, reward 3.07¢
+  KXAUDUSD15M      mkts  214  pool $   10,700  maker fill P&L $    -5,696  NET $    +5,004  | per filled contract: fills -1.12¢, reward 2.10¢
+  KXAAAGASDFL      mkts  149  pool $   14,900  maker fill P&L $   -13,673  NET $    +1,227  | per filled contract: fills -3.29¢, reward 3.59¢
+  TOTAL pool $256,440, fills $+46,589, net $+303,029

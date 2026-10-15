@@ -253,6 +253,11 @@ This file is a condensed briefing of everything researched in the original sessi
 
 - **Queue math** (notes/Z2.md): FX-15m visit volume median 10 contracts vs 1,000+ resting at the touch, so P(fill | 500 ahead) < 0.5%. But 40% of visits trade through, meaning queues are cancelled on moves. LIP economics are a cancel-latency race; slow quoters inherit the trade-throughs. BTC 15m is deeper (P(fill | 500) 14%).
 
+- **LIP net by series** (notes/Z1.md; 7 days, settlement-marked):
+  - Total: pool $256k, maker fills +$47k, net +$303k.
+  - Reward per filled contract: KXTEMPMIAH 5.8¢ (fills +1.1¢), TRUMPAPPROVE 2.6¢ (−0.9¢), FX 15m ~1¢ (≈0), crypto 15m 3.1¢ (−1.2¢), gas FL 3.6¢ (−3.3¢, so net ≈ 0).
+  - Ranking for an LP: TEMPMIAH ≫ TRUMPAPPROVE > FX ≈ crypto > gas.
+
 ### Math foundations (later waves)
 - **Proper scoring:** with truth 0.7, Brier and log are maximized at 0.70; a linear score at 0.99 (improper). LMSR = market log score; a trader's payoff b·ln(p1/p0) is verified. Polymarket log-loss skill 38% vs Brier 45%.
 - **MC variance reduction** (BS call, N=20k): plain sd 0.101, antithetic 0.068, control variate 0.039 (variance ÷6.8). Importance sampling for P(30-day −20%) = 4.42e-5: plain 3.0e-5 (3 hits), IS 4.41e-5.
