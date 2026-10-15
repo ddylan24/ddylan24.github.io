@@ -154,3 +154,8 @@ Status: [ ] todo  [~] in progress  [x] done. Each item: derive, verify numerical
 - [x] Z1 LIP net by series (7d, settlement-marked): total pool $256k, fills +$47k, net +$303k; reward intensity KXTEMPMIAH 5.8¢/contract vs FX ~1¢; gas FL fills −3.3¢ eat 92% of pool.
 - [x] Z2 Queue math: FX-15m visits ~10 contracts vs 1,000+ queues → P(fill) behind 500 <0.5%; but 40% of visits trade through (queues are CANCELLED) → LIP is a cancel-latency race; paper fill model matches.
 - [x] Z3 Decision-guide table at the top of Module 14 (from LEDGER + PLAYBOOK).
+
+## AA. Sixteenth wave
+- [ ] AA1 KXTEMPMIAH microstructure: do maker losses cluster right after NWS METAR observations for KMIA (IEM archive)? i.e. is the informed flow "people reading the thermometer"?
+- [ ] AA2 Hierarchical shrinkage of per-series LIP net economics (U3 method) — which series' edges survive pooling given few markets?
+- [ ] AA3 Hourly temperature contract math: model the hourly max/threshold as a diffusion of temperature with diurnal drift; is Kalshi's hourly pricing consistent with observed temperature volatility?
