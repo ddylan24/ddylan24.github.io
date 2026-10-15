@@ -272,7 +272,7 @@ This file is a condensed briefing of everything researched in the original sessi
 
 - **Series edges after shrinkage** (notes/AA2.md): Cochran Q 20.7/5 df (real differences). KXTEMPMIAH +1.24 → +0.58¢ (z 3.7) is the only significant one; 15-min FX/crypto shrink to ≈ +0.2¢.
 
-- **Weather makers generalize** (notes/AB1.md): daily-high series pooled maker +0.84 ± 0.35¢/contract (z 2.4; 6 cities, 7.5M contracts, 7 days); rain −0.5¢ (n.s.). Weather takers = uninformed betting flow.
+- **Weather makers generalize** (notes/AB1.md): daily-high series pooled maker +0.81 ± 0.36¢/contract (z 2.2; 6 cities, 7.5M contracts, 7 days); rain −0.5¢ (n.s.). Weather takers = uninformed betting flow.
 
 ### Math foundations (later waves)
 - **Proper scoring:** with truth 0.7, Brier and log are maximized at 0.70; a linear score at 0.99 (improper). LMSR = market log score; a trader's payoff b·ln(p1/p0) is verified. Polymarket log-loss skill 38% vs Brier 45%.

@@ -161,7 +161,7 @@ Status: [ ] todo  [~] in progress  [x] done. Each item: derive, verify numerical
 - [x] AA3 Temperature diffusion model from ASOS 1-min fails (Brier 0.22 vs market 0.08): settlement source (Synoptic tenths) ≠ ASOS integer feed.
 
 ## AB. Seventeenth wave
-- [x] AB1 Weather makers generalize: daily highs pooled +0.84±0.35¢/contract (z 2.4, 6 cities, 7.5M contracts); rain −0.5¢ (n.s.). Weather takers = uninformed betting flow.
+- [x] AB1 Weather makers generalize: daily highs pooled +0.81±0.36¢/contract (z 2.2, 6 cities, 7.5M contracts); rain −0.5¢ (n.s.). Weather takers = uninformed betting flow.
 - [x] AB2 CONTEXT §0 refreshed with LIP findings and the full list of data traps.
 
 ## AC. Eighteenth wave
