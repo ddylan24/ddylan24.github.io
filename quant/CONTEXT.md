@@ -233,7 +233,7 @@ This file is a condensed briefing of everything researched in the original sessi
   - Pays for resting depth, ends Jan 1, 2027 (extended). Snapshots each second, counted only if both sides ≥ Target (300–2,500).
   - Walk whole levels to Target; reference = level reaching Target/5; score = DF^ticks·size (DF 0.4–0.5); payout = share × reward × counted fraction.
   - API `/trade-api/v2/incentive_programs?status=active`; period_reward in 1/10,000 $.
-  - Live 2026-10-15: 5,734 markets, ≈$129k/day from ≥1-day programs (the $324k first quoted summed short-program rates), median $14/day/market. Polymarket: 18,649 reward markets, ≈$210k/day, median $3 (W4). Top: KXTEMPMIAH, KXRT, state gas.
+  - **Kalshi pays ≈ $290k/day** in scheduled pools (last 7 days; $268k over 30; peak $398k), pro-rated from all 319k programs (`code/lip_daily.py`). 60% of that is rolling ≤1-day programs, which a snapshot of 'active' misses (that's why I first said $129k; the user caught it). Pools grew from ~$0.25M/month (late 2025) to $5.9M (Sep 2026). Polymarket: 18,649 reward markets, ≈$210k/day, median $3 (W4). Top: KXTEMPMIAH, KXRT, state gas.
   - Static-book newcomer at best bid: 4–34% share, ~2–15%/day of capital *before* adverse selection. That's an upper bound. Test with logged books and a fill model.
   - Helpers: `pm_toolkit.kalshi_incentive_programs`, `lip_side_share`.
 

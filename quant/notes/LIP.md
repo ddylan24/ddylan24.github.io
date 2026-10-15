@@ -27,8 +27,18 @@
   - Help-center example: $100 reward, 8,000 of 10,000 snapshots two-sided, 20% share → $16.
 - **API units:** `period_reward` is in 1/10,000 $ (1,000,000 = $100). `discount_factor_bps`/10⁴ = DF. `target_size_fp` = T.
 
+## How much does Kalshi pay per day? (CORRECTED 2026-10-15; `code/lip_daily.py`)
+The user pointed out that Kalshi's rewards page shows more than I first reported. **They were right.**
+- Method: pull **all** programs from the public API (`status` = active, upcoming, closed, paid_out; `limit=10000`; 319,587 programs since 2025-09-18). Pro-rate each program's pool (`period_reward`, in **centi-cents** = 1/10,000 $ per the official OpenAPI spec) over the UTC days it overlaps.
+- **Daily scheduled pools: ≈ $290k/day (last 7 complete days), $268k/day (last 30). Range $151k–$398k; peak Oct 3, 2026.** About 10,000 markets are incentivized each day.
+- By program length (last 7 days): ≤1 hour $57k/day, 1 hour–1 day $117k/day, 1–7 days $99k/day, >7 days $18k/day. **60% of the money is in rolling short programs** (hourly Miami temperature, 15-minute crypto/FX, NFL stat ladders). New ones are created through the day, so a single snapshot of "active" programs misses most of them.
+- Top series (last 7 days): KXTEMPMIAH $23k/day, KXRT $21k, KXTRUMPAPPROVE $11k, KXCRYPTOLEAD15M $9.5k, NFL ladder/escalator series about $4.6k each, KXCRITICSCHOICENOM $4k, EUR/USD and GBP/USD 15-minute $3.5k each.
+- **Growth:** pools by end month went from about $0.2–0.3M (Oct 2025–Feb 2026) to $1.0M (Apr), $2.3–2.7M (Jul–Aug) and **$5.9M (Sep 2026)**, roughly 30× in a year. Total pools since launch: $21.6M.
+- These are scheduled pool *caps*. Actual payouts are lower by the share of snapshots excluded for lacking two-sided Target depth (W1 measures this).
+- **My earlier figures were wrong.** "$129k/day" counted only currently-active programs lasting ≥1 day and ignored the rolling short programs. The first "$324k/day" summed instantaneous rates and was close only by accident.
+
 ## Live census (2026-10-15 00:14 UTC; `code/lip_kalshi.py`)
-- **5,734 markets in 556 series** have live liquidity programs, **≈$129k/day from programs lasting ≥1 day** (the $324k/day first reported summed *rates* of 1-hour programs, which overstates them; see W4). The median pool is **$14/day** per market (mean $57, max $2,400/day as a rate).
+- **5,734 markets in 556 series** have live liquidity programs, (the snapshot of *currently active* programs) — but see the corrected daily total below. The median pool is **$14/day** per market (mean $57, max $2,400/day as a rate).
 - Program types: series_lip 4,864, new_event 761, others.
 - Biggest series by $/day: KXTEMPMIAH (hourly Miami temperature) $24k, KXRT $21k, the state gas-price series (KXAAAGASD**) $7–11k each, KXTRUMPMENTIONB $7.5k.
 - Typical period: 7 days. Hourly weather programs run about 1 hour at about $100 each.

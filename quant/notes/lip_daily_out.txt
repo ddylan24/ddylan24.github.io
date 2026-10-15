@@ -1,0 +1,6 @@
+319,587 programs since 2025-09-18; total pools $21,634,929; types {'liquidity': 297227, 'volume': 22360}
+Daily pools, last 30 complete days: mean $267,578, last 7 $290,116, min $151,352, max $397,901
+  by program length ($/day, last 7d): ≤1h $56,574, 1h–1d $117,018, 1–7d $98,523, >7d $18,002
+  top series ($/day, last 7d): KXTEMPMIAH $23,143, KXRT $21,463, KXTRUMPAPPROVE $10,808, KXCRYPTOLEAD15M $9,486, KXNFLFFPTSLADDER $5,526, KXNFLESCALATORRECYDS $4,637, KXNFLESCALATORREC $4,637, KXNFLLADDERRECYDS $4,635, KXNFLLADDERREC $4,635, KXCRITICSCHOICENOM $4,056
+  pools by end month: 2025-10 $0.20M, 2025-11 $0.26M, 2025-12 $0.23M, 2026-01 $0.27M, 2026-02 $0.38M, 2026-03 $0.61M, 2026-04 $0.98M, 2026-05 $1.69M, 2026-06 $1.10M, 2026-07 $2.33M, 2026-08 $2.66M, 2026-09 $5.88M, 2026-10 $5.01M, 2026-11 $0.00M, 2026-12 $0.00M
+NOTE: these are scheduled pool caps; actual payouts are lower by the share of snapshots excluded for lack of two-sided Target depth.
