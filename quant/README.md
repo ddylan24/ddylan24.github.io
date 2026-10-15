@@ -19,6 +19,7 @@ Research notes, code and course material on quantitative trading, built in Claud
 | `LEDGER.md` | Every hypothesis tested and its fate (multiple-testing accounting) |
 | `PLAYBOOK.md` | Operational guide for the home PC/Pi: data capture, research queue, what not to do, money rules |
 | `live/capture.py` | Continuous Polymarket/Kalshi/Deribit snapshot logger (no keys) |
+| `live/lip_paper.py` | READ-ONLY Kalshi LIP paper quoter: hypothetical two-sided quotes, official reward scoring, conservative simulated fills, settlement P&L (`--report`) |
 
 ## Re-running anything
 

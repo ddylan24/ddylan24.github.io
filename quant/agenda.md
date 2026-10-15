@@ -147,5 +147,5 @@ Status: [ ] todo  [~] in progress  [x] done. Each item: derive, verify numerical
 
 ## Y. Fourteenth wave
 - [ ] Y1 Robustness of the X1 FX-15m maker profits: 7+ days of trades, markout to settlement, per hour of day; is it retail flow or a measurement artefact?
-- [ ] Y2 Read-only LIP paper-quoter for the home PC (live/lip_paper.py): logs hypothetical two-sided quotes, scored share, simulated fills vs public trades — no order placement.
+- [x] Y2 live/lip_paper.py: read-only LIP paper quoter (official scoring, conservative queue fills from public trades, settlement P&L, --report); smoke-tested 4 cycles.
 - [ ] Y3 Kalshi FX 15-min markets vs spot FX (digital pricing like Q3): are the quotes efficient relative to the underlying?
