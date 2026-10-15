@@ -1,0 +1,19 @@
+Active liquidity programs now (2026-10-15 00:19 UTC): 5734 markets in 553 series; listed incl. upcoming: 5734
+  reward per market-day: median $14, mean $58, max $2,400; total ≈ $330,328/day across live programs
+  period length: median 7.00 days; discount factor values [0.4, 0.5]; target sizes [300, 500, 1000, 2500]
+  types: {'series_lip': 4864, 'new_event': 761, '': 102, 'one_time_ngasmax_20261019': 7}
+  top series by $/day: KXTEMPMIAH $24,000, KXRT $21,300, KXAAAGASDOH $10,869, KXAAAGASDFL $9,054, KXAAAGASDMN $8,610, KXTRUMPMENTIONB $7,463, KXAAAGASDCO $7,213, KXAAAGASDWI $7,157
+
+Order books of the 250 richest live programs: two-sided at Target now: 169 (68%); empty/one-sided books: 81
+  add 100 contracts at best bid on both sides: median share 4.8%, median $15.71/day on $91 capital → median 21.55%/day (simple, ignores fills)
+  add 500 contracts at best bid on both sides: median share 20.0%, median $72.02/day on $455 capital → median 18.34%/day (simple, ignores fills)
+  add Target-size contracts at best bid on both sides: median share 33.8%, median $116.22/day on $860 capital → median 15.15%/day (simple, ignores fills)
+  median quoted spread in these markets 9¢; median reward $294/day
+  one-sided/thin books with live rewards: 81, reward $35,460/day — the first LP to make them two-sided at Target collects (nearly) all of it, but must post Target size on BOTH sides
+
+Programs lasting ≥1 day among those: n 15, median reward $600/day
+  add 100: median share 1.7%, $7.10/day on $99 → 7.17%/day; 25th pct 2.36%/day
+  add 500: median share 11.7%, $46.34/day on $495 → 9.36%/day; 25th pct 2.30%/day
+  add Target: median share 25.7%, $153.96/day on $990 → 15.55%/day; 25th pct 2.22%/day
+  quoted spread (100 − yes_bid − no_bid) in these: median 1¢, share of markets with spread ≥ 10¢: 0%
+  across ALL 5734 live programs the median pool is $14/day — the rich pools above are the top 250 by $/day

@@ -133,3 +133,4 @@ Status: [ ] todo  [~] in progress  [x] done. Each item: derive, verify numerical
 - [x] V1 CONTEXT §0 top takeaways + LEDGER.md (every hypothesis and its fate).
 - [x] V2 BTC VRP: DVOL − fwd RV +9.5 vol pts (t 5.6), decaying 18.8 (2021) → 3.0 (2026); plausible mechanism for U4 under-confidence (slope ≈ σ_impl/σ_real).
 - [x] V3 Economic-data markets (193 events): calibrated (slope 1.07±0.09 T−1d, 1.01 T−7d); apparent YES overpricing −1.7¢ (t −3.9) is just overround (Σp 1.077) — trap documented.
+- [x] LIP Kalshi Liquidity Incentive Program (user request): rules from help center + CFTC filings, 5,734 live programs ($324k/day), LP share/return simulation (upper bound), caveats; capture + toolkit hooks.

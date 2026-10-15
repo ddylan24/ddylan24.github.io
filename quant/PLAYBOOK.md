@@ -23,7 +23,8 @@ nohup python3 capture.py --out ~/pmdata --interval 300 > capture.log 2>&1 &
 2. **Short-horizon BTC calibration (R1/S2 follow-up).** Logit slope at T−1…12h over ≥3 months of KXBTCD. Hint so far: slope 1.15–1.35 (under-confident), not yet significant.
 3. **Fade big moves with real books (S1 follow-up).** Re-test the ≥20¢ reversal (+3¢ net, t 2.5 on daily data) using captured books, to see if it's executable at the actual ask and bid.
 4. **Spot-vs-forward carry trade (Q3/T3).** Venues center on spot and options on the forward (+$80–190). Track whether the gap is ever wide enough to beat fees plus basis risk via Deribit call spreads.
-5. **Market-making paper trading (T2).** Quote with inventory skew and spreads scaled by φ(N⁻¹p)/τ^0.5. Pull quotes before scheduled news. Log hypothetical fills against captured books.
+5. **Kalshi Liquidity Incentive Program (notes/LIP.md).** capture.py logs live programs hourly and books every 5 minutes. Paper-quote at the best bid on both sides of the ≥1-day programs with a queue-position fill model. Score rewards with `lip_side_share`, and subtract the mark-to-resolution loss on simulated fills, per series. Avoid hourly weather (informed takers). Proceed live only if rewards minus fill losses stay positive for 4+ weeks.
+6. **Market-making paper trading (T2).** Quote with inventory skew and spreads scaled by φ(N⁻¹p)/τ^0.5. Pull quotes before scheduled news. Log hypothetical fills against captured books.
 
 ## 3. What NOT to do (each one already tested)
 - Buy "safe" 90–98¢ favorites and hold: −3% vs T-bills (S3); 20¢ crash risk is 39× the diffusion estimate (S10).

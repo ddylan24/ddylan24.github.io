@@ -229,6 +229,14 @@ This file is a condensed briefing of everything researched in the original sessi
   - Polymarket BTC binaries are thin: daily ~$3.6k in 6h, hourly ≈$15/strike. Trades barely track spot (R² 0.02).
   - Kalshi 1-min candles: period_interval=1 via the batch endpoint.
 
+- **Kalshi Liquidity Incentive Program** (notes/LIP.md; user request):
+  - Pays for resting depth, ends Jan 1, 2027 (extended). Snapshots each second, counted only if both sides ≥ Target (300–2,500).
+  - Walk whole levels to Target; reference = level reaching Target/5; score = DF^ticks·size (DF 0.4–0.5); payout = share × reward × counted fraction.
+  - API `/trade-api/v2/incentive_programs?status=active`; period_reward in 1/10,000 $.
+  - Live 2026-10-15: 5,734 markets, ~$324k/day, median $14/day/market. Top: KXTEMPMIAH, KXRT, state gas.
+  - Static-book newcomer at best bid: 4–34% share, ~2–15%/day of capital *before* adverse selection. That's an upper bound. Test with logged books and a fill model.
+  - Helpers: `pm_toolkit.kalshi_incentive_programs`, `lip_side_share`.
+
 ### Math foundations (later waves)
 - **Proper scoring:** with truth 0.7, Brier and log are maximized at 0.70; a linear score at 0.99 (improper). LMSR = market log score; a trader's payoff b·ln(p1/p0) is verified. Polymarket log-loss skill 38% vs Brier 45%.
 - **MC variance reduction** (BS call, N=20k): plain sd 0.101, antithetic 0.068, control variate 0.039 (variance ÷6.8). Importance sampling for P(30-day −20%) = 4.42e-5: plain 3.0e-5 (3 hits), IS 4.41e-5.

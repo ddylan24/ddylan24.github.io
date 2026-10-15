@@ -191,6 +191,49 @@ def kalshi_taker_fee(price, contracts=1):
     return np.ceil(0.07 * contracts * price * (1 - price) * 100) / 100
 
 
+def kalshi_incentive_programs(status="active"):
+    """Kalshi Liquidity Incentive Program definitions (public). period_reward is in 1/10,000 $; DF = discount_factor_bps/1e4."""
+    out, cur = [], ""
+    while True:
+        d = _get(f"{KALSHI}/incentive_programs?status={status}&limit=100" + (f"&cursor={cur}" if cur else "")) or {}
+        out += d.get("incentive_programs", [])
+        cur = d.get("next_cursor") or ""
+        if not cur or not d.get("incentive_programs"):
+            break
+    df = pd.DataFrame(out)
+    if len(df):
+        df["reward_usd"] = df.period_reward / 1e4
+        df["df"] = df.discount_factor_bps / 1e4
+        df["target"] = df.target_size_fp.astype(float)
+    return df
+
+
+def lip_side_share(bids, target, df, my_price=None, my_size=0.0):
+    """Kalshi LIP score share on one side. bids = [(price_cents, size), ...] (others). Walks whole price levels from the
+    best bid until cumulative size >= target; reference = first level where cumulative >= target/5 (help-center rule);
+    score = df**(ticks below reference) * size, normalised. Returns (side_qualifies, my_share). See notes/LIP.md."""
+    allb = [(p, s, 0) for p, s in bids] + ([(my_price, my_size, 1)] if my_size else [])
+    levels = sorted({p for p, _, _ in allb}, reverse=True)
+    cum, q = 0.0, []
+    for lv in levels:
+        at = [b for b in allb if b[0] == lv]
+        q += at
+        cum += sum(b[1] for b in at)
+        if cum >= target:
+            break
+    if cum < target:
+        return False, 0.0
+    c2, ref = 0.0, levels[0]
+    for lv in levels:
+        c2 += sum(b[1] for b in q if b[0] == lv)
+        if c2 >= target / 5:
+            ref = lv
+            break
+    sc = [(df ** max(0, ref - p)) * s for p, s, _ in q]
+    tot = sum(sc)
+    return True, (sum(x for x, b in zip(sc, q) if b[2]) / tot if tot else 0.0)
+
+
 # ---------------------------------------------------------------- math helpers
 def kelly_binary(q, p):
     """Kelly stake for buying YES at price p with belief q: (q-p)/(1-p); negative -> consider NO."""

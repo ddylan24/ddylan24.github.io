@@ -1,0 +1,184 @@
+August 11, 2026
+
+SUBMITTED VIA CFTC PORTAL
+
+Secretary of the Commission
+Office of the Secretariat
+U.S. Commodity Futures Trading Commission
+Three Lafayette Centre
+1155 21st Street, N.W.
+Washington, D.C. 20581
+
+Re: KalshiEX LLC – FOOTBALLSTATS Component Legs Liquidity Incentive Program
+
+Dear Sir or Madam, ​
+
+KalshiEX LLC (“Kalshi” or “Exchange”) hereby notifies the Commodity Futures Trading
+Commission (“CFTC”) that it is implementing on or after 5:00 PM ET on August 25, 2026, a
+FOOTBALLSTATS Liquidity Incentive Program (“Program”) as set forth in Appendix A.
+
+This Program will go into effect upon exchange notice and will remain in effect until the
+earlier of January 1, 2027, or a date on which Kalshi amends or terminates the Program.
+Appendix A contains the Program’s terms.
+
+The purpose of the Program, as distinguished from similar programs in effect, is to provide
+incentives specific to certain component legs of component events within the
+FOOTBALLSTATS certification.
+
+Compliance with Core Principles
+
+Kalshi has concluded that the Program is not inconsistent with the CEA and the CFTC’s
+regulations. The following core principles most directly pertain to the Program: Core Principle
+2 - Compliance with Rules; Core Principle 3 - Contracts not Readily Susceptible to
+Manipulation; Core Principle 4 - Prevention of Market Disruption; Core Principle 7 -
+Availability of General Information; Core Principle 9 - Execution of Transactions; Core
+Principle 12 - Protection of Markets and Market Participants; Core Principle 18 -
+Recordkeeping; Core Principle 21 - Financial Resources.
+
+Kalshi Rule 3.13(f) allows Kalshi to create programs that provide incentives to Participants that
+encourage trading, and the Program does not change this. The Program does not impact Kalshi’s
+ability to perform its trade practice and market surveillance obligations under the CEA. The
+Program also does not render the Exchange’s contracts readily susceptible to manipulation.
+Chapter 5 of Kalshi’s Rulebook includes prohibitions against fraudulent, non-competitive, unfair
+or abusive practices, all of which apply to trading under the Program. All references to “fees” in
+this filing refer to exchange trading fees, and do not include clearing, banking or any other type
+of fee that may from time to time be imposed by the Exchange or its clearing house partner.
+Kalshi staff will continue to monitor for manipulative trading, market abuse and other trading
+violations, including by participants in the Program. Additionally, Kalshi’s systems will continue
+to track Program participants’ volume to ensure proper implementation of the Program. The
+effective terms of the Program will be posted on the Exchange’s website and publicly available.
+The Program does not impact the Exchange’s order execution. The eligibility criteria for the
+Program are set forth in Appendix A, and are non-discriminatory and designed to encourage
+participation in the Program amongst Kalshi’s members. The increased volume and liquidity
+encouraged by the Program will enhance the competitiveness and efficiency of the market. The
+Program is anticipated to be economically sustainable. Notification of the filing is posted to
+Kalshi’s website. Finally, the Program will not negatively impact Kalshi’s satisfaction of the
+financial resources requirements.
+
+The Program is public and accurate, and available to all participants. Kalshi will maintain
+records of all trades and payments under the Program. No opposing views to the contrary have
+been expressed.
+
+Kalshi accordingly certifies that the program complies with the requirements of the Commodity
+Exchange Act and the rules and regulations promulgated thereunder, and certifies that,
+concurrent with this filing, a copy of this submission is being posted on the Kalshi website and
+may be accessed at: https://kalshi.com/regulatory/notices. If you have any questions or
+comments or require further information, please do not hesitate to contact me.
+
+                                                               Sincerely,
+
+                                                               Rhianna Ross
+                                                               Regulatory Counsel
+                                                               KalshiEX LLC
+                                                               rross@kalshi.com
+
+Enclosure:
+Appendix A (Terms and Conditions)
+
+
+​
+                    Appendix A
+  FOOTBALLSTATS Component Legs Liquidity Incentive
+      Program (“Program”) Terms and Conditions
+Program Purpose
+
+The purpose of this Program is to increase volume and liquidity on the central limit order book
+and thereby enhance pricing efficiency. More volume and liquidity on the central limit order
+book and more efficient pricing benefit all participants in the marketplace.
+
+Program Scope and Duration
+
+The Program applies to Kalshi markets equivalent to <components> and <outcomes> of
+FOOTBALLSTATS markets.​
+​
+The Program will be effective upon Exchange notice, and continue until the earlier of January 1,
+2027, or the date that Kalshi amends or terminates the Program. Kalshi may announce separate
+effective dates for each component of the Program, and may in its discretion terminate either
+component separately or together. The Program’s effective period may be retroactive to the
+self-certification filing date, in order to not disincentivize members from participating on the
+Exchange during the pendency of the filing - provided, however, that no incentive payments will
+be earned unless this Program goes into effect.
+
+Eligible Participants
+
+“Eligible Participants” are all Kalshi members, except the following: (i) affiliates of Kalshi; (ii)
+Introducing Brokers (“IBs”), Futures Commission Merchants (“FCMs”), and customers thereof
+when transacting via the IB or FCM.
+
+Members of Kalshi are not required to opt-in to participate as an Eligible Participant in the
+Program.
+
+Program Terms and Definitions​
+
+During the Program, Kalshi may identify on its website:
+
+   ●​ "Eligible Components” (specified FOOTBALLSTATS component events and outcomes
+      on Kalshi)
+   ●​ “Component Liquidity Incentive Fee Fraction” (CLLIFF) (a specified percentage
+      between 0 and 50%, which will be applied to the total value of fees in the incentive
+      distribution methodology of the Program)
+   ●​ “Minimum Individual Score” (a specified individual score value which shall be less
+      than or equal to 0.2, which an Eligible Participant must achieve in order to receive
+      incentive payments for the components of a FOOTBALLSTATS market).
+During the Program, after all the components of a FOOTBALLSTATS market are determined,
+Kalshi will distribute the CLLIFF of fees collected from that market to Eligible Participants in
+the underlying Eligible Components. For example, if a particular FOOTBALLSTATS market’s
+trading generated $100 in total fees, and the CLLIFF was 25%, $25 would be distributed to
+Eligible Participants in the underlying Eligible Components. If not all components in a
+FOOTBALLSTATS market are Eligible Components, the incentive distributed will be scaled
+down by the number of Eligible Components (for example, if ¾ components are Eligible
+Components, the incentive payment will be scaled by 75%).
+
+Kalshi will use the following methodology to distribute the incentive across Eligible Participants:
+
+       Given a particular FOOTBALLSTATS market with Eligible Component outcomes O_1,
+       O_2, … O_n, and a particular Eligible Participant L receives a score of S_L,
+
+       ​       S_L = (1 + F_1) * (1 + F_2) … * (1 + F_N) - 1
+
+                      where F_N is Eligible Participant’s L’s fraction of the total maker volume
+                      in that market (in the case of a market with a “live event” such as a sports
+                      game, only volume after the scheduled start of that event is considered).
+
+       Eligible Participants receive an incentive payment in proportion to their score. Eligible
+       Participants with a score below the Minimum Individual Score receive no payment.
+
+For example, consider that a particular FOOTBALLSTATS market’s trading generated $100 in
+total fees, the CLIFF is 25%,the Minimum Incentive Score is 0.2, and all components are
+Eligible Components.
+
+The particular FOOTBALLSTATS market had two component outcomes, O_1 and O_2. A total
+of three Eligible Participants provided liquidity in these markets:
+
+Eligible Participant 1 (L_1) contributed 90% of the eligible maker volume in O_1 and 50% of
+the eligible maker volume in O_2.
+    ■​ Score Calculation: S_(L_1) = 1.9 * 1.5 - 1 = 1.85
+
+Eligible Participant 2 (L_2) contributed none of the eligible maker volume in O_1 and 50% of
+the eligible maker volume in O_2.
+    ■​ Score Calculation: S_(L_2) = 1 * 1.5 - 1 = 0.5
+
+Eligible Participant 3 (L_3) contributed 10% of the eligible maker volume in O_1 and none of
+the eligible maker volume in O_2.
+    ■​ Score Calculation: S_(L_3) = 1.1 * 1 - 1 = 0.1
+
+The following incentive payments would result:
+
+   ●​ L_1 receives 1.85/(1.85 + 0.5) = 78.7% of the total incentive payment;
+   ●​ L_2 receives 0.5/(1.85 + 0.5) = 21.3% of the total incentive payment; and
+   ●​ L_3 receives no incentive payment as their score is below the Minimum Individual
+      Score;
+
+As the total incentive payment for this FOOTBALLSTATS market is $100 * 25% CLIFF = $25,
+L_1 receives $19.67 and L_2 receives $5.33.
+
+
+Monitoring and Termination of Status
+
+Kalshi shall monitor trading activity and participants’ performance and shall retain the right to
+revoke participant status if Kalshi’s Chief Regulatory Officer concludes from review that a
+participant’s participation in the program is abusive or in any way inconsistent with the purpose
+of the Program.
+
+Kalshi may end the Program (or any component thereof) at any time.
+

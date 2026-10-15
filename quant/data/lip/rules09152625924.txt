@@ -1,0 +1,353 @@
+September 15, 2026
+
+SUBMITTED VIA CFTC PORTAL
+
+Secretary of the Commission
+Office of the Secretariat
+U.S. Commodity Futures Trading Commission
+Three Lafayette Centre
+1155 21st Street, N.W.
+Washington, D.C. 20581
+
+Re: KalshiEX LLC – Deposit and Trading Reward Incentive Program
+
+Dear Sir or Madam, ​
+
+Pursuant to Section 5c(c) of the Commodity Exchange Act (the “Act”) and Section 40.6(a) of
+the regulations of the Commodity Futures Trading Commission (the “Commission” or
+“CFTC”), KalshiEX LLC (“Kalshi” or “Exchange”) hereby notifies the Commodity Futures
+Trading Commission (“CFTC”) that it is implementing on or after September 28, 2026, ten
+(10) business days from the date of this self-certification filing, the Kalshi Deposit and
+Trading Reward Program (“Program”).
+
+Kalshi Rule 3.13(f) allows Kalshi to create programs that provide incentives to Participants
+that encourage trading, and the Program is consistent with this. The Program is designed to
+grow participation and deepen engagement across a range of Contract categories, drive both
+deposit and trading activity, and strengthen liquidity and price discovery on Kalshi,
+accomplished by issuing Program Rewards to Program Participants who satisfy the criteria
+described below.
+
+Compliance with Core Principles
+
+Kalshi has concluded that the Program is not inconsistent with the CEA and the CFTC’s
+regulations. The following core principles most directly pertain to the Program: Core
+Principle 2 - Compliance with Rules; Core Principle 3 - Contracts not Readily Susceptible
+to Manipulation; Core Principle 4 - Prevention of Market Disruption; Core Principle 7 -
+Availability of General Information; Core Principle 9 - Execution of Transactions; Core
+Principle 12 - Protection of Markets and Market Participants; Core Principle 18 -
+Recordkeeping; and Core Principle 19 - Antitrust Considerations; and Core Principle 21
+- Financial Resources.
+
+Core Principle 2 - Compliance with Rules. The Program does not create an incomparable or
+discriminatory fee structure. The eligibility criteria for the Program are set forth in Appendix A,
+are non-discriminatory, are designed to encourage wide participation in the Program, and are
+anticipated to result in making the Exchange more accessible. All Eligible Participants are
+subject to the same terms and conditions as set forth in Appendix A.
+Core Principle 3 - Contracts not Readily Susceptible to Manipulation. Kalshi has evaluated
+the Program's structure and terms against potential abusive-trading risks and believes the
+Program’s design does not render the Exchange’s contracts readily susceptible to manipulation.
+The Program provides incentives through Promotional Bonus Credits to Kalshi Self-Clearing
+Members meeting the eligibility criteria set forth in Appendix A, subject to an applicable caps
+and conditions, and accordingly, given the Program’s applicability to all markets or general
+categories of markets listed on Kalshi, does not influence any particular contract’s susceptibility
+to manipulation.
+
+Core Principle 4 - Prevention of Market Disruption; Core Principle 12 - Protection of
+Markets and Market Participants. The Program does not impact Kalshi’s ability to perform its
+trade practice and market surveillance obligations under the CEA. Chapter 5 of Kalshi’s
+Rulebook includes prohibitions against fraudulent, non-competitive, unfair or abusive practices.
+Kalshi maintains a surveillance program dedicated to detecting and enforcing Chapter 5 of
+Kalshi’s Rulebook. Kalshi staff will continue to monitor for manipulative trading, market abuse
+and other trading violations, with heightened focus on participants in the Program, and their
+trading and deposit activities in Kalshi’s markets. Kalshi’s market surveillance capabilities
+includes automated alerts for wash trading, self-matching, and pre-arranged trading or trading
+between related or potentially coordinated accounts, among other manipulative and disruptive
+trading activities, and review of account registration, trading, and deposit records associated with
+this Program necessary to detect potential fraud and abuse, including potential gaming of
+payouts.
+
+Core Principle 7 - Availability of General Information. The Program is public and accurate,
+and available to all participants that meet the eligibility criteria set forth Appendix A. The
+effective terms of the Program will be posted on the Exchange’s website and publicly available.
+
+Core Principle 9 - Execution of Transactions. The Program does not impact the Exchange’s
+order execution. Accordingly, the Program does not alter the order matching engine, trade
+execution protocols, or priority of orders on the central limit order book.
+
+Core Principle 18 - Recordkeeping. Kalshi’s systems will continue to monitor and confirm
+Program Participants’ eligibility and ensure proper distribution of incentives. Kalshi will
+maintain records of all payments under the Program consistent with CFTC recordkeeping
+requirements.
+
+Core Principle 19 - Antitrust Considerations. The Program terms do not create an
+unreasonable restraint of trade or impose any material anticompetitive burden on trading on the
+contract market. The Program is voluntary, open to all Eligible Participants on a
+non-discriminatory basis, and does not restrict any participant’s ability to trade on the Exchange
+or on any other marketplace.
+
+Core Principle 21 - Financial Resources. The Program is subject to maximum Promotional
+Reward Value caps as detailed in Appendix A and Appendix B. Accordingly, the Program is
+anticipated to remain economically sustainable and the Program will not negatively impact
+Kalshi’s satisfaction of the financial resources requirements. Kalshi retains the right to end the
+Program, including in the event that it deems the Program to be not economically beneficial to
+the Exchange.
+
+Kalshi accordingly certifies that the program complies with the requirements of the
+Commodity Exchange Act and the rules and regulations promulgated thereunder, and certifies
+that, concurrent with this filing, a copy of this submission was posted on the Kalshi website
+and may be accessed at: https://kalshi.com/regulatory/notices.
+
+If you have any questions or comments or require further information, please do not hesitate to
+contact me.
+
+                                                               Sincerely,
+                                                               Rhianna Ross Mataras
+                                                               Regulatory Counsel
+                                                               KalshiEX LLC
+                                                               rross@kalshi.com
+
+Enclosure:
+Appendix A (Terms and Conditions)
+Appendix B (Confidential Program Reward Methodology)
+                                         Appendix A
+
+          KalshiEX Deposit and Trading Reward Program (“Program”)
+
+                                  (Terms and Conditions)
+1. ​   Program Purpose
+
+The KalshiEx LLC (“Kalshi”) Deposit and Trading Reward Incentive Program (“Program”)
+grants incentives for qualifying deposit and trading activity. The purpose of the Program is to
+increase participation and promote engagement across multiple Contract categories and increase
+deposit activity and trading activity, thereby supporting liquidity and price discovery on Kalshi
+by granting Program Rewards to Eligible Participants based on the criteria in this Appendix A.
+
+2. ​   Program Eligibility
+
+The Program is available to Kalshi Self-Clearing Members who are natural persons in good
+standing with the Exchange and who meet any objective Group Criteria established for the
+applicable Time-Limited Promotion under Confidential Appendix B, as referenced in Section
+5(B) of this Appendix A.
+Only approved Program Participants may earn Program Rewards under the Program. Program
+Participant status is granted based on the following objective and uniformly applied criteria,
+including that the prospective participant:
+       (i) Is a Self-Clearing Member that is a natural person;
+       (ii) Has completed Kalshi's onboarding process, including identity verification; and
+       (iii) Has not been the subject of an open compliance investigation or review, and must not
+       have a suspended account or suspended account privileges for any compliance or
+       financial reason that results brings the Self-Clearing Member out of good standing with
+       the Exchange.
+Kalshi will deny or suspend Program Participant status only where one or more of these criteria
+is not satisfied, or as otherwise permitted under Sections 10 and 11 of this Appendix A.
+There is no limit on the number of Program Participants, so long as each satisfies the eligibility
+standards of this Section 2, including the applicable Group Criteria.
+
+3. ​   Program Term
+
+The Program shall be effective no earlier than ten (10) business days from the date of this filing,
+September 28, 2026, and shall remain effective for a period of two (2) years from the effective
+date of this filing, September 28, 2028 unless earlier extended or terminated.
+
+4. ​   Program Definitions
+“Deposit Reward” refers to a Program Reward offered under a Time-Limited Promotion for
+which a Program Participant qualifies by completing a Qualifying Deposit, as set forth in Section
+5(A).
+“Eligible Contracts” refers to the Contracts identified by the Exchange as eligible for a Trading
+Reward Time-Limited Promotion, established under Section 6.
+“Fixed-Value Incentive” refers to a Reward Method under which the Program Reward is
+equivalent to the Promotional Reward Value once the Program Participant satisfies the Minimum
+Qualifying Deposit or Minimum Qualifying Trade Amount, as applicable.
+“Group Category” refers to a category of objective participant characteristics, such as inactivity
+lookback, account age, funded or unfunded account status, prior deposit or trading activity, prior
+activity or inactivity in one or more Contract categories, geographic location, or account status,
+as listed in Confidential Appendix B.
+“Group Criteria” means the objective values, thresholds, and measurement periods selected by
+the Exchange within one or more Group Categories to define the Objective Category for a
+Time-Limited Promotion.
+“Match Percentage” refers to the percentage selected by the Exchange for a Time-Limited
+Promotion from the values set forth in Confidential Appendix B, applicable only in scenarios
+when Percentage Match is selected.
+“Minimum Qualifying Deposit” refers to the minimum dollar value threshold selected by the
+Exchange for a Deposit Reward Time-Limited Promotion, as set forth in Confidential Appendix
+B.
+“Minimum Qualifying Trade Amount” refers to the minimum qualifying trade threshold
+selected by the Exchange for a Trading Reward Time-Limited Promotion, as set forth in
+Confidential Appendix B.
+“Objective Category” refers to the group of natural-person Participants eligible for a
+Time-Limited Promotion, established before Time-Limited Promotion launch using Group
+Criteria that are objective, reproducible from Exchange records, and reasonably related to the
+Program’s purpose.
+“Percentage Match” refers to a Reward Method under which the Program Reward equals the
+lesser of (a) the Qualifying Deposit or Qualifying Trade Amount multiplied by the Match
+Percentage, or (b) the Promotional Reward Value.
+“Program Participant” refers to a Self-Clearing Member approved by Kalshi to participate in
+the Program who is a natural person, is in good standing, and satisfies any Group Criteria
+established for the applicable Time-Limited Promotion under Confidential Appendix B.
+“Program Reward” refers to the benefit offered to Program Participants under a Time-Limited
+Promotion, which will be either (i) a Deposit Reward, (ii) a Trading Reward, or (iii) a
+combination of a Deposit Reward and a Trading Reward, in each case as selected by the
+Exchange under Section 7.
+“Promotional Bonus Credit” refers to a credit applied to a Program Participant’s Kalshi
+Exchange account, which must be used for trading within a specified number of calendar days of
+receipt of the fund, as detailed in Section 8. After the specified number of calendar days, unused
+Promotional Bonus Credits will be automatically forfeited back to the Exchange. Promotional
+Bonus Credits issued by the Exchange may only be withdrawn after the Program Participant has
+traded an amount equal to the Bonus Credit after receiving the Bonus Credit.
+“Promotional Reward Value” refers to the incentive value selected by the Exchange for a
+Time-Limited Promotion from the values set forth in Confidential Appendix B.
+“Qualifying Deposit” refers to a deposit made by a Program Participant during a Time-Limited
+Promotion equal to or greater than the Minimum Qualifying Deposit, or, if no minimum
+threshold is selected for the Time-Limited Promotion, any deposit made during the Time-Limited
+Promotion.
+“Qualifying Trade Amount” refers to the aggregate collateral for bona fide executed trades that
+enter or increase positions in Eligible Contracts, counting only fills executed at a price of $0.03
+through $0.97 per Contract, inclusive.
+“Reward Method” refers to either a Percentage Match or a Fixed-Value Incentive, as selected by
+the Exchange for a Time-Limited Promotion.
+“Time-Limited Promotion” refers to a specific offering of a Deposit Reward, Trading Reward,
+or permitted combination thereof, established by the Exchange under this Appendix A with
+defined parameters, an Objective Category, a Time-Limited Promotion period, and (if applicable)
+Eligible Contracts. Each Time-Limited Promotion will have a fixed duration, established before
+the Time-Limited Promotion begins, of no more than ninety (90) calendar days, and no
+Time-Limited Promotion will extend beyond the Program End Date.
+“Trading Reward” refers to a Program Reward offered under a Time-Limited Promotion for
+which a Program Participant qualifies by satisfying the Minimum Qualifying Trade Amount in
+Eligible Contracts or, if no minimum threshold is selected for the Time-Limited Promotion, by
+completing at least one bona fide executed trade in Eligible Contracts satisfying the
+Time-Limited Promotion conditions, in each case as set forth in Section 5(A).
+
+5. ​      Program Rewards
+
+       A.​ Qualification for Rewards
+          (i) Deposit Rewards: A Program Participant becomes eligible for a Deposit Reward
+          upon making one Qualifying Deposit that is greater than or equal to the Minimum
+          Qualifying Deposit of the particular Time-Limited Promotion during the Time-Limited
+          Promotion.
+          (ii) Trading Rewards: A Program Participant becomes eligible for a Trading Reward
+          once the aggregate collateral for valid trades that enter or increase positions in Eligible
+          Contracts reaches the Minimum Qualifying Trade Amount during the Time-Limited
+          Promotion. For event contracts only, only fills executed at a price of $0.03 through $0.97
+          per Contract, are included in the count toward the Qualifying Trade Amount.
+       B.​ Reward Methodologies
+          Reward Methodologies are further defined in Confidential Appendix B.
+       C.​ Maximum Values of Variables
+The Program is subject to the following limits:
+          (a) Enrollment limit: a Program Participant may enroll in a given Time-Limited
+          Promotion only once.
+          (a) Per-Time-Limited Promotion cap: each Program Participant may receive up to $2,500
+          in aggregate Program Rewards per Time-Limited Promotion.
+          (b) Program-wide cap: each Program Participant may receive up to $5,000 in aggregate
+          Program Rewards across all Time-Limited Promotions over the life of the Program.
+          (d) Reward limit: a Program Participant may earn no more than one (1) Trading Reward
+          and one (1) Deposit Reward within an individual Time-Limited Promotion.
+Under the Program's highest-value Program Reward parameters: A Fixed-Value Incentive can
+reach the maximum $2,500 Promotional Reward Value only if the applicable Minimum
+Qualifying Deposit or Minimum Qualifying Trade Amount is at least $833, since the
+Promotional Reward Value is capped at three times that minimum. Where no minimum threshold
+applies, the Promotional Reward Value cannot exceed $25. Under a Percentage Match, the
+Program Reward is capped at the Promotional Reward Value, as much as $2,500, reflecting a
+full 100% match of qualifying activity. Total Program Rewards are limited to $2,500 per
+Program Participant per Time-Limited Promotion and $5,000 per Program Participant over the
+life of the Program. As a result, the highest possible payout in any single Time-Limited
+Promotion is $2,500 in qualifying deposits or bona fide trading activity, while de minimis
+qualifying activity, where no minimum threshold is set, can never yield more than $25.
+
+6. ​      Eligible Contracts
+For any Trading Reward Time-Limited Promotion, Eligible Contracts will be selected from one
+or more of the following product sets, each covering every Contract the Exchange lists in that
+category as of the Time-Limited Promotion's launch date: (i) all Contracts listed on the Exchange
+regardless of category; (ii) all contracts listed in Kalshi’s sports category; (iii) all contracts listed
+in Kalshi’s sports category limited to a specific sport subcategory (e.g., baseball, football,
+basketball, tennis, hockey, soccer) or league subcategory (e.g., MBA, NFL, NBA, ATP, NCAA,
+NHL, MLS); (iv) all contracts listed in Kalshi’s Crytocurrency category; (v) all contracts listed in
+Kalshi’s Economics category; (vi) all contracts listed in Kalshi’s Financials category; (vii) all
+contracts listed in Kalshi’s Politics category; (viii) all contracts listed in Kalshi’s Weather and
+Climate Contracts; and (ix) all contracts listed in Kalshi’s Culture and Entertainment category.
+The specific pre-filed product set or sets apply to a given Time-Limited Promotion will be
+announced on the Kalshi website, and that designation will remain posted throughout the
+Time-Limited Promotion; adding any product set beyond those listed above would require a
+separate submission under CFTC Regulation 40.6(a).
+Kalshi will determine the scope of Eligible Contracts before a Time-Limited Promotion
+launches, notify all eligible Participants of that scope via the Kalshi website, and apply the
+Eligible Contracts consistently to every Program Participant.
+7. ​   Program Determinations
+
+Kalshi is responsible for determining, calculating, and administering every aspect of the
+Program, including, without limitation:
+       (i) which Program Reward or combination of Program Rewards applies to each
+       Time-Limited Promotion;
+       (ii) the Reward Method and associated parameter values (Match Percentage, Minimum
+       Qualifying Deposit, Minimum Qualifying Trade Amount, Promotional Reward Value,
+       and payment schedule) for each Time-Limited Promotion;
+       (iii) the objective Group Criteria and Group Categories thresholds applicable to each
+       Time-Limited Promotion;
+       (iv) which Contracts are Eligible Contracts for each Trading Reward Time-Limited
+       Promotion;
+       (v) the duration of each Time-Limited Promotion;
+       (vi) whether a given Program Participant has met the cohort, eligibility, and qualification
+       criteria applicable to a Time-Limited Promotion; and
+       (vii) the size of any Program Reward payable, if any.
+Program compliance will be assessed by the Exchange using objective calculations drawn from
+its system data.
+8. ​   Payment Terms
+
+Before each Time-Limited Promotion launches, the Exchange will select whether the Program
+Reward will be paid as a single lump sum or in equal installments spread over three (3), five (5),
+or seven (7), or ten (10) consecutive days.
+If a lump-sum payment is selected, the credit will be issued within seven (7) days after the end of
+the calendar month in which the Program Participant qualified. If installments are selected
+instead, crediting will begin within seven (7) business days of the Program Reward being earned,
+with each installment equal to the total incentive divided by the number of days in the chosen
+period (any rounding difference is added to the final installment). Any installment not yet
+credited remains subject to Sections 10 and 11 of this Program.
+Promotional Bonus Credits expire one (1), three (3), seven (7), ten (10), fourteen (14), or thirty
+(30) days after issuance, and the Kalshi website will disclose, on a per-Time-Limited Promotion
+basis, whether a given credit expires and the length of its expiration period. When a credit
+expires, any remaining balance is removed from the Participant's account. In no case will the
+expiration of a Promotional Bonus Credit reduce a Participant's non-promotional funds, produce
+a negative account balance, or create a repayment obligation.
+9. ​   Non-Discrimination
+
+The Program Reward structure and rates described in this Appendix apply uniformly to every
+Program Participant, and Kalshi shall not apply terms outside this filed framework.
+10. ​   Fraud and Abuse
+
+Kalshi reserves the right to bar any user found to be engaging in fraud, gaming of payouts,
+self-referral to reduce effective fees, or any other abusive activity in connection with the
+Program. Kalshi may further bar any user from future or owed payments under the Program in
+the event that Referee or Referror’s activities related to the program are in violation of applicable
+law, including (without limitation) the Commodity Exchange Act and Kalshi’s Rulebook. If a
+Referee is later determined to be ineligible for the incentive for any reason, the Referrer may be
+required to forfeit the Promotional Bonus Credits attributable to that Referee, in the sole
+discretion of Kalshi’s Chief Regulatory Officer or Chief Compliance Officer.
+Loss of Program Participant status results in immediate loss of eligibility for future Program
+Rewards. Program Rewards for periods during which the Program Participant engaged in activity
+described in this Section 10, as determined in Kalshi’s sole discretion, may be forfeited.
+
+11. ​   Recordkeeping, Monitoring, and Termination of Status:
+
+Kalshi will keep records of the operation of the Program. Kalshi’s systems will track
+participants’ eligibility, referral activity, Promotional Bonus Credit accruals, and distributions to
+ensure proper administration of the Program. Kalshi staff will continue to monitor for fraud or
+gaming of payouts, manipulative trading, market abuse, and other trading or Program violations,
+including by participants in the Program. Kalshi shall retain the right to revoke Eligible
+Participant status if Kalshi’s Chief Regulatory Officer or Chief Compliance Officer concludes
+from review that a participant’s participation in the program is abusive or in any way inconsistent
+with the purpose of the Program, Kalshi’s Rulebook, or applicable law.
+
+In the event of such a determination, Kalshi will implement the following procedures:
+
+    ●​ Kalshi shall document the termination of participant status under the Program;
+
+    ●​ Kalshi shall notify the participant in writing that the participant is no longer eligible to
+       receive incentives under the Program; and
+
+    ●​ Upon any effective termination date, any incentives earned for periods ending before the
+       effective termination date will remain earned, except in cases of fraud, willful
+       misconduct, or violation of Kalshi’s Rulebook.
+
+Kalshi may modify or terminate the Program, or any Time-Limited Promotion established under
+the Program, at any time, in a manner consistent with CFTC rules and regulations. For the
+avoidance of doubt, substantive modification of the Program terms would necessarily take place
+via a Rule 40.6 submission.
+
