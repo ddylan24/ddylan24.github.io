@@ -1,0 +1,8 @@
+Maker P&L to settlement, 7 days (¢/contract, market-clustered bootstrap SE)
+  KXHIGHAUS  markets   42  contracts   419,439  maker +1.50 ± 1.04¢  | last 3h +1.00¢, earlier +1.51¢
+  KXHIGHCHI  markets   42  contracts   865,831  maker +1.01 ± 0.85¢  | last 3h +1.00¢, earlier +1.01¢
+  KXHIGHDEN  markets   42  contracts   322,226  maker -0.95 ± 0.96¢  | last 3h +1.00¢, earlier -1.00¢
+  KXHIGHLAX  markets   42  contracts 3,653,292  maker +1.70 ± 0.80¢  | last 3h +1.00¢, earlier +1.73¢
+  KXHIGHMIA  markets   42  contracts   973,564  maker +0.57 ± 0.64¢  | last 3h +1.00¢, earlier +0.54¢
+  KXHIGHNY   markets   42  contracts 1,295,517  maker +1.58 ± 1.99¢  | last 3h -0.28¢, earlier +1.83¢
+  KXRAIN     markets  225  contracts 7,891,621  maker -0.50 ± 0.50¢  | last 3h +0.33¢, earlier -0.67¢pooled daily-high maker edge +0.81 ± 0.36¢ (z 2.2); Q 5.4 on 5 df
