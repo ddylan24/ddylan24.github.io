@@ -367,7 +367,8 @@ This file is a condensed briefing of everything researched in the original sessi
 11. Never sort date strings ("26AUG08" sorts AUG < OCT < SEP); parse to dates before splitting train/test.
 12. Averaging (outcome − price) over mutually exclusive buckets measures the overround, not calibration. De-vig first or use the slope.
 13. Totals from a single snapshot of 'active' items undercount rolling, short-lived items (Kalshi LIP: $129k vs the true ≈$290k/day). Pro-rate the full history instead.
-14. Costs kill short horizons. Short-term reversal doesn't survive costs at scale.
+14. Pricing a short-dated binary from a substitute feed fails even when it looks close (Y3 FX: Yahoo vs settlement feed; AA3 temperature: ASOS integer vs Synoptic tenths). Use the exact settlement source, and check calibration against outcomes before trusting an 'edge'.
+15. Costs kill short horizons. Short-term reversal doesn't survive costs at scale.
 
 ## 5. Data sources and environment notes
 
@@ -379,6 +380,7 @@ This file is a condensed briefing of everything researched in the original sessi
 - **Prediction markets:** Polymarket `gamma-api.polymarket.com/markets` (closed=true, limit 100/page; paging stopped ~2,100) and `clob.polymarket.com/prices-history?market=TOKEN&interval=max&fidelity=1440`. Kalshi `api.elections.kalshi.com/trade-api/v2/markets`. PredictIt `predictit.org/api/marketdata/all/`. All reachable.
 - **Weather:** IEM (Iowa Environmental Mesonet) archives NWS MOS/METAR/CLI; rate-limited per IP.
 - **Blocked or unavailable:** YouTube (bot block on cloud IPs; transcripts were pasted by the user), SSRN (403), CBOE site (403), Everygen video analysis (needs a paid plan).
+- **Shell gotcha:** never `pkill -f <pattern>` (or `pgrep -f`) with a pattern that appears in your own command line, because it kills the calling shell (exit 144). Select PIDs with `ps -eo pid,comm,args | awk '$2=="python3" && /script/'`.
 - **Python libraries:** numpy, pandas, scipy, statsmodels, arch, hmmlearn, scikit-learn, yfinance, openpyxl.
 
 ## 5b. The user's home PC / Raspberry Pi (remember this)
