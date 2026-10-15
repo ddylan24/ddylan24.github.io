@@ -276,6 +276,11 @@ This file is a condensed briefing of everything researched in the original sessi
 
 - **Maker edge by trade size** (notes/AC2.md; 7.4M fills): crypto 15m +0.37¢ for 1–10 contracts (t≈6) falling to 0 for >1k, so large takers are informed. Temperature is positive at all sizes (+0.9–1.7¢).
 
+- **Category map of maker edges** (notes/AC1.md; 4 days, top-150 markets per category):
+  - Commodities 15m (gold/WTI/silver) +0.98 ± 0.22¢: the only clear positive.
+  - Politics −3.2 ± 1.9¢; sports/crypto ≈ 0.
+  - Weather −0.7 ± 0.8 conflicts with the 7-day AA1/AB1 (+0.8–1.2), so it needs a longer test (AD2).
+
 ### Math foundations (later waves)
 - **Proper scoring:** with truth 0.7, Brier and log are maximized at 0.70; a linear score at 0.99 (improper). LMSR = market log score; a trader's payoff b·ln(p1/p0) is verified. Polymarket log-loss skill 38% vs Brier 45%.
 - **MC variance reduction** (BS call, N=20k): plain sd 0.101, antithetic 0.068, control variate 0.039 (variance ÷6.8). Importance sampling for P(30-day −20%) = 4.42e-5: plain 3.0e-5 (3 hits), IS 4.41e-5.

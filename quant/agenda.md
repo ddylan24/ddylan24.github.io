@@ -165,5 +165,9 @@ Status: [ ] todo  [~] in progress  [x] done. Each item: derive, verify numerical
 - [x] AB2 CONTEXT §0 refreshed with LIP findings and the full list of data traps.
 
 ## AC. Eighteenth wave
-- [ ] AC1 Category map of maker edges on Kalshi: sports, politics, economics, entertainment (KXRT etc.), crypto — 7-day settlement-marked maker P&L per category (sampled series), to find where takers are informed vs betting.
+- [x] AC1 Category map (4d, top-150 by volume): commodities 15m makers +0.98±0.22¢ (only clear positive); politics −3.2±1.9¢; sports/crypto ≈0; weather −0.7±0.8 (conflicts with 7-day AA1/AB1 — needs longer test).
 - [x] AC2 Maker edge by fill size: crypto 15m +0.37¢ (1–10 contracts, t≈6) → 0 (>1k) = informed size; temperature positive at all sizes (+0.9 to +1.7¢).
+
+## AD. Nineteenth wave
+- [ ] AD1 Commodities 15-min (KXGOLD15M, KXWTI15M, KXSILVER15M): 7-day settlement-marked maker edge + LIP pools — a new LIP candidate?
+- [ ] AD2 Weather maker edge robustness: 14+ days for KXTEMPMIAH and daily highs to resolve the AC1 vs AA1/AB1 conflict.

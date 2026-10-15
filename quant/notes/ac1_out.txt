@@ -1,0 +1,12 @@
+15105 series; 12,410 settled markets with volume in 4 days; by category: Sports 6607, Crypto 2549, Financials 1586, Commodities 1005, Climate and Weather 402, Mentions 159, Science and Technology 52, Politics 34, Economics 15, Elections 1
+Maker P&L to settlement by category (¢/contract ± market-clustered SE)
+  Climate and Weather        markets  150  contracts     575,256  maker  -0.74 ± 0.76  (top series: KXTEMPMIAH, KXTEMPNYCHS, KXTEMPLAXHS)
+  Commodities                markets  150  contracts  32,534,083  maker  +0.98 ± 0.22  (top series: KXGOLD15M, KXWTI15M, KXSILVER15M)
+  Crypto                     markets  150  contracts  89,363,557  maker  +0.13 ± 0.08  (top series: KXBTC15M, KXBTCD, KXETH15M)
+  Economics                  markets   15  contracts      30,926  maker  -2.54 ± 2.78  (top series: KXMORTGAGERATE, KXSNOWCRABCATCH, KXUE)
+  Elections                  markets    1  contracts       7,280  maker  +0.23 ± 0.00  (top series: KXMARENTCONTROL)
+  Financials                 markets  150  contracts   3,267,646  maker  -0.87 ± 3.47  (top series: KXINXU, KXNASDAQ100U, KXEURUSD15M)
+  Mentions                   markets  150  contracts   2,284,665  maker  -1.06 ± 1.73  (top series: KXTRUMPMENTION, KXTRUMPMENTIONB, KXWORLDNEWSMENTION)
+  Politics                   markets   34  contracts     443,196  maker  -3.22 ± 1.88  (top series: KXTRUMPAPPROVE, KXGUILFOYLEOUT, KXVHGCB)
+  Science and Technology     markets   52  contracts     188,119  maker  -2.58 ± 2.16  (top series: KXWAYMOCITY, KXOPENADOPT, KXAISPEND10)
+  Sports                     markets  150  contracts 102,217,336  maker  +0.50 ± 0.82  (top series: KXUCLGAME, KXATPCHALLENGERMATCH, KXITFWMATCH)
