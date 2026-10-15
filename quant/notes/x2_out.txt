@@ -1,0 +1,7 @@
+51 markets, 3,953 trades, 442,418 contracts in the last 36h; candles for 60 markets
+  maker markout after  5 min: total $-11,140 on 442,418 contracts → -2.52¢ per filled contract
+  maker markout after 30 min: total $-11,288 on 442,418 contracts → -2.55¢ per filled contract
+  maker markout after 60 min: total $-14,879 on 442,418 contracts → -3.36¢ per filled contract
+
+Per market per day (30-min markout): median maker markout $-4.1 vs reward pool $112; aggregate markout $-7,526/day vs pools $11,423/day across 51 markets
+  median filled volume 1,267 contracts/day per market; markets where |markout| > reward: 5 of 51

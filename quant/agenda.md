@@ -143,4 +143,4 @@ Status: [ ] todo  [~] in progress  [x] done. Each item: derive, verify numerical
 
 ## X. Thirteenth wave
 - [ ] X1 Short LIP programs (hourly KXTEMPMIAH, 15-min crypto/FX): high-frequency book sampling — exclusion rate, rebuild speed, newcomer share at program start vs end.
-- [ ] X2 Cost side of LIP: estimate adverse selection for resting at the touch using Kalshi public trades (GET /markets/trades) — mark-to-later-mid of fills at the best bid.
+- [x] X2 LIP cost side: maker markout −2.5¢ (5 min) to −3.4¢ (60 min) per filled contract; markouts −$7.5k/day vs pools $11.4k/day across 51 rich markets (~34% net margin, n≈3 effective LPs); 5/51 markets lose more than the pool.
