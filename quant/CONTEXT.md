@@ -343,7 +343,8 @@ This file is a condensed briefing of everything researched in the original sessi
 10. Skill tests across traders need a null with a SHARED outcome draw per market; independent per-trader nulls overstate significance.
 11. Never sort date strings ("26AUG08" sorts AUG < OCT < SEP); parse to dates before splitting train/test.
 12. Averaging (outcome − price) over mutually exclusive buckets measures the overround, not calibration. De-vig first or use the slope.
-13. Costs kill short horizons. Short-term reversal doesn't survive costs at scale.
+13. Totals from a single snapshot of 'active' items undercount rolling, short-lived items (Kalshi LIP: $129k vs the true ≈$290k/day). Pro-rate the full history instead.
+14. Costs kill short horizons. Short-term reversal doesn't survive costs at scale.
 
 ## 5. Data sources and environment notes
 
