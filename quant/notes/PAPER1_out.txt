@@ -1,0 +1,5 @@
+JOIN   reward $   74.57  fills  655 (  11445 ct)  settled mkts  30  fill P&L $ -211.41  NET $ -136.84
+SMART  reward $   54.77  fills  399 (   7387 ct)  settled mkts  30  fill P&L $ -256.75  NET $ -201.98
+KXEURUSD15M      reward $   122.00   fills   624 (    8990 contracts)   settled fill P&L $ -2843.37   net $ -2721.36
+KXTEMPMIAH       reward $    79.13   fills   861 (   12760 contracts)   settled fill P&L $ -2059.30   net $ -1980.17
+KXTRUMPAPPROVE   reward $    68.61   fills   670 (   11209 contracts)   settled fill P&L $    +0.00   net $   +68.61

@@ -10,17 +10,19 @@ You're picking up a research project that ran in a cloud Claude Code session on 
    - `quant/LEDGER.md` (every hypothesis tested and its fate; don't re-test dead ideas)
    - `quant/PLAYBOOK.md` (operational rules; §4 = money rules)
    - `quant/SPEED.md`
-   - `quant/notes/LIP.md`, `X2.md`, `Y1.md`, `Z1.md`, `Z2.md`, `AA1.md`, `AD2.md` (the LIP evidence chain); `AD1.md` (gold/WTI 15m: second candidate, no LIP, needs speed)
+   - `quant/notes/LIP.md`, `X2.md`, `Y1.md`, `Z1.md`, `Z2.md`, `AA1.md`, `AD2.md` (the LIP evidence chain); `AD1.md` (gold/WTI 15m: second candidate, no LIP, needs speed), `PAPER1.md` (live paper trial: negative, read before building)
 3. `pip install numpy pandas scipy statsmodels` (plus `arch hmmlearn scikit-learn yfinance openpyxl` for the older topics).
 4. Find the user's stored Kalshi data on this machine. Ask the user for its path and format if it isn't obvious.
 
 ## 1. Where things stand (one paragraph)
 Kalshi's Liquidity Incentive Program (LIP) pays **≈ $290k/day** for resting depth (grew ~30× in a year; runs to Jan 1, 2027; scoring = whole-level walk to Target, reference at Target/5, DF^ticks, snapshot each second, counted only if both sides reach Target; see `notes/LIP.md`). Across eight series, maker fills roughly break even, so rewards ≈ profit. **KXTEMPMIAH is the best series found:** 4.2¢ of reward per filled contract **plus** makers +0.69 ± 0.22¢/contract on fills over 14 days (z 3.1; +1.24¢ over 7 days). Late takers who trade on the public thermometer lose to makers, and fills are betting flow, not informed flow. Kalshi publishes the **exact settlement index** (`GET /live_data/weather/miami`, public, 1-min, 0.01°F, `detailed=true` gives each station's reading and arrival time; arrives a median 87s after each minute). Queues get *cancelled*, not consumed (Z2), so risk comes from being slow to pull quotes when the index moves near a strike late in the hour. Extreme speed is **not** needed for weather; seconds-level reaction plus pull rules is enough (SPEED.md §4).
 
+**Caution from the first live paper trial (`notes/PAPER1.md`, 5 hours):** a simulated 100-lot quote at the touch *lost* money on Miami (JOIN −$137 net, SMART −$202). Only 3 hours had fills, so it isn't conclusive, but it means the +0.69¢ all-maker average may not be available to a simple touch quoter. **Task A must test a hypothetical touch quote on history (with inventory caps), not just the all-maker average.**
+
 ## 2. Immediate tasks, in priority order
 ### A. Backtest on the home-PC data (highest value; replaces weeks of paper trading)
 Goal: confirm or kill the KXTEMPMIAH LIP strategy on months of history.
-1. **Maker edge over months:** reproduce `code/ad_series_edge.py` / `code/aa1_tempmiah.py` logic on stored settled markets plus trades (maker P&L per contract to settlement: taker YES at P → P − y; taker NO → y − P; cluster SEs by market). Check stability by month and by hour of day. Expected ≈ +0.5–1.2¢.
+1. **Maker edge over months:** reproduce `code/ad_series_edge.py` / `code/aa1_tempmiah.py` logic on stored settled markets plus trades (maker P&L per contract to settlement: taker YES at P → P − y; taker NO → y − P; cluster SEs by market). Check stability by month and by hour of day. Expected ≈ +0.5–1.2¢ for the all-maker average. **Also** simulate a single touch quote (fills only from trades at or through its price, queue position, per-strike/per-hour inventory cap); PAPER1 suggests that quote may lose.
 2. **Reward share:** if order-book snapshots are stored, score a hypothetical quote with `code/pm_toolkit.lip_side_share` per snapshot; otherwise use `code/lip_daily.py` pools × typical newcomer share (20–35%, W1/LIP).
 3. **SMART pull rule:** with the stored index/temperature history, simulate pulling both sides of a strike when minutes_left ≤ 20 and |index − K| ≤ 1°F, and everything in the final 3 minutes. Measure fill losses avoided vs reward forgone. Tune the band and windows, keeping a hold-out period untouched (multiple-testing rules in CONTEXT §4).
 4. **Decision rule:** proceed only if net (reward share + fill P&L) is positive in the hold-out months with t > 2.
