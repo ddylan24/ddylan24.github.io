@@ -244,6 +244,12 @@ This file is a condensed briefing of everything researched in the original sessi
 
 - **LIP cost side** (notes/X2.md): maker markout −2.5¢ (5 min) / −3.4¢ (60 min) per filled contract across 442k contracts in 51 rich LIP markets. Fill losses ≈ −$7.5k/day vs pools $11.4k/day (rewards ≈ 1.5× adverse selection; n≈3 effective LPs). 5/51 markets lost more than the pool. Public fills: `/markets/trades?ticker=&min_ts=`.
 
+- **Short LIP programs by series** (notes/X1.md; last 24h): maker markout at 5 min.
+  - FX 15-min: **+1.2 to +3.3¢/contract** (takers uninformed).
+  - Hourly temperature/RT/approval: −0.35 to −0.76¢, with pools 6–10× the losses.
+  - 15-min crypto: −3.8¢ (pool ≈ loss).
+  - Short programs are far better for LPs than long ones (1.5×). Best paper-trade candidates: FX 15-min, KXTEMPMIAH, KXRT.
+
 ### Math foundations (later waves)
 - **Proper scoring:** with truth 0.7, Brier and log are maximized at 0.70; a linear score at 0.99 (improper). LMSR = market log score; a trader's payoff b·ln(p1/p0) is verified. Polymarket log-loss skill 38% vs Brier 45%.
 - **MC variance reduction** (BS call, N=20k): plain sd 0.101, antithetic 0.068, control variate 0.039 (variance ÷6.8). Importance sampling for P(30-day −20%) = 4.42e-5: plain 3.0e-5 (3 hits), IS 4.41e-5.

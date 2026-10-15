@@ -142,5 +142,5 @@ Status: [ ] todo  [~] in progress  [x] done. Each item: derive, verify numerical
 - [x] W4 Subsidy census: Polymarket 18,649 reward markets ≈$210k/day (median $3); Kalshi ≥1-day LIP ≈$129k/day (median $14) — corrected the $324k rate-sum.
 
 ## X. Thirteenth wave
-- [ ] X1 Short LIP programs (hourly KXTEMPMIAH, 15-min crypto/FX): high-frequency book sampling — exclusion rate, rebuild speed, newcomer share at program start vs end.
+- [x] X1 Short LIP programs: FX 15-min makers EARN +1.2–3.3¢/contract on fills; temp/RT/approval lose ≤0.8¢ vs pools 6–10× larger; 15-min crypto −3.8¢ (pool≈loss). Short programs ≫ long (1.5×) for LPs.
 - [x] X2 LIP cost side: maker markout −2.5¢ (5 min) to −3.4¢ (60 min) per filled contract; markouts −$7.5k/day vs pools $11.4k/day across 51 rich markets (~34% net margin, n≈3 effective LPs); 5/51 markets lose more than the pool.

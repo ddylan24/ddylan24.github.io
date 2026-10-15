@@ -1,0 +1,10 @@
+Short programs (≤24h) ended in the last 24h, top 8 series: 1332 programs, pools $84,600
+  KXTRUMPAPPROVE         markets   9  pool $  10,800  fills  3112  contracts   253,715  maker markout $   -1,932 (-0.76¢/ct)  pool/|markout| 5.6
+  KXRT                   markets  60  pool $   6,000  fills  2260  contracts   175,379  maker markout $     -621 (-0.35¢/ct)  pool/|markout| 9.7
+  KXTEMPMIAH             markets  60  pool $   6,000  fills  4495  contracts   156,175  maker markout $     -953 (-0.61¢/ct)  pool/|markout| 6.3
+  KXAUDUSD15M            markets  60  pool $   3,000  fills  6815  contracts   127,913  maker markout $   +1,492 (+1.17¢/ct)  pool/|markout| 2.0
+  KXUSDCAD15M            markets  60  pool $   3,000  fills  6420  contracts   156,915  maker markout $   +3,510 (+2.24¢/ct)  pool/|markout| 0.9
+  KXEURUSD15M            markets  60  pool $   3,000  fills 13270  contracts   304,873  maker markout $   +3,866 (+1.27¢/ct)  pool/|markout| 0.8
+  KXUSDJPY15M            markets  60  pool $   3,000  fills 10787  contracts   220,009  maker markout $   +7,145 (+3.25¢/ct)  pool/|markout| 0.4
+  KXCRYPTOLEAD15M        markets  60  pool $   1,200  fills  1066  contracts    29,158  maker markout $   -1,116 (-3.83¢/ct)  pool/|markout| 1.1
+  TOTAL pool $36,000 vs maker markout $+11,391
