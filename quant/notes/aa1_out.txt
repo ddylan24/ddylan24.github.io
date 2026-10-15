@@ -1,0 +1,11 @@
+KXTEMPMIAH: 1085 settled markets, 111,790 fills, 2,853,790 contracts in 7 days; 1-min KMIA obs 6,375
+  maker P&L to settlement: $+35,269 (+1.24¢/contract)
+  last 5m contracts   315,231  maker  +2.73¢/ct  ($+8,621)
+  5–15m   contracts   565,669  maker  +3.15¢/ct  ($+17,795)
+  15–30m  contracts   702,901  maker  +0.75¢/ct  ($+5,259)
+  30–60m  contracts 1,269,990  maker  +0.28¢/ct  ($+3,594)
+  last 15m taker side AGREES with latest obs: contracts   328,904, maker  +4.71¢/ct
+  last 15m taker side disagrees with latest obs: contracts   304,800, maker  +2.63¢/ct
+  earlier  taker side AGREES with latest obs: contracts   955,844, maker  +1.27¢/ct
+  earlier  taker side disagrees with latest obs: contracts   517,124, maker  -0.97¢/ct
+  latest 1-min obs 10 min before close vs strike predicts outcome: 66% of markets (n 331)

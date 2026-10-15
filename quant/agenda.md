@@ -156,6 +156,6 @@ Status: [ ] todo  [~] in progress  [x] done. Each item: derive, verify numerical
 - [x] Z3 Decision-guide table at the top of Module 14 (from LEDGER + PLAYBOOK).
 
 ## AA. Sixteenth wave
-- [ ] AA1 KXTEMPMIAH microstructure: do maker losses cluster right after NWS METAR observations for KMIA (IEM archive)? i.e. is the informed flow "people reading the thermometer"?
+- [x] AA1 KXTEMPMIAH: makers +1.24¢/contract (2.85M contracts, 7d, settlement-marked), +2.7–3.2¢ in last 15 min; late takers agreeing with latest 1-min obs lose 4.7¢ — obs already priced; top LIP candidate.
 - [ ] AA2 Hierarchical shrinkage of per-series LIP net economics (U3 method) — which series' edges survive pooling given few markets?
-- [ ] AA3 Hourly temperature contract math: model the hourly max/threshold as a diffusion of temperature with diurnal drift; is Kalshi's hourly pricing consistent with observed temperature volatility?
+- [x] AA3 Temperature diffusion model from ASOS 1-min fails (Brier 0.22 vs market 0.08): settlement source (Synoptic tenths) ≠ ASOS integer feed.
