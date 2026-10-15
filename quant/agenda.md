@@ -157,5 +157,9 @@ Status: [ ] todo  [~] in progress  [x] done. Each item: derive, verify numerical
 
 ## AA. Sixteenth wave
 - [x] AA1 KXTEMPMIAH: makers +1.24¢/contract (2.85M contracts, 7d, settlement-marked), +2.7–3.2¢ in last 15 min; late takers agreeing with latest 1-min obs lose 4.7¢ — obs already priced; top LIP candidate.
-- [ ] AA2 Hierarchical shrinkage of per-series LIP net economics (U3 method) — which series' edges survive pooling given few markets?
+- [x] AA2 Shrinkage of series maker edges: Q 20.7/5df (real heterogeneity); KXTEMPMIAH +1.24→+0.58¢ (z 3.7) survives; others shrink to ≈+0.2¢.
 - [x] AA3 Temperature diffusion model from ASOS 1-min fails (Brier 0.22 vs market 0.08): settlement source (Synoptic tenths) ≠ ASOS integer feed.
+
+## AB. Seventeenth wave
+- [ ] AB1 Other hourly/daily weather series on Kalshi (KXTEMP* other cities, KXHIGH* daily highs) — does the KXTEMPMIAH maker edge generalize (same 7-day settlement-marked method)?
+- [ ] AB2 Session wrap-up: refresh CONTEXT §0 top takeaways with LIP findings; consistency pass over course numbers vs notes.

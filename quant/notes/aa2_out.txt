@@ -1,0 +1,7 @@
+Maker fill P&L to settlement (¢/contract), 7 days; pooled μ̂ +0.23¢, between-series τ̂ 0.25¢, Cochran Q 20.7 on 5 df
+  KXTEMPMIAH   markets 1085  raw  +1.24 ± 0.33 (z +3.7)  → shrunk  +0.58
+  KXUSDJPY15M  markets  472  raw  +1.03 ± 1.01 (z +1.0)  → shrunk  +0.27
+  KXETH15M     markets  666  raw  +0.22 ± 0.09 (z +2.3)  → shrunk  +0.22
+  KXEURUSD15M  markets  471  raw  +0.09 ± 0.37 (z +0.2)  → shrunk  +0.18
+  KXAUDUSD15M  markets  472  raw  -0.36 ± 0.51 (z -0.7)  → shrunk  +0.12
+  KXBTC15M     markets  665  raw  -0.01 ± 0.01 (z -0.5)  → shrunk  -0.01
