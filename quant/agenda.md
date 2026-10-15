@@ -153,4 +153,4 @@ Status: [ ] todo  [~] in progress  [x] done. Each item: derive, verify numerical
 ## Z. Fifteenth wave
 - [ ] Z1 LIP net economics by series over 7 days: pools (lip_daily history) vs settlement-marked fill P&L (Y1 method) for KXTEMPMIAH, KXRT, KXTRUMPAPPROVE, FX 15m — which series pay best per unit of depth after fills?
 - [x] Z2 Queue math: FX-15m visits ~10 contracts vs 1,000+ queues → P(fill) behind 500 <0.5%; but 40% of visits trade through (queues are CANCELLED) → LIP is a cancel-latency race; paper fill model matches.
-- [ ] Z3 Course polish: a one-page "decision tree" summary for prediction-market trading built from LEDGER + PLAYBOOK.
+- [x] Z3 Decision-guide table at the top of Module 14 (from LEDGER + PLAYBOOK).

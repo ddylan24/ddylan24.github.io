@@ -1076,6 +1076,20 @@ Kyle:             price = λ · order flow,   λ = σ_v / (2σ_u)   ("Kyle's lam
   <p>A prediction-market contract pays $1 if an event happens and $0 if not, so its price <i>is</i> a probability. Polymarket runs a central limit order book settled in USDC. Kalshi is a CFTC-regulated exchange. The quant questions are the same as anywhere else: are the prices calibrated, where are they biased, and can you trade the bias after costs?</p>
 <div class="formula">contract price p ≈ market's probability        profit on YES per $1 staked = 1/p − 1 if it wins
 Brier score = mean (p − outcome)²              skill = 1 − Brier / Brier(base rate)</div>
+  <h3>The short version: a decision guide</h3>
+  <p>Everything in this module boils down to a few questions to ask before risking money on a prediction market. Each answer comes from a test below.</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Question</th><th>What the data said</th><th>So…</th></tr></thead>
+    <tbody>
+      <tr><td>Is the price already a good forecast?</td><td>Yes. Brier skill 27–87%, and calibration error is only 0.5–3.5% of the score. Liquid markets track Fed funds futures and options within about 1¢.</td><td>Don't trade a "bias" unless you have <b>new information</b> or a demonstrably better model.</td></tr>
+      <tr><td>Is it a cheap longshot or a near-certain favorite?</td><td>Polymarket: cheap YES underpriced since mid-2025, 90–95¢ favorites lost 3% vs T-bills, 20¢ crashes 39× more likely than a smooth model predicts. Kalshi weather showed the opposite.</td><td>Biases depend on venue and category. Never "collect nickels" at 95¢ without pricing the jump risk.</td></tr>
+      <tr><td>Is the outcome tied to the economy?</td><td>Recession contracts carry a ~3–5¢ insurance premium; elections ~0.1¢.</td><td>Read disaster contracts as insurance prices, biased above the true probability.</td></tr>
+      <tr><td>Is the money locked up for long?</td><td>A 2¢ gap over 2 years loses to T-bills. Even at fair value, a 95¢ contract with more than ~91 days left should be sold.</td><td>Compare every edge with T-bills over the same holding period.</td></tr>
+      <tr><td>Do I have the right data, timestamps and baseline?</td><td>Five data traps produced fake edges with t up to 40: look-ahead from close times, lagged price history, bars stamped at the open, daily stamps on the previous evening, and dates sorted as text.</td><td>Check timestamps, splits and a random baseline <b>before</b> believing a result.</td></tr>
+      <tr><td>Do I want to make markets for the rewards?</td><td>Kalshi pays about $290k a day. Long programs pay ~1.5× fill losses; in short programs fills break even. Queues get cancelled, not consumed.</td><td>A real but competitive subsidy. Win it with fast cancels, inventory skew and avoiding news, after a paper trial.</td></tr>
+      <tr><td>How big should a bet be?</td><td>Full Kelly on noisy probabilities lost money most of the time. Joint Kelly for multi-outcome markets adds about 10% growth.</td><td>Use ≤ ¼–½ Kelly with shrunk probabilities, and size multi-outcome markets jointly.</td></tr>
+    </tbody>
+  </table></div>
   <h3>First real-data study: is Polymarket calibrated?</h3>
   <p>I pulled 1,751 resolved Yes/No Polymarket markets with at least $50k volume (2023–2026) from Polymarket's own APIs, along with each market's daily price history. Then I compared the price some days before the scheduled end date with what actually happened:</p>
   <div class="tablewrap"><table>
