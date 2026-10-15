@@ -136,7 +136,11 @@ Status: [ ] todo  [~] in progress  [x] done. Each item: derive, verify numerical
 - [x] LIP Kalshi Liquidity Incentive Program (user request): rules from help center + CFTC filings, 5,734 live programs ($324k/day), LP share/return simulation (upper bound), caveats; capture + toolkit hooks.
 
 ## W. Twelfth wave (LIP follow-ups + more)
-- [ ] W1 LIP dynamics: re-sample the richest Kalshi incentivized books every few minutes for ~1h — how stable are LP shares, how often does the book fall below Target (excluded snapshots)?
+- [x] W1 LIP book dynamics (60 richest ≥1-day programs, 3-min snapshots): 0% excluded snapshots, best bid unchanged, 1¢ spreads, depth CV 0.03, newcomer share 21%±1% — parked, crowded books.
 - [x] W2 Kalshi LIP vs Polymarket rewards: book-anchored geometric DF^ticks + market-level two-sided Target vs midpoint-anchored quadratic ((v−s)/v)² + per-LP min(Q_one,Q_two); Kalshi pays depth, Polymarket pays tightness.
 - [x] W3 LIP as Tullock contest: Q*=R(n−1)/(nk), π=R/n², return 1/(n−1), free entry R=kQ; live books imply k≈11¢/contract-day (≈800× capital cost) ⇒ risk-limited or few LPs.
 - [x] W4 Subsidy census: Polymarket 18,649 reward markets ≈$210k/day (median $3); Kalshi ≥1-day LIP ≈$129k/day (median $14) — corrected the $324k rate-sum.
+
+## X. Thirteenth wave
+- [ ] X1 Short LIP programs (hourly KXTEMPMIAH, 15-min crypto/FX): high-frequency book sampling — exclusion rate, rebuild speed, newcomer share at program start vs end.
+- [ ] X2 Cost side of LIP: estimate adverse selection for resting at the touch using Kalshi public trades (GET /markets/trades) — mark-to-later-mid of fills at the best bid.
