@@ -10,7 +10,7 @@ You're picking up a research project that ran in a cloud Claude Code session on 
    - `quant/LEDGER.md` (every hypothesis tested and its fate; don't re-test dead ideas)
    - `quant/PLAYBOOK.md` (operational rules; §4 = money rules)
    - `quant/SPEED.md`
-   - `quant/notes/LIP.md`, `X2.md`, `Y1.md`, `Z1.md`, `Z2.md`, `AA1.md`, `AD2.md` (the LIP evidence chain)
+   - `quant/notes/LIP.md`, `X2.md`, `Y1.md`, `Z1.md`, `Z2.md`, `AA1.md`, `AD2.md` (the LIP evidence chain); `AD1.md` (gold/WTI 15m: second candidate, no LIP, needs speed)
 3. `pip install numpy pandas scipy statsmodels` (plus `arch hmmlearn scikit-learn yfinance openpyxl` for the older topics).
 4. Find the user's stored Kalshi data on this machine. Ask the user for its path and format if it isn't obvious.
 

@@ -283,6 +283,7 @@ This file is a condensed briefing of everything researched in the original sessi
   - Weather −0.7 ± 0.8 conflicts with the 7-day AA1/AB1 (+0.8–1.2), so it needs a longer test (AD2).
 
 - **Weather over 14 days** (notes/AD2.md): KXTEMPMIAH maker +0.69 ± 0.22¢ (z 3.1) plus LIP 4.21¢/contract, so net ≈ +4.9¢ per filled contract (robust). Daily highs pooled +0.41 ± 0.28 (z 1.5), city-specific (DEN −1.47). Supersedes AC1's weather number.
+- **Commodity 15m over 7 days** (notes/AD1.md): makers KXGOLD15M +0.47 ± 0.15 (z 3.1), KXWTI15M +0.59 ± 0.16 (z 3.7), KXSILVER15M −0.07 ± 0.23. No LIP pools, so pure spread capture averaged over all makers; needs a fast settlement-matching feed. Second candidate after KXTEMPMIAH.
 
 ### Math foundations (later waves)
 - **Proper scoring:** with truth 0.7, Brier and log are maximized at 0.70; a linear score at 0.99 (improper). LMSR = market log score; a trader's payoff b·ln(p1/p0) is verified. Polymarket log-loss skill 38% vs Brier 45%.

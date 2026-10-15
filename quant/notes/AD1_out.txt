@@ -1,0 +1,7 @@
+KXGOLD15M 447 2710239
+KXWTI15M 498 4024394
+KXSILVER15M 450 4620746
+[ad1] 7 days, settlement-marked maker P&L (¢/contract ± market-clustered SE) and LIP pools on the same markets
+  KXGOLD15M      markets  447  contracts 174,545,928  maker +0.47 ± 0.15  fills $  +813,873  LIP pool $        0  reward 0.00¢/ct  | daily maker ¢/ct: +0.3 +0.4 -0.1 +0.8 +0.4 +0.4 +0.7
+  KXSILVER15M    markets  450  contracts  22,351,449  maker -0.07 ± 0.23  fills $   -16,740  LIP pool $        0  reward 0.00¢/ct  | daily maker ¢/ct: +0.2 -0.8 +1.3 -0.1 +0.7 -0.3 +0.1
+  KXWTI15M       markets  498  contracts  52,317,608  maker +0.59 ± 0.16  fills $  +310,625  LIP pool $        0  reward 0.00¢/ct  | daily maker ¢/ct: +1.5 +0.2 +1.0 -1.1 +0.6 +0.2 +0.7 +0.8
