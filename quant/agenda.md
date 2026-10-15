@@ -134,3 +134,8 @@ Status: [ ] todo  [~] in progress  [x] done. Each item: derive, verify numerical
 - [x] V2 BTC VRP: DVOL − fwd RV +9.5 vol pts (t 5.6), decaying 18.8 (2021) → 3.0 (2026); plausible mechanism for U4 under-confidence (slope ≈ σ_impl/σ_real).
 - [x] V3 Economic-data markets (193 events): calibrated (slope 1.07±0.09 T−1d, 1.01 T−7d); apparent YES overpricing −1.7¢ (t −3.9) is just overround (Σp 1.077) — trap documented.
 - [x] LIP Kalshi Liquidity Incentive Program (user request): rules from help center + CFTC filings, 5,734 live programs ($324k/day), LP share/return simulation (upper bound), caveats; capture + toolkit hooks.
+
+## W. Twelfth wave (LIP follow-ups + more)
+- [ ] W1 LIP dynamics: re-sample the richest Kalshi incentivized books every few minutes for ~1h — how stable are LP shares, how often does the book fall below Target (excluded snapshots)?
+- [ ] W2 Kalshi LIP vs Polymarket liquidity rewards (S=((v−s)/v)²·b): structural comparison — what each rewards (depth vs tightness), and the implied optimal quoting.
+- [ ] W3 Free-entry equilibrium for subsidized market making: reward pool R, adverse-selection cost per contract c, capital cost → equilibrium depth and LP return (math + sim).
