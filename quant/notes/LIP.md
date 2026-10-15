@@ -28,7 +28,7 @@
 - **API units:** `period_reward` is in 1/10,000 $ (1,000,000 = $100). `discount_factor_bps`/10⁴ = DF. `target_size_fp` = T.
 
 ## Live census (2026-10-15 00:14 UTC; `code/lip_kalshi.py`)
-- **5,734 markets in 556 series** have live liquidity programs, about **$324k/day** in total. The median pool is **$14/day** per market (mean $57, max $2,400/day as a rate).
+- **5,734 markets in 556 series** have live liquidity programs, **≈$129k/day from programs lasting ≥1 day** (the $324k/day first reported summed *rates* of 1-hour programs, which overstates them; see W4). The median pool is **$14/day** per market (mean $57, max $2,400/day as a rate).
 - Program types: series_lip 4,864, new_event 761, others.
 - Biggest series by $/day: KXTEMPMIAH (hourly Miami temperature) $24k, KXRT $21k, the state gas-price series (KXAAAGASD**) $7–11k each, KXTRUMPMENTIONB $7.5k.
 - Typical period: 7 days. Hourly weather programs run about 1 hour at about $100 each.

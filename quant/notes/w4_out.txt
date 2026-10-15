@@ -1,0 +1,6 @@
+Polymarket markets with an active liquidity-reward config: 18,649; total ≈ $209,573/day
+  daily rate per market: median $3, mean $11.2, 90th pct $22, max $2,000
+  rate distribution: $2000.0: 1, $1714.0: 1, $1500.0: 4, $1356.0: 1, $1200.0: 2, $1047.0: 1, $1002.0: 1, $1000.0: 20
+  max qualifying spread (¢): {4.5: 12292, 6.5: 3762, 5.5: 1581, 8.5: 333, 2.5: 225}; min size: {20: 14617, 50: 2060, 30: 832, 100: 261, 40: 257}
+
+Kalshi LIP for comparison: 5,734 programs; programs lasting ≥1 day: 4,764, $128,752/day (median $14/day)
