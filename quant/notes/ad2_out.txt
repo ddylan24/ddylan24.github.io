@@ -1,0 +1,8 @@
+[ad2] 14 days, settlement-marked maker P&L (¢/contract ± market-clustered SE) and LIP pools on the same markets
+  KXHIGHAUS      markets   84  contracts     882,560  maker +0.42 ± 0.90  fills $    +3,702  LIP pool $        0  reward 0.00¢/ct  | daily maker ¢/ct: +3.5 +0.1 -3.0 -2.6 -3.5 -0.3 -0.6 +0.3 +0.9 +0.5 +4.5 +4.9 -0.1 +0.1
+  KXHIGHCHI      markets   84  contracts   1,547,919  maker +1.00 ± 0.57  fills $   +15,497  LIP pool $        0  reward 0.00¢/ct  | daily maker ¢/ct: +0.3 +0.1 +1.0 +1.3 +2.2 +1.3 +1.6 -1.3 -0.9 +3.4 +0.9 +3.1 +1.7 -2.4
+  KXHIGHDEN      markets   84  contracts     654,592  maker -1.47 ± 0.70  fills $    -9,641  LIP pool $        0  reward 0.00¢/ct  | daily maker ¢/ct: -1.2 -2.4 -5.5 -4.0 -2.3 -0.9 +0.4 -1.8 +2.7 -2.3 -2.7 -1.5 -0.5 -1.2
+  KXHIGHLAX      markets   84  contracts   8,549,841  maker +1.26 ± 0.56  fills $  +108,107  LIP pool $        0  reward 0.00¢/ct  | daily maker ¢/ct: -0.1 +1.0 +1.4 +0.2 -0.1 +0.5 +1.9 +2.5 +1.0 +1.0 +1.6 +1.9 +2.0 +1.7
+  KXHIGHMIA      markets   84  contracts   1,775,901  maker +0.02 ± 0.62  fills $      +408  LIP pool $        0  reward 0.00¢/ct  | daily maker ¢/ct: -1.6 -0.3 -0.7 -2.6 +0.3 +0.8 +0.6 +0.0 +0.4 +0.7 +0.9 -0.9 +1.3 +1.2
+  KXHIGHNY       markets   84  contracts   2,367,792  maker +0.94 ± 1.28  fills $   +22,146  LIP pool $        0  reward 0.00¢/ct  | daily maker ¢/ct: -0.5 +0.1 -0.1 -0.0 +0.7 +0.5 +0.7 -0.1 +2.0 +2.0 +0.9 +0.3 -0.7 +3.9
+  KXTEMPMIAH     markets 2174  contracts   5,133,365  maker +0.69 ± 0.22  fills $   +35,258  LIP pool $  215,900  reward 4.21¢/ct  | daily maker ¢/ct: +0.3 -0.8 +0.2 +0.1 +0.0 +0.8 -0.1 +0.1 +1.3 +2.1 +1.0 +3.2 +1.0 +0.2 -0.6

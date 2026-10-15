@@ -2,12 +2,13 @@
 
 Research notes, code and course material on quantitative trading, built in Claude Code sessions starting October 2026.
 
-**Start here:** read [`CONTEXT.md`](CONTEXT.md). It's a self-contained briefing of everything learned, written so a new session can pick up where the last one left off. To continue the research in a new session, say something like:
+**Start here:** read [`HANDOFF.md`](HANDOFF.md) (state + next tasks), then [`CONTEXT.md`](CONTEXT.md). It's a self-contained briefing of everything learned, written so a new session can pick up where the last one left off. To continue the research in a new session, say something like:
 
 > Read `quant/CONTEXT.md` and `quant/agenda.md`, then continue the next unfinished topic. Keep adding notes to `quant/notes/` and update `CONTEXT.md` with any new findings.
 
 | Path | What's in it |
 |---|---|
+| `HANDOFF.md` | Start here: current state, priority tasks, facts not to relearn, first prompt for a new session |
 | `CONTEXT.md` | Condensed findings, formulas, pitfalls, data sources |
 | `agenda.md` | All research topics with done/todo status |
 | `notes/` | One file per topic: the math, the method, exact numbers, lessons |

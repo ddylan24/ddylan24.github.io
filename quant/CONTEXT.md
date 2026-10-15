@@ -24,7 +24,7 @@ This file is a condensed briefing of everything researched in the original sessi
 7. **Kalshi Liquidity Incentive Program (the most concrete opportunity found).** Kalshi pays ≈ $290k/day (grew ~30× in a year).
    - Long programs: rewards ≈ 1.5× fill losses (X2).
    - Short programs: fills break even over 7 days (Y1), so rewards ≈ profit.
-   - **KXTEMPMIAH (hourly Miami temperature):** 5.8¢ reward per filled contract *plus* makers +1.24¢/contract on fills (shrunk +0.58¢, z 3.7; AA1/AA2).
+   - **KXTEMPMIAH (hourly Miami temperature):** 5.8¢ reward per filled contract *plus* makers +1.24¢/contract on fills over 7 days (shrunk +0.58¢; **14-day check +0.69 ± 0.22¢, z 3.1**; AA1/AA2/AD2).
    - Queues are cancelled, not consumed (Z2), so it's a cancel-latency race.
    - Avoid state gas series (fills eat 92% of the pool).
    - Paper-trade with `live/tempmiah_paper.py` / `live/lip_paper.py` first (PLAYBOOK §2.5). Speed plan: `SPEED.md`.
@@ -281,6 +281,8 @@ This file is a condensed briefing of everything researched in the original sessi
   - Commodities 15m (gold/WTI/silver) +0.98 ± 0.22¢: the only clear positive.
   - Politics −3.2 ± 1.9¢; sports/crypto ≈ 0.
   - Weather −0.7 ± 0.8 conflicts with the 7-day AA1/AB1 (+0.8–1.2), so it needs a longer test (AD2).
+
+- **Weather over 14 days** (notes/AD2.md): KXTEMPMIAH maker +0.69 ± 0.22¢ (z 3.1) plus LIP 4.21¢/contract, so net ≈ +4.9¢ per filled contract (robust). Daily highs pooled +0.41 ± 0.28 (z 1.5), city-specific (DEN −1.47). Supersedes AC1's weather number.
 
 ### Math foundations (later waves)
 - **Proper scoring:** with truth 0.7, Brier and log are maximized at 0.70; a linear score at 0.99 (improper). LMSR = market log score; a trader's payoff b·ln(p1/p0) is verified. Polymarket log-loss skill 38% vs Brier 45%.

@@ -170,4 +170,4 @@ Status: [ ] todo  [~] in progress  [x] done. Each item: derive, verify numerical
 
 ## AD. Nineteenth wave
 - [ ] AD1 Commodities 15-min (KXGOLD15M, KXWTI15M, KXSILVER15M): 7-day settlement-marked maker edge + LIP pools — a new LIP candidate?
-- [ ] AD2 Weather maker edge robustness: 14+ days for KXTEMPMIAH and daily highs to resolve the AC1 vs AA1/AB1 conflict.
+- [x] AD2 Weather 14 days: KXTEMPMIAH maker +0.69±0.22¢ (z 3.1) + LIP 4.21¢/ct → robust; daily highs pooled +0.41±0.28 (z 1.5), heterogeneous (DEN −1.47). Supersedes AC1 weather.
