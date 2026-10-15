@@ -11,7 +11,7 @@ This file is a condensed briefing of everything researched in the original sessi
    - Kalshi weather shows classic favorite-longshot pricing.
    - Prices move 31–38% more than rational updating allows (R6).
    - Recession contracts carry a ~3–5¢ insurance premium (U1); elections ~0.1¢ (T4).
-4. **Best candidate edge (unproven, pre-registered):** slope-only recalibration (b ≈ 1.2) of Kalshi daily BTC at T−6h. Out of sample: DM t −4.0, +3.1¢/contract after fees (t 3.0). Paper-trade it forward (`PLAYBOOK.md` §2.0).
+4. **Best statistical candidate (unproven, pre-registered):** slope-only recalibration (b ≈ 1.2) of Kalshi daily BTC at T−6h. Out of sample: DM t −4.0, +3.1¢/contract after fees (t 3.0). Paper-trade it forward (`PLAYBOOK.md` §2.0).
 5. **Math that matters most:**
    - Kelly with shrunk probabilities (≤ ½ Kelly; joint Kelly for multi-outcome events, S5).
    - Digital = −∂C/∂K with skew (Q3).
@@ -20,8 +20,15 @@ This file is a condensed briefing of everything researched in the original sessi
    - Shin/additive de-vig (R5/U4).
    - Empirical-Bayes pooling (U3).
    - Common-outcome nulls for skill tests (R2).
-6. **Data traps that faked results today:** close-time look-ahead, HMM smoothing, prices-history 1-minute lag, Deribit bars stamped at the open, daily stamps on the previous evening ET, date strings sorted alphabetically, independent per-trader nulls. Check timestamps and splits first.
-7. **Home PC / Pi:** run `live/capture.py` continuously. Most open questions need data no API keeps (CONTEXT §5b, PLAYBOOK).
+6. **Data traps that faked results today:** close-time look-ahead, HMM smoothing, prices-history 1-minute lag, Deribit bars stamped at the open, daily stamps on the previous evening ET, date strings sorted alphabetically, independent per-trader nulls, averaging (outcome − price) over vigged buckets, totals from a single 'active' snapshot, one-day markouts instead of settlement, and substitute data feeds for short-dated binaries. Check timestamps, splits and sources first.
+7. **Kalshi Liquidity Incentive Program (the most concrete opportunity found).** Kalshi pays ≈ $290k/day (grew ~30× in a year).
+   - Long programs: rewards ≈ 1.5× fill losses (X2).
+   - Short programs: fills break even over 7 days (Y1), so rewards ≈ profit.
+   - **KXTEMPMIAH (hourly Miami temperature):** 5.8¢ reward per filled contract *plus* makers +1.24¢/contract on fills (shrunk +0.58¢, z 3.7; AA1/AA2).
+   - Queues are cancelled, not consumed (Z2), so it's a cancel-latency race.
+   - Avoid state gas series (fills eat 92% of the pool).
+   - Paper-trade with `live/lip_paper.py` first (PLAYBOOK §2.5).
+8. **Home PC / Pi:** run `live/capture.py` continuously. Most open questions need data no API keeps (CONTEXT §5b, PLAYBOOK).
 
 ## 1. Goal and starting point
 

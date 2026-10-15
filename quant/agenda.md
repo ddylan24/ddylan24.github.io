@@ -162,4 +162,4 @@ Status: [ ] todo  [~] in progress  [x] done. Each item: derive, verify numerical
 
 ## AB. Seventeenth wave
 - [ ] AB1 Other hourly/daily weather series on Kalshi (KXTEMP* other cities, KXHIGH* daily highs) — does the KXTEMPMIAH maker edge generalize (same 7-day settlement-marked method)?
-- [ ] AB2 Session wrap-up: refresh CONTEXT §0 top takeaways with LIP findings; consistency pass over course numbers vs notes.
+- [x] AB2 CONTEXT §0 refreshed with LIP findings and the full list of data traps.
