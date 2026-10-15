@@ -166,4 +166,4 @@ Status: [ ] todo  [~] in progress  [x] done. Each item: derive, verify numerical
 
 ## AC. Eighteenth wave
 - [ ] AC1 Category map of maker edges on Kalshi: sports, politics, economics, entertainment (KXRT etc.), crypto — 7-day settlement-marked maker P&L per category (sampled series), to find where takers are informed vs betting.
-- [ ] AC2 Maker edge vs trade size: are large takers informed and small takers not (fills split by size bucket, all collected fills)?
+- [x] AC2 Maker edge by fill size: crypto 15m +0.37¢ (1–10 contracts, t≈6) → 0 (>1k) = informed size; temperature positive at all sizes (+0.9 to +1.7¢).
