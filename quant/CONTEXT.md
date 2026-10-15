@@ -245,10 +245,11 @@ This file is a condensed briefing of everything researched in the original sessi
 - **LIP cost side** (notes/X2.md): maker markout −2.5¢ (5 min) / −3.4¢ (60 min) per filled contract across 442k contracts in 51 rich LIP markets. Fill losses ≈ −$7.5k/day vs pools $11.4k/day (rewards ≈ 1.5× adverse selection; n≈3 effective LPs). 5/51 markets lost more than the pool. Public fills: `/markets/trades?ticker=&min_ts=`.
 
 - **Short LIP programs by series** (notes/X1.md; last 24h): maker markout at 5 min.
-  - FX 15-min: **+1.2 to +3.3¢/contract** (takers uninformed).
+  - FX 15-min: +1.2 to +3.3¢/contract in one day, **but NOT robust**. Y1 (7 days, marked to settlement, 6.7M fills): EUR +0.09¢ (t 0.2), JPY +1.03¢ (t 1.0), AUD −0.36¢ (t −0.7); BTC/ETH 15m ≈ 0. Fills break even, so rewards are close to net profit.
   - Hourly temperature/RT/approval: −0.35 to −0.76¢, with pools 6–10× the losses.
   - 15-min crypto: −3.8¢ (pool ≈ loss).
-  - Short programs are far better for LPs than long ones (1.5×). Best paper-trade candidates: FX 15-min, KXTEMPMIAH, KXRT.
+  - Short programs are better for LPs than long ones (1.5×). Paper-trade candidates: FX 15-min, KXTEMPMIAH, KXRT.
+  - Y3: a spot-based digital model for FX 15m (Yahoo 1m) forecast worse than the market (Brier 0.31 vs 0.15). The settlement-feed basis dominates near expiry, so the exact feed is needed.
 
 ### Math foundations (later waves)
 - **Proper scoring:** with truth 0.7, Brier and log are maximized at 0.70; a linear score at 0.99 (improper). LMSR = market log score; a trader's payoff b·ln(p1/p0) is verified. Polymarket log-loss skill 38% vs Brier 45%.

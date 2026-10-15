@@ -146,6 +146,6 @@ Status: [ ] todo  [~] in progress  [x] done. Each item: derive, verify numerical
 - [x] X2 LIP cost side: maker markout −2.5¢ (5 min) to −3.4¢ (60 min) per filled contract; markouts −$7.5k/day vs pools $11.4k/day across 51 rich markets (~34% net margin, n≈3 effective LPs); 5/51 markets lose more than the pool.
 
 ## Y. Fourteenth wave
-- [ ] Y1 Robustness of the X1 FX-15m maker profits: 7+ days of trades, markout to settlement, per hour of day; is it retail flow or a measurement artefact?
+- [x] Y1 FX-15m maker profits NOT robust: 7 days to settlement (6.7M fills) EUR +0.09¢ (t 0.2), JPY +1.03¢ (t 1.0), AUD −0.36¢; BTC/ETH ≈0 → fills break even, rewards ≈ net. X1 corrected.
 - [x] Y2 live/lip_paper.py: read-only LIP paper quoter (official scoring, conservative queue fills from public trades, settlement P&L, --report); smoke-tested 4 cycles.
-- [ ] Y3 Kalshi FX 15-min markets vs spot FX (digital pricing like Q3): are the quotes efficient relative to the underlying?
+- [x] Y3 Spot-based FX-15m digital model fails (Brier 0.31 vs market 0.15): settlement-feed basis ≫ edge near expiry; needs exact feed.

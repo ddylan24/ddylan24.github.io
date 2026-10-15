@@ -1,0 +1,12 @@
+KXEURUSD15M: 110,374 fills with spot (470 markets); spot source Yahoo EURUSD=X
+  taker expected edge vs fair (contract-weighted): -3.13¢; realized taker P&L to settlement -0.09¢
+  calibration of the FAIR model on outcomes: Brier fair 0.3142 vs fill price 0.1483
+  τ 0.25–3    min: n  27263, taker edge vs fair -5.30¢, realized taker +0.20¢
+  τ    3–8    min: n  34932, taker edge vs fair -0.83¢, realized taker +0.59¢
+  τ    8–15.1 min: n  44700, taker edge vs fair -0.46¢, realized taker -0.45¢
+KXUSDJPY15M: 99,808 fills with spot (471 markets); spot source Yahoo JPY=X
+  taker expected edge vs fair (contract-weighted): -3.49¢; realized taker P&L to settlement -1.03¢
+  calibration of the FAIR model on outcomes: Brier fair 0.1663 vs fill price 0.1513
+  τ 0.25–3    min: n  28366, taker edge vs fair -2.17¢, realized taker +0.02¢
+  τ    3–8    min: n  31273, taker edge vs fair -3.69¢, realized taker -2.82¢
+  τ    8–15.1 min: n  36171, taker edge vs fair -0.30¢, realized taker -0.44¢
