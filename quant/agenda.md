@@ -144,3 +144,8 @@ Status: [ ] todo  [~] in progress  [x] done. Each item: derive, verify numerical
 ## X. Thirteenth wave
 - [x] X1 Short LIP programs: FX 15-min makers EARN +1.2–3.3¢/contract on fills; temp/RT/approval lose ≤0.8¢ vs pools 6–10× larger; 15-min crypto −3.8¢ (pool≈loss). Short programs ≫ long (1.5×) for LPs.
 - [x] X2 LIP cost side: maker markout −2.5¢ (5 min) to −3.4¢ (60 min) per filled contract; markouts −$7.5k/day vs pools $11.4k/day across 51 rich markets (~34% net margin, n≈3 effective LPs); 5/51 markets lose more than the pool.
+
+## Y. Fourteenth wave
+- [ ] Y1 Robustness of the X1 FX-15m maker profits: 7+ days of trades, markout to settlement, per hour of day; is it retail flow or a measurement artefact?
+- [ ] Y2 Read-only LIP paper-quoter for the home PC (live/lip_paper.py): logs hypothetical two-sided quotes, scored share, simulated fills vs public trades — no order placement.
+- [ ] Y3 Kalshi FX 15-min markets vs spot FX (digital pricing like Q3): are the quotes efficient relative to the underlying?
