@@ -27,7 +27,8 @@ This file is a condensed briefing of everything researched in the original sessi
    - **KXTEMPMIAH (hourly Miami temperature):** 5.8¢ reward per filled contract *plus* makers +1.24¢/contract on fills (shrunk +0.58¢, z 3.7; AA1/AA2).
    - Queues are cancelled, not consumed (Z2), so it's a cancel-latency race.
    - Avoid state gas series (fills eat 92% of the pool).
-   - Paper-trade with `live/lip_paper.py` first (PLAYBOOK §2.5).
+   - Paper-trade with `live/tempmiah_paper.py` / `live/lip_paper.py` first (PLAYBOOK §2.5). Speed plan: `SPEED.md`.
+   - **Kalshi publishes the exact settlement index** for hourly temperature: `GET /live_data/weather/{city}` (public, 1-min, 0.01°F, `detailed=true` gives each station's raw reading and arrival time; `/calibrations` gives weights and offsets). Station data arrives a median 87s after each minute ends.
 8. **Home PC / Pi:** run `live/capture.py` continuously. Most open questions need data no API keeps (CONTEXT §5b, PLAYBOOK).
 
 ## 1. Goal and starting point

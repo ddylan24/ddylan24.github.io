@@ -19,6 +19,8 @@ Research notes, code and course material on quantitative trading, built in Claud
 | `LEDGER.md` | Every hypothesis tested and its fate (multiple-testing accounting) |
 | `PLAYBOOK.md` | Operational guide for the home PC/Pi: data capture, research queue, what not to do, money rules |
 | `live/capture.py` | Continuous Polymarket/Kalshi/Deribit snapshot logger (no keys) |
+| `live/tempmiah_paper.py` | READ-ONLY paper market-maker for hourly Miami temperature: JOIN vs SMART (settlement-index-aware) policies, LIP rewards, settlement P&L |
+| `SPEED.md` | How to be fast enough on Kalshi: WebSockets, AWS, amend/batch/cancel-all, order groups, API tiers, faster information (weather index), smart-vs-fast |
 | `live/lip_paper.py` | READ-ONLY Kalshi LIP paper quoter: hypothetical two-sided quotes, official reward scoring, conservative simulated fills, settlement P&L (`--report`) |
 
 ## Re-running anything
