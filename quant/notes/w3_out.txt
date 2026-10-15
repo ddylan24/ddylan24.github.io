@@ -1,0 +1,10 @@
+n= 2: best-response Q   2500.0 vs formula R(n−1)/(nk)   2500.0; profit/LP  25.00 vs R/n²  25.00; return on cost 1.00 vs 1/(n−1) 1.00
+n= 3: best-response Q   3333.3 vs formula R(n−1)/(nk)   3333.3; profit/LP  11.11 vs R/n²  11.11; return on cost 0.50 vs 1/(n−1) 0.50
+n= 5: best-response Q   4000.0 vs formula R(n−1)/(nk)   4000.0; profit/LP   4.00 vs R/n²   4.00; return on cost 0.25 vs 1/(n−1) 0.25
+n=10: best-response Q   4500.0 vs formula R(n−1)/(nk)   4500.0; profit/LP   1.00 vs R/n²   1.00; return on cost 0.11 vs 1/(n−1) 0.11
+
+Live LIP books (two-sided, n 169): effective existing depth per side median 1,327 contracts (target median 1000)
+  implied free-entry cost k = reward/(2·depth): median 11.23¢ per contract-day; IQR 2.59–36.04¢
+  compare capital cost alone at 10%/yr on ~$0.50 per contract: 0.0137¢/day → implied k is ~820× capital cost
+  ⇒ depth is NOT limited by capital: either LPs price large adverse-selection/inventory risk, the pool of active LPs is small (n low → return 1/(n−1)),
+    or rewards are short-lived (hourly programs) so few bother. With n LPs, R/(k·Q) = n/(n−1): observed returns ≫ cost ⇒ effectively small n.

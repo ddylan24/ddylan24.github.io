@@ -237,6 +237,9 @@ This file is a condensed briefing of everything researched in the original sessi
   - Static-book newcomer at best bid: 4–34% share, ~2–15%/day of capital *before* adverse selection. That's an upper bound. Test with logged books and a fill model.
   - Helpers: `pm_toolkit.kalshi_incentive_programs`, `lip_side_share`.
 
+- **LIP vs Polymarket rewards** (notes/W2.md): Kalshi = book-anchored DF^ticks plus a market-level two-sided Target (pays depth). Polymarket = midpoint-anchored ((v−s)/v)², per-LP min(Q_one,Q_two), 1-min samples, daily epochs (pays tightness).
+- **Subsidy equilibrium** (notes/W3.md): Tullock contest. Q* = R(n−1)/(nk), π = R/n², return 1/(n−1); free entry R = kQ. Live books imply k ≈ 11¢/contract-day (≈800× capital cost), so depth is risk-limited or few LPs compete.
+
 ### Math foundations (later waves)
 - **Proper scoring:** with truth 0.7, Brier and log are maximized at 0.70; a linear score at 0.99 (improper). LMSR = market log score; a trader's payoff b·ln(p1/p0) is verified. Polymarket log-loss skill 38% vs Brier 45%.
 - **MC variance reduction** (BS call, N=20k): plain sd 0.101, antithetic 0.068, control variate 0.039 (variance ÷6.8). Importance sampling for P(30-day −20%) = 4.42e-5: plain 3.0e-5 (3 hits), IS 4.41e-5.

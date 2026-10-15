@@ -137,5 +137,5 @@ Status: [ ] todo  [~] in progress  [x] done. Each item: derive, verify numerical
 
 ## W. Twelfth wave (LIP follow-ups + more)
 - [ ] W1 LIP dynamics: re-sample the richest Kalshi incentivized books every few minutes for ~1h — how stable are LP shares, how often does the book fall below Target (excluded snapshots)?
-- [ ] W2 Kalshi LIP vs Polymarket liquidity rewards (S=((v−s)/v)²·b): structural comparison — what each rewards (depth vs tightness), and the implied optimal quoting.
-- [ ] W3 Free-entry equilibrium for subsidized market making: reward pool R, adverse-selection cost per contract c, capital cost → equilibrium depth and LP return (math + sim).
+- [x] W2 Kalshi LIP vs Polymarket rewards: book-anchored geometric DF^ticks + market-level two-sided Target vs midpoint-anchored quadratic ((v−s)/v)² + per-LP min(Q_one,Q_two); Kalshi pays depth, Polymarket pays tightness.
+- [x] W3 LIP as Tullock contest: Q*=R(n−1)/(nk), π=R/n², return 1/(n−1), free entry R=kQ; live books imply k≈11¢/contract-day (≈800× capital cost) ⇒ risk-limited or few LPs.
