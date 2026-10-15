@@ -27,7 +27,7 @@ Goal: confirm or kill the KXTEMPMIAH LIP strategy on months of history.
 
 ### B. Fix and run the paper traders on the home machine
 - `live/tempmiah_paper.py` (JOIN vs SMART) and `live/lip_paper.py` (multi-series). Both are read-only, `--report` for P&L.
-- **Known issue:** in the cloud run the index read stayed at 82.04°F for over 7 minutes. Add a **staleness check**: use the newest point's timestamp `t`; if it's older than ~3 minutes, treat it as stale and pull quotes. Also confirm the code reads the newest complete point (`status == "normal"`, field `v`).
+- **Known issue (patched, untested live):** in the cloud run the index read stayed at 82.04°F for over 7 minutes. `tempmiah_paper.py` now prefers `status == "normal"` points and SMART pulls all quotes when the newest point is older than `--stale-sec` (180s). Verify the units of `t` (handled as ms or s) and that the stale flag fires on the home machine.
 
 ### C. Execution layer (build and test in Kalshi's **demo** environment only)
 - Auth: API key ID plus RSA private key; sign the request path (no query string). Hosts: `https://external-api.kalshi.com/trade-api/v2` (prod), `https://external-api.demo.kalshi.co/trade-api/v2` (demo). WS: `wss://external-api-ws.kalshi.com/trade-api/ws/v2` (auth required even for public channels).

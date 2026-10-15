@@ -29,6 +29,7 @@ ap.add_argument('--interval', type=int, default=10)
 ap.add_argument('--risk-min', type=float, default=20.0)
 ap.add_argument('--risk-band', type=float, default=1.0)
 ap.add_argument('--final-min', type=float, default=3.0)
+ap.add_argument('--stale-sec', type=float, default=180.0, help='SMART pulls all quotes if the newest index point is older than this')
 ap.add_argument('--out', default=os.path.expanduser('~/pmdata/tempmiah_paper.jsonl'))
 ap.add_argument('--hours', type=float, default=0, help='stop after N hours (0 = forever)')
 ap.add_argument('--report', action='store_true')
@@ -78,7 +79,11 @@ while True:
         progs_t = time.time()
     wx = get(f"{API}/live_data/weather/miami?last_sec=600") or {}
     pts = [p for p in wx.get('timeseries', []) if p.get('v') is not None]
+    pts = [p for p in pts if p.get('status') == 'normal'] or pts
     idx = pts[-1]['v'] if pts else None
+    tlast = pts[-1].get('t') if pts else None
+    tlast = (tlast / 1000 if tlast and tlast > 1e11 else tlast)      # ms or s
+    stale = idx is None or not tlast or time.time() - tlast > a.stale_sec
     mk = (get(f"{API}/markets?series_ticker=KXTEMPMIAH&status=open&limit=100") or {}).get('markets', [])
     for m in mk:
         tk = m['ticker']; K = m.get('floor_strike'); close = dt.datetime.fromisoformat(m['close_time'].replace('Z', '+00:00'))
@@ -109,7 +114,7 @@ while True:
             by, bn = max(x for x, _ in yb), max(x for x, _ in nb)
             quote = True
             if p == 'SMART':
-                if mins_left <= a.final_min: quote = False
+                if mins_left <= a.final_min or stale: quote = False
                 elif idx is not None and K is not None and mins_left <= a.risk_min and abs(idx - K) <= a.risk_band: quote = False
             s['yes'] = (by, sum(q for x, q in yb if x == by)) if quote else None
             s['no'] = (bn, sum(q for x, q in nb if x == bn)) if quote else None
@@ -132,6 +137,6 @@ while True:
                 y = 1.0 if m['result'] == 'yes' else 0.0
                 pnl = s['cash'] + max(s['pos'], 0) * y + max(-s['pos'], 0) * (1 - y)
                 log('settle', policy=p, ticker=tk, result=m['result'], pnl=pnl, pos=s['pos']); del st[p][tk]
-    print(now.strftime('%H:%M:%S'), f"index {idx}  open markets {len(mk)}  programs {len(progs)}", flush=True)
+    print(now.strftime('%H:%M:%S'), f"index {idx}{' STALE' if stale else ''}  open markets {len(mk)}  programs {len(progs)}", flush=True)
     if a.hours and time.time() - t_start > a.hours * 3600: break
     time.sleep(max(1, a.interval - (time.time() - t0)))
