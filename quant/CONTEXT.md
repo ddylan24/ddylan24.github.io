@@ -314,6 +314,10 @@ This file is a condensed briefing of everything researched in the original sessi
   - +9.5 vol pts (t 5.6, 67 non-overlapping windows), worst −24. Decays 18.8 → 12.7 → 6.8 → 8.8 → 4.4 → 3.0 by year. MZ slope 0.68.
   - **Mechanism for U4:** venues price with implied vol (T3), so distributions are too wide and probabilities too close to 50%. Slope ≈ σ_impl/σ_real. Test: U4 slope vs short-dated VRP over time.
 
+- **Economic-data markets** (notes/V3.md; 193 events, 1,142 buckets):
+  - Calibrated: slope 1.07 ± 0.09 (T−1d), 1.01 (T−7d). Skill 26–30%.
+  - Raw "YES overpriced −1.7¢ (t −3.9)" is just overround (Σp mean 1.077); de-vigged it's 0.
+
 ## 4. Pitfalls checklist (learned the hard way)
 
 1. Compare against a random or unconditional baseline, not against 0.
@@ -327,7 +331,8 @@ This file is a condensed briefing of everything researched in the original sessi
 9. Model assumptions must hold (Roll estimator; Vasicek across policy regimes).
 10. Skill tests across traders need a null with a SHARED outcome draw per market; independent per-trader nulls overstate significance.
 11. Never sort date strings ("26AUG08" sorts AUG < OCT < SEP); parse to dates before splitting train/test.
-12. Costs kill short horizons. Short-term reversal doesn't survive costs at scale.
+12. Averaging (outcome − price) over mutually exclusive buckets measures the overround, not calibration. De-vig first or use the slope.
+13. Costs kill short horizons. Short-term reversal doesn't survive costs at scale.
 
 ## 5. Data sources and environment notes
 
