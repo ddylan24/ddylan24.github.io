@@ -149,3 +149,8 @@ Status: [ ] todo  [~] in progress  [x] done. Each item: derive, verify numerical
 - [x] Y1 FX-15m maker profits NOT robust: 7 days to settlement (6.7M fills) EUR +0.09¢ (t 0.2), JPY +1.03¢ (t 1.0), AUD −0.36¢; BTC/ETH ≈0 → fills break even, rewards ≈ net. X1 corrected.
 - [x] Y2 live/lip_paper.py: read-only LIP paper quoter (official scoring, conservative queue fills from public trades, settlement P&L, --report); smoke-tested 4 cycles.
 - [x] Y3 Spot-based FX-15m digital model fails (Brier 0.31 vs market 0.15): settlement-feed basis ≫ edge near expiry; needs exact feed.
+
+## Z. Fifteenth wave
+- [ ] Z1 LIP net economics by series over 7 days: pools (lip_daily history) vs settlement-marked fill P&L (Y1 method) for KXTEMPMIAH, KXRT, KXTRUMPAPPROVE, FX 15m — which series pay best per unit of depth after fills?
+- [ ] Z2 Queue-position math for passive fills: probability of fill at the touch vs one tick back as a function of queue ahead and trade-size distribution (public trades) — feeds lip_paper.py's fill model.
+- [ ] Z3 Course polish: a one-page "decision tree" summary for prediction-market trading built from LEDGER + PLAYBOOK.

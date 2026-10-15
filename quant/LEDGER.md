@@ -27,4 +27,10 @@ Every edge-style hypothesis tested in the session of Oct 13–14, 2026, with its
 | U4 | **Kalshi BTC T−6h slope-only recalibration** | 34 OOS days | ~6 | DM t −4.0; +3.1¢ (t 3.0) | **Candidate**: pre-registered, verify forward |
 | U1 | Recession contracts carry an insurance premium | 2 markets | 1 | ~3–5¢ (CAPM-implied) | Plausible; n = 1 resolution |
 
-**Totals:** roughly 100+ specifications across about 22 hypotheses. One published effect survived (vol targeting), and one new candidate (U4) is awaiting forward data. At this test count, expect a few t ≈ 3 results by luck. That's why U4 is pre-registered rather than traded.
+| LIP-1 | Kalshi LIP newcomer earns 2–15%/day of capital (static book) | 250 books | 1 | — | Upper bound only; fills cost 2.5¢/ct in long programs (X2) |
+| X1 | 15-min FX makers profit on fills (+1–3¢) | 24h, 5-min markout | 8 series | +3.25¢ | **Dead:** 7 days to settlement ≈ 0 (Y1) |
+| Y3 | Spot-based fair value finds taker overpayment in FX 15m | 7 days | 1 | −3.1¢ taker edge | Model worse than market (Brier 0.31 vs 0.15); artefact |
+| V2 | BTC variance risk premium | DVOL 2021–26 | 1 | +9.5 vol pts (t 5.6) | **Survives** (decaying: 3 pts in 2026) |
+| V3 | Econ-data YES overpriced | 193 events | 1 | −1.7¢ (t −3.9) | Dead: it's the overround |
+
+**Totals:** roughly 130+ specifications across about 27 hypotheses. Two effects survived (vol targeting; the BTC variance risk premium, decaying), plus the LIP subsidy itself (a real payment, not an anomaly). One new candidate (U4) is awaiting forward data. At this test count, expect a few t ≈ 3 results by luck. That's why U4 is pre-registered rather than traded.
